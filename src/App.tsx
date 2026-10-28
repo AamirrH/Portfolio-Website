@@ -1,4 +1,4 @@
-import { content } from './data/content';
+import { projects } from './data/content';
 import { Scene } from './components/scene/Scene';
 import { TopBar } from './components/navigation/TopBar';
 import { JourneyFooter } from './components/navigation/JourneyFooter';
@@ -7,9 +7,13 @@ import { ProjectsIndex } from './components/views/ProjectsIndex';
 import { useJourney } from './hooks/useJourney';
 import { useSceneStore } from './state/useSceneStore';
 import { useScrollJourney } from './hooks/useScrollJourney';
+import { ProjectPanel } from './components/views/ProjectPanel';
+import { About } from './components/views/About';
+import { Contact } from './components/views/Contact';
 export default function App() {
   useJourney();
   useScrollJourney(true);
   const section = useSceneStore(state => state.section);
-  return <><Scene/><div className="journey-track" aria-hidden="true"/><TopBar/><main id="main-content" className="drive-content" key={section}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : <section className="view-panel"><p className="eyebrow">{content.brand.name}</p><h1>{content.sectionNames[section]}</h1><a className="primary-link" href="#projects">{content.projects.back} ↗</a></section>}</main><JourneyFooter/></>;
+  const project = projects.find(item => item.id === section);
+  return <><Scene/><div className="journey-track" aria-hidden="true"/><TopBar/><main id="main-content" className="drive-content" key={section}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</main><JourneyFooter/></>;
 }
