@@ -1,0 +1,1 @@
+export function Cockpit() { return <div className="cockpit"><div className="windshield-post left-post"/><div className="windshield-post right-post"/><div className="dashboard-shell"><div className="steering-wheel"/><div className="dash-vents"/></div></div>; }
