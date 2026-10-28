@@ -1,5 +1,13 @@
 import { content } from './data/content';
 import { Scene } from './components/scene/Scene';
+import { TopBar } from './components/navigation/TopBar';
+import { JourneyFooter } from './components/navigation/JourneyFooter';
+import { Home } from './components/views/Home';
+import { ProjectsIndex } from './components/views/ProjectsIndex';
+import { useJourney } from './hooks/useJourney';
+import { useSceneStore } from './state/useSceneStore';
 export default function App() {
-  return <><Scene/><header className="topbar"><span className="brand-mark">{content.owner.initials}<span className="brand-slash">/</span></span><span className="eyebrow">{content.brand.name}</span><span className="topbar-right eyebrow">{content.brand.subline}</span></header><main className="home-copy"><p className="eyebrow">{content.hero.eyebrow}</p><h1>{content.hero.line1}<br/><em>{content.hero.line2}</em></h1><p className="home-description">{content.hero.description}</p></main></>;
+  useJourney();
+  const section = useSceneStore(state => state.section);
+  return <><Scene/><TopBar/><main id="main-content" className="drive-content" key={section}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : <section className="view-panel"><p className="eyebrow">{content.brand.name}</p><h1>{content.sectionNames[section]}</h1><a className="primary-link" href="#projects">{content.projects.back} ↗</a></section>}</main><JourneyFooter/></>;
 }
