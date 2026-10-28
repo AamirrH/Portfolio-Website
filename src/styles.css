@@ -46,3 +46,20 @@ h1,h2,h3 { font-weight:500; }
 .home-copy h1 { margin:17px 0 14px; font-size:clamp(38px,4.3vw,65px); line-height:1.07; letter-spacing:-.055em; }
 .home-copy h1 em { font-style:normal; color:#ffb6cf; }
 .home-description { color:#d5c7dc; font-size:13px; line-height:1.8; }
+.clouds { animation:cloud-drift 40s ease-in-out infinite alternate; }
+.sun-cuts { animation:sun-scan 12s linear infinite; }
+.sun-aura { animation:ambient-pulse var(--pulse-duration, .652s) ease-in-out infinite alternate; }
+.rear-car { animation:car-sway 4.2s ease-in-out infinite; }
+.lane-line { animation:lane-rush var(--road-duration,1.6s) linear infinite; }
+.window-twinkle { animation:window-glow 5.5s ease-in-out infinite alternate; }
+.window-twinkle:nth-child(3n) { animation-delay:-2s; }
+.brake-lights { animation:brake-pulse var(--pulse-duration,.652s) ease-in-out infinite alternate; }
+.road-glints { position:absolute; inset:-100% 25% 0; opacity:.18; background:repeating-linear-gradient(transparent 0 28px,#ee4875 29px 31px,transparent 32px 71px); animation:lane-rush var(--road-duration,1.6s) linear infinite; }
+.tab-hidden *, .tab-hidden *::before, .tab-hidden *::after { animation-play-state:paused!important; }
+@keyframes cloud-drift { to { transform:translateX(3%); } }
+@keyframes sun-scan { to { transform:translateY(-29px); } }
+@keyframes ambient-pulse { from { opacity:.65; transform:scale(.98); } to { opacity:1; transform:scale(1.02); } }
+@keyframes car-sway { 0%,100% { transform:translate(-50%,0) rotate(-.2deg); } 50% { transform:translate(-49.5%,2px) rotate(.2deg); } }
+@keyframes lane-rush { to { transform:translateY(150px); } }
+@keyframes window-glow { to { opacity:.25; } }
+@keyframes brake-pulse { to { opacity:.7; } }
