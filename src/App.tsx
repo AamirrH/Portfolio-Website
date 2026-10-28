@@ -10,10 +10,12 @@ import { useScrollJourney } from './hooks/useScrollJourney';
 import { ProjectPanel } from './components/views/ProjectPanel';
 import { About } from './components/views/About';
 import { Contact } from './components/views/Contact';
+import { Gate } from './components/Gate';
 export default function App() {
   useJourney();
-  useScrollJourney(true);
+  const ignited = useSceneStore(state => state.ignited);
+  useScrollJourney(ignited);
   const section = useSceneStore(state => state.section);
   const project = projects.find(item => item.id === section);
-  return <><Scene/><div className="journey-track" aria-hidden="true"/><TopBar/><main id="main-content" className="drive-content" key={section}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</main><JourneyFooter/></>;
+  return <><div {...{ inert: !ignited ? '' : undefined }} aria-hidden={!ignited || undefined}><Scene/><div className="journey-track" aria-hidden="true"/><TopBar/><main id="main-content" className="drive-content" key={section}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</main><JourneyFooter/></div>{!ignited && <Gate/>}</>;
 }

@@ -1,0 +1,3 @@
+import { useAudio } from '../../audio/AudioProvider';
+import { content } from '../../data/content';
+export function AudioToggle() { const { muted, unavailable, toggle } = useAudio(); return <button className="audio-toggle utility-button" onClick={toggle} disabled={unavailable} aria-label={unavailable ? content.controls.unavailable : muted ? content.controls.unmute : content.controls.mute} title={unavailable ? content.controls.unavailable : undefined} aria-pressed={!muted}><span className={`audio-bars ${muted ? 'is-muted' : ''}`} aria-hidden="true"><i/><i/><i/><i/></span><span>{content.controls.sound} {muted ? content.controls.off : content.controls.on}</span></button>; }

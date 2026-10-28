@@ -10,7 +10,7 @@ export function useJourney() {
     const update = () => { useSceneStore.getState().setSection(readHash()); };
     update();
     const key = (event: KeyboardEvent) => {
-      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.defaultPrevented || useSceneStore.getState().plain) return;
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.defaultPrevented || useSceneStore.getState().plain || !useSceneStore.getState().ignited) return;
       if ((event.target as HTMLElement).closest('input,textarea,select,[contenteditable="true"]')) return;
       if (['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'].includes(event.key)) { event.preventDefault(); stepSection(event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1); }
     };
