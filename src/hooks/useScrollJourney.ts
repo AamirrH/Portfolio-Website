@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useSceneStore } from '../state/useSceneStore';
 import { readHash, routeOrder } from './useJourney';
 gsap.registerPlugin(ScrollTrigger);
+// Resizing is handled below so a viewport change cannot select a different exit.
+ScrollTrigger.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load', ignoreMobileResize: true });
 export function useScrollJourney(enabled: boolean) {
   useEffect(() => {
     if (!enabled) return;

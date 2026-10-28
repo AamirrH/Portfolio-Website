@@ -12,7 +12,7 @@ export function useCamera(ref: RefObject<HTMLDivElement>) {
     const scene = ref.current;
     if (!scene) return;
     const preset = cameraPresets[camera];
-    const duration = first.current ? 0 : TRANSITION_DURATION;
+    const duration = first.current || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION;
     first.current = false;
     useSceneStore.getState().setCamera(camera);
     useSceneStore.getState().setSpeed(preset.speed);
@@ -30,6 +30,7 @@ export function useCamera(ref: RefObject<HTMLDivElement>) {
       timeline.to('.cockpit', { opacity: camera === 'dash' ? 1 : 0, yPercent: camera === 'dash' ? 0 : 100 }, 0);
       if (duration) timeline.fromTo('.speed-streaks', { opacity: 0, scaleX: .7 }, { opacity: .55, scaleX: 1.1, duration: duration / 2, repeat: 1, yoyo: true }, 0);
     }, scene);
-    return () => ctx.revert();
+    // Retain the current pose so an interrupted camera move starts from that pose.
+    return () => ctx.kill(false);
   }, [camera, ref]);
 }
