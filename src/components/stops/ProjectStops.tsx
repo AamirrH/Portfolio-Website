@@ -1,6 +1,5 @@
-import { SceneSky } from '../scene/TravelScenes';
-import { SideCar } from '../scene/SideCar';
-function StopBase({ name }: { name: string }) { return <div className={`stop-scene stop-${name}`}><SceneSky/><div className="stop-asphalt"/><div className="parked-car"><SideCar/></div></div>; }
-export function RoomlyStop() { return <StopBase name="roomly"/>; }
-export function SwiftShipStop() { return <StopBase name="swiftship"/>; }
-export function SignalRouteStop() { return <StopBase name="signalroute"/>; }
+import { stops } from '../../data/stops';
+import { StopScene } from './StopScene';
+export function RoomlyStop() { return <StopScene stop={stops.roomly}/>; }
+export function SwiftShipStop() { return <StopScene stop={stops.swiftship}/>; }
+export function SignalRouteStop() { return <StopScene stop={stops.signalroute}/>; }

@@ -1,0 +1,40 @@
+import type { ProjectId } from './content';
+export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets'; x: number; y: number; width: number; height: number; }
+export interface StopConfig {
+  id: ProjectId;
+  building: { src?: string; silhouette?: string; heightVh: number; mobileHeightVh: number; anchorXPct: number; alignBottomToCurb: true; aspect: number };
+  overlays: OverlayRect[];
+}
+export const stops: Record<ProjectId, StopConfig> = {
+  roomly: {
+    id: 'roomly', building: { src: '/assets/stops/roomly.webp', silhouette: '/assets/stops/roomly-silhouette.png', heightVh: 62, mobileHeightVh: 38, anchorXPct: 46, alignBottomToCurb: true, aspect: 948 / 1200 },
+    overlays: [
+      { id: 'vacancy', kind: 'vacancy', x: 89.7, y: 60.15, width: 9.9, height: 3.1 },
+      { id: 'roomly-blade', kind: 'blade', x: 89.5, y: 32.35, width: 10.1, height: 26.8 },
+      { id: 'attic-west', kind: 'window', x: 12.5, y: 6.2, width: 1.7, height: 3.7 },
+      { id: 'attic-east', kind: 'window', x: 66.6, y: 6.2, width: 1.9, height: 3.7 },
+      { id: 'fourth-west', kind: 'window', x: 30.3, y: 17.1, width: 2, height: 3.8 },
+      { id: 'fourth-center', kind: 'window', x: 47.4, y: 17.1, width: 2, height: 3.8 },
+      { id: 'third-west', kind: 'window', x: 11.9, y: 29.2, width: 1.9, height: 6.3 },
+      { id: 'third-center', kind: 'window', x: 30.2, y: 29.2, width: 2.1, height: 6.3 },
+      { id: 'third-east', kind: 'window', x: 47.4, y: 29.2, width: 1.9, height: 6.3 },
+      { id: 'second-west', kind: 'window', x: 30.2, y: 43.1, width: 2.1, height: 6.1 },
+      { id: 'second-east', kind: 'window', x: 64.4, y: 43.1, width: 2.1, height: 6.1 },
+      { id: 'first-center', kind: 'window', x: 47.4, y: 66.4, width: 2.1, height: 6.2 }
+    ]
+  },
+  swiftship: {
+    id: 'swiftship', building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
+    overlays: [
+      { id: 'open-neon', kind: 'neon', x: 46.6, y: 50.1, width: 12.4, height: 14.2 },
+      { id: 'door-status', kind: 'status', x: 76.15, y: 72.3, width: .9, height: 2.5 },
+      { id: 'interior', kind: 'interior', x: 9.5, y: 44.2, width: 81, height: 44.8 },
+      { id: 'dispatch-tickets', kind: 'tickets', x: 76, y: 35.8, width: 2.2, height: 1.8 }
+    ]
+  },
+  signalroute: {
+    id: 'signalroute', building: { heightVh: 48, mobileHeightVh: 32, anchorXPct: 43, alignBottomToCurb: true, aspect: 1.15 }, overlays: []
+  }
+};
+export const stopArtOrder: ProjectId[] = ['roomly', 'swiftship', 'signalroute'];
+export const stopLabels = { vacancy: 'VACANCY', full: 'NO VACANCY', signal: 'SIGNALROUTE AI', dataCentre: 'DETERMINISTIC ROUTING', safety: 'SAFETY GATE', signalStates: ['green', 'amber', 'red'] as const };

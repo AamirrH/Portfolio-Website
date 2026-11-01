@@ -1,0 +1,49 @@
+:root { --stop-panel-width:clamp(345px,33.333vw,480px); }
+.stop-scene {
+  --curb-y:72vh;
+  --lane-y:calc(var(--curb-y) + 62px);
+  --building-height:min(calc(var(--height-vh) * 1vh),calc((100vw - var(--stop-panel-width) - 80px) / var(--building-aspect)));
+  --building-width:calc(var(--building-height) * var(--building-aspect));
+  --building-center:clamp(calc(var(--building-width) / 2 + 24px),calc(var(--anchor-x) * 1vw),calc(100vw - var(--stop-panel-width) - 48px - var(--building-width) / 2));
+  --car-width:min(350px,26vw);
+  --car-center:calc(var(--building-center) - var(--building-width) * .24 - 30px);
+}
+.stop-scene .sun-position { left:12%; top:22%; width:24vw; height:24vw; }
+.stop-scene .layer-far-skyline { opacity:.32; }
+.building-anchor,.building-reflection { position:absolute; left:var(--building-center); width:var(--building-width); height:var(--building-height); transform:translateX(-50%); }
+.building-anchor { bottom:calc(100% - var(--curb-y)); z-index:1; }
+.building-arrival,.stop-art,.signal-building { display:block; width:100%; height:100%; }
+.building-arrival { position:relative; }
+.building-tint,.building-rim { position:absolute; inset:0; mask-image:var(--building-mask); -webkit-mask-image:var(--building-mask); mask-size:100% 100%; -webkit-mask-size:100% 100%; mask-repeat:no-repeat; }
+.building-tint { background:linear-gradient(to left,rgba(255,42,138,.28),rgba(43,10,74,.35) 70%); mix-blend-mode:soft-light; }
+.building-rim { background:#ff2a8a; opacity:.65; mask-image:var(--building-mask),var(--building-mask); mask-position:0 0,2px 0; mask-composite:subtract; -webkit-mask-composite:source-out; }
+@supports not (mix-blend-mode:soft-light) { .building-tint { mix-blend-mode:normal; opacity:.25; } }
+.building-contact-shadow { position:absolute; width:83%; height:18px; left:4%; bottom:-9px; border-radius:50%; filter:blur(6px); background:#080a16; opacity:.8; z-index:-1; }
+.stop-asphalt { inset:var(--curb-y) 0 0; z-index:2; background:linear-gradient(#39263d,#251e32 35%,#141321); border:0; }
+.stop-asphalt::after { content:''; position:absolute; inset:0; opacity:.13; background:repeating-linear-gradient(transparent 0 25px,#f6bbd33b 26px,transparent 27px); }
+.stop-sidewalk { position:absolute; z-index:4; top:var(--curb-y); left:0; right:0; height:15px; background:linear-gradient(#6e5269,#49364e); border-top:1px solid #bd789e; }
+.stop-curb { position:absolute; z-index:4; top:calc(var(--curb-y) + 15px); left:0; right:0; height:5px; background:#b07899; border-bottom:2px solid #201829; }
+.building-reflection { top:var(--curb-y); opacity:.22; filter:blur(3px); mask-image:linear-gradient(to bottom,#000,transparent 60%); z-index:3; }
+.building-reflection>img,.building-reflection>.signal-building { width:100%; height:100%; transform:scaleY(-1); }
+.stop-near-lane { position:absolute; z-index:3; top:var(--lane-y); left:0; right:0; height:2px; opacity:.35; background:repeating-linear-gradient(90deg,#d6a7c4 0 90px,transparent 90px 170px); }
+.car-anchor { position:absolute; z-index:5; left:var(--car-center); top:calc(var(--lane-y) - var(--car-width) * 195 / 660); width:var(--car-width); height:calc(var(--car-width) * 235 / 660); transform:translateX(-50%); }
+.parked-car { position:absolute; inset:0; width:100%; height:100%; }
+.parked-car>svg,.car-reflection>svg { display:block; width:100%; height:100%; }
+.car-contact-shadow { position:absolute; top:78%; left:9%; width:81%; height:12%; border-radius:50%; background:#050714; filter:blur(4px); opacity:.85; }
+.car-reflection { position:absolute; top:83%; width:100%; height:100%; opacity:.3; filter:blur(2px); mask-image:linear-gradient(#000,transparent 60%); }
+.car-reflection>svg { transform:scaleY(-1) translateY(17%); }
+.parked-car .wheel-spokes,.car-reflection .wheel-spokes,.parked-car .brake-lights,.car-reflection .brake-lights { animation:none; }
+.stop-project-panel { right:24px; width:var(--stop-panel-width); padding:26px; }
+.sheet-handle { display:none; }
+.traffic-lamp { opacity:.1; }
+.green-lamp { opacity:1; }
+@media (max-width:767px) {
+  .stop-scene { --curb-y:48.5vh; --lane-y:51.3vh; --building-height:min(calc(var(--mobile-height-vh) * 1vh),calc((100vw - 32px) / var(--building-aspect))); --building-center:50vw; --car-width:42vw; --car-center:35vw; }
+  .stop-scene .sun-position { left:3%; top:13%; width:45vw; height:45vw; }
+  .building-reflection,.car-reflection { filter:none; }
+  .building-contact-shadow { height:10px; bottom:-5px; }
+  .stop-project-panel { top:52vh; bottom:102px; left:0; right:0; width:100%; border-radius:14px 14px 0 0; padding:24px 23px; max-height:none; background:linear-gradient(#201728fa,#121222fc); }
+  .sheet-handle { display:block; position:absolute; top:9px; width:32px; height:3px; border-radius:2px; background:#9f7d9e; left:calc(50% - 16px); }
+  .stop-project-panel .back-link { margin-bottom:13px; }
+  .stop-project-panel h1 { margin:9px 0; }
+}
