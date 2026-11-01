@@ -7,8 +7,8 @@ export function useSceneMotion(ref: RefObject<HTMLDivElement>) {
   useEffect(() => {
     const scene = ref.current;
     if (!scene) return;
-    scene.style.setProperty('--road-duration', `${1.6 / speed}s`);
-    scene.style.setProperty('--wheel-duration', `${.65 / speed}s`);
+    scene.style.setProperty('--road-duration', `${1.6 / Math.max(.01, speed)}s`);
+    scene.style.setProperty('--wheel-duration', `${.65 / Math.max(.01, speed)}s`);
     scene.style.setProperty('--pulse-duration', `${60 / BPM}s`);
   }, [speed, ref]);
   useEffect(() => {
@@ -23,11 +23,8 @@ export function useSceneMotion(ref: RefObject<HTMLDivElement>) {
       movers.forEach(mover => { mover.x(x * mover.depth); mover.y(y * mover.depth); });
     };
     const reset = () => movers.forEach(mover => { mover.x(0); mover.y(0); });
-    const visibility = () => { document.documentElement.classList.toggle('tab-hidden', document.hidden); if (document.hidden) gsap.globalTimeline.pause(); else gsap.globalTimeline.resume(); };
     window.addEventListener('pointermove', move, { passive: true });
     document.addEventListener('pointerleave', reset);
-    document.addEventListener('visibilitychange', visibility);
-    visibility();
-    return () => { window.removeEventListener('pointermove', move); document.removeEventListener('pointerleave', reset); document.removeEventListener('visibilitychange', visibility); movers.forEach(mover => { mover.x.tween.kill(); mover.y.tween.kill(); }); gsap.globalTimeline.resume(); };
+    return () => { window.removeEventListener('pointermove', move); document.removeEventListener('pointerleave', reset); movers.forEach(mover => { mover.x.tween.kill(); mover.y.tween.kill(); }); };
   }, [ref]);
 }
