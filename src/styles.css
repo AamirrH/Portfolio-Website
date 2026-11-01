@@ -128,3 +128,13 @@ button,a { touch-action:manipulation; }
 @media (max-height:650px) and (min-width:768px) { .gantry-nav { top:20%; }.road-sign { padding:10px 16px; }.identity-sign h2 { margin:6px 0; font-size:25px; }.sign-bottom { margin-top:8px; padding-top:7px; }.exit-sign a { padding:3px 0; font-size:19px; }.home-copy h1 { font-size:41px; }.home-copy { bottom:18%; }.home-copy .primary-link { margin-top:12px; }.view-panel { max-height:calc(100dvh - 165px); }.scroll-hint { display:none; } }
 @media (max-width:767px) and (max-height:650px) { .gantry-nav { top:17%; }.sign-bottom { display:none; }.identity-sign h2 { font-size:20px; }.home-copy { bottom:19%; }.home-copy h1 { font-size:31px; }.home-copy>.eyebrow { display:none; }.view-panel { bottom:115px; }.side-car,.driver-hud { display:none; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }.speed-streaks { display:none; } }
+:root { --sky-top:#20162f; --sky-mid:#703054; --sky-horizon:#dc4d83; --sky-low:#f87b96; }
+:root[data-palette='night'] { --sky-top:#0a1026; --sky-mid:#281e4a; --sky-horizon:#633466; --sky-low:#a34c86; }
+:root[data-palette='dawn'] { --sky-top:#32335e; --sky-mid:#88617e; --sky-horizon:#d9869c; --sky-low:#e8b5a7; }
+.sky-fill { background:linear-gradient(var(--sky-top) 0%,var(--sky-mid) 26%,var(--sky-horizon) 49%,var(--sky-low) 66%,#3b1e46 83%); }
+.sun-cuts { background:repeating-linear-gradient(to bottom,transparent 0 12px,var(--sky-horizon) 12px 17px); }
+.sun-control { position:fixed; z-index:2; left:38.5%; top:35%; width:23vw; height:23vw; max-height:38vh; border:0; border-radius:50%; background:transparent; cursor:pointer; }
+.road-sign::before,.road-sign::after { animation-duration:var(--pulse-duration,.652s); }
+.boosting .speed-streaks { animation:boost-streaks .3s linear infinite; }
+@keyframes boost-streaks { 0% { opacity:.2; transform:scaleX(.8); } 100% { opacity:.6; transform:scaleX(1.2); } }
+@media (max-width:767px) { .sun-control { left:22.5%; width:55vw; height:55vw; } }
