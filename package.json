@@ -7,7 +7,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "assets:key": "node scripts/key-assets.mjs"
+    "assets:key": "node scripts/key-assets.mjs",
+    "test:stops": "playwright test"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.2.0",
