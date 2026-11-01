@@ -1,11 +1,17 @@
-import { useEffect, type CSSProperties } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { type StopConfig, stops, stopArtOrder } from '../../data/stops';
 import { SceneSky } from '../scene/TravelScenes';
 import { SideCar } from '../scene/SideCar';
 import { SignalBuilding } from './SignalBuilding';
+import { StopOverlays, OrderTickets } from './StopOverlays';
+import { useStopAnimations } from '../../hooks/useStopAnimations';
 
 type StopStyle = CSSProperties & Record<`--${string}`, string | number>;
 export function StopScene({ stop }: { stop: StopConfig }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useStopAnimations(ref, stop);
+  const debug = new URLSearchParams(location.search).get('debug') === 'rects';
+  const tickets = stop.overlays.find(rect => rect.kind === 'tickets');
   const { building } = stop;
   useEffect(() => {
     const nextId = stopArtOrder[(stopArtOrder.indexOf(stop.id)+1)%stopArtOrder.length];
@@ -17,14 +23,16 @@ export function StopScene({ stop }: { stop: StopConfig }) {
   }, [stop.id]);
   const style: StopStyle = { '--height-vh': building.heightVh, '--mobile-height-vh': building.mobileHeightVh, '--anchor-x': building.anchorXPct, '--building-aspect': building.aspect, '--building-mask': building.silhouette ? `url("${building.silhouette}")` : 'none' };
   const art = building.src ? <img className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
-  return <div className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
+  return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
     <SceneSky/>
     <div className="building-anchor"><div className="building-contact-shadow"/><div className="building-arrival">
       {art}{building.silhouette && <><div className="building-tint"/><div className="building-rim"/></>}
+      <StopOverlays stop={stop} debug={debug}/>
     </div></div>
     <div className="stop-asphalt"/><div className="stop-sidewalk"/><div className="stop-curb"/>
     <div className="building-reflection">{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div>
     <div className="stop-near-lane"/>
+    {tickets && <OrderTickets rect={tickets}/>}
     <div className="car-anchor"><div className="car-contact-shadow"/><div className="parked-car"><SideCar/></div><div className="car-reflection"><SideCar/></div></div>
   </div>;
 }
