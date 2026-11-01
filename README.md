@@ -22,9 +22,10 @@ Routes: `#home`, `#projects`, `#roomly`, `#swiftship`, `#signalroute`, `#about`,
 ## Scene and camera controls
 
 - `src/components/scene/`: independent sky, sun, skyline, near buildings, power lines, highway, gantry, car, and overlay components.
-- `src/scene/cameraPresets.ts`: rear, side, dash, and aerial poses, including per-layer translation, scale, rotation, opacity, static blur, and road speed.
+- `src/components/scene/CameraRig.tsx`: crossfades independent rear, dashboard, aerial, and project-stop scene components. Camera changes never rotate or skew individual layers.
+- `src/scene/cameraPresets.ts`: travel speeds; project stops are parked at zero speed.
 - `src/state/useSceneStore.ts`: one speed value drives road and wheel animation timing.
-- `src/hooks/useCamera.ts`: 1.2-second GSAP transitions with `power3.inOut`; interrupted transitions continue from their current pose.
+- `src/components/stops/`: Roomly, SwiftShip, and SignalRoute stop compositions, masked artwork, pooled overlays, and a procedural signal/data-centre building.
 - `src/styles.css`: palette variables, scene composition, responsive rules, and transform/opacity animation. Blur and shadows are static, never tweened.
 
 ### Optional replacement art
@@ -70,9 +71,33 @@ Import the GitHub repository into Vercel and select the Vite framework. Use `npm
 
 Before publishing, replace the SVG social placeholder with `public/og.png` (1200×630), set `og:image` to the final absolute HTTPS image URL, and add `og:url`/canonical metadata using the real deployment URL. SVG is a design placeholder; social crawlers generally need PNG/JPEG. The local SVG favicon is ready.
 
+## Illustrated project stops
+
+The original images are preserved as `assets-src/roomly-raw.png` and `assets-src/swiftship-raw.png`. They were copied from the supplied `assests-src/` folder; those originals were not modified. Their actual canvas size is 2752×1536, so watermark coordinates are scaled from the request's 2576×1438 reference size.
+
+```sh
+npm run assets:key
+```
+
+`scripts/key-assets.mjs` uses Sharp to key green with the requested 40–110 greenness ramp, despill translucent/two-pixel edge neighborhoods, erase the sparkle, identify the building footprint 24 pixels above the alpha bottom, remove the protruding ground line, and trim. The raw canvas contains green padding below the ground line, so the script measures the alpha bottom rather than the canvas bottom. It writes quality-90 WebP files and white alpha silhouettes to `public/assets/stops/`. Height-based downsampling enforces a combined 400,000-byte limit without reducing quality. Current art plus masks totals **255,280 bytes**. `asset-report.json` records source/crop/output dimensions and percentage ground-contact bounds.
+
+Tune the building height, anchor, and percentage overlay rectangles in `src/data/stops.ts`. Desktop heights are 62vh/44vh for Roomly/SwiftShip, mobile 38vh/30vh. An aspect-preserving height cap ensures the wide store fits the viewport; desktop anchors also stay clear of the card. No width-based distortion is applied. Buildings meet the curb exactly; wheel contact is computed from the side-car SVG's actual baseline. The separate reflected image is vertically flipped, faded, and blurred on desktop. Both reflections drop blur on mobile.
+
+Open `/?debug=rects#roomly` or `/?debug=rects#swiftship` to inspect labeled overlay rectangles. Roomly has ten individual pane overlays, the replacement vacancy plate, and a cropped glowing blade sign. SwiftShip has the open-sign glow, status light, interior breathing light, and a six-element ticket pool following a quadratic arc. Mobile animates only three Roomly panes and emits no tickets. Visibility/reduced-motion changes cancel scheduled work. Scene departure clears timers/tweens and removes outgoing scene DOM after the crossfade. Animation only changes transforms and opacity; all shadows, masks, and blur are static.
+
+## Verification
+
+With `npm run dev` running, execute:
+
+```sh
+npm run test:stops
+```
+
+Playwright uses installed Microsoft Edge in headless mode (`channel: 'msedge'` in `playwright.config.ts`). The six tests cover both raster stops at **1440×900** and **390×844**, actual curb/wheel contact, card clearance, no horizontal overflow, image readiness, reflection opacity, zero console/page errors on those views, stop 1 → 2 → 3 → back → 1 cleanup, mode toggling, and reduced-motion startup. Screenshots—including both overlay-debug views and SignalRoute—are saved under `screenshots/`. Failure traces are written to ignored `.qa/playwright/`.
+
 ## Validation and remaining inputs
 
-Each of the nine requested phases has a successful production build and a separate Git commit. Commits are pushed to `origin/main`. Browser QA covered ignition without audio, direct project links, desktop project navigation, narrow mobile overflow, and plain-mode content. The production JS is approximately 109 KB gzipped, excluding local fonts/audio. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. No live audio file is available for playback verification yet.
+The original nine phases and the illustrated-stop feature have successful production builds and incremental Git commits pushed to `origin/main`. All six stop checks passed. The production JS is approximately 112 KB gzipped, excluding local fonts/audio and the separately loaded stop artwork. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. No live audio file is available for playback verification yet.
 
 Supply:
 
