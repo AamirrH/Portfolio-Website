@@ -1,0 +1,66 @@
+{
+  "roomly": {
+    "source": {
+      "width": 2752,
+      "height": 1536
+    },
+    "crop": {
+      "left": 845,
+      "top": 87,
+      "width": 1070,
+      "height": 1355
+    },
+    "output": {
+      "width": 948,
+      "height": 1200,
+      "bytes": 185348,
+      "maskBytes": 2571
+    },
+    "boxesPct": {
+      "alpha": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 100
+      },
+      "ground": {
+        "x": 3.925,
+        "y": 99.926,
+        "width": 83.271,
+        "height": 0.074
+      }
+    }
+  },
+  "swiftship": {
+    "source": {
+      "width": 2752,
+      "height": 1536
+    },
+    "crop": {
+      "left": 425,
+      "top": 157,
+      "width": 1902,
+      "height": 1185
+    },
+    "output": {
+      "width": 1445,
+      "height": 900,
+      "bytes": 65620,
+      "maskBytes": 1741
+    },
+    "boxesPct": {
+      "alpha": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 100
+      },
+      "ground": {
+        "x": 3.523,
+        "y": 99.916,
+        "width": 95.373,
+        "height": 0.084
+      }
+    }
+  }
+}
