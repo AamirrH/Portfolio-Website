@@ -1,2 +1,38 @@
-function Wheel({ x }: { x: number }) { return <g transform={`translate(${x} 160)`}><circle r="35" fill="#0b0d18" stroke="#5d5269" strokeWidth="3"/><circle r="24" fill="#393545" stroke="#c9a2b8" strokeWidth="2"/><g className="wheel-spokes"><path d="M0-23V23M-23 0H23M-16-16L16 16M-16 16L16-16" stroke="#a69aa9" strokeWidth="4"/></g><circle r="7" fill="#d0b9d0"/></g>; }
-export function SideCar() { return <svg viewBox="0 0 660 235"><defs><linearGradient id="side-metal" x2="0" y2="1"><stop stopColor="#d5adbd"/><stop offset=".35" stopColor="#737185"/><stop offset=".4" stopColor="#3e435b"/><stop offset="1" stopColor="#242536"/></linearGradient><linearGradient id="side-glass"><stop stopColor="#151b32"/><stop offset="1" stopColor="#422b49"/></linearGradient></defs><ellipse cx="333" cy="194" rx="283" ry="16" fill="#080a16" opacity=".7"/><path d="M40 154L52 121L199 97L280 49L409 53L488 105L594 118L622 149L615 169H43Z" fill="url(#side-metal)" stroke="#d297ae" strokeWidth="2"/><path d="M214 98L287 58L400 61L462 102Z" fill="url(#side-glass)" stroke="#a68b9e" strokeWidth="2"/><path d="M322 60L317 104M407 63L450 105" stroke="#c3a0b1" strokeWidth="4"/><path d="M211 108L473 112L465 163H200Z" fill="none" stroke="#292b3e" strokeWidth="2"/><path d="M202 115L196 157M48 137L610 143" stroke="#22283d" strokeWidth="3"/><path d="M59 121L197 103M482 111L583 123" stroke="#f4b7c9" strokeWidth="2"/><rect x="351" y="119" width="26" height="4" rx="2" fill="#d1bbc6"/><path d="M44 141H65V155H41Z" fill="#ff2957" className="brake-lights"/><path d="M594 135L615 143V150H591Z" fill="#fff0c7"/><path d="M201 98L214 89L221 101Z" fill="#c69aa9"/><path d="M74 164A46 46 0 0 1 166 164M495 165A46 46 0 0 1 587 165" fill="#0d0f1b"/><Wheel x={120}/><Wheel x={541}/><path d="M178 172H484" stroke="#f05c93" strokeWidth="2"/><path d="M96 187H562" stroke="#ff3277" strokeWidth="2" opacity=".25"/></svg>; }
+import { useId } from 'react';
+
+function Wheel({ x }: { x: number }) {
+  return <g transform={`translate(${x} 166)`}>
+    <circle r="29" fill="#090b13" stroke="#292b38" strokeWidth="3"/>
+    <circle r="20" fill="#777b89" stroke="#c2bdc7" strokeWidth="1.5"/>
+    <circle r="16" fill="#222633"/>
+    <g className="wheel-spokes">{Array.from({ length: 12 }, (_, i) => <path key={i} d="M-2-7L-3-18H3L2-7Z" transform={`rotate(${i * 30})`} fill="#a0a2ad"/>)}</g>
+    <circle r="6" fill="#5b5f6c" stroke="#c5bcc8"/>
+  </g>;
+}
+
+export function SideCar() {
+  const id = useId().replace(/:/g, '');
+  return <svg viewBox="0 0 660 235" aria-hidden="true">
+    <defs>
+      <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="0" y2="1"><stop stopColor="#b9adb9"/><stop offset=".32" stopColor="#7d7e8d"/><stop offset=".36" stopColor="#4d5364"/><stop offset=".8" stopColor="#303646"/><stop offset="1" stopColor="#171c2a"/></linearGradient>
+      <linearGradient id={`${id}-glass`} x2=".3" y2="1"><stop stopColor="#413449"/><stop offset="1" stopColor="#101724"/></linearGradient>
+    </defs>
+    <ellipse cx="333" cy="195" rx="273" ry="7" fill="#080a12" opacity=".6"/>
+    {/* Low roof, long bonnet and straight beltline of an eighties wedge coupe. */}
+    <path d="M45 132L67 115L184 108L263 71L384 71L453 112L583 124L616 143L612 174H579A39 39 0 0 0 501 174H164A39 39 0 0 0 86 174H46Z" fill={`url(#${id}-metal)`} stroke="#8f8598" strokeWidth="1.5"/>
+    <path d="M201 108L268 78H378L427 110Z" fill={`url(#${id}-glass)`} stroke="#c3abbc" strokeWidth="1.4"/>
+    <path d="M278 79L266 110M379 79L409 110" stroke="#8b8598" strokeWidth="3"/>
+    <path d="M265 113L436 115L425 164H249Z" fill="none" stroke="#1b2232" strokeWidth="1.5"/>
+    <path d="M50 139L603 145" stroke="#151b29" strokeWidth="6"/>
+    <path d="M65 117L183 112M452 115L580 127M175 165H490" stroke="#d8adc1" strokeWidth="1"/>
+    <path d="M61 121H179M73 125H166M85 129H152" stroke="#292c3b" strokeWidth="2"/>
+    <path d="M45 139H63V150H43Z" fill="#ff315f" className="brake-lights"/>
+    <path d="M592 139L610 145V150H592Z" fill="#ffe7b2"/>
+    <path d="M48 164H80M587 163H614" stroke="#101725" strokeWidth="8"/>
+    <rect x="288" y="120" width="22" height="3" rx="1" fill="#c5b5c3"/>
+    <path d="M416 110L429 103L443 108V115H428Z" fill="#6c667c" stroke="#b797ae"/>
+    <Wheel x={125}/><Wheel x={540}/>
+    <path d="M171 176H492" stroke="#0f1422" strokeWidth="7"/>
+    <path d="M177 172H486" stroke="#bf658c" strokeWidth="1"/>
+  </svg>;
+}
