@@ -31,3 +31,9 @@ No implementation prerequisites remain for the illustrated stops. External input
 - Replaced floating project windows with green framed directory boards whose posts align with the curb. Mobile keeps a readable, independently scrolling panel with persistent project navigation.
 - Three concise features per project; detailed implementation and test results expand under Technical notes (always visible in plain mode).
 - Project facts and SignalRoute repository link were extracted from the supplied résumé. The original résumé and personal contact information were not added to the public assets.
+
+## SignalRoute raster stop — 2026-11-03
+- Supplied depot and six-icon sheet copied to canonical assets-src names; shared chroma-key/despill pipeline produces raster art, mask, and six connected-component PNG/WebP sprites.
+- Replaced procedural stop via config; added three-state lenses, road spill, bounded message flow, chute pulses, LEDs, fascia glow, and rooftop waves.
+- Baked barrier uses the explicitly permitted red-flash fallback. Mobile caps pool at four and disables arcs/waves. Reduced motion is static green with no pool; navigation/visibility cancels animation frames.
+- Build passes; desktop/mobile flow, alignment, reduced-motion, and cleanup verified. JS ~114 KB gzip; all runtime stop WebPs and masks total 350,613 bytes.

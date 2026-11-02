@@ -79,7 +79,7 @@ The original images are preserved as `assets-src/roomly-raw.png` and `assets-src
 npm run assets:key
 ```
 
-`scripts/key-assets.mjs` uses Sharp to key green with the requested 40–110 greenness ramp, despill translucent/two-pixel edge neighborhoods, erase the sparkle, identify the building footprint 24 pixels above the alpha bottom, remove the protruding ground line, and trim. The raw canvas contains green padding below the ground line, so the script measures the alpha bottom rather than the canvas bottom. It writes quality-90 WebP files and white alpha silhouettes to `public/assets/stops/`. Height-based downsampling enforces a combined 400,000-byte limit without reducing quality. Current art plus masks totals **255,280 bytes**. `asset-report.json` records source/crop/output dimensions and percentage ground-contact bounds.
+`scripts/key-assets.mjs` uses Sharp to key green with the requested 40–110 greenness ramp, despill translucent/two-pixel edge neighborhoods, erase the sparkle, identify the building footprint 24 pixels above the alpha bottom, remove the protruding ground line, and trim. The raw canvas contains green padding below the ground line, so the script measures the alpha bottom rather than the canvas bottom. It writes quality-90 WebP files and white alpha silhouettes to `public/assets/stops/`. Height-based downsampling enforces a combined 400,000-byte limit without reducing quality. The original two stops total **255,280 bytes**; all three stops, six WebP sprites, and silhouettes total **350,613 bytes**. `asset-report.json` records source/crop/output dimensions and percentage ground-contact bounds.
 
 Tune the building height, anchor, and percentage overlay rectangles in `src/data/stops.ts`. Desktop heights are 62vh/44vh for Roomly/SwiftShip, mobile 38vh/30vh. An aspect-preserving height cap ensures the wide store fits the viewport; desktop anchors also stay clear of the card. No width-based distortion is applied. Buildings meet the curb exactly; wheel contact is computed from the side-car SVG's actual baseline. The separate reflected image is vertically flipped, faded, and blurred on desktop. Both reflections drop blur on mobile.
 
@@ -93,11 +93,11 @@ With `npm run dev` running, execute:
 npm run test:stops
 ```
 
-Playwright uses installed Microsoft Edge in headless mode (`channel: 'msedge'` in `playwright.config.ts`). The six tests cover both raster stops at **1440×900** and **390×844**, actual curb/wheel contact, card clearance, no horizontal overflow, image readiness, reflection opacity, zero console/page errors on those views, stop 1 → 2 → 3 → back → 1 cleanup, mode toggling, and reduced-motion startup. Screenshots—including both overlay-debug views and SignalRoute—are saved under `screenshots/`. Failure traces are written to ignored `.qa/playwright/`.
+Playwright uses installed Microsoft Edge in headless mode (`channel: 'msedge'` in `playwright.config.ts`). The stop and SignalRoute tests cover all three raster stops at **1440×900** and **390×844**, actual curb/wheel contact, card clearance, no horizontal overflow, image readiness, reflection opacity, zero console/page errors on those views, stop 1 → 2 → 3 → back → 1 cleanup, mode toggling, and reduced-motion startup. Screenshots—including both overlay-debug views and SignalRoute—are saved under `screenshots/`. Failure traces are written to ignored `.qa/playwright/`.
 
 ## Validation and remaining inputs
 
-The original nine phases and the illustrated-stop feature have successful production builds and incremental Git commits pushed to `origin/main`. All six stop checks passed. The production JS is approximately 112 KB gzipped, excluding local fonts/audio and the separately loaded stop artwork. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. The supplied audio now passes the browser playback and mute-persistence check.
+The original nine phases and the illustrated-stop feature have successful production builds and incremental Git commits pushed to `origin/main`. The original stop checks and added SignalRoute checks pass. The production JS is approximately 114 KB gzipped, excluding local fonts/audio and the separately loaded stop artwork. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. The supplied audio now passes the browser playback and mute-persistence check.
 
 Supply:
 
@@ -105,3 +105,14 @@ Supply:
 - Final 1200×630 OG PNG/JPEG and deployment URL.
 - SignalRoute AI repository URL in `content.ts`.
 - Contact email, graduation year, and résumé URL/file if desired; the corresponding TODOs are explicit.
+
+
+### SignalRoute raster stop
+
+`assets-src/signalroute-raw.png` and `assets-src/messages-raw.png` preserve the supplied originals. `npm run assets:key` also runs `scripts/key-signalroute.mjs`, sharing `chroma-key.mjs` with the other stops. It removes the baseline and watermark, trims the depot, produces its sunset silhouette, and selects the six largest connected alpha components in reading order from the sprite sheet. Each icon is exported as transparent PNG and quality-90 WebP; the scene loads WebP only. `signalroute-report.json` records dimensions and component boxes.
+
+`stops.ts` defines the lens, chute, barrier, LED, fascia, and dish rectangles. Inspect `/?debug=rects#signalroute`. The depot, pole, and gate share one trimmed baseline aligned to the curb. The baked barrier uses the requested red-flash fallback; it does not rotate or obscure the underlying artwork.
+
+`SignalFlow.tsx` owns one cancellable animation frame and a fixed pool of eight sprites (four on mobile). Signal timing is green 2.4 s, amber 1.0 s, red 2.8 s. Packets spawn at least 700 ms apart, with a 20% flagged probability. Green routes to NOTIFY; amber queues near DIGEST for 600 ms; red stops before the gate. Flagged messages dissolve before the depot with a cross burst. Chute flashes last 200 ms. Server LEDs change at 0.4–1.6 s intervals. Mobile uses straight intake paths and hides rooftop waves; reduced motion has a static green signal and no packet pool. Scene changes, hidden tabs, and preference changes cancel the frame and clear active packets.
+
+`npx playwright test tests/signalroute.spec.ts tests/stops.spec.ts` checks all raster stops, signal cycling, message movement, card clearance, pool bounds, reduced motion, and 1→2→3→1 cleanup. SignalRoute screenshots and debug overlays at 1440×900 and 390×844 are in `screenshots/`.
