@@ -1,0 +1,57 @@
+{
+  "building": {
+    "width": 1439,
+    "height": 720,
+    "bytes": 69624
+  },
+  "sprites": [
+    {
+      "name": "text-cyan",
+      "left": 399,
+      "top": 282,
+      "width": 483,
+      "height": 364,
+      "area": 141315
+    },
+    {
+      "name": "text-pink",
+      "left": 1144,
+      "top": 282,
+      "width": 484,
+      "height": 364,
+      "area": 141344
+    },
+    {
+      "name": "image",
+      "left": 1878,
+      "top": 282,
+      "width": 483,
+      "height": 363,
+      "area": 141294
+    },
+    {
+      "name": "voice",
+      "left": 399,
+      "top": 910,
+      "width": 483,
+      "height": 363,
+      "area": 140818
+    },
+    {
+      "name": "flagged",
+      "left": 1136,
+      "top": 848,
+      "width": 537,
+      "height": 425,
+      "area": 72323
+    },
+    {
+      "name": "envelope",
+      "left": 1905,
+      "top": 942,
+      "width": 440,
+      "height": 282,
+      "area": 123414
+    }
+  ]
+}
