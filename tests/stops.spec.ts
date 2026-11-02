@@ -31,6 +31,21 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       if (viewport.width >= 768) expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
       else { expect(layout.building.bottom).toBeLessThan(layout.card.top); expect(layout.car.top + layout.car.height * 195 / 235).toBeLessThan(layout.card.top); }
       await expect(page.locator('.scene-frame[data-active="true"] .building-reflection')).toHaveCSS('opacity', '0.22');
+      const door = page.getByRole('link', {name: `Open live project: ${id === 'roomly' ? 'Roomly' : 'SwiftShip'}`});
+      const live = id === 'roomly' ? 'https://roomly-xi.vercel.app' : 'https://swift-ship-nu.vercel.app';
+      await expect(door).toHaveAttribute('href', live);
+      await door.focus();
+      await expect(door).toBeFocused();
+      await page.context().route(`${live}/**`, route => route.fulfill({body: 'Live project destination'}));
+      const popupPromise = page.waitForEvent('popup');
+      await door.click();
+      const popup = await popupPromise;
+      await popup.waitForLoadState();
+      expect(popup.url()).toBe(`${live}/`);
+      await popup.close();
+      await door.blur();
+      await page.mouse.move(0, 0);
+      await expect(page.locator('.project-metrics')).toHaveCount(0);
       await mkdir('screenshots', {recursive:true});
       await page.screenshot({path:`screenshots/${id}-${viewport.width}x${viewport.height}.png`});
       expect(errors).toEqual([]);

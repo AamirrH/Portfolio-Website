@@ -3,11 +3,12 @@ export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' 
 export interface StopConfig {
   id: ProjectId;
   building: { src?: string; silhouette?: string; heightVh: number; mobileHeightVh: number; anchorXPct: number; alignBottomToCurb: true; aspect: number };
+  door?: { x: number; y: number; width: number; height: number };
   overlays: OverlayRect[];
 }
 export const stops: Record<ProjectId, StopConfig> = {
   roomly: {
-    id: 'roomly', building: { src: '/assets/stops/roomly.webp', silhouette: '/assets/stops/roomly-silhouette.png', heightVh: 62, mobileHeightVh: 38, anchorXPct: 46, alignBottomToCurb: true, aspect: 948 / 1200 },
+    id: 'roomly', door: { x: 41, y: 85, width: 17, height: 15 }, building: { src: '/assets/stops/roomly.webp', silhouette: '/assets/stops/roomly-silhouette.png', heightVh: 62, mobileHeightVh: 38, anchorXPct: 46, alignBottomToCurb: true, aspect: 948 / 1200 },
     overlays: [
       { id: 'vacancy', kind: 'vacancy', x: 89.7, y: 60.15, width: 9.9, height: 3.1 },
       { id: 'roomly-blade', kind: 'blade', x: 89.5, y: 32.35, width: 10.1, height: 26.8 },
@@ -24,7 +25,7 @@ export const stops: Record<ProjectId, StopConfig> = {
     ]
   },
   swiftship: {
-    id: 'swiftship', building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
+    id: 'swiftship', door: { x: 63, y: 55, width: 14, height: 45 }, building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
     overlays: [
       { id: 'open-neon', kind: 'neon', x: 46.6, y: 50.1, width: 12.4, height: 14.2 },
       { id: 'door-status', kind: 'status', x: 76.15, y: 72.3, width: .9, height: 2.5 },

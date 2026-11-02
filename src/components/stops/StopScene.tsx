@@ -1,5 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { type StopConfig, stops, stopArtOrder } from '../../data/stops';
+import { content, projects } from '../../data/content';
+import { useSceneStore } from '../../state/useSceneStore';
 import { SceneSky } from '../scene/TravelScenes';
 import { SideCar } from '../scene/SideCar';
 import { SignalBuilding } from './SignalBuilding';
@@ -12,7 +14,9 @@ export function StopScene({ stop }: { stop: StopConfig }) {
   useStopAnimations(ref, stop);
   const debug = new URLSearchParams(location.search).get('debug') === 'rects';
   const tickets = stop.overlays.find(rect => rect.kind === 'tickets');
-  const { building } = stop;
+  const { building, door } = stop;
+  const project = projects.find(item => item.id === stop.id);
+  const active = useSceneStore(state => state.section === stop.id);
   useEffect(() => {
     const nextId = stopArtOrder[(stopArtOrder.indexOf(stop.id)+1)%stopArtOrder.length];
     const src = stops[nextId].building.src;
@@ -28,6 +32,7 @@ export function StopScene({ stop }: { stop: StopConfig }) {
     <div className="building-anchor"><div className="building-contact-shadow"/><div className="building-arrival">
       {art}{building.silhouette && <><div className="building-tint"/><div className="building-rim"/></>}
       <StopOverlays stop={stop} debug={debug}/>
+      {active && door && project?.live && <a className="building-door" href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${content.projects.door}: ${project.title}`} style={{ left: `${door.x}%`, top: `${door.y}%`, width: `${door.width}%`, height: `${door.height}%` }}><span>{content.projects.door} ↗</span></a>}
     </div></div>
     <div className="stop-asphalt"/><div className="stop-sidewalk"/><div className="stop-curb"/>
     <div className="building-reflection">{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div>

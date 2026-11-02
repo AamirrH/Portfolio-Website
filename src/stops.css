@@ -86,8 +86,14 @@
 .stop-project-panel .project-links { margin:20px 0 24px; }
 .stop-project-panel .text-link { font-size:13px; }
 @media (max-width:767px) {
-  .stop-scene { --curb-y:41vh; --lane-y:44vh; --mobile-height-vh:29; }
+  .stop-scene { --curb-y:41vh; --lane-y:44vh; --building-height:min(29vh,calc((100vw - 32px) / var(--building-aspect))); }
   .stop-project-panel { top:45vh; padding:25px 24px; max-height:none; }
   .stop-project-panel .project-pitch { font-size:14px; }
   .stop-project-panel .highlights li { font-size:13px; }
 }
+
+.building-door { position:absolute; z-index:12; pointer-events:auto; border:1px solid transparent; border-radius:3px; cursor:pointer; }
+.building-door:hover,.building-door:focus-visible { border-color:#ffd66b; background:#ffd66b18; outline:2px solid #ffd66b; outline-offset:3px; }
+.building-door>span { position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%); padding:8px 12px; border:1px solid #ffd66b80; border-radius:4px; background:#151320; color:#fff4d6; font:12px 'Inter',sans-serif; white-space:nowrap; opacity:0; pointer-events:none; }
+.building-door:hover>span,.building-door:focus-visible>span { opacity:1; }
+@media (hover:none) { .building-door { border-color:#ffd66b80; }.building-door>span { opacity:1; font-size:10px; padding:5px 8px; } }

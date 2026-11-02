@@ -37,5 +37,5 @@ export function CameraRig() {
     visibility(); document.addEventListener('visibilitychange', visibility);
     return () => { document.removeEventListener('visibilitychange', visibility); gsap.globalTimeline.resume(); };
   }, []);
-  return <div className="scene camera-rig" aria-hidden="true">{mounted.map(id => <SceneFrame key={id} id={id} active={id === target} remove={remove}/>)}<div className="speed-streaks"/><SceneLayer name="overlay"><Overlay/></SceneLayer></div>;
+  return <div className="scene camera-rig">{mounted.map(id => <SceneFrame key={id} id={id} active={id === target} remove={remove}/>)}<div className="speed-streaks"/><SceneLayer name="overlay"><Overlay/></SceneLayer></div>;
 }
