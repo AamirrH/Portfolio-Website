@@ -1,5 +1,5 @@
 import type { ProjectId } from './content';
-export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets'; x: number; y: number; width: number; height: number; }
+export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets' | 'signal' | 'chute' | 'led' | 'fascia' | 'dish' | 'barrier'; x: number; y: number; width: number; height: number; }
 export interface StopConfig {
   id: ProjectId;
   building: { src?: string; silhouette?: string; heightVh: number; mobileHeightVh: number; anchorXPct: number; alignBottomToCurb: true; aspect: number };
@@ -34,8 +34,21 @@ export const stops: Record<ProjectId, StopConfig> = {
     ]
   },
   signalroute: {
-    id: 'signalroute', building: { heightVh: 48, mobileHeightVh: 32, anchorXPct: 43, alignBottomToCurb: true, aspect: 1.15 }, overlays: []
+    id: 'signalroute', building: { src: '/assets/stops/signalroute.webp', silhouette: '/assets/stops/signalroute-silhouette.png', heightVh: 43, mobileHeightVh: 29, anchorXPct: 42, alignBottomToCurb: true, aspect: 1439 / 720 }, overlays: [
+      { id: 'red', kind: 'signal', x: 3.5, y: 37.4, width: 3.2, height: 6.2 },
+      { id: 'amber', kind: 'signal', x: 3.5, y: 46.0, width: 3.2, height: 6.2 },
+      { id: 'green', kind: 'signal', x: 3.5, y: 54.6, width: 3.2, height: 6.2 },
+      { id: 'notify', kind: 'chute', x: 27.0, y: 69.7, width: 1.1, height: 2.2 },
+      { id: 'digest', kind: 'chute', x: 49.0, y: 69.7, width: 1.1, height: 2.2 },
+      { id: 'mute', kind: 'chute', x: 71.0, y: 69.7, width: 1.1, height: 2.2 },
+      { id: 'gate', kind: 'barrier', x: 83.0, y: 89.3, width: 16.8, height: 2.3 },
+      { id: 'sign', kind: 'fascia', x: 26.5, y: 24.5, width: 48, height: 13 },
+      { id: 'dish', kind: 'dish', x: 63.5, y: 3.5, width: 4, height: 6 },
+      ...Array.from({ length: 12 }, (_, i): OverlayRect => ({ id: `rack-${i}`, kind: 'led', x: [25.2,32.1,42.6,47.6,57.6,68.1][i % 6], y: i < 6 ? 50.3 : 54.7, width: .5, height: .4 }))
+    ]
   }
 };
 export const stopArtOrder: ProjectId[] = ['roomly', 'swiftship', 'signalroute'];
 export const stopLabels = { vacancy: 'VACANCY', full: 'NO VACANCY', signal: 'SIGNALROUTE AI', dataCentre: 'DETERMINISTIC ROUTING', safety: 'SAFETY GATE', signalStates: ['green', 'amber', 'red'] as const };
+
+export const messageSprites = ['text-cyan', 'text-pink', 'image', 'voice', 'envelope'] as const;

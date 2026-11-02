@@ -4,6 +4,7 @@ import { content, projects } from '../../data/content';
 import { useSceneStore } from '../../state/useSceneStore';
 import { SceneSky } from '../scene/TravelScenes';
 import { SideCar } from '../scene/SideCar';
+import { SignalFlow } from './SignalFlow';
 import { SignalBuilding } from './SignalBuilding';
 import { StopOverlays, OrderTickets } from './StopOverlays';
 import { useStopAnimations } from '../../hooks/useStopAnimations';
@@ -38,6 +39,7 @@ export function StopScene({ stop }: { stop: StopConfig }) {
     <div className="building-reflection">{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div>
     <div className="stop-near-lane"/>
     {tickets && <OrderTickets rect={tickets}/>}
+    {stop.id === 'signalroute' && <SignalFlow root={ref} stop={stop}/>}
     <div className="car-anchor"><div className="car-contact-shadow"/><div className="parked-car"><SideCar/></div><div className="car-reflection"><SideCar/></div></div>
   </div>;
 }

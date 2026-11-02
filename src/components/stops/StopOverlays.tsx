@@ -12,6 +12,12 @@ export function StopOverlays({ stop, debug }: { stop: StopConfig; debug: boolean
       {rect.kind === 'neon' && <span className="neon-glow"/>}
       {rect.kind === 'status' && <span className="door-status"/>}
       {rect.kind === 'interior' && <span className="interior-glow"/>}
+      {rect.kind === 'signal' && <><span className="signal-dark"/><span className={`signal-glow signal-${rect.id}`}/></>}
+      {rect.kind === 'chute' && <span className={`chute-glow chute-${rect.id}`}/>}
+      {rect.kind === 'led' && <span className="rack-led"/>}
+      {rect.kind === 'fascia' && <span className="fascia-glow"/>}
+      {rect.kind === 'barrier' && <span className="barrier-glow"/>}
+      {rect.kind === 'dish' && <svg className="dish-waves" viewBox="0 0 80 80"><path d="M10 70 A60 60 0 0 1 70 10"/><path d="M10 70 A60 60 0 0 1 70 10"/></svg>}
       {debug && <span className="overlay-debug-label">{rect.id}</span>}
     </div>)}
   </div>;

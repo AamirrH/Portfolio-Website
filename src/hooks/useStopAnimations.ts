@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { type StopConfig } from '../data/stops';
 import { useSceneStore } from '../state/useSceneStore';
 
-function useStopPreferences() {
+export function useStopPreferences() {
   const read = () => ({ reduced: matchMedia('(prefers-reduced-motion: reduce)').matches, mobile: matchMedia('(max-width: 767px)').matches, hidden: document.hidden });
   const [preferences, setPreferences] = useState(read);
   useEffect(() => {
