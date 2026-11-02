@@ -16,3 +16,9 @@ Preview: npm run dev on http://127.0.0.1:5173/. Run it before npm run test:stops
 Known limits: no supplied music, final OG image, email, graduation year, résumé, or SignalRoute repository. No measured Lighthouse score or actual Vercel deployment yet. Do not claim either.
 
 No implementation prerequisites remain for the illustrated stops. External inputs listed above are still optional follow-ups. Preserve the user's context/ and assests-src/ folders. Follow AGENTS.md: frequent micro-commits and a push after each commit. See README.md for art regeneration, debug URLs, test commands, and deployment instructions.
+
+## Project presentation update — 2026-11-03
+- Simplified project cards to descriptions, live/source links, features and tech stacks; removed dashboard gauges and exit badges from the shared project body.
+- Enlarged desktop cards and mobile reading area. Redrew the side coupe with a lower roof and turbine wheels.
+- Roomly and SwiftShip doors open their live projects in a new tab; percentage hit areas are configured in `src/data/stops.ts`, with keyboard focus and touch cues.
+- Verified production build and all six Playwright checks, including actual door click destinations on desktop/mobile. Refreshed screenshots.
