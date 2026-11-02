@@ -22,3 +22,7 @@ No implementation prerequisites remain for the illustrated stops. External input
 - Enlarged desktop cards and mobile reading area. Redrew the side coupe with a lower roof and turbine wheels.
 - Roomly and SwiftShip doors open their live projects in a new tab; percentage hit areas are configured in `src/data/stops.ts`, with keyboard focus and touch cues.
 - Verified production build and all six Playwright checks, including actual door click destinations on desktop/mobile. Refreshed screenshots.
+
+## Supplied audio integration — 2026-11-03
+- Added the user-supplied Resonance.mp3 unchanged to public/assets/audio/resonance.mp3 and connected AudioProvider.
+- Production build passes. Browser test verifies decoding, ignition playback, 0.35 volume, loop, analyser response, mute, persisted mute on reload, and unmute playback; no page errors.

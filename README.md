@@ -51,9 +51,9 @@ The `context/` folder is reference material, not a runtime asset source. Updated
 
 ### Audio
 
-Supply `public/audio/resonance.mp3`, then restart/rebuild. The audio is intentionally absent from this repository. Nothing downloads or bundles a third-party track automatically.
+The supplied Resonance track is included at `public/assets/audio/resonance.mp3`. Replace that file and rebuild to change the music. It is served as a separate static asset, outside the JavaScript bundle.
 
-The ignition click unlocks AudioContext, optionally synthesizes a short engine start, and plays the local audio at volume 0.35. AnalyserNode reads low-frequency energy to drive sun scale/glow, taillight opacity, and sign illumination. Mute preference persists in localStorage. Audio and animation pause when the tab is hidden. A missing/failed track is silent and shows sound off. The fallback pulse uses `BPM` from `src/config.ts` (92 by default). Actual music playback and beat response still need a check after the supplied file is added.
+The ignition click unlocks AudioContext, optionally synthesizes a short engine start, and plays the local audio at volume 0.35. AnalyserNode reads low-frequency energy to drive sun scale/glow, taillight opacity, and sign illumination. Mute preference persists in localStorage. Audio and animation pause when the tab is hidden. A missing/failed track is silent and shows sound off. The fallback pulse uses `BPM` from `src/config.ts` (92 by default). The browser audio check verifies MP3 decoding, ignition playback, analyser response, looping configuration, volume, and mute persistence: `npx playwright test tests/audio.spec.ts`.
 
 ## Accessibility and mobile
 
@@ -97,11 +97,10 @@ Playwright uses installed Microsoft Edge in headless mode (`channel: 'msedge'` i
 
 ## Validation and remaining inputs
 
-The original nine phases and the illustrated-stop feature have successful production builds and incremental Git commits pushed to `origin/main`. All six stop checks passed. The production JS is approximately 112 KB gzipped, excluding local fonts/audio and the separately loaded stop artwork. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. No live audio file is available for playback verification yet.
+The original nine phases and the illustrated-stop feature have successful production builds and incremental Git commits pushed to `origin/main`. All six stop checks passed. The production JS is approximately 112 KB gzipped, excluding local fonts/audio and the separately loaded stop artwork. Lighthouse 85+ is a target, not a measured score: run a desktop Lighthouse audit against the deployed production build before claiming it. The supplied audio now passes the browser playback and mute-persistence check.
 
 Supply:
 
-- `public/audio/resonance.mp3` (with appropriate rights).
 - Optional replacement layer art as above.
 - Final 1200×630 OG PNG/JPEG and deployment URL.
 - SignalRoute AI repository URL in `content.ts`.

@@ -1,0 +1,30 @@
+import { test, expect } from '@playwright/test';
+
+test('supplied music decodes, starts on ignition, reacts, and respects persisted mute', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/#roomly');
+  await expect(page.getByRole('button', {name: 'PRESS TO IGNITE'})).toBeVisible();
+  expect(await page.locator('audio').evaluate((audio: HTMLAudioElement) => audio.paused)).toBe(true);
+  await page.getByRole('button', {name: 'PRESS TO IGNITE'}).click();
+  const audio = page.locator('audio');
+  await expect.poll(() => audio.evaluate((element: HTMLAudioElement) => element.currentTime), {timeout: 15000}).toBeGreaterThan(0.5);
+  const state = await audio.evaluate((element: HTMLAudioElement) => ({volume: element.volume, loop: element.loop, duration: element.duration, error: element.error, src: element.currentSrc}));
+  expect(state.volume).toBe(0.35);
+  expect(state.loop).toBe(true);
+  expect(state.duration).toBeGreaterThan(60);
+  expect(state.error).toBeNull();
+  expect(state.src).toContain('/assets/audio/resonance.mp3');
+  await expect(page.locator('html')).toHaveAttribute('data-audio', 'reactive');
+  await expect.poll(() => page.locator('html').evaluate(element => Number((element as HTMLElement).style.getPropertyValue('--audio-scale')))).toBeGreaterThan(1);
+  await page.getByRole('button', {name: 'Mute audio', exact: true}).click();
+  expect(await audio.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
+  await expect(page.locator('html')).toHaveAttribute('data-audio', 'fallback');
+  await page.reload();
+  await page.getByRole('button', {name: 'PRESS TO IGNITE'}).click();
+  await expect(page.getByRole('button', {name: 'Unmute audio', exact: true})).toBeVisible();
+  expect(await audio.evaluate((element: HTMLAudioElement) => element.paused)).toBe(true);
+  await page.getByRole('button', {name: 'Unmute audio', exact: true}).click();
+  await expect.poll(() => audio.evaluate((element: HTMLAudioElement) => element.currentTime)).toBeGreaterThan(0.5);
+  expect(errors).toEqual([]);
+});
