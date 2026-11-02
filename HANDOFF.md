@@ -26,3 +26,8 @@ No implementation prerequisites remain for the illustrated stops. External input
 ## Supplied audio integration — 2026-11-03
 - Added the user-supplied Resonance.mp3 unchanged to public/assets/audio/resonance.mp3 and connected AudioProvider.
 - Production build passes. Browser test verifies decoding, ignition playback, 0.35 volume, loop, analyser response, mute, persisted mute on reload, and unmute playback; no page errors.
+
+## Roadside project directories — 2026-11-03
+- Replaced floating project windows with green framed directory boards whose posts align with the curb. Mobile keeps a readable, independently scrolling panel with persistent project navigation.
+- Three concise features per project; detailed implementation and test results expand under Technical notes (always visible in plain mode).
+- Project facts and SignalRoute repository link were extracted from the supplied résumé. The original résumé and personal contact information were not added to the public assets.
