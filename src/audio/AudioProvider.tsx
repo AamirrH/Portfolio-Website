@@ -4,7 +4,7 @@ import { readPreference, savePreference } from '../lib/preferences';
 import { useSceneStore } from '../state/useSceneStore';
 interface AudioControls { muted: boolean; unavailable: boolean; unlock: () => void; toggle: () => void; }
 const AudioControlContext = createContext<AudioControls | null>(null);
-const hasTrack = Object.keys(import.meta.glob('/public/audio/resonance.mp3', { query: '?url', import: 'default', eager: true })).length > 0;
+const hasTrack = Object.keys(import.meta.glob('/public/assets/audio/resonance.mp3', { query: '?url', import: 'default', eager: true })).length > 0;
 export function AudioProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
   const context = useRef<AudioContext | null>(null);
@@ -74,6 +74,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   }, [playing, muted, unavailable, plain]);
   useEffect(() => () => { void context.current?.close().catch(() => {}); context.current = null; analyser.current = null; }, []);
   const value = useMemo(() => ({ muted, unavailable, unlock, toggle }), [muted, unavailable, unlock, toggle]);
-  return <AudioControlContext.Provider value={value}><audio ref={audio} src={hasTrack ? '/audio/resonance.mp3' : undefined} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>{children}</AudioControlContext.Provider>;
+  return <AudioControlContext.Provider value={value}><audio ref={audio} src={hasTrack ? '/assets/audio/resonance.mp3' : undefined} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>{children}</AudioControlContext.Provider>;
 }
 export function useAudio() { const controls = useContext(AudioControlContext); if (!controls) throw new Error('AudioProvider is required'); return controls; }
