@@ -51,14 +51,7 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       await expect(page.locator('.project-metrics')).toHaveCount(0);
       await mkdir('screenshots', {recursive:true});
       await page.screenshot({path:`screenshots/${id}-${viewport.width}x${viewport.height}.png`});
-      const notes = page.locator('.project-details');
-      await expect(notes).not.toHaveAttribute('open', '');
-      await notes.locator('summary').focus();
-      await page.keyboard.press('Enter');
-      await expect(notes).toHaveAttribute('open', '');
-      await expect(notes.locator('.technical-notes')).toBeVisible();
-      await page.keyboard.press('Enter');
-      await expect(notes).not.toHaveAttribute('open', '');
+      await expect(page.locator('.project-details')).toHaveCount(0);
       expect(errors).toEqual([]);
     });
   });

@@ -2,7 +2,6 @@ import { content, type Project } from '../../data/content';
 export function ProjectBody({ project, plain = false }: { project: Project; plain?: boolean }) {
   const Heading = plain ? 'h3' : 'h1';
   const Subheading = plain ? 'h4' : 'h2';
-  const notes = <ul className="highlights technical-notes">{project.details.map(detail => <li key={detail}>{detail}</li>)}</ul>;
   return <>
     <Heading>{project.title}</Heading>
     <p className="project-pitch">{project.pitch}</p>
@@ -14,6 +13,5 @@ export function ProjectBody({ project, plain = false }: { project: Project; plai
     <ul className="highlights">{project.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>
     <Subheading className="eyebrow subsection-heading">{content.projects.tech}</Subheading>
     <ul className="tech-chips">{project.stack.map(tech => <li key={tech}>{tech}</li>)}</ul>
-    {plain ? <><Subheading className="eyebrow subsection-heading">{content.projects.notes}</Subheading>{notes}</> : <details className="project-details"><summary>{content.projects.notes}</summary>{notes}</details>}
   </>;
 }
