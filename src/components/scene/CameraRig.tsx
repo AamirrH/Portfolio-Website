@@ -21,7 +21,7 @@ function SceneFrame({ id, active, remove }: { id: SceneId; active: boolean; remo
 }
 export function CameraRig() {
   const section = useSceneStore(state => state.section);
-  const target: SceneId = section === 'home' || section === 'projects' ? 'rear' : section === 'about' ? 'dash' : section === 'contact' ? 'aerial' : section;
+  const target: SceneId = section === 'home' || section === 'projects' ? 'rear' : section === 'about' ? 'dash' : section === 'contact' ? 'rear' : section;
   const [mounted, setMounted] = useState<SceneId[]>([target]);
   const targetRef = useRef(target);
   targetRef.current = target;

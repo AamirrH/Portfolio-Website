@@ -81,7 +81,7 @@
 .stop-project-panel .project-pitch { font-size:16px; line-height:1.65; }
 .stop-project-panel .highlights { gap:10px; }
 .stop-project-panel .highlights li { font-size:14px; line-height:1.65; }
-.stop-project-panel .subsection-heading { font:600 13px 'Inter',sans-serif; letter-spacing:.02em; margin:24px 0 12px; }
+.stop-project-panel .subsection-heading { font:600 13px 'Space Grotesk',sans-serif; letter-spacing:.02em; margin:24px 0 12px; }
 .stop-project-panel .tech-chips li { font-size:11px; padding:7px 9px; }
 .stop-project-panel .project-links { margin:20px 0 24px; }
 .stop-project-panel .text-link { font-size:13px; }
@@ -94,7 +94,7 @@
 
 .building-door { position:absolute; z-index:12; pointer-events:auto; border:1px solid transparent; border-radius:3px; cursor:pointer; }
 .building-door:hover,.building-door:focus-visible { border-color:#ffd66b; background:#ffd66b18; outline:2px solid #ffd66b; outline-offset:3px; }
-.building-door>span { position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%); padding:8px 12px; border:1px solid #ffd66b80; border-radius:4px; background:#151320; color:#fff4d6; font:12px 'Inter',sans-serif; white-space:nowrap; opacity:0; pointer-events:none; }
+.building-door>span { position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%); padding:8px 12px; border:1px solid #ffd66b80; border-radius:4px; background:#151320; color:#fff4d6; font:12px 'Space Grotesk',sans-serif; white-space:nowrap; opacity:0; pointer-events:none; }
 .building-door:hover>span,.building-door:focus-visible>span { opacity:1; }
 @media (hover:none) { .building-door { border-color:#ffd66b80; }.building-door>span { opacity:1; font-size:10px; padding:5px 8px; } }
 
@@ -111,20 +111,20 @@
 }
 .stop-project-panel::before { left:16%; }.stop-project-panel::after { right:16%; }
 .board-frame { display:flex; flex-direction:column; max-height:calc(72vh - 145px); background:linear-gradient(125deg,#183932,#102823 72%); border:1px solid #a9b6a0; border-radius:5px; padding:7px; box-shadow:0 0 0 3px #26332f,0 0 0 4px #60776b,8px 12px 24px #100d1838; }
-.board-header { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-shrink:0; padding:12px 20px; border:1px solid #9bb59f66; border-bottom:0; font:9px 'JetBrains Mono',monospace; letter-spacing:.1em; color:#d7e4d1; }
+.board-header { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-shrink:0; padding:12px 20px; border:1px solid #9bb59f66; border-bottom:0; font:9px 'Space Grotesk',sans-serif; letter-spacing:.1em; color:#d7e4d1; }
 .board-header a { font-size:10px; letter-spacing:0; color:#f5ead5; padding:5px 0; }
 .stop-project-panel .panel-inner { overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#698978 #142d27; padding:14px 22px 20px; border:1px solid #9bb59f66; border-top:0; border-bottom:0; }
-.stop-project-panel h1 { margin:0 0 12px; font:500 clamp(27px,2.6vw,38px) 'Orbitron',sans-serif; letter-spacing:-.04em; color:#fff5db; }
+.stop-project-panel h1 { margin:0 0 12px; font:500 clamp(27px,2.6vw,38px) 'Space Grotesk',sans-serif; letter-spacing:-.04em; color:#fff5db; }
 .stop-project-panel .project-pitch { font-size:14px; line-height:1.65; color:#dbe4db; }
 .stop-project-panel .project-links { margin:17px 0 20px; gap:22px; }
 .stop-project-panel .primary-link { border-color:#c5d2b178; color:#fff2cf; background:#ffffff05; padding:9px 12px; }
 .stop-project-panel .text-link { color:#e1e9dc; font-size:12px; }
-.stop-project-panel .subsection-heading { font:500 10px 'JetBrains Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#aac3b4; margin:19px 0 10px; }
+.stop-project-panel .subsection-heading { font:500 10px 'Space Grotesk',sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#aac3b4; margin:19px 0 10px; }
 .stop-project-panel .highlights { gap:8px; }
 .stop-project-panel .highlights li { font-size:13px; line-height:1.6; color:#edf0e5; }
 .stop-project-panel .highlights li::before { color:#d2ba7d; }
 .stop-project-panel .tech-chips { gap:0; }
-.stop-project-panel .tech-chips li { border:0; background:none; padding:0; color:#cbdad0; font:11px/1.9 'JetBrains Mono',monospace; }
+.stop-project-panel .tech-chips li { border:0; background:none; padding:0; color:#cbdad0; font:11px/1.9 'Space Grotesk',sans-serif; }
 .stop-project-panel .tech-chips li:not(:last-child)::after { content:' / '; color:#729084; white-space:pre; }
 .project-details { margin-top:20px; border-top:1px solid #9bb59f40; padding-top:13px; }
 .project-details summary { cursor:pointer; font-size:12px; color:#f3dfac; padding:3px 0; }
