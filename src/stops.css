@@ -183,3 +183,9 @@
 .stop-asphalt::after { display:none; }
 .stop-scene .sun-position { top:auto; bottom:calc(100% - var(--curb-y) + 9vh); }
 .stop-scene .skyline-svg { height:147.33%; transform:none; }
+/* Supplied raster cars share the existing baseline and reflection geometry. */
+.raster-side-car image,.raster-rear-car image { filter:brightness(.8) saturate(.85); }
+.sprite-wheel { transform-origin:0 0; animation:wheel-spin var(--wheel-duration,.65s) linear infinite; }
+.parked-car .sprite-wheel,.car-reflection .sprite-wheel { animation:none; }
+.stop-scene[data-arrived='false'] .sprite-wheel { animation:wheel-spin .65s linear infinite; }
+@media(prefers-reduced-motion:reduce) { .sprite-wheel { animation:none!important; } }
