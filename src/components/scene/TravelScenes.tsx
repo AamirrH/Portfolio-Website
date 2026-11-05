@@ -3,14 +3,14 @@ import { useSceneMotion } from '../../hooks/useSceneMotion';
 import { SceneLayer as Layer } from './SceneLayer';
 import { Sky } from './Sky';
 import { Sun } from './Sun';
-import { FarSkyline, NearBuildings } from './Skyline';
+import { FarSkyline, MidSkyline, NearBuildings } from './Skyline';
 import { PowerLines } from './PowerLines';
 import { Highway } from './Highway';
 import { Gantry } from './Gantry';
 import { RearCar } from './Car';
 import { Cockpit } from './Cockpit';
 export function SceneSky() {
-  return <><Layer name="sky"><Sky/></Layer><Layer name="sun"><Sun/></Layer><Layer name="far-skyline"><FarSkyline/></Layer></>;
+  return <><Layer name="sky"><Sky/></Layer><Layer name="sun"><Sun/></Layer><Layer name="far-skyline"><FarSkyline/></Layer><Layer name="mid-skyline"><MidSkyline/></Layer></>;
 }
 export function RearScene() {
   const ref = useRef<HTMLDivElement>(null);

@@ -193,3 +193,11 @@ button,a { touch-action:manipulation; }
   100% { transform:translateY(240px); opacity:0; }
 }
 @media(prefers-reduced-motion:reduce) { .wet-road-flow { animation:none; opacity:0; } }
+/* Three procedural city depths; only a small deterministic subset twinkles. */
+.city-window-twinkle { animation:city-twinkle 3s steps(1,end) infinite; }
+.aviation-light { animation:aviation-blink 1.8s steps(1,end) infinite; }
+.city-neon { animation:city-neon-flicker 8s steps(1,end) infinite; }
+@keyframes city-twinkle { 0%,72%,100% { opacity:.5; } 73%,99% { opacity:.08; } }
+@keyframes aviation-blink { 0%,18% { opacity:1; } 19%,100% { opacity:.08; } }
+@keyframes city-neon-flicker { 0%,91%,96%,100% { opacity:.7; } 92%,95% { opacity:.15; } }
+@media(prefers-reduced-motion:reduce) { .city-window-twinkle,.aviation-light,.city-neon { animation:none; } }

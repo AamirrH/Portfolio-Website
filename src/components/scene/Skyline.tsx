@@ -1,7 +1,39 @@
-const buildings = Array.from({ length: 44 }, (_, i) => ({ x: i * 35 - 16, width: 24 + (i * 17 % 26), height: 55 + (i * 47 % 130) }));
-export function FarSkyline() {
-  return <svg className="skyline-svg" viewBox="0 0 1440 800" preserveAspectRatio="none"><defs><pattern id="far-windows" width="11" height="16" patternUnits="userSpaceOnUse"><rect width="3" height="5" fill="#f8bb9b" opacity=".6"/><rect x="6" y="9" width="2" height="3" fill="#f5cce1" opacity=".25"/></pattern><linearGradient id="far-build" x2="0" y2="1"><stop stopColor="#512142"/><stop offset="1" stopColor="#21112f"/></linearGradient></defs>{buildings.map((b,i) => <g key={i}><path d={`M${b.x} 543V${543-b.height}h${b.width*.25}v-9h${b.width*.5}v9h${b.width*.25}V543Z`} fill="url(#far-build)"/><rect className={i%4===0?'window-twinkle':''} x={b.x+3} y={552-b.height} width={b.width-6} height={b.height-12} fill="url(#far-windows)" opacity={.35+i%3*.2}/></g>)}</svg>;
+import { useId } from 'react';
+
+type Depth = 'far' | 'mid' | 'near';
+const sample = (n: number) => { const v = Math.sin(n * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
+function Skyline({ depth }: { depth: Depth }) {
+  const id = useId().replace(/:/g, '');
+  const near = depth === 'near', far = depth === 'far';
+  const base = near ? 570 : 543;
+  const color = far ? '#6b3a7a' : near ? '#1b0f2e' : '#3b1e55';
+  const buildings = Array.from({ length: near ? 8 : 19 }, (_, i) => {
+    const width = near ? 75 + sample(i+12)*55 : 60 + sample(i+22)*100;
+    const x = near ? (i < 4 ? i*100-25 : 1065+(i-4)*100) : i*82-45;
+    const height = near ? 310 - (i < 4 ? i : 7-i)*62 + sample(i)*45 : (far ? 75 : 110) + sample(i+31)*(far ? 110 : 165);
+    return { x, width, height };
+  });
+  return <svg className={`skyline-svg city-${depth}`} viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id={`${id}-haze`} x2="0" y2="1"><stop stopColor="#bd739f" stopOpacity="0"/><stop offset="1" stopColor="#bd739f" stopOpacity={far ? '.5' : '.25'}/></linearGradient></defs>
+    {buildings.map((b,i) => {
+      const top = base-b.height, cols = Math.floor((b.width-14)/13), rows = Math.floor((b.height-20)/15);
+      const outline = `M${b.x} ${base}V${top+12}h${b.width*.18}V${top}h${b.width*.64}v12h${b.width*.18}V${base}Z`;
+      return <g key={i}>
+        <path d={outline} fill={color}/>
+        {Array.from({length:rows*cols},(_,w) => {
+          const row = Math.floor(w/cols), col=w%cols, seed=i*701+w;
+          const darkFloor = sample(i*17+row*31)<.3;
+          const lit = !darkFloor && sample(seed) < (far ? .1 : near ? .22 : .58);
+          if(!lit) return null;
+          return <rect key={w} className={sample(seed+900)<.03 ? 'city-window-twinkle' : undefined} x={b.x+8+col*13} y={top+20+row*15} width={far ? 2 : 4} height={far ? 3 : 6} fill={near ? '#e7b984' : '#f3bdd1'} opacity={far ? .2 : .4+sample(seed+1)*.3} style={{animationDuration:`${2+sample(seed+2)*3}s`,animationDelay:`${-sample(seed+3)*5}s`}}/>;
+        })}
+        {near && <g fill="#20132f" stroke="#473049" strokeWidth="1"><rect x={b.x+20} y={top-10} width="23" height="10"/><path d={`M${b.x+35} ${top-10}v-8h15v8M${b.x+57} ${top+4}v-30`}/>{i%3!==1 && <circle className="aviation-light" cx={b.x+57} cy={top-26} r="2" fill="#ff526c" stroke="none" style={{animationDuration:`${1.2+sample(i+90)*1.3}s`,animationDelay:`${-sample(i)*2}s`}}/>}</g>}
+        {((!near&&!far&&(i===3||i===14))||(near&&(i===1||i===6))) && <g className="city-neon" style={{animationDelay:`${-i*.7}s`}} fill={i%2 ? '#25f4ee' : '#ff4b9b'}><rect x={b.x+b.width-7} y={top+36} width="9" height="47" opacity=".18"/>{[0,1,2,3].map(j=><path key={j} d={`M${b.x+b.width-5} ${top+40+j*10}h5v3h-3v3h-2Z`}/>)}</g>}
+        <path d={outline} fill={`url(#${id}-haze)`}/>
+      </g>;
+    })}
+  </svg>;
 }
-export function NearBuildings() {
-  return <svg className="near-svg" viewBox="0 0 1440 800" preserveAspectRatio="none"><defs><pattern id="near-windows" width="22" height="26" patternUnits="userSpaceOnUse"><rect x="5" y="6" width="7" height="10" fill="#e4c89a" opacity=".8"/><rect x="17" y="6" width="3" height="10" fill="#b4a6dd" opacity=".25"/></pattern><pattern id="strip-windows" width="46" height="25" patternUnits="userSpaceOnUse"><rect x="3" y="6" width="32" height="7" fill="#e8ccad" opacity=".75"/><path d="M15 6v7M27 6v7" stroke="#231c31" strokeWidth="2"/></pattern><linearGradient id="near-wall" x2="1" y2=".4"><stop stopColor="#141325"/><stop offset="1" stopColor="#35243c"/></linearGradient></defs><g fill="url(#near-wall)" stroke="#73435e" strokeWidth="1"><path d="M-20 570V232L68 218L142 258V570Z"/><path d="M109 568V338L203 314L250 344V568Z"/><path d="M220 567V411L282 390L319 411V567Z"/><path d="M300 567V454L353 441L379 456V567Z"/><path d="M1438 570V173L1346 196L1296 234V570Z"/><path d="M1310 570V295L1207 274L1158 312V570Z"/><path d="M1170 569V389L1112 369L1072 403V569Z"/><path d="M1085 569V443L1034 425L1001 451V569Z"/></g><g fill="url(#near-windows)"><path d="M-15 246L61 233V556H-15Z"/><path d="M116 351L198 328V558H116Z"/><path d="M225 420L278 404V557H225Z"/><path d="M305 465L349 453V558H305Z"/><path d="M1440 188L1353 208V560H1440Z"/><path d="M1165 404L1115 384V560H1165Z"/><path d="M1080 453L1037 437V559H1080Z"/></g><path d="M1300 310L1213 290V558H1300Z" fill="url(#strip-windows)"/><g stroke="#ba476c" opacity=".35"><path d="M67 219V563M203 316V567M1346 196V568M1207 275V568"/><path d="M-20 296L67 285L141 314M-20 364L67 353L141 382M-20 432L67 421L141 450M-20 500L67 489L141 518"/></g><g fill="#f5cda5"><rect x="76" y="281" width="3" height="7"/><rect x="97" y="346" width="4" height="8"/><rect x="1266" y="328" width="9" height="4"/></g><g stroke="#271a30" strokeWidth="3"><path d="M42 220V182m-13 15h30M1374 194V152m-17 17h34"/></g></svg>;
-}
+export function FarSkyline() { return <Skyline depth="far"/>; }
+export function MidSkyline() { return <Skyline depth="mid"/>; }
+export function NearBuildings() { return <Skyline depth="near"/>; }
