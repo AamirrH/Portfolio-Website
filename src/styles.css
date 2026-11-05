@@ -183,8 +183,13 @@ button,a { touch-action:manipulation; }
 @keyframes chase-follow { 0%,100% { transform:translateX(2px) scale(1.012); } 35% { transform:translate(-3px,1px) scale(1.012); } 70% { transform:translate(1px,-1px) scale(1.012); } }
 @media(prefers-reduced-motion:reduce) { .rear-scene,.rear-scene .rear-car,.rear-scene .rear-car svg { animation:none; } }
 
-/* Lane segments share the asphalt vanishing point; no transverse glint plane. */
-.highway-markings { position:absolute; inset:0; width:100%; height:100%; }
-.perspective-dash { transform-origin:720px 525px; animation:dash-approach calc(var(--road-duration,1.6s) * 2) linear infinite; }
-@keyframes dash-approach { from { transform:scale(.08); opacity:0; } 10% { opacity:1; } to { transform:scale(30); opacity:1; } }
-@media(prefers-reduced-motion:reduce) { .perspective-dash { animation:none; transform:scale(8); } }
+/* Quiet wet-road flow: fixed lateral positions, no expanding diagonal dashes. */
+.highway-reflections { position:absolute; inset:0; width:100%; height:100%; }
+.wet-road-flow { animation:wet-road-flow calc(var(--road-duration,1.6s) * 2.5) linear infinite; opacity:0; }
+@keyframes wet-road-flow {
+  0% { transform:translateY(0); opacity:0; }
+  25% { opacity:.6; }
+  75% { opacity:.6; }
+  100% { transform:translateY(240px); opacity:0; }
+}
+@media(prefers-reduced-motion:reduce) { .wet-road-flow { animation:none; opacity:0; } }
