@@ -177,3 +177,9 @@
 [data-signal='red'] .signal-road-spill { background:radial-gradient(ellipse,#ff3b3055,transparent 70%); }
 @media(max-width:767px) { .dish-waves { display:none; }.message-packet { width:20px; height:16px; }.signal-road-spill { height:8px; } }
 @media(prefers-reduced-motion:reduce) { .dish-waves,.message-packet { display:none; }.fascia-glow { animation:none; opacity:.3; } }
+
+/* The distant skyline now meets each stop's curb instead of the chase horizon. */
+.stop-scene .layer-far-skyline { top:auto; bottom:calc(100% - var(--curb-y)); height:66%; mask-image:linear-gradient(transparent,#000 25%); }
+.stop-asphalt::after { display:none; }
+.stop-scene .sun-position { top:auto; bottom:calc(100% - var(--curb-y) + 9vh); }
+.stop-scene .skyline-svg { height:147.33%; transform:none; }

@@ -1,11 +1,11 @@
 import { useId } from 'react';
 
 function Wheel({ x }: { x: number }) {
-  return <g transform={`translate(${x} 166)`}>
-    <circle r="29" fill="#090b13" stroke="#292b38" strokeWidth="3"/>
+  return <g transform={`translate(${x} 163)`}>
+    <circle r="32" fill="#090b13" stroke="#292b38" strokeWidth="3"/>
     <circle r="20" fill="#777b89" stroke="#c2bdc7" strokeWidth="1.5"/>
     <circle r="16" fill="#222633"/>
-    <g className="wheel-spokes">{Array.from({ length: 12 }, (_, i) => <path key={i} d="M-2-7L-3-18H3L2-7Z" transform={`rotate(${i * 30})`} fill="#a0a2ad"/>)}</g>
+    <g className="wheel-spokes">{Array.from({ length: 5 }, (_, i) => <path key={i} d="M-2-7L-3-18H3L2-7Z" transform={`rotate(${i * 72})`} fill="#a0a2ad"/>)}</g>
     <circle r="6" fill="#5b5f6c" stroke="#c5bcc8"/>
   </g>;
 }
@@ -18,21 +18,20 @@ export function SideCar() {
       <linearGradient id={`${id}-glass`} x2=".3" y2="1"><stop stopColor="#413449"/><stop offset="1" stopColor="#101724"/></linearGradient>
     </defs>
     <ellipse cx="333" cy="195" rx="273" ry="7" fill="#080a12" opacity=".6"/>
-    {/* Low roof, long bonnet and straight beltline of an eighties wedge coupe. */}
-    <path d="M45 132L67 115L184 108L263 71L384 71L453 112L583 124L616 143L612 174H579A39 39 0 0 0 501 174H164A39 39 0 0 0 86 174H46Z" fill={`url(#${id}-metal)`} stroke="#8f8598" strokeWidth="1.5"/>
-    <path d="M201 108L268 78H378L427 110Z" fill={`url(#${id}-glass)`} stroke="#c3abbc" strokeWidth="1.4"/>
-    <path d="M278 79L266 110M379 79L409 110" stroke="#8b8598" strokeWidth="3"/>
-    <path d="M265 113L436 115L425 164H249Z" fill="none" stroke="#1b2232" strokeWidth="1.5"/>
-    <path d="M50 139L603 145" stroke="#151b29" strokeWidth="6"/>
-    <path d="M65 117L183 112M452 115L580 127M175 165H490" stroke="#d8adc1" strokeWidth="1"/>
-    <path d="M61 121H179M73 125H166M85 129H152" stroke="#292c3b" strokeWidth="2"/>
-    <path d="M45 139H63V150H43Z" fill="#ff315f" className="brake-lights"/>
-    <path d="M592 139L610 145V150H592Z" fill="#ffe7b2"/>
-    <path d="M48 164H80M587 163H614" stroke="#101725" strokeWidth="8"/>
-    <rect x="288" y="120" width="22" height="3" rx="1" fill="#c5b5c3"/>
-    <path d="M416 110L429 103L443 108V115H428Z" fill="#6c667c" stroke="#b797ae"/>
-    <Wheel x={125}/><Wheel x={540}/>
-    <path d="M171 176H492" stroke="#0f1422" strokeWidth="7"/>
-    <path d="M177 172H486" stroke="#bf658c" strokeWidth="1"/>
+    <path d="M62 139L80 119L174 111L264 76H377L441 112L572 126L600 145V174H558A39 39 0 0 0 480 174H178A39 39 0 0 0 100 174H62Z" fill={`url(#${id}-metal)`} stroke="#ada6b4" strokeWidth="1.5"/>
+    <path d="M193 110L268 83H370L418 112Z" fill={`url(#${id}-glass)`} stroke="#aea4b4" strokeWidth="2"/>
+    <path d="M275 83L262 112M375 87L397 112" stroke="#77788a" strokeWidth="3"/>
+    <path d="M254 117H433L420 164H244Z" fill="none" stroke="#202635" strokeWidth="2"/>
+    <path d="M68 140L590 146" stroke="#141a26" strokeWidth="7"/>
+    <path d="M80 121L177 116M444 117L568 131" stroke="#ddd0d9" strokeWidth="1.5"/>
+    <path d="M86 124H168M91 128H156M98 132H145" stroke="#202635" strokeWidth="2"/>
+    <path d="M64 140H81V151H62Z" fill="#ff3657" className="brake-lights"/>
+    <path d="M578 140L595 146V151H578Z" fill="#ffe2b1"/>
+    <path d="M64 165H94M564 165H600" stroke="#111722" strokeWidth="8"/>
+    <rect x="280" y="122" width="19" height="3" rx="1" fill="#c2b8c4"/>
+    <path d="M406 110L420 104L432 110V116H417Z" fill="#686579" stroke="#a697ad"/>
+    <Wheel x={139}/><Wheel x={519}/>
+    <path d="M181 176H477" stroke="#0f1422" strokeWidth="7"/>
+    <path d="M184 172H474" stroke="#bf658c" strokeWidth="1"/>
   </svg>;
 }

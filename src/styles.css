@@ -182,3 +182,9 @@ button,a { touch-action:manipulation; }
 @keyframes suspension { 0%,100% { transform:translateY(0); } 35% { transform:translateY(-1.6px) rotate(.12deg); } 65% { transform:translateY(.8px) rotate(-.1deg); } }
 @keyframes chase-follow { 0%,100% { transform:translateX(2px) scale(1.012); } 35% { transform:translate(-3px,1px) scale(1.012); } 70% { transform:translate(1px,-1px) scale(1.012); } }
 @media(prefers-reduced-motion:reduce) { .rear-scene,.rear-scene .rear-car,.rear-scene .rear-car svg { animation:none; } }
+
+/* Lane segments share the asphalt vanishing point; no transverse glint plane. */
+.highway-markings { position:absolute; inset:0; width:100%; height:100%; }
+.perspective-dash { transform-origin:720px 525px; animation:dash-approach calc(var(--road-duration,1.6s) * 2) linear infinite; }
+@keyframes dash-approach { from { transform:scale(.08); opacity:0; } 10% { opacity:1; } to { transform:scale(30); opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .perspective-dash { animation:none; transform:scale(8); } }
