@@ -116,3 +116,9 @@ Supply:
 `SignalFlow.tsx` owns one cancellable animation frame and a fixed pool of eight sprites (four on mobile). Signal timing is green 2.4 s, amber 1.0 s, red 2.8 s. Packets spawn at least 700 ms apart, with a 20% flagged probability. Green routes to NOTIFY; amber queues near DIGEST for 600 ms; red stops before the gate. Flagged messages dissolve before the depot with a cross burst. Chute flashes last 200 ms. Server LEDs change at 0.4–1.6 s intervals. Mobile uses straight intake paths and hides rooftop waves; reduced motion has a static green signal and no packet pool. Scene changes, hidden tabs, and preference changes cancel the frame and clear active packets.
 
 `npx playwright test tests/signalroute.spec.ts tests/stops.spec.ts` checks all raster stops, signal cycling, message movement, card clearance, pool bounds, reduced motion, and 1→2→3→1 cleanup. SignalRoute screenshots and debug overlays at 1440×900 and 390×844 are in `screenshots/`.
+
+### DeLorean artwork
+
+Accepted car originals live in `assets-src/cars/`. Run `node scripts/key-cars.mjs` to chroma-key, despill, trim, and export transparent WebP assets into `public/assets/cars/`. The side source is the clean wheel-less body supplied on November 5; separate tyres rotate during arrival and stop when parked. All project stops share `SideCar.tsx`, including their reflections. Home and contact share the rear sprite through `Car.tsx`. Reduced-motion preferences disable tyre rotation.
+
+The top-view asset is prepared but currently unused. The earlier overlapping side-reference images and the front three-quarter image are not used by the runtime.
