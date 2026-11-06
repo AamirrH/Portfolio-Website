@@ -29,13 +29,17 @@ for(let n=0;n<chosen.length;n++){
  for(let y=b.top+b.height-14;y<b.top+b.height;y++) {
    let run=0,maxRun=0;
    for(let x=b.left;x<b.left+b.width;x++){const p=(y*width+x)*4;run=isolated[p+3]&&Math.max(...isolated.subarray(p,p+3))<100?run+1:0;maxRun=Math.max(maxRun,run);}
-   if(maxRun>b.width*.5) for(let x=b.left;x<b.left+b.width;x++)isolated[(y*width+x)*4+3]=0;
+   let count=0,above=0;for(let x=b.left;x<b.left+b.width;x++){if(isolated[(y*width+x)*4+3])count++;if(isolated[((y-3)*width+x)*4+3])above++;}
+   if(maxRun>b.width*.5 || count>above*1.2) for(let x=b.left;x<b.left+b.width;x++)isolated[(y*width+x)*4+3]=0;
  }
  const visited=new Uint8Array(width*height);let h=0,t=0;
  const addOutside=p=>{if(!visited[p]&&(!isolated[p*4+3]||green(p))){visited[p]=1;queue[t++]=p;}};
  for(let x=b.left;x<b.left+b.width;x++){addOutside(b.top*width+x);addOutside((b.top+b.height-1)*width+x);}
  for(let y=b.top;y<b.top+b.height;y++){addOutside(y*width+b.left);addOutside(y*width+b.left+b.width-1);}
  while(h<t){const p=queue[h++],x=p%width,y=Math.floor(p/width);isolated[p*4+3]=0;if(x>b.left)addOutside(p-1);if(x<b.left+b.width-1)addOutside(p+1);if(y>b.top)addOutside(p-width);if(y<b.top+b.height-1)addOutside(p+width);}
+ // The replacement truck drawing encloses an exterior green gap inside its
+ // mirror arm. This inspected cutout is outside the cabin, not window glass.
+ if(names[n]==='truck')for(let y=b.top+Math.floor(b.height*.2);y<b.top+b.height*.5;y++)for(let x=b.left+Math.floor(b.width*.88);x<b.left+b.width;x++){const p=y*width+x;if(green(p)&&data[p*4+1]>180)isolated[p*4+3]=0;}
  const raw=await sharp(isolated,{raw:{width,height,channels:4}}).extract({left:b.left,top:b.top,width:b.width,height:b.height}).png().toBuffer();
  const out=await sharp(raw).trim({threshold:0}).resize({height:Math.min(b.height,700)}).webp({quality:90,alphaQuality:100}).toBuffer({resolveWithObject:true});
  await writeFile(`public/assets/traffic/${names[n]}.webp`,out.data);manifest[names[n]]={width:out.info.width,height:out.info.height};

@@ -11,11 +11,12 @@ type SceneId = 'rear' | 'dash' | 'aerial' | 'roomly' | 'swiftship' | 'signalrout
 const scenes: Record<SceneId, () => ReactNode> = { rear: RearScene, dash: DashScene, aerial: AerialScene, roomly: RoomlyStop, swiftship: SwiftShipStop, signalroute: SignalRouteStop };
 function SceneFrame({ id, active, remove }: { id: SceneId; active: boolean; remove: (id: SceneId) => void }) {
   const ref = useRef<HTMLDivElement>(null);
+  const motion=useSceneStore(state=>state.motion);
   useLayoutEffect(() => {
-    const tween = gsap.to(ref.current, { opacity: active ? 1 : 0, duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION,
+    const tween = gsap.to(ref.current, { opacity: active ? 1 : 0, duration: !motion || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION,
       ease: 'power3.inOut', onComplete: () => { if (!active) remove(id); } });
     return () => { tween.kill(); };
-  }, [id, active, remove]);
+  }, [id, active, remove, motion]);
   const Component = scenes[id];
   return <div ref={ref} className="scene-frame" data-scene={id} data-active={active} style={{ zIndex: active ? 2 : 1 }}><Component/></div>;
 }

@@ -54,3 +54,10 @@
 .rain-ripple { position:absolute; left:0; top:0; width:35px; height:35px; border:1px solid #ecc5e1; border-radius:50%; opacity:0; }
 .lens-drop { position:absolute; width:7px; height:12px; border-radius:50%; background:radial-gradient(ellipse at 25% 20%,#fff8,#ccd5ee20 25%,transparent 50%,#b6a7ce44 80%,transparent); opacity:0; }
 .highway-perf { position:absolute; z-index:20; left:12px; bottom:12%; padding:6px 9px; background:#101321e8; color:#a9ffff; font:11px monospace; }
+.rain-filter-defs { position:absolute; width:0; height:0; }
+.tail-reflection { filter:url(#wet-traffic-ripple) blur(4px); }
+.weather-rail-glow { position:absolute; inset:0; width:100%; height:100%; filter:blur(3px); opacity:calc(var(--weather,0)*.3); mix-blend-mode:screen; }
+.rear-scene[data-raining='true'] .city-tile>img { filter:drop-shadow(0 0 2px #ffd6bd33); }
+.rear-scene[data-raining='true'] .sun-cuts::after { content:''; position:absolute; inset:0; background:linear-gradient(transparent,#ffd1a0); opacity:calc(var(--weather,0)*.12); }
+.rear-scene .lamp-cone { opacity:calc(.1 + var(--weather,0)*.1); }
+@media(max-width:767px),(prefers-reduced-motion:reduce) { .tail-reflection { filter:blur(3px); } }
