@@ -1,6 +1,19 @@
+import type { propAssets } from './propAssets';
 import type { ProjectId } from './content';
 export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets' | 'signal' | 'chute' | 'led' | 'fascia' | 'dish' | 'barrier'; x: number; y: number; width: number; height: number; }
+export interface StopProp {
+  asset: keyof typeof propAssets;
+  x: number; // Percent of the usable stop width, excluding the project card.
+  height: number; // Height as a percentage of the building height.
+  scale: number;
+  z: number;
+  placement: 'front' | 'behind';
+  mobile: boolean;
+  mobileX?: number;
+}
 export interface StopConfig {
+  props: StopProp[];
+  neighbors?: boolean;
   id: ProjectId;
   building: { src?: string; silhouette?: string; heightVh: number; mobileHeightVh: number; anchorXPct: number; alignBottomToCurb: true; aspect: number };
   door?: { x: number; y: number; width: number; height: number };
@@ -8,7 +21,12 @@ export interface StopConfig {
 }
 export const stops: Record<ProjectId, StopConfig> = {
   roomly: {
-    id: 'roomly', door: { x: 41, y: 85, width: 17, height: 15 }, building: { src: '/assets/stops/roomly.webp', silhouette: '/assets/stops/roomly-silhouette.png', heightVh: 62, mobileHeightVh: 38, anchorXPct: 46, alignBottomToCurb: true, aspect: 948 / 1200 },
+    id: 'roomly', neighbors: true, props: [
+      {asset:'parisian-lamp',x:38,height:34,scale:1,z:6,placement:'front',mobile:true,mobileX:15},
+      {asset:'parisian-lamp',x:94,height:34,scale:1,z:6,placement:'front',mobile:false},
+      {asset:'bistro',x:78,height:9,scale:1,z:7,placement:'front',mobile:false},
+      {asset:'topiary',x:87,height:14,scale:1,z:6,placement:'front',mobile:true,mobileX:80}
+    ], door: { x: 41, y: 85, width: 17, height: 15 }, building: { src: '/assets/stops/roomly.webp', silhouette: '/assets/stops/roomly-silhouette.png', heightVh: 62, mobileHeightVh: 38, anchorXPct: 46, alignBottomToCurb: true, aspect: 948 / 1200 },
     overlays: [
       { id: 'vacancy', kind: 'vacancy', x: 89.7, y: 60.15, width: 9.9, height: 3.1 },
       { id: 'roomly-blade', kind: 'blade', x: 89.5, y: 32.35, width: 10.1, height: 26.8 },
@@ -25,7 +43,12 @@ export const stops: Record<ProjectId, StopConfig> = {
     ]
   },
   swiftship: {
-    id: 'swiftship', door: { x: 63, y: 55, width: 14, height: 45 }, building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
+    id: 'swiftship', props: [
+      {asset:'modern-lamp',x:12,height:60,scale:1,z:4,placement:'behind',mobile:true,mobileX:9},
+      {asset:'bike-rack',x:18,height:14,scale:1,z:6,placement:'front',mobile:false},
+      {asset:'trash-bin',x:96,height:13,scale:1,z:6,placement:'front',mobile:false},
+      {asset:'scooter',x:82,height:22,scale:1,z:7,placement:'front',mobile:true,mobileX:86}
+    ], door: { x: 63, y: 55, width: 14, height: 45 }, building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
     overlays: [
       { id: 'open-neon', kind: 'neon', x: 46.6, y: 50.1, width: 12.4, height: 14.2 },
       { id: 'door-status', kind: 'status', x: 76.15, y: 72.3, width: .9, height: 2.5 },
@@ -34,7 +57,11 @@ export const stops: Record<ProjectId, StopConfig> = {
     ]
   },
   signalroute: {
-    id: 'signalroute', building: { src: '/assets/stops/signalroute.webp', silhouette: '/assets/stops/signalroute-silhouette.png', heightVh: 43, mobileHeightVh: 29, anchorXPct: 42, alignBottomToCurb: true, aspect: 1439 / 720 }, overlays: [
+    id: 'signalroute', props: [
+      {asset:'bollards',x:88,height:13,scale:1,z:6,placement:'front',mobile:true,mobileX:87},
+      {asset:'modern-lamp',x:90,height:70,scale:1,z:4,placement:'behind',mobile:false},
+      {asset:'hydrant',x:17,height:15,scale:1,z:6,placement:'front',mobile:false}
+    ], building: { src: '/assets/stops/signalroute.webp', silhouette: '/assets/stops/signalroute-silhouette.png', heightVh: 43, mobileHeightVh: 29, anchorXPct: 42, alignBottomToCurb: true, aspect: 1439 / 720 }, overlays: [
       { id: 'red', kind: 'signal', x: 3.5, y: 37.4, width: 3.2, height: 6.2 },
       { id: 'amber', kind: 'signal', x: 3.5, y: 46.0, width: 3.2, height: 6.2 },
       { id: 'green', kind: 'signal', x: 3.5, y: 54.6, width: 3.2, height: 6.2 },

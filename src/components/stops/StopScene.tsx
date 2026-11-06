@@ -4,6 +4,7 @@ import { content, projects } from '../../data/content';
 import { useSceneStore } from '../../state/useSceneStore';
 import { SceneSky } from '../scene/TravelScenes';
 import { SideCar } from '../scene/SideCar';
+import { StopProps } from './StopProps';
 import { SignalFlow } from './SignalFlow';
 import { SignalBuilding } from './SignalBuilding';
 import { StopOverlays, OrderTickets } from './StopOverlays';
@@ -47,6 +48,7 @@ export function StopScene({ stop }: { stop: StopConfig }) {
     <div className="stop-asphalt"/><div className="stop-sidewalk"><i className="drain-grate"/><i className="drain-grate"/></div><div className="stop-curb"/>
     <div className="ground-spills" data-stop-depth="8" aria-hidden="true"><span className="spill spill-main"/><span className="spill spill-secondary"/></div>
     <div className="building-reflection"><div className="reflection-parallax" data-stop-depth="10" style={{'--ripple-filter': SCENE_QUALITY.reflectionRipple ? `url(#${rippleId})` : 'none'} as CSSProperties}>{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div></div>
+    <StopProps stop={stop}/>
     <div className="stop-near-lane"/>
     {tickets && <OrderTickets rect={tickets}/>}
     {stop.id === 'signalroute' && <SignalFlow root={ref} stop={stop}/>}

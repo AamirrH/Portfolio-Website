@@ -244,3 +244,41 @@
   .reflection-parallax { filter:none; }
   .spill,.stop-roomly .vacancy-plate { animation:none!important; }
 }
+
+.stop-scene .raster-city { bottom:0; --city-height:24vh; }
+.stop-scene .city-mid { --city-height:33vh; }
+.stop-scene .city-near { --city-height:40vh; }
+.stop-prop-stage { position:absolute; left:0; top:0; bottom:0; width:calc(100% - var(--stop-panel-width) - 48px); pointer-events:none; }
+.stop-prop { position:absolute; left:var(--prop-x); bottom:calc(100% - var(--curb-y) - 7px); height:calc(var(--building-height) * var(--prop-height)); width:calc(var(--building-height) * var(--prop-height) * var(--prop-aspect)); transform:translateX(-50%); }
+.prop-behind .stop-prop { bottom:calc(100% - var(--curb-y)); }
+.prop-parallax { position:absolute; inset:0; }
+.prop-art { display:block; width:100%; height:100%; filter:brightness(.83) saturate(.8); }
+.prop-grade { position:absolute; inset:0; background:linear-gradient(120deg,#ffb77735,#ff2a8a30); mix-blend-mode:soft-light; mask-image:var(--prop-mask); mask-size:100% 100%; }
+.prop-shadow { position:absolute; left:0; right:0; bottom:-3px; height:7px; border-radius:50%; background:#080714; filter:blur(3px); opacity:.65; }
+.prop-reflection { position:absolute; top:100%; width:100%; height:100%; transform:scaleY(-1); opacity:.3; filter:blur(4px); mask-image:linear-gradient(transparent,#000); }
+.stop-neighbors { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.stop-neighbor { position:absolute; bottom:calc(100% - var(--curb-y)); height:calc(var(--building-height) * .86); width:calc(var(--building-height) * .64); }
+.neighbor-left { right:calc(100% - var(--building-center) + var(--building-width)/2 - 14px); min-width:calc(var(--building-center) - var(--building-width)/2 + 14px); }
+.neighbor-right { left:calc(var(--building-center) + var(--building-width)/2 - 14px); min-width:calc(100% - var(--building-center) - var(--building-width)/2 + 14px); }
+.stop-neighbor>img:not(.neighbor-reflection) { position:absolute; width:100%; height:100%; object-fit:fill; filter:brightness(.55) saturate(.7); }
+.neighbor-grade { position:absolute; inset:0; background:linear-gradient(transparent,#ff2a8a18); mix-blend-mode:soft-light; }
+.neighbor-reflection { position:absolute; top:calc(100% + 26px); width:100%; height:100%; transform:scaleY(-1); opacity:.3; filter:blur(4px); mask-image:linear-gradient(transparent,#000); }
+@media(max-width:767px) {
+ .stop-prop-stage { width:100%; }
+ .prop-desktop { display:none; }
+ .stop-prop { left:var(--mobile-prop-x); }
+ .prop-parallax { transform:none!important; }
+ .stop-scene .raster-city { --city-height:18vh; }
+ .stop-scene .city-mid { --city-height:24vh; }
+ .stop-scene .city-near { --city-height:27vh; }
+ .stop-neighbor { width:22vw; min-width:0; height:calc(var(--building-height) * .8); overflow:hidden; }
+ .neighbor-left { left:0; right:auto; }.neighbor-right { right:0; left:auto; }
+ .stop-neighbor>img:not(.neighbor-reflection) { width:auto; max-width:none; object-fit:contain; }
+ .neighbor-left>img { right:0; }.neighbor-right>img { left:0; }
+ .prop-reflection { filter:blur(2px); }
+}
+/* The car is on the road in front of sidewalk furniture. */
+.stop-scene .car-anchor { z-index:8; }
+.neighbor-reflections { position:absolute; inset:0; z-index:3; pointer-events:none; }
+.stop-neighbors .neighbor-reflection { display:none; }
+.stop-neighbor::after { content:''; position:absolute; bottom:0; left:0; right:0; height:10px; background:linear-gradient(transparent,#09071399); }

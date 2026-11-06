@@ -212,3 +212,19 @@ button,a { touch-action:manipulation; }
 @keyframes sunset-breathe { from { opacity:.65; } to { opacity:.9; } }
 @media(max-width:767px) { .home-sunlight { opacity:.65; }.horizon-bloom { animation:none; }.home-sunset-bloom .sun-disc { box-shadow:0 0 35px #ffe29a50; } }
 @media(prefers-reduced-motion:reduce) { .horizon-bloom { animation:none; } }
+
+/* Raster city tiles share a bottom edge; alternating mirrors hide joins. */
+.raster-city { --city-height:26vh; position:absolute; left:0; right:0; bottom:32.125%; height:var(--city-height); }
+.city-mid { --city-height:36vh; }
+.city-near { --city-height:49vh; bottom:28.75%; mask-image:linear-gradient(90deg,#000 0%,#000 15%,transparent 37%,transparent 63%,#000 85%,#000); }
+.city-tiles { position:absolute; inset:0; }
+.city-tile { position:absolute; bottom:0; left:calc(50% + (var(--tile) - .5) * var(--city-height) * 1800 / 959); width:calc(var(--city-height) * 1800 / 959); height:100%; }
+.city-tile>img { width:100%; height:100%; display:block; }
+.city-mirrored { transform:scaleX(-1); }
+.city-far { opacity:.55; }
+.city-art-haze { position:absolute; inset:0; background:linear-gradient(transparent,#bc789d45); mask-image:linear-gradient(transparent,#000); }
+.city-far .city-art-haze { background:linear-gradient(transparent,#d29ac578); }
+.raster-aviation { position:absolute; width:3px; height:3px; border-radius:50%; background:#ff4562; box-shadow:0 0 5px #ff4562; }
+.raster-neon { position:absolute; background:currentColor; mix-blend-mode:screen; opacity:.2; box-shadow:0 0 6px currentColor; }
+.city-debug .raster-neon,.city-debug .raster-aviation { outline:1px solid #ffd66b; }
+@media(max-width:767px) { .raster-city { --city-height:20vh; }.city-mid { --city-height:27vh; }.city-near { --city-height:35vh; } }
