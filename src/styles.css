@@ -179,7 +179,7 @@ button,a { touch-action:manipulation; }
 /* Suspension and following camera use separate transform surfaces. */
 .rear-scene .rear-car svg { transform-origin:50% 85%; animation:suspension 1.3s ease-in-out infinite; }
 .rear-scene { animation:chase-follow 7.4s ease-in-out infinite; }
-@keyframes suspension { 0%,100% { transform:translateY(0); } 35% { transform:translateY(-1.6px) rotate(.12deg); } 65% { transform:translateY(.8px) rotate(-.1deg); } }
+@keyframes suspension { 0%,100% { transform:translateY(0); } 35% { transform:translateY(calc(-1.6px * var(--suspension-amplitude,1))) rotate(calc(.12deg * var(--suspension-amplitude,1))); } 65% { transform:translateY(calc(.8px * var(--suspension-amplitude,1))) rotate(calc(-.1deg * var(--suspension-amplitude,1))); } }
 @keyframes chase-follow { 0%,100% { transform:translateX(2px) scale(1.012); } 35% { transform:translate(-3px,1px) scale(1.012); } 70% { transform:translate(1px,-1px) scale(1.012); } }
 @media(prefers-reduced-motion:reduce) { .rear-scene,.rear-scene .rear-car,.rear-scene .rear-car svg { animation:none; } }
 

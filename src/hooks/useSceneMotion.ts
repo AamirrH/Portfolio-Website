@@ -8,6 +8,7 @@ export function useSceneMotion(ref: RefObject<HTMLDivElement>) {
   useEffect(() => {
     const scene = ref.current;
     if (!scene) return;
+    if (scene.classList.contains('rear-scene')) scene.style.setProperty('--suspension-amplitude', String(Math.min(1.3, Math.max(.25, speed))));
     scene.style.setProperty('--road-duration', `${1.6 / Math.max(.01, speed)}s`);
     scene.style.setProperty('--wheel-duration', `${.65 / Math.max(.01, speed)}s`);
     scene.style.setProperty('--pulse-duration', `${60 / BPM}s`);
