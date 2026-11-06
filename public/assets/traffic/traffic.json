@@ -1,0 +1,30 @@
+{
+  "sedan": {
+    "width": 620,
+    "height": 338
+  },
+  "hatch": {
+    "width": 474,
+    "height": 321
+  },
+  "taxi": {
+    "width": 639,
+    "height": 441
+  },
+  "camper": {
+    "width": 511,
+    "height": 483
+  },
+  "truck": {
+    "width": 611,
+    "height": 700
+  },
+  "swiftship-van": {
+    "width": 582,
+    "height": 599
+  },
+  "rickshaw": {
+    "width": 363,
+    "height": 467
+  }
+}
