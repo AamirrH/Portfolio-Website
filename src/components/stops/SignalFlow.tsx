@@ -93,7 +93,7 @@ export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; st
       scene.dataset.signal='green'; scene.dataset.messageActive='0'; scene.dataset.signalFrameCount='0';
     };
   }, [root, stop, active, reduced, mobile, hidden]);
-  return <div ref={stage} className="signal-flow" aria-hidden="true">
+  return <div ref={stage} className="signal-flow" data-stop-depth="8" aria-hidden="true">
     <div className="signal-road-spill"/>
     {!reduced && Array.from({length:mobile?4:8},(_,i)=><span className="message-packet" key={i}><img src={`/assets/stops/msg-${messageSprites[i%messageSprites.length]}.webp`} alt=""/><span className="message-burst">×</span></span>)}
   </div>;

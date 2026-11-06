@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { useEffect, useRef, useId, type CSSProperties } from 'react';
 import { type StopConfig, stops, stopArtOrder } from '../../data/stops';
 import { content, projects } from '../../data/content';
 import { useSceneStore } from '../../state/useSceneStore';
@@ -9,10 +9,16 @@ import { SignalBuilding } from './SignalBuilding';
 import { StopOverlays, OrderTickets } from './StopOverlays';
 import { useStopAnimations } from '../../hooks/useStopAnimations';
 
+import { useStopPolish } from '../../hooks/useStopPolish';
+import { SCENE_QUALITY } from '../../config';
+import { NearBuildings } from '../scene/Skyline';
+
 type StopStyle = CSSProperties & Record<`--${string}`, string | number>;
 export function StopScene({ stop }: { stop: StopConfig }) {
   const ref = useRef<HTMLDivElement>(null);
   useStopAnimations(ref, stop);
+  useStopPolish(ref);
+  const rippleId = `ripple-${useId().replace(/:/g, "")}`;
   const debug = new URLSearchParams(location.search).get('debug') === 'rects';
   const tickets = stop.overlays.find(rect => rect.kind === 'tickets');
   const { building, door } = stop;
@@ -30,13 +36,17 @@ export function StopScene({ stop }: { stop: StopConfig }) {
   const art = building.src ? <img className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
   return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
     <SceneSky/>
-    <div className="building-anchor"><div className="building-contact-shadow"/><div className="building-arrival">
-      {art}{building.silhouette && <><div className="building-tint"/><div className="building-rim"/></>}
+    <div className="stop-city-near" data-stop-depth="6"><NearBuildings/></div>
+    {SCENE_QUALITY.reflectionRipple && <svg className="reflection-filter" aria-hidden="true"><defs><filter id={rippleId} x="-10%" width="120%"><feTurbulence type="fractalNoise" baseFrequency=".008 .1" numOctaves="1" seed="7" result="noise"/><feColorMatrix in="noise" type="matrix" values="1 0 0 0 0  0 0 0 0 .5  0 0 1 0 0  0 0 0 1 0" result="horizontalNoise"/><feDisplacementMap in="SourceGraphic" in2="horizontalNoise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>}
+    <div className="building-anchor"><div className="building-parallax" data-stop-depth="8"><div className="building-contact-shadow"/><div className="building-arrival">
+      {art}{building.silhouette && <><div className="building-tint"/><div className="building-rim"/><div className="building-grade"/><div className="building-occlusion"/></>}
+      {SCENE_QUALITY.bloom && building.src && <img className="building-bloom" src={building.src} alt=""/>}
       <StopOverlays stop={stop} debug={debug}/>
       {active && door && project?.live && <a className="building-door" href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${content.projects.door}: ${project.title}`} style={{ left: `${door.x}%`, top: `${door.y}%`, width: `${door.width}%`, height: `${door.height}%` }}><span>{content.projects.door} ↗</span></a>}
-    </div></div>
-    <div className="stop-asphalt"/><div className="stop-sidewalk"/><div className="stop-curb"/>
-    <div className="building-reflection">{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div>
+    </div></div></div>
+    <div className="stop-asphalt"/><div className="stop-sidewalk"><i className="drain-grate"/><i className="drain-grate"/></div><div className="stop-curb"/>
+    <div className="ground-spills" data-stop-depth="8" aria-hidden="true"><span className="spill spill-main"/><span className="spill spill-secondary"/></div>
+    <div className="building-reflection"><div className="reflection-parallax" data-stop-depth="10" style={{'--ripple-filter': SCENE_QUALITY.reflectionRipple ? `url(#${rippleId})` : 'none'} as CSSProperties}>{building.src ? <img src={building.src} alt="" decoding="async"/> : <SignalBuilding/>}</div></div>
     <div className="stop-near-lane"/>
     {tickets && <OrderTickets rect={tickets}/>}
     {stop.id === 'signalroute' && <SignalFlow root={ref} stop={stop}/>}

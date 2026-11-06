@@ -11,7 +11,7 @@ export function StopOverlays({ stop, debug }: { stop: StopConfig; debug: boolean
       {rect.kind === 'blade' && <div className="blade-crop"><img src={stop.building.src} alt="" decoding="async" style={{ position: 'absolute', width: `${10000 / rect.width}%`, height: `${10000 / rect.height}%`, maxWidth: 'none', left: `${-rect.x / rect.width * 100}%`, top: `${-rect.y / rect.height * 100}%` }}/></div>}
       {rect.kind === 'neon' && <span className="neon-glow"/>}
       {rect.kind === 'status' && <span className="door-status"/>}
-      {rect.kind === 'interior' && <span className="interior-glow"/>}
+      {rect.kind === 'interior' && <><span className="interior-grade"/><span className="interior-glow"/></>}
       {rect.kind === 'signal' && <><span className="signal-dark"/><span className={`signal-glow signal-${rect.id}`}/></>}
       {rect.kind === 'chute' && <span className={`chute-glow chute-${rect.id}`}/>}
       {rect.kind === 'led' && <span className="rack-led"/>}
@@ -24,7 +24,7 @@ export function StopOverlays({ stop, debug }: { stop: StopConfig; debug: boolean
 }
 export function OrderTickets({ rect }: { rect: OverlayRect }) {
   return <div className="ticket-anchor" aria-hidden="true">
-    <svg className="ticket-route" viewBox="0 0 100 100" preserveAspectRatio="none"><path d={`M${rect.x} ${rect.y} Q112 15 106 110`} fill="none" stroke="#ffc28b" strokeWidth=".22" strokeDasharray=".6 1.4"/></svg>
+    <svg data-stop-depth="14" className="ticket-route" viewBox="0 0 100 100" preserveAspectRatio="none"><path d={`M${rect.x} ${rect.y} Q112 15 106 110`} fill="none" stroke="#ffc28b" strokeWidth=".22" strokeDasharray=".6 1.4"/></svg>
     {Array.from({length:6},(_,i) => <span key={i} className="order-ticket" style={{ left: `${rect.x}%`, top: `${rect.y}%` }}/>) }
   </div>;
 }

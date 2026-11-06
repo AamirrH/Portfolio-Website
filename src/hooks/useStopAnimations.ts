@@ -31,7 +31,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
       timeline.fromTo('.parked-car', { x: -innerWidth * .6, y: 2, scaleY: .985 }, { x: 0, y: 0, scaleY: 1, duration: 1.2, ease: 'power3.out', transformOrigin: '50% 83%' }, 0);
       timeline.fromTo('.car-reflection', { x: -innerWidth * .6, opacity: 0 }, { x: 0, opacity: .3, duration: 1.2, ease: 'power3.out' }, 0);
       timeline.fromTo('.building-arrival', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out' }, .15);
-      timeline.fromTo('.building-reflection', { opacity: 0 }, { opacity: .22, duration: .8 }, .15);
+      timeline.fromTo('.building-reflection', { opacity: 0 }, { opacity: .3, duration: .8 }, .15);
       timeline.fromTo('.parked-car .brake-lights', { opacity: .2 }, { opacity: 1, duration: .15 }, .05).to('.parked-car .brake-lights', { opacity: .65, duration: .6 }, .6);
     }, root);
     return () => { ctx.revert(); };
@@ -73,7 +73,11 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
     }, 5000, 9000);
     if (stop.id === 'swiftship') {
       repeat(() => {
-        const neon = root.querySelector('.neon-glow');
+        animate(root.querySelectorAll('.interior-grade,.spill-secondary'), { opacity: .9, duration: .15 });
+        later(() => animate(root.querySelectorAll('.interior-grade,.spill-secondary'), {opacity:1,duration:.4}), 180);
+      },5000,9000);
+      repeat(() => {
+        const neon = root.querySelectorAll('.neon-glow,.stop-swiftship .spill-main');
         animate(neon, { opacity: .08, duration: .03 });
         later(() => animate(neon, { opacity: .9, duration: .03 }), 100);
         later(() => animate(neon, { opacity: .2, duration: .03 }), 180);
@@ -101,7 +105,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
     return () => {
       disposed = true; timers.forEach(clearTimeout); timers.clear(); tweens.forEach(tween => tween.kill()); tweens.clear(); diagnostics();
       gsap.set(root.querySelectorAll('.window-dark,.window-warm,.vacancy-full,.order-ticket'), { clearProps: 'transform,opacity' });
-      gsap.set(root.querySelectorAll('.vacancy-open,.neon-glow'), { clearProps: 'opacity' });
+      gsap.set(root.querySelectorAll('.vacancy-open,.neon-glow,.interior-grade,.spill-secondary,.spill-main'), { clearProps: 'opacity' });
     };
   }, [ref, stop, active, reduced, mobile, hidden]);
 }

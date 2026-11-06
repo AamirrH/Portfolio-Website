@@ -201,3 +201,4 @@ button,a { touch-action:manipulation; }
 @keyframes aviation-blink { 0%,18% { opacity:1; } 19%,100% { opacity:.08; } }
 @keyframes city-neon-flicker { 0%,91%,96%,100% { opacity:.7; } 92%,95% { opacity:.15; } }
 @media(prefers-reduced-motion:reduce) { .city-window-twinkle,.aviation-light,.city-neon { animation:none; } }
+@media(max-width:767px) { .rear-scene .layer-near-buildings { display:block; opacity:.65; } }
