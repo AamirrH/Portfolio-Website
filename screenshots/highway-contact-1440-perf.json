@@ -1,0 +1,34 @@
+{
+  "pools": [
+    {
+      "class": "lower-city city-side-right",
+      "pool": 7,
+      "frames": "1"
+    },
+    {
+      "class": "oncoming-world oncoming-left",
+      "pool": 6,
+      "frames": "1"
+    },
+    {
+      "class": "roadside-pool",
+      "pool": 15,
+      "frames": "1"
+    },
+    {
+      "class": "living-traffic ",
+      "pool": 10,
+      "frames": "1",
+      "fps": "25"
+    },
+    {
+      "class": "rain-world",
+      "pool": 18,
+      "frames": "1",
+      "fps": "26"
+    }
+  ],
+  "rain": "154",
+  "perf": "FPS 25 · pools 56 · cars 6 · rain 154/220",
+  "overflow": false
+}
