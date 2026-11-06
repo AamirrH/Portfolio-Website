@@ -31,7 +31,7 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       expect(Math.abs(layout.car.top + layout.car.height * 195 / 235 - layout.lane.top)).toBeLessThan(2);
       if (viewport.width >= 768) expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
       else { expect(layout.building.bottom).toBeLessThan(layout.card.top); expect(layout.car.top + layout.car.height * 195 / 235).toBeLessThan(layout.card.top); }
-      await expect(page.locator('.scene-frame[data-active="true"] .building-reflection')).toHaveCSS('opacity', '0.22');
+      await expect(page.locator('.scene-frame[data-active="true"] .building-reflection')).toHaveCSS('opacity', '0.3');
       if (id !== 'signalroute') {
       const door = page.getByRole('link', {name: `Open live project: ${id === 'roomly' ? 'Roomly' : 'SwiftShip'}`});
       const live = id === 'roomly' ? 'https://roomly-xi.vercel.app' : 'https://swift-ship-nu.vercel.app';

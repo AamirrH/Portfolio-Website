@@ -122,3 +122,11 @@ Supply:
 Accepted car originals live in `assets-src/cars/`. Run `node scripts/key-cars.mjs` to chroma-key, despill, trim, and export transparent WebP assets into `public/assets/cars/`. The side source is the clean wheel-less body supplied on November 5; separate tyres rotate during arrival and stop when parked. All project stops share `SideCar.tsx`, including their reflections. Home and contact share the rear sprite through `Car.tsx`. Reduced-motion preferences disable tyre rotation.
 
 The top-view asset is prepared but currently unused. The earlier overlapping side-reference images and the front three-quarter image are not used by the runtime.
+
+### Stop lighting and skyline polish
+
+The three city depths are generated in `src/components/scene/Skyline.tsx`; `mid-skyline` also supports an optional layer-art replacement. Stop sidewalks, occlusion, accent grading, light pools and reflections are shared in `src/stops.css`. SwiftShip's window grade uses the existing interior overlay rectangle in `src/data/stops.ts` (`?debug=rects`).
+
+`SCENE_QUALITY` in `src/config.ts` controls bloom and reflection ripple. Bloom and ripple are disabled on mobile; reduced motion disables ripple and pointer parallax. `useStopPolish` cleans up its GSAP tweens and pointer listeners on unmount and when preferences change. Reflection displacement is horizontal only.
+
+Verification: `npm run build`; `npx playwright test tests/stops.spec.ts tests/polish.spec.ts`. These cover the home and three stop screenshots at 1440x900 and 390x844, sidewalk alignment, card clearance, console errors, scene cleanup, parallax and reduced-motion fallbacks. Updated previews are in `screenshots/`.
