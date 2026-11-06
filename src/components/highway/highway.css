@@ -47,3 +47,10 @@
 .city-side-left { clip-path:polygon(0 68%,35% 70%,16% 100%,0 100%); }
 .city-side-left>svg { transform:scaleX(-1); }
 .metro-train { opacity:0; }
+.rain-world { position:absolute; inset:0; z-index:10; pointer-events:none; }
+.rain-canvas { position:absolute; inset:0; width:100%; height:100%; }
+.rain-fog { position:absolute; inset:48% 0 17%; background:radial-gradient(ellipse,#c9b4d5,transparent 70%); opacity:0; }
+.rain-sheen { position:absolute; inset:66% 0 0; background:linear-gradient(100deg,transparent,#ef7caa44 35%,#91d6df33 65%,transparent); opacity:0; mix-blend-mode:screen; }
+.rain-ripple { position:absolute; left:0; top:0; width:35px; height:35px; border:1px solid #ecc5e1; border-radius:50%; opacity:0; }
+.lens-drop { position:absolute; width:7px; height:12px; border-radius:50%; background:radial-gradient(ellipse at 25% 20%,#fff8,#ccd5ee20 25%,transparent 50%,#b6a7ce44 80%,transparent); opacity:0; }
+.highway-perf { position:absolute; z-index:20; left:12px; bottom:12%; padding:6px 9px; background:#101321e8; color:#a9ffff; font:11px monospace; }
