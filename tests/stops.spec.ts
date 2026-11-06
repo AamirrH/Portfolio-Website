@@ -25,6 +25,17 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
         const art = document.querySelector<HTMLImageElement>('.scene-frame[data-active="true"] .stop-art')!;
         return { building: bounds('.scene-frame[data-active="true"] .building-anchor'), curb: bounds('.scene-frame[data-active="true"] .stop-sidewalk'), card: bounds('.stop-project-panel'), car: bounds('.scene-frame[data-active="true"] .parked-car'), lane: bounds('.scene-frame[data-active="true"] .stop-near-lane'), overflow: document.documentElement.scrollWidth > innerWidth, imageReady: art.complete && art.naturalWidth > 0 };
       });
+      const props = page.locator('.scene-frame[data-active="true"] .stop-prop:visible');
+      const expectedProps = viewport.width < 768 ? (id === 'signalroute' ? 1 : 2) : (id === 'signalroute' ? 3 : 4);
+      await expect(props).toHaveCount(expectedProps);
+      for (const prop of await props.all()) {
+        await expect.poll(()=>prop.locator('.prop-art').evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
+        const box = await prop.boundingBox();
+        expect(box).not.toBeNull();
+        expect(box!.x).toBeGreaterThanOrEqual(0);
+        if(viewport.width >= 768) expect(box!.x+box!.width+14).toBeLessThan(layout.card.left);
+        else expect(box!.y+box!.height).toBeLessThan(layout.card.top);
+      }
       expect(layout.imageReady).toBe(true);
       expect(layout.overflow).toBe(false);
       expect(Math.abs(layout.building.bottom - layout.curb.top)).toBeLessThan(1);
