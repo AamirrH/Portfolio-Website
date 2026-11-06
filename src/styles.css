@@ -228,5 +228,3 @@ button,a { touch-action:manipulation; }
 .raster-neon { position:absolute; background:currentColor; mix-blend-mode:screen; opacity:.2; box-shadow:0 0 6px currentColor; }
 .city-debug .raster-neon,.city-debug .raster-aviation { outline:1px solid #ffd66b; }
 @media(max-width:767px) { .raster-city { --city-height:20vh; }.city-mid { --city-height:27vh; }.city-near { --city-height:35vh; } }
-.plain-traffic { display:flex; justify-content:center; gap:24px; margin:20px 0; }
-.plain-traffic img { width:70px; height:50px; object-fit:contain; }

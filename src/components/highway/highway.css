@@ -1,52 +1,6 @@
-.living-traffic { position:absolute; inset:0; pointer-events:none; z-index:4; }
-.traffic-car { position:absolute; left:0; top:0; opacity:0; transform-origin:0 0; }
-.traffic-car>img { width:100%; height:100%; filter:brightness(.72) saturate(.9) drop-shadow(-1px -1px 0 #dd5b8d77); }
-.traffic-grade,.traffic-night,.traffic-haze { position:absolute; inset:0; mask-image:var(--sprite); mask-size:100% 100%; }
-.traffic-grade { background:#2b0a4a; opacity:.28; mix-blend-mode:multiply; }
-.traffic-night { background:#000; opacity:calc(var(--night,0)*.15); }
-.traffic-haze { background:#aa729b; }
-.tail-light { position:absolute; width:6%; background:#421424; border-radius:15%; box-shadow:0 0 6px #ff303055; opacity:calc(.15 + .25 * var(--night,0)); }
-[data-braking='true'] .tail-light { background:#ff3434; box-shadow:0 0 18px #ff2828cc; mix-blend-mode:screen; opacity:1; }
-[data-kind='rickshaw'] .tail-light { background:#e8a644; }
-.vehicle-sign { position:absolute; display:none; }
-[data-kind='taxi'] .vehicle-sign { display:block; left:35%; top:2%; width:27%; height:6%; background:#ffc86944; box-shadow:0 0 7px #ffc86955; }
-[data-kind='swiftship-van'] .vehicle-sign { display:block; left:14%; top:24%; width:17%; height:14%; background:#ffb34355; mix-blend-mode:screen; animation:van-logo 6s ease-in-out infinite; }
-@keyframes van-logo { 50% {opacity:.4;} }
-.tail-reflection { position:absolute; top:99%; left:8%; width:65%; height:30%; background:linear-gradient(90deg,#ff424288 0 10%,transparent 10% 85%,#ff424288 85%); filter:blur(4px); mask-image:linear-gradient(#000,transparent); opacity:calc(var(--wetness,0)*.35); }
-.traffic-debug .tail-light,.traffic-debug .vehicle-sign { outline:1px solid #25f4ee; }
-.rear-scene .layer-car-rear { z-index:8; }
-.rear-scene .layer-gantry { z-index:9; }
-.home-copy::before,.contact-copy::before { content:''; position:absolute; inset:-18px -25px; z-index:-1; background:linear-gradient(90deg,#00000059,transparent); pointer-events:none; }
 .motion-off *, .motion-off *::before,.motion-off *::after { animation-play-state:paused!important; }
 .motion-toggle { padding:8px 10px; border:1px solid #ffffff25; background:transparent; color:#c9c0d6; font-size:10px; }
 @media(max-width:767px) { .motion-toggle { padding:6px; font-size:9px; } }
-@media(prefers-reduced-motion:reduce) { .vehicle-sign { animation:none!important; } }
-.lane-guides { position:absolute; inset:0; width:100%; height:100%; }
-.roadside-pool { position:absolute; inset:0; pointer-events:none; z-index:3; }
-.roadside-item { position:absolute; width:180px; height:300px; transform-origin:0 0; opacity:0; }
-.roadside-item>svg { display:block; width:100%; height:100%; }
-.roadside-gantry { width:720px; height:180px; }
-.lamp-pool { position:absolute; left:0; top:95%; width:280px; height:65px; background:radial-gradient(ellipse,#ffcadc55,transparent 70%); mix-blend-mode:screen; opacity:.18; }
-.lamp-cone { position:absolute; left:50px; top:20px; width:140px; height:280px; clip-path:polygon(45% 0,55% 0,100% 100%,0 100%); background:linear-gradient(#ffdce533,transparent); opacity:.1; }
-.billboard-glyphs { animation:city-neon-flicker 8s steps(1,end) infinite; }
-@media(max-width:767px) { .desktop-lane { display:none; } }
-.oncoming-world { position:absolute; inset:0; z-index:2; pointer-events:none; }
-.oncoming-plane { position:absolute; inset:0; width:100%; height:100%; }
-.oncoming-right .oncoming-plane { transform:scaleX(-1); }
-.oncoming-car { position:absolute; width:80px; height:35px; transform-origin:0 0; border-radius:12px 12px 3px 3px; background:#111623cc; opacity:0; }
-.oncoming-car>i { position:absolute; bottom:5px; left:8px; width:12px; height:7px; border-radius:50%; background:#ebffff; box-shadow:0 0 14px 4px #9eefff88; }
-.oncoming-car>i+i { left:auto;right:8px; }
-.headlight-cone { position:absolute; top:80%; left:-30%; width:160%; height:80px; background:radial-gradient(ellipse at top,#b8edff77,transparent 70%); mix-blend-mode:screen; }
-.amber-markers { display:none; position:absolute; top:1px; left:10px; width:60px; height:4px; background:repeating-linear-gradient(90deg,#ffd08b 0 4px,transparent 4px 12px); }
-[data-truck='true'] .amber-markers { display:block; }
-[data-truck='true'].oncoming-car { height:50px; }
-.barrier-wash { position:absolute; inset:65% 70% 0 0; background:radial-gradient(ellipse,#dbf5ff,transparent 70%); opacity:0; mix-blend-mode:screen; }
-.oncoming-right .barrier-wash { inset:65% 0 0 70%; }
-.lower-city { position:absolute; inset:0; z-index:1; pointer-events:none; clip-path:polygon(65% 70%,100% 68%,100% 100%,84% 100%); }
-.lower-city>svg { width:100%; height:100%; }
-.city-side-left { clip-path:polygon(0 68%,35% 70%,16% 100%,0 100%); }
-.city-side-left>svg { transform:scaleX(-1); }
-.metro-train { opacity:0; }
 .rain-world { position:absolute; inset:0; z-index:10; pointer-events:none; }
 .rain-canvas { position:absolute; inset:0; width:100%; height:100%; }
 .rain-fog { position:absolute; inset:48% 0 17%; background:radial-gradient(ellipse,#c9b4d5,transparent 70%); opacity:0; }
@@ -54,10 +8,6 @@
 .rain-ripple { position:absolute; left:0; top:0; width:35px; height:35px; border:1px solid #ecc5e1; border-radius:50%; opacity:0; }
 .lens-drop { position:absolute; width:7px; height:12px; border-radius:50%; background:radial-gradient(ellipse at 25% 20%,#fff8,#ccd5ee20 25%,transparent 50%,#b6a7ce44 80%,transparent); opacity:0; }
 .highway-perf { position:absolute; z-index:20; left:12px; bottom:12%; padding:6px 9px; background:#101321e8; color:#a9ffff; font:11px monospace; }
-.rain-filter-defs { position:absolute; width:0; height:0; }
-.tail-reflection { filter:url(#wet-traffic-ripple) blur(4px); }
 .weather-rail-glow { position:absolute; inset:0; width:100%; height:100%; filter:blur(3px); opacity:calc(var(--weather,0)*.3); mix-blend-mode:screen; }
 .rear-scene[data-raining='true'] .city-tile>img { filter:drop-shadow(0 0 2px #ffd6bd33); }
 .rear-scene[data-raining='true'] .sun-cuts::after { content:''; position:absolute; inset:0; background:linear-gradient(transparent,#ffd1a0); opacity:calc(var(--weather,0)*.12); }
-.rear-scene .lamp-cone { opacity:calc(.1 + var(--weather,0)*.1); }
-@media(max-width:767px),(prefers-reduced-motion:reduce) { .tail-reflection { filter:blur(3px); } }

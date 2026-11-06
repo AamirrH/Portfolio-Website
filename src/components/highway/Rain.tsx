@@ -1,3 +1,4 @@
+import './highway.css';
 import { useEffect,useRef } from 'react';
 import { useSceneStore } from '../../state/useSceneStore';
 import { useStopPreferences } from '../../hooks/useStopAnimations';
@@ -22,10 +23,10 @@ export function Rain(){
   };frame=requestAnimationFrame(tick);window.addEventListener('resize',resize);
   return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',resize);ctx.clearRect(0,0,w,h);root.dataset.frames='0';};
  },[mobile,reduced,hidden,motion,ignited,section]);
- return <div ref={ref} className="rain-world" aria-hidden="true"><svg className="rain-filter-defs" aria-hidden="true"><defs><filter id="wet-traffic-ripple"><feTurbulence baseFrequency=".02 .18" numOctaves="1" seed="4" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg><svg className="weather-rail-glow" viewBox="0 0 1440 800" preserveAspectRatio="none"><path d="M0 687L628 529M1440 687L812 529" fill="none" stroke="#ff92b8" strokeWidth="5"/></svg><div className="rain-fog"/><div className="rain-sheen"/><canvas className="rain-canvas"/>{Array.from({length:12},(_,i)=><span key={i} className="rain-ripple"/>)}{!mobile&&Array.from({length:6},(_,i)=><span key={i} className="lens-drop"/>)}</div>;
+ return <div ref={ref} className="rain-world" aria-hidden="true"><svg className="weather-rail-glow" viewBox="0 0 1440 800" preserveAspectRatio="none"><path d="M0 687L628 529M1440 687L812 529" fill="none" stroke="#ff92b8" strokeWidth="5"/></svg><div className="rain-fog"/><div className="rain-sheen"/><canvas className="rain-canvas"/>{Array.from({length:12},(_,i)=><span key={i} className="rain-ripple"/>)}{!mobile&&Array.from({length:6},(_,i)=><span key={i} className="lens-drop"/>)}</div>;
 }
 export function HighwayPerf(){
  const ref=useRef<HTMLOutputElement>(null);
- useEffect(()=>{const timer=setInterval(()=>{const node=ref.current;if(!node)return;const traffic=document.querySelector<HTMLElement>('.living-traffic'),rain=document.querySelector<HTMLElement>('.rain-world');const pools=Array.from(document.querySelectorAll<HTMLElement>('[data-pool]')).map(n=>Number(n.dataset.pool));node.textContent=`FPS ${traffic?.dataset.fps??'—'} · pools ${pools.reduce((a,b)=>a+b,0)} · cars ${traffic?.dataset.active??'3'} · rain ${rain?.dataset.rainActive??'0'}/${rain?.dataset.rainPool??'0'}`;},500);return()=>clearInterval(timer);},[]);
+ useEffect(()=>{const timer=setInterval(()=>{const node=ref.current;if(!node)return;const rain=document.querySelector<HTMLElement>('.rain-world');const pools=Array.from(document.querySelectorAll<HTMLElement>('[data-pool]')).map(n=>Number(n.dataset.pool));node.textContent=`FPS ${rain?.dataset.fps??'—'} · pools ${pools.reduce((a,b)=>a+b,0)} · rain ${rain?.dataset.rainActive??'0'}/${rain?.dataset.rainPool??'0'}`;},500);return()=>clearInterval(timer);},[]);
  return new URLSearchParams(location.search).get('perf')==='1'?<output ref={ref} className="highway-perf"/>:null;
 }
