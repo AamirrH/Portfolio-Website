@@ -202,3 +202,13 @@ button,a { touch-action:manipulation; }
 @keyframes city-neon-flicker { 0%,91%,96%,100% { opacity:.7; } 92%,95% { opacity:.15; } }
 @media(prefers-reduced-motion:reduce) { .city-window-twinkle,.aviation-light,.city-neon { animation:none; } }
 @media(max-width:767px) { .rear-scene .layer-near-buildings { display:block; opacity:.65; } }
+
+/* Opening-scene sunset bloom uses gradients rather than full-scene blur. */
+.home-sunset-bloom .sun-aura { background:radial-gradient(circle,#ffdc8b85 0%,#ffb47338 33%,#ff809217 53%,transparent 72%); }
+.home-sunset-bloom .sun-disc { box-shadow:0 0 45px #ffe29a66,0 0 100px #ffb77338; }
+.home-sunlight { position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen; }
+.horizon-bloom { position:absolute; inset:32% 10% 25%; background:radial-gradient(ellipse at 50% 65%,#ffca8245, #ff9b7517 42%,transparent 72%); opacity:.8; animation:sunset-breathe 9s ease-in-out infinite alternate; }
+.road-sunlight { position:absolute; inset:65% 24% 0; background:radial-gradient(ellipse at 50% 0%,#ffd99338,#ffac7a12 42%,transparent 72%); clip-path:polygon(39% 0,61% 0,100% 100%,0 100%); }
+@keyframes sunset-breathe { from { opacity:.65; } to { opacity:.9; } }
+@media(max-width:767px) { .home-sunlight { opacity:.65; }.horizon-bloom { animation:none; }.home-sunset-bloom .sun-disc { box-shadow:0 0 35px #ffe29a50; } }
+@media(prefers-reduced-motion:reduce) { .horizon-bloom { animation:none; } }

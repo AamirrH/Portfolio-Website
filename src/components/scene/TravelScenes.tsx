@@ -8,6 +8,8 @@ import { PowerLines } from './PowerLines';
 import { Highway } from './Highway';
 import { Gantry } from './Gantry';
 import { RearCar } from './Car';
+import { useSceneStore } from '../../state/useSceneStore';
+import { SCENE_QUALITY } from '../../config';
 import { Cockpit } from './Cockpit';
 export function SceneSky() {
   return <><Layer name="sky"><Sky/></Layer><Layer name="sun"><Sun/></Layer><Layer name="far-skyline"><FarSkyline/></Layer><Layer name="mid-skyline"><MidSkyline/></Layer></>;
@@ -15,7 +17,9 @@ export function SceneSky() {
 export function RearScene() {
   const ref = useRef<HTMLDivElement>(null);
   useSceneMotion(ref);
-  return <div ref={ref} className="travel-scene rear-scene"><SceneSky/><Layer name="near-buildings"><NearBuildings/></Layer><Layer name="power-lines"><PowerLines/></Layer><Layer name="highway"><div className="rear-road"><Highway/></div></Layer><Layer name="gantry"><Gantry/></Layer><Layer name="car-rear"><div className="rear-car"><RearCar/></div></Layer></div>;
+  const home = useSceneStore(state => state.section === 'home');
+  const bloom = home && SCENE_QUALITY.bloom;
+  return <div ref={ref} className={`travel-scene rear-scene${bloom ? ' home-sunset-bloom' : ''}`}><SceneSky/><Layer name="near-buildings"><NearBuildings/></Layer><Layer name="power-lines"><PowerLines/></Layer><Layer name="highway"><div className="rear-road"><Highway/></div></Layer>{bloom && <div className="home-sunlight" aria-hidden="true"><div className="horizon-bloom"/><div className="road-sunlight"/></div>}<Layer name="gantry"><Gantry/></Layer><Layer name="car-rear"><div className="rear-car"><RearCar sunset={bloom}/></div></Layer></div>;
 }
 export function DashScene() {
   return <div className="travel-scene dash-scene"><SceneSky/><Layer name="near-buildings"><NearBuildings/></Layer><Layer name="highway"><div className="rear-road"><Highway/></div></Layer><Cockpit/></div>;
