@@ -146,3 +146,14 @@ Motion off, reduced motion and hidden tabs pause the effect. ?perf=1 shows rain 
 The canvas uses at most 220 streaks on desktop and 80 on mobile. Existing music is unchanged.
 Archived traffic source assets are retained but are not loaded by the site.
 Verification: npx playwright test tests/highway.spec.ts.
+
+### Rear road projection
+Only the rear routes (#home, #projects, #contact) mount RoadMarkings. The road model reads the actual neon path segments and the rendered DeLorean sprite in the road SVG's 1440x800 coordinates. It recalibrates after a 150 ms debounced resize.
+
+The measured intersection is (720, 505.8535). Sprite scale and camera height vary with viewport and the existing suspension pose at calibration. The original illustration does not match a 5.25 m rail half-width. With the owner's approval, all three lanes are proportional to the measured road: lane borders and studs use +/-rail/3. Neither the car nor rail artwork is repositioned. The illustration has no independent physical strip-height datum, so light packets follow the measured neon plane exactly. Drawing is clipped at the actual asphalt start as well as between the rails, with a short fade at that visible horizon.
+
+Phase integrates 26 m/s at cruise speed; boosts change its derivative, never its value. A fixed 40-streak pool and reused canvas path draw the road surface. Off/reduced motion draws one static frame; hidden tabs and inactive routes cancel RAF. No traffic or other highway extras are enabled.
+
+Use ?debug=road for projection rays and depth ticks (dense labels are available as SVG titles); ?perf=1 includes road FPS and average canvas CPU submission time. window.__road exposes phase, geometry and RAF/cost diagnostics. Canvas timings do not include the rest of the scene or asynchronous GPU/compositor work.
+
+Run npx playwright test tests/road.spec.ts for speed, rail alignment, desktop/mobile captures, reduced motion, hidden-tab cleanup and a two-minute post-GC memory check. Evidence lives in screenshots/road-*.png and road-model.json / road-memory.json.
