@@ -1,3 +1,4 @@
+import { useHighwayState } from './hooks/useHighwayState';
 import { useEffect } from 'react';
 import { content, projects } from './data/content';
 import { CameraRig } from './components/scene/CameraRig';
@@ -18,6 +19,7 @@ import { useSceneStore } from './state/useSceneStore';
 import { useAtmosphere } from './hooks/useAtmosphere';
 export default function App() {
   useJourney();
+  useHighwayState();
   usePreferences();
   const { cyclePalette } = useAtmosphere();
   const ignited = useSceneStore(state => state.ignited);

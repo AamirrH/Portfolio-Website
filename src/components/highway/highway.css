@@ -1,0 +1,23 @@
+.living-traffic { position:absolute; inset:0; pointer-events:none; z-index:4; }
+.traffic-car { position:absolute; left:0; top:0; opacity:0; transform-origin:0 0; }
+.traffic-car>img { width:100%; height:100%; filter:brightness(.72) saturate(.9) drop-shadow(-1px -1px 0 #dd5b8d77); }
+.traffic-grade,.traffic-night,.traffic-haze { position:absolute; inset:0; mask-image:var(--sprite); mask-size:100% 100%; }
+.traffic-grade { background:#2b0a4a; opacity:.28; mix-blend-mode:multiply; }
+.traffic-night { background:#000; opacity:calc(var(--night,0)*.15); }
+.traffic-haze { background:#aa729b; }
+.tail-light { position:absolute; width:6%; background:#421424; border-radius:15%; box-shadow:0 0 6px #ff303055; opacity:calc(.15 + .25 * var(--night,0)); }
+[data-braking='true'] .tail-light { background:#ff3434; box-shadow:0 0 18px #ff2828cc; mix-blend-mode:screen; opacity:1; }
+[data-kind='rickshaw'] .tail-light { background:#e8a644; }
+.vehicle-sign { position:absolute; display:none; }
+[data-kind='taxi'] .vehicle-sign { display:block; left:35%; top:2%; width:27%; height:6%; background:#ffc86944; box-shadow:0 0 7px #ffc86955; }
+[data-kind='swiftship-van'] .vehicle-sign { display:block; left:14%; top:24%; width:17%; height:14%; background:#ffb34355; mix-blend-mode:screen; animation:van-logo 6s ease-in-out infinite; }
+@keyframes van-logo { 50% {opacity:.4;} }
+.tail-reflection { position:absolute; top:99%; left:8%; width:65%; height:30%; background:linear-gradient(90deg,#ff424288 0 10%,transparent 10% 85%,#ff424288 85%); filter:blur(4px); mask-image:linear-gradient(#000,transparent); opacity:calc(var(--wetness,0)*.35); }
+.traffic-debug .tail-light,.traffic-debug .vehicle-sign { outline:1px solid #25f4ee; }
+.rear-scene .layer-car-rear { z-index:8; }
+.rear-scene .layer-gantry { z-index:9; }
+.home-copy::before,.contact-copy::before { content:''; position:absolute; inset:-18px -25px; z-index:-1; background:linear-gradient(90deg,#00000059,transparent); pointer-events:none; }
+.motion-off *, .motion-off *::before,.motion-off *::after { animation-play-state:paused!important; }
+.motion-toggle { padding:8px 10px; border:1px solid #ffffff25; background:transparent; color:#c9c0d6; font-size:10px; }
+@media(max-width:767px) { .motion-toggle { padding:6px; font-size:9px; } }
+@media(prefers-reduced-motion:reduce) { .vehicle-sign { animation:none!important; } }

@@ -4,6 +4,7 @@ import { type StopConfig } from '../data/stops';
 import { useSceneStore } from '../state/useSceneStore';
 
 export function useStopPreferences() {
+  const motion=useSceneStore(s=>s.motion);
   const read = () => ({ reduced: matchMedia('(prefers-reduced-motion: reduce)').matches, mobile: matchMedia('(max-width: 767px)').matches, hidden: document.hidden });
   const [preferences, setPreferences] = useState(read);
   useEffect(() => {
@@ -12,7 +13,7 @@ export function useStopPreferences() {
     reduced.addEventListener('change', update); mobile.addEventListener('change', update); document.addEventListener('visibilitychange', update);
     return () => { reduced.removeEventListener('change', update); mobile.removeEventListener('change', update); document.removeEventListener('visibilitychange', update); };
   }, []);
-  return preferences;
+  return {...preferences,reduced:preferences.reduced || !motion};
 }
 
 export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConfig) {
