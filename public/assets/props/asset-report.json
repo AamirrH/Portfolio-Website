@@ -1,0 +1,158 @@
+{
+  "props": {
+    "parisian-lamp": {
+      "src": "/assets/props/parisian-lamp.webp",
+      "aspect": 0.16,
+      "bytes": 18648,
+      "crop": {
+        "left": 272,
+        "top": 67,
+        "width": 139,
+        "height": 869
+      }
+    },
+    "modern-lamp": {
+      "src": "/assets/props/modern-lamp.webp",
+      "aspect": 0.4585714285714286,
+      "bytes": 16632,
+      "crop": {
+        "left": 605,
+        "top": 78,
+        "width": 393,
+        "height": 857
+      }
+    },
+    "topiary": {
+      "src": "/assets/props/topiary.webp",
+      "aspect": 0.5158730158730159,
+      "bytes": 23020,
+      "crop": {
+        "left": 909,
+        "top": 306,
+        "width": 325,
+        "height": 630
+      }
+    },
+    "bench": {
+      "src": "/assets/props/bench.webp",
+      "aspect": 2.0714285714285716,
+      "bytes": 17020,
+      "crop": {
+        "left": 1429,
+        "top": 196,
+        "width": 551,
+        "height": 266
+      }
+    },
+    "bistro": {
+      "src": "/assets/props/bistro.webp",
+      "aspect": 1.738562091503268,
+      "bytes": 42996,
+      "crop": {
+        "left": 2096,
+        "top": 161,
+        "width": 532,
+        "height": 306
+      }
+    },
+    "hydrant": {
+      "src": "/assets/props/hydrant.webp",
+      "aspect": 0.545751633986928,
+      "bytes": 9230,
+      "crop": {
+        "left": 1356,
+        "top": 630,
+        "width": 167,
+        "height": 306
+      }
+    },
+    "trash-bin": {
+      "src": "/assets/props/trash-bin.webp",
+      "aspect": 0.6729559748427673,
+      "bytes": 11928,
+      "crop": {
+        "left": 1684,
+        "top": 618,
+        "width": 214,
+        "height": 318
+      }
+    },
+    "bike-rack": {
+      "src": "/assets/props/bike-rack.webp",
+      "aspect": 1.8161290322580645,
+      "bytes": 41948,
+      "crop": {
+        "left": 2075,
+        "top": 628,
+        "width": 563,
+        "height": 310
+      }
+    },
+    "kiosk": {
+      "src": "/assets/props/kiosk.webp",
+      "aspect": 1.4232456140350878,
+      "bytes": 16726,
+      "crop": {
+        "left": 145,
+        "top": 1008,
+        "width": 649,
+        "height": 456
+      }
+    },
+    "bollards": {
+      "src": "/assets/props/bollards.webp",
+      "aspect": 2.166023166023166,
+      "bytes": 12894,
+      "crop": {
+        "left": 959,
+        "top": 1205,
+        "width": 561,
+        "height": 259
+      }
+    },
+    "scooter": {
+      "src": "/assets/props/scooter.webp",
+      "aspect": 1.498583569405099,
+      "bytes": 24020,
+      "crop": {
+        "left": 1642,
+        "top": 1112,
+        "width": 529,
+        "height": 353
+      }
+    },
+    "phone-booth": {
+      "src": "/assets/props/phone-booth.webp",
+      "aspect": 0.6214442013129103,
+      "bytes": 8288,
+      "crop": {
+        "left": 2318,
+        "top": 1008,
+        "width": 284,
+        "height": 457
+      }
+    }
+  },
+  "left": {
+    "src": "/assets/neighbors/left.webp",
+    "aspect": 0.7366666666666667,
+    "bytes": 108422,
+    "crop": {
+      "left": 0,
+      "top": 59,
+      "width": 1029,
+      "height": 1397
+    }
+  },
+  "right": {
+    "src": "/assets/neighbors/right.webp",
+    "aspect": 0.73,
+    "bytes": 82112,
+    "crop": {
+      "left": 36,
+      "top": 148,
+      "width": 955,
+      "height": 1308
+    }
+  }
+}

@@ -77,3 +77,5 @@ await writeFile(path.join(output, 'asset-report.json'), `${JSON.stringify(report
 console.log(`Combined WebP + silhouette budget: ${totalBytes} / 400000 bytes`);
 
 await import('./key-signalroute.mjs');
+
+await import('./key-environment.mjs');

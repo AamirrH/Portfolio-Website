@@ -1,0 +1,16 @@
+{
+  "source": "assets-src/skyline-raw.png",
+  "crop": {
+    "left": 234,
+    "top": 0,
+    "width": 2279,
+    "height": 1536
+  },
+  "width": 1800,
+  "height": 959,
+  "variants": [
+    "far",
+    "mid",
+    "near"
+  ]
+}

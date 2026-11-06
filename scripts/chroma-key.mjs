@@ -1,4 +1,4 @@
-export function chromaKey(data, width, height) {
+export function chromaKey(data, width, height, { removeWatermark = true } = {}) {
   const transparent = new Uint8Array(width * height);
   const watermarkX = Math.floor(width * 2380 / 2576);
   const watermarkY = Math.floor(height * 1250 / 1438);
@@ -6,7 +6,7 @@ export function chromaKey(data, width, height) {
     const i = (y * width + x) * 4;
     const greenness = data[i + 1] - Math.max(data[i], data[i + 2]);
     const alpha = greenness > 110 ? 0 : greenness > 40 ? Math.round(255 * (110 - greenness) / 70) : 255;
-    data[i + 3] = x > watermarkX && y > watermarkY ? 0 : Math.min(data[i + 3], alpha);
+    data[i + 3] = removeWatermark && x > watermarkX && y > watermarkY ? 0 : Math.min(data[i + 3], alpha);
     transparent[y * width + x] = data[i + 3] === 0 ? 1 : 0;
   }
   // Use the original keyed alpha, not an iteratively expanded neighborhood.
