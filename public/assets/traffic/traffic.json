@@ -16,15 +16,15 @@
     "height": 483
   },
   "truck": {
-    "width": 611,
-    "height": 700
+    "width": 700,
+    "height": 802
   },
   "swiftship-van": {
     "width": 582,
     "height": 599
   },
   "rickshaw": {
-    "width": 366,
-    "height": 467
+    "width": 363,
+    "height": 463
   }
 }

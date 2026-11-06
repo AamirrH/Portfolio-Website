@@ -12,12 +12,24 @@ for(let y=0;y<height;y++)for(let x=0;x<width;x++){const p=y*width+x;if(seen[p])c
 let blobs=components(data,width,height,true);
 for(const b of blobs)if(b.area<8000&&Math.hypot(width-(b.left+b.width/2),height-(b.top+b.height/2))<220)for(const p of b.pixels)data[p*4+3]=0;
 blobs=components(data,width,height,true).filter(b=>b.area>20000).sort((a,b)=>(a.top+a.height/2)-(b.top+b.height/2));
-// This supplied replacement sheet has eight cells. User selected the lower taxi.
-if(blobs.length!==8)throw new Error(`Expected 8 source vehicles before the approved taxi exclusion; found ${blobs.length}`);
-const top=blobs.slice(0,4).sort((a,b)=>a.left-b.left),bottom=blobs.slice(4).sort((a,b)=>a.left-b.left);
-const chosen=[top[0],top[1],bottom[1],top[3],bottom[0],bottom[2],bottom[3]];
-if(chosen.length!==7)throw new Error('Traffic selection must contain exactly 7 vehicles');
-const names=['sedan','hatch','taxi','camper','truck','swiftship-van','rickshaw'],manifest={},previews=[];
+// Cluster rows by centre-y before sorting left-to-right.
+const rows=[];
+for(const blob of blobs){
+ const cy=blob.top+blob.height/2;
+ let row=rows.find(r=>Math.abs(r.cy-cy)<height*.22);
+ if(!row){row={cy,items:[]};rows.push(row);}
+ row.items.push(blob);row.cy=row.items.reduce((n,b)=>n+b.top+b.height/2,0)/row.items.length;
+}
+const ordered=rows.sort((a,b)=>a.cy-b.cy).flatMap(r=>r.items.sort((a,b)=>a.left-b.left));
+if(![7,8].includes(ordered.length))throw new Error('Expected 7 or 8 traffic components; found '+ordered.length);
+const view=ordered.length===7?'straight':'threeQuarter';
+// The supplied replacement has a blue sedan and TWO taxis, not the old
+// red-coupe sheet. Preserve the owner's explicit bottom-row taxi selection.
+// --legacy-first-coupe supports the original eight-car layout from the brief.
+const legacy=process.argv.includes('--legacy-first-coupe');
+const chosen=ordered.length===7?ordered:legacy?ordered.slice(1):[ordered[0],ordered[1],ordered[5],ordered[3],ordered[4],ordered[6],ordered[7]];
+const names=legacy&&ordered.length===8?['sedan','hatch','camper','truck','taxi','swiftship-van','rickshaw']:['sedan','hatch','taxi','camper','truck','swiftship-van','rickshaw'];
+const manifest={},previews=[];
 await mkdir('public/assets/traffic',{recursive:true});
 for(let n=0;n<chosen.length;n++){
  const b=chosen[n],isolated=Buffer.alloc(data.length);for(const p of b.pixels)data.copy(isolated,p*4,p*4,p*4+4);
@@ -41,11 +53,12 @@ for(let n=0;n<chosen.length;n++){
  // mirror arm. This inspected cutout is outside the cabin, not window glass.
  if(names[n]==='truck')for(let y=b.top+Math.floor(b.height*.2);y<b.top+b.height*.5;y++)for(let x=b.left+Math.floor(b.width*.88);x<b.left+b.width;x++){const p=y*width+x;if(green(p)&&data[p*4+1]>180)isolated[p*4+3]=0;}
  const raw=await sharp(isolated,{raw:{width,height,channels:4}}).extract({left:b.left,top:b.top,width:b.width,height:b.height}).png().toBuffer();
- const out=await sharp(raw).trim({threshold:0}).resize({height:Math.min(b.height,700)}).webp({quality:90,alphaQuality:100}).toBuffer({resolveWithObject:true});
+ const out=await sharp(raw).trim({threshold:0}).webp({quality:90,alphaQuality:100}).toBuffer({resolveWithObject:true});
  await writeFile(`public/assets/traffic/${names[n]}.webp`,out.data);manifest[names[n]]={width:out.info.width,height:out.info.height};
  previews.push({input:await sharp(out.data).resize({width:300,height:280,fit:'inside'}).png().toBuffer(),left:20+(n%4)*330,top:20+Math.floor(n/4)*320});
  console.log(`${names[n]}: ${out.info.width} x ${out.info.height}`);
 }
 await writeFile('public/assets/traffic/traffic.json',JSON.stringify(manifest,null,2));
+await writeFile('public/assets/traffic/view.json',JSON.stringify({view,sourceCount:ordered.length,selection:legacy?'legacy-first-coupe':'approved-bottom-taxi'},null,2));
 await sharp({create:{width:1340,height:640,channels:4,background:'#777777'}}).composite(previews).png().toFile('screenshots/traffic-sheet.png');
 
