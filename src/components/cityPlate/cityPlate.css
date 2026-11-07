@@ -1,0 +1,39 @@
+.city-below { position:absolute; inset:0; pointer-events:none; }
+.city-plate-clip { position:absolute; top:var(--plate-horizon,71%); bottom:var(--plate-bottom,65px); left:0; right:0; overflow:hidden; mask-image:linear-gradient(to bottom,transparent,#000 40px); }
+.city-plate-crop { position:absolute; inset:0; overflow:hidden; }
+.city-plate-plane { position:absolute; bottom:var(--plate-offset,0px); left:calc((1 - var(--plate-scale,1))*50%); width:calc(100% * var(--plate-scale,1)); aspect-ratio:var(--plate-aspect); }
+.city-plate-image { width:100%; height:100%; display:block; filter:saturate(1.18) brightness(.92) contrast(1.05); }
+.plate-grade,.plate-rim,.plate-edge,.plate-overlays { position:absolute; inset:0; }
+.plate-grade { background:#7a2f6e; opacity:.14; mix-blend-mode:multiply; mask-image:url('/assets/sides/city-below.webp'); mask-size:100% 100%; }
+.plate-rim { left:50%; background:linear-gradient(to left,rgba(255,120,60,.10),transparent 40%); }
+.plate-edge { background:radial-gradient(ellipse at left bottom,rgba(8,4,20,.4),transparent 45%),radial-gradient(ellipse at right bottom,rgba(8,4,20,.4),transparent 45%); }
+.plate-haze { position:absolute; inset:0 0 66%; background:linear-gradient(var(--sky-horizon,#a34c86),transparent); opacity:.35; animation:plate-haze-breathe 8s ease-in-out infinite alternate; }
+@keyframes plate-haze-breathe { from{opacity:.3}to{opacity:.4} }
+.plate-rect { position:absolute; display:block; opacity:0; }
+.plate-window-dark { background:#1a1030; }
+.plate-window-warm { background:#ffb347; mix-blend-mode:screen; }
+.plate-sign { background:currentColor; opacity:.12; filter:blur(3px); mix-blend-mode:screen; }
+.plate-streets { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; }
+.plate-street-dot,.plate-train { opacity:0; }
+.plate-street-path,.plate-viaduct-debug { display:none; }
+.plate-static .plate-haze { animation:none; }
+.overlays-static { display:none; }
+.plate-debug .city-plate-plane { outline:1px dashed #ff85cd; outline-offset:-2px; }
+.plate-clip-label { position:absolute; left:0; right:0; border-top:1px dashed #25f4ee; color:#25f4ee; font:11px monospace; padding:5px; background:#090e2066; }
+.plate-rects .plate-rect { outline:1px solid #25f4ee; opacity:.5!important; filter:none; }
+.plate-rects .plate-rect::after { content:attr(data-id); color:white; font:8px monospace; position:absolute; bottom:100%; white-space:nowrap; background:#090e20; }
+.plate-rects .plate-street-path,.plate-rects .plate-viaduct-debug { display:block; stroke:#25f4ee; stroke-width:.1; fill:none; }
+.plate-streaks { position:absolute; inset:0; width:100%; height:100%; }
+.plate-perf { position:absolute; left:12px; bottom:20%; color:#fff; background:#080b20; padding:5px; font:11px monospace; }
+.home-copy::before,.contact-copy::before { content:''; position:absolute; inset:-40px; z-index:-1; pointer-events:none; border-radius:0; background:radial-gradient(ellipse at 30% 60%,rgba(8,4,20,.5),transparent 70%); }
+.plain-city-plate { max-width:900px; margin:0 auto; height:180px; overflow:hidden; mask-image:linear-gradient(transparent,#000 40px); }
+.plain-city-plate img { display:block; width:100%; margin-top:-18%; filter:saturate(1.18) brightness(.92) contrast(1.05); }
+@media(max-width:767px){
+ .crop-left { right:50%; }.crop-right { left:50%; }
+ .city-plate-plane { width:calc(40vh * var(--plate-aspect) * var(--plate-scale)); left:0; }
+ .crop-right .city-plate-plane { left:auto; right:0; }
+ .plate-perf { font-size:8px; }
+}
+.plate-rects .overlays-static { display:block; }
+.plate-bounds-debug { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.plate-bounds-debug rect { fill:none; stroke:#ff85cd; stroke-width:1; stroke-dasharray:5 4; }
