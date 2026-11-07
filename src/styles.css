@@ -233,7 +233,6 @@ button,a { touch-action:manipulation; }
 .lower-facades { display:none; }
 .rear-scene .city-near .lower-facades,.rear-scene .city-mid .lower-facades { display:block; position:absolute; top:calc(100% - 8px); width:100%; height:40vh; mask-image:linear-gradient(transparent,#000 18px); }
 .rear-scene .city-mid .lower-facades { opacity:.65; }
-.rear-scene .city-near .city-art-haze::after { content:''; position:absolute; top:100%; left:0; width:100%; height:90px; background:linear-gradient(rgba(119,63,112,.45),transparent); }
 .deck-edge { position:absolute; inset:0; width:100%; height:100%; }
 @media(max-width:767px) { .rear-scene .secondary-window { display:none; } }
 
@@ -245,3 +244,9 @@ button,a { touch-action:manipulation; }
 .project-gantry-sign:hover,.project-gantry-sign:focus-visible { box-shadow:0 6px 0 #0e1920,0 0 28px #a4ffd94d,inset 0 0 0 2px #d7edc8; }
 .projects-copy::before { content:''; position:absolute; inset:-40px; z-index:-1; border-radius:0; background:radial-gradient(ellipse at 30% 60%,rgba(8,4,20,.55),transparent 70%); }
 @media(max-width:767px) { .project-gantry { top:15%; left:7%; width:86%; display:grid; gap:12px; }.project-gantry-sign { padding:11px 16px; }.project-gantry-sign h2 { font-size:17px; }.project-gantry-sign p { margin-top:4px; font-size:8px; }.project-gantry-sign::before,.project-gantry-sign::after { height:3px; bottom:-7px; }.projects-copy { bottom:18%; }.projects-copy h1 { font-size:36px; } }
+
+.rear-scene .city-near { bottom:0; height:calc(var(--city-height) + 28.75vh); }
+.rear-scene .city-near .city-tiles { bottom:auto; height:var(--city-height); }
+.rear-scene .city-near .city-tile::after,.rear-scene .city-mid .city-tile::after { content:''; position:absolute; top:calc(100% - 30px); left:0; width:100%; height:90px; background:linear-gradient(transparent,rgba(119,63,112,.45) 35%,transparent); }
+
+.project-gantry-sign h2 { position:relative; padding-right:22px; font-size:clamp(14px,1.35vw,21px); }.project-gantry-sign h2 span { position:absolute; right:0; top:0; float:none; }

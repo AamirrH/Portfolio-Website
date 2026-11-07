@@ -11,6 +11,8 @@ interface RoadDiagnostics {
 }
 declare global { interface Window { __road?:RoadDiagnostics; } }
 const MIN_SCALE=2.5;
+// Decorative lane spacing is 20% wider; projection and rails are unchanged.
+const laneX=(rail:number)=>rail/3*1.2;
 const smooth=(value:number)=>{const t=Math.max(0,Math.min(1,value));return t*t*(3-2*t);};
 const modulo=(n:number,d:number)=>((n%d)+d)%d;
 
@@ -20,7 +22,7 @@ function RoadDebug({model:m}:{model:RoadModel}) {
   const depths=Array.from({length:Math.floor((m.F/MIN_SCALE)/10)},(_,i)=>(i+1)*10);
   return <svg className="road-debug" viewBox={`0 0 ${m.width} ${m.height}`} preserveAspectRatio="none">
     <path d={`M0 ${m.vp.y}H${m.width}`} stroke="#25f4ee" strokeDasharray="5 5"/>
-    {[-m.rail,m.rail,-m.rail/3,m.rail/3].map((x,i)=>{const p=worldToScreen(x,bottom,m);return <path key={x} d={`M${m.vp.x} ${m.vp.y}L${p.x} ${p.y}`} fill="none" stroke={i<2?'#ff3030':'#ffff30'} strokeWidth={i<2?2:1}/>;})}
+    {[-m.rail,m.rail,-laneX(m.rail),laneX(m.rail)].map((x,i)=>{const p=worldToScreen(x,bottom,m);return <path key={x} d={`M${m.vp.x} ${m.vp.y}L${p.x} ${p.y}`} fill="none" stroke={i<2?'#ff3030':'#ffff30'} strokeWidth={i<2?2:1}/>;})}
     <circle cx={m.vp.x} cy={m.vp.y} r="4" fill="#25f4ee"/>
     {depths.map(z=>{const s=m.F/z,p=worldToScreen(0,s,m);const label=lastLabelY-p.y>10;if(label)lastLabelY=p.y;return p.y<m.height&&s>MIN_SCALE?<g key={z}><path d={`M${p.x-6} ${p.y}h12`} stroke="#fff"/><title>{z}m / s {s.toFixed(1)}</title>{label&&<text x={p.x+10} y={p.y} fontSize="8" fill="#fff">{z}m / s {s.toFixed(1)}</text>}</g>:null;})}
     <rect x="15" y="80" width="280" height="112" rx="5" fill="#060b19" opacity=".95"/>
@@ -100,14 +102,14 @@ export function RoadMarkings(){
           const scale=m.F/Math.max(near,z);
           const bottomFade=1-smooth((scale-.82*bottomS)/(.18*bottomS));
           const glowFade=1-smooth((scale-.65*bottomS)/(.15*bottomS));
-          for(let side=-1;side<=1;side+=2)quad(side*m.rail/3,z,3*blur,pass===0?.3:.11,pass===0?'#ff4fa8':'#fff3fb',bottomFade*(pass===0?.10*glowFade:.88));
+          for(let side=-1;side<=1;side+=2)quad(side*laneX(m.rail),z,3*blur,pass===0?.3:.11,pass===0?'#ff4fa8':'#fff3fb',bottomFade*(pass===0?.10*glowFade:.88));
         }
       }
       ctx.shadowBlur=0;
       for(let i=0;i<studCycle/12;i++){
         const z=near+modulo(i*12+4.5-phase.current,studCycle);
         const alpha=animate?.75+.25*Math.sin(time.current*Math.PI*12):.75;
-        for(let side=-1;side<=1;side+=2)quad(side*m.rail/3,z,.18*blur,.18,i%2?'#25f4ee':'#ff4fa8',alpha);
+        for(let side=-1;side<=1;side+=2)quad(side*laneX(m.rail),z,.18*blur,.18,i%2?'#25f4ee':'#ff4fa8',alpha);
       }
       if(animate){
         ctx.globalCompositeOperation='lighter';

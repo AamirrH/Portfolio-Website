@@ -160,3 +160,10 @@ Run npx playwright test tests/road.spec.ts for speed, rail alignment, desktop/mo
 
 ### Archived city plate
 The generated city-below.webp and keying pipeline are retained but unused. CITY_PLATE and all traffic/side-fill flags are false; plate overlays and debug code have been removed.
+
+### Rear scene polish
+Near/mid tile facades continue behind the deck only in rear views, inheriting their existing parallax. A 90px fog blend and a separate underside edge sit beneath the unchanged highway artwork. Projects uses the shared RoadSign component and existing content categories as subtitles.
+
+RoadMarkings uses 0.11 m paint, 0.3 m / 0.10 glow, bottom-scale fade and a halo cutoff near the camera. Decorative borders and studs are 20% wider than the approved proportional lane spacing; the road model and rails are unchanged. The large unchanged car can still occlude distant markings, especially on mobile.
+
+Run npx playwright test tests/rear-polish.spec.ts for all rear routes at 1440x900 and 390x844, 3s/10s screenshots and console checks.
