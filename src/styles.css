@@ -228,3 +228,20 @@ button,a { touch-action:manipulation; }
 .raster-neon { position:absolute; background:currentColor; mix-blend-mode:screen; opacity:.2; box-shadow:0 0 6px currentColor; }
 .city-debug .raster-neon,.city-debug .raster-aviation { outline:1px solid #ffd66b; }
 @media(max-width:767px) { .raster-city { --city-height:20vh; }.city-mid { --city-height:27vh; }.city-near { --city-height:35vh; } }
+
+/* Rear-only facade continuation; inherited tile transforms preserve depth. */
+.lower-facades { display:none; }
+.rear-scene .city-near .lower-facades,.rear-scene .city-mid .lower-facades { display:block; position:absolute; top:calc(100% - 8px); width:100%; height:40vh; mask-image:linear-gradient(transparent,#000 18px); }
+.rear-scene .city-mid .lower-facades { opacity:.65; }
+.rear-scene .city-near .city-art-haze::after { content:''; position:absolute; top:100%; left:0; width:100%; height:90px; background:linear-gradient(rgba(119,63,112,.45),transparent); }
+.deck-edge { position:absolute; inset:0; width:100%; height:100%; }
+@media(max-width:767px) { .rear-scene .secondary-window { display:none; } }
+
+.project-gantry { left:16%; width:68%; gap:2%; }
+.project-gantry-sign { flex:1; min-width:0; padding:22px 17px; transition:box-shadow .2s; }
+.project-gantry-sign h2 { font-size:clamp(15px,1.5vw,23px); font-weight:500; line-height:1.35; }
+.project-gantry-sign h2 span { float:right; margin-left:6px; }
+.project-gantry-sign p { font-size:9px; letter-spacing:.04em; color:#c5d6bb; margin-top:14px; line-height:1.5; }
+.project-gantry-sign:hover,.project-gantry-sign:focus-visible { box-shadow:0 6px 0 #0e1920,0 0 28px #a4ffd94d,inset 0 0 0 2px #d7edc8; }
+.projects-copy::before { content:''; position:absolute; inset:-40px; z-index:-1; border-radius:0; background:radial-gradient(ellipse at 30% 60%,rgba(8,4,20,.55),transparent 70%); }
+@media(max-width:767px) { .project-gantry { top:15%; left:7%; width:86%; display:grid; gap:12px; }.project-gantry-sign { padding:11px 16px; }.project-gantry-sign h2 { font-size:17px; }.project-gantry-sign p { margin-top:4px; font-size:8px; }.project-gantry-sign::before,.project-gantry-sign::after { height:3px; bottom:-7px; }.projects-copy { bottom:18%; }.projects-copy h1 { font-size:36px; } }

@@ -157,3 +157,6 @@ Phase integrates 26 m/s at cruise speed; boosts change its derivative, never its
 Use ?debug=road for projection rays and depth ticks (dense labels are available as SVG titles); ?perf=1 includes road FPS and average canvas CPU submission time. window.__road exposes phase, geometry and RAF/cost diagnostics. Canvas timings do not include the rest of the scene or asynchronous GPU/compositor work.
 
 Run npx playwright test tests/road.spec.ts for speed, rail alignment, desktop/mobile captures, reduced motion, hidden-tab cleanup and a two-minute post-GC memory check. Evidence lives in screenshots/road-*.png and road-model.json / road-memory.json.
+
+### Archived city plate
+The generated city-below.webp and keying pipeline are retained but unused. CITY_PLATE and all traffic/side-fill flags are false; plate overlays and debug code have been removed.

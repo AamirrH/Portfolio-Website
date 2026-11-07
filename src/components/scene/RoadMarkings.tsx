@@ -54,7 +54,8 @@ export function RoadMarkings(){
     const bounds=root.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,1.5);
     canvas.width=Math.round(bounds.width*dpr);canvas.height=Math.round(bounds.height*dpr);
     const sx=canvas.width/m.width,sy=canvas.height/m.height;
-    const near=m.F/sForY(m.height,m),far=m.F/MIN_SCALE,depth=far-near;
+    const bottomS=sForY(m.height,m);
+    const near=m.F/bottomS,far=m.F/MIN_SCALE,depth=far-near;
     const dashCycle=Math.ceil(depth/9)*9,studCycle=Math.ceil(depth/12)*12,packetCycle=Math.ceil(depth/14)*14;
     const pool=streaks.current!;
     const diagnostic:RoadDiagnostics={phase:phase.current,vp:m.vp,s0:m.s0,h:m.h,F:m.F,rail:m.rail,raf:false,fps:0,drawMs:0,frames:0};
@@ -96,7 +97,10 @@ export function RoadMarkings(){
         const offset=modulo(-phase.current,9);
         for(let i=-1;i<dashCycle/9;i++){
           const z=near+offset+i*9;
-          for(let side=-1;side<=1;side+=2)quad(side*m.rail/3,z,3*blur,pass===0?.5:.16,pass===0?'#ff4fa8':'#fff3fb',pass===0?.14:.88);
+          const scale=m.F/Math.max(near,z);
+          const bottomFade=1-smooth((scale-.82*bottomS)/(.18*bottomS));
+          const glowFade=1-smooth((scale-.65*bottomS)/(.15*bottomS));
+          for(let side=-1;side<=1;side+=2)quad(side*m.rail/3,z,3*blur,pass===0?.3:.11,pass===0?'#ff4fa8':'#fff3fb',bottomFade*(pass===0?.10*glowFade:.88));
         }
       }
       ctx.shadowBlur=0;

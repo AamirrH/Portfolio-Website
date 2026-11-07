@@ -9,7 +9,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "assets:key": "node scripts/key-assets.mjs",
     "test:stops": "playwright test",
-    "assets:traffic": "node scripts/key-traffic.mjs"
+    "assets:traffic": "node scripts/key-traffic.mjs",
+    "assets:city": "node scripts/key-city-below.mjs"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.2.0",
