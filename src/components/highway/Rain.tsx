@@ -1,3 +1,4 @@
+import { environmentMotion } from '../../lib/environment';
 import { subscribeTick } from '../../lib/ticker';
 import './highway.css';
 import { useEffect,useRef } from 'react';
@@ -16,7 +17,7 @@ export function Rain(){
   root.dataset.pool=String(ripples.length+lenses.length);root.dataset.rainPool=String(drops.length);root.dataset.frames='0';
   if(hidden||reduced||!motion||!ignited){ctx.clearRect(0,0,w,h);root.style.opacity='0';return;}
   root.style.opacity='1';
-  const tick=(dt:number)=>{const realDt=dt;time+=dt;const {weather,speed}=useSceneStore.getState();if(root.parentElement){if(root.parentElement.dataset.raining!==String(weather>.1))root.parentElement.dataset.raining=String(weather>.1);if(root.parentElement.style.getPropertyValue('--weather')!==String(weather))root.parentElement.style.setProperty('--weather',String(weather));}ctx.clearRect(0,0,w,h);const count=Math.round(drops.length*weather);
+  const tick=(dt:number)=>{const realDt=dt;time+=dt;const {speed}=useSceneStore.getState();const {weather}=environmentMotion;if(root.parentElement){if(root.parentElement.dataset.raining!==String(weather>.1))root.parentElement.dataset.raining=String(weather>.1);if(root.parentElement.style.getPropertyValue('--weather')!==String(weather))root.parentElement.style.setProperty('--weather',String(weather));}ctx.clearRect(0,0,w,h);const count=Math.round(drops.length*weather);
    for(let i=0;i<count;i++){const d=drops[i];d.y+=dt*(.25+d.z*.8)*Math.max(.2,speed);d.x+=dt*.045*d.z;if(d.y>1.05){d.y=-.05;d.x=Math.random();}if(d.x>1)d.x=0;const len=10+d.z*28;ctx.strokeStyle=`rgba(255,220,239,${(.25+d.z*.3)*weather})`;ctx.lineWidth=.5+d.z*.7;ctx.beginPath();ctx.moveTo(d.x*w,d.y*h);ctx.lineTo(d.x*w+len*.14,d.y*h+len);ctx.stroke();}
    ripples.forEach((node,i)=>{const p=(time/.6+i/12)%1,x=w*(.28+(i*.137)% .45),y=h*(.79+(i*.053)%.18);node.style.transform=`translate(${x}px,${y}px) scale(${.2+p*1.4},${.07+p*.25})`;node.style.opacity=String(weather*(1-p)*.35);});
    lenses.forEach((node,i)=>{const phase=(time/(4+i%4)+i*.19)%1,x=w*(i%2?.975:.025),y=h*(.2+phase*.5);const blocked=ui.some(r=>x>=r.left-12&&x<=r.right+12&&y>=r.top-12&&y<=r.bottom+12);node.style.transform=`translate(${x}px,${y}px)`;node.style.opacity=blocked?'0':String(Math.sin(phase*Math.PI)*weather*.5);});
