@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "route": "signalroute",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 444,
+      "frames": 600,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 17.100000000000364,
+      "worst": 33.20000000000073,
+      "over20": 0.16666666666666669,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 429,
+      "heapStart": 6173776,
+      "heapEnd": 4971492,
+      "layoutCount": 656,
+      "layoutMs": 65.43900000000001,
+      "styleMs": 1241.13,
+      "scriptMs": 322.26200000000006,
+      "taskMs": 4884.210999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 884094,
+        "requests": 27
+      },
+      "total": {
+        "bytes": 1074863,
+        "requests": 31
+      },
+      "lcp": 744,
+      "cls": 0.006053716295867628,
+      "tbtProxy": 379,
+      "gateReadyMs": 2082.6999999955297,
+      "errors": []
+    }
+  ],
+  "transitions": [],
+  "jsGzip": 119004,
+  "notes": [
+    "Production Vite preview; cold context per route; high quality forced.",
+    "TBT proxy is sum(max(longtask-50,0)) after gate, not Lighthouse navigation TBT.",
+    "LCP describes the gate/first navigation, not post-click scene readiness.",
+    "CPU throttling is not a physical mid-range phone or GPU throttle.",
+    "Trace event totals are inclusive and overlap; not additive. Paint count unavailable in Performance.getMetrics."
+  ]
+}

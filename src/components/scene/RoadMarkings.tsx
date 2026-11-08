@@ -61,6 +61,16 @@ export function RoadMarkings(){
     const near=m.F/bottomS,far=m.F/MIN_SCALE,depth=far-near;
     const dashCycle=Math.ceil(depth/9)*9,studCycle=Math.ceil(depth/12)*12,packetCycle=Math.ceil(depth/14)*14;
     const pool=streaks.current!;
+    const glow=document.createElement('canvas');glow.width=64;glow.height=128;
+    const g=glow.getContext('2d')!;g.fillStyle='#ff4fa8';g.shadowColor='#ff4fa8';g.shadowBlur=8;g.fillRect(24,12,16,104);
+    const glowQuad=(x:number,z:number,length:number,alpha:number)=>{
+      const z1=Math.max(near,z),z2=Math.min(far,z+length);if(z1>=z2||alpha<=0)return;
+      const a=m.F/z1,b=m.F/z2,y1=m.vp.y+m.h*a,y2=m.vp.y+m.h*b;if(y1<m.top)return;
+      const fade=smooth((a-MIN_SCALE)/(MIN_SCALE*1.2))*smooth((y1-m.top)/12);
+      const width=.3*(a+b)/2+16;
+      ctx.save();ctx.globalAlpha=alpha*fade;ctx.transform(1,0,x*(b-a)/(y2-y1),1,m.vp.x+x*a,y1);
+      ctx.drawImage(glow,-width/2,y2-y1,width,y1-y2);ctx.restore();
+    };
     const diagnostic:RoadDiagnostics={phase:phase.current,vp:m.vp,s0:m.s0,h:m.h,F:m.F,rail:m.rail,raf:false,fps:0,drawMs:0,frames:0};
     window.__road=diagnostic;
     let unsubscribe=()=>{},fpsTime=0,fpsFrames=0,cost=0;
@@ -96,17 +106,17 @@ export function RoadMarkings(){
       }
       // Two passes: broad pink glow, then the crisp white paint.
       for(let pass=0;pass<2;pass++){
-        ctx.shadowColor=pass===0?'#ff4fa8':'transparent';ctx.shadowBlur=pass===0?8:0;
+
         const offset=modulo(-phase.current,9);
         for(let i=-1;i<dashCycle/9;i++){
           const z=near+offset+i*9;
           const scale=m.F/Math.max(near,z);
           const bottomFade=1-smooth((scale-.82*bottomS)/(.18*bottomS));
           const glowFade=1-smooth((scale-.65*bottomS)/(.15*bottomS));
-          for(let side=-1;side<=1;side+=2)quad(side*laneX(m.rail),z,3*blur,pass===0?.3:.11,pass===0?'#ff4fa8':'#fff3fb',bottomFade*(pass===0?.10*glowFade:.88));
+          for(let side=-1;side<=1;side+=2){if(pass===0)glowQuad(side*laneX(m.rail),z,3*blur,bottomFade*.10*glowFade);else quad(side*laneX(m.rail),z,3*blur,.11,'#fff3fb',bottomFade*.88);}
         }
       }
-      ctx.shadowBlur=0;
+
       for(let i=0;i<studCycle/12;i++){
         const z=near+modulo(i*12+4.5-phase.current,studCycle);
         const alpha=animate?.75+.25*Math.sin(time.current*Math.PI*12):.75;
