@@ -14,10 +14,4 @@ export function useStopPolish(ref: RefObject<HTMLDivElement>) {
     document.addEventListener('pointerleave',reset);
     return () => { window.removeEventListener('pointermove',move); document.removeEventListener('pointerleave',reset); movers.forEach(item=>item.move.tween.kill()); gsap.set(nodes,{clearProps:'transform'}); };
   },[ref,mobile,reduced,hidden]);
-  useEffect(() => {
-    const noise=ref.current?.querySelector('feTurbulence');
-    if(!noise || mobile || reduced || hidden) return;
-    const tween=gsap.to(noise,{attr:{baseFrequency:'.012 .13'},duration:12,repeat:-1,yoyo:true,ease:'sine.inOut'});
-    return ()=>{tween.kill();};
-  },[ref,mobile,reduced,hidden]);
 }

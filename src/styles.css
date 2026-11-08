@@ -252,3 +252,8 @@ button,a { touch-action:manipulation; }
 .project-gantry-sign h2 { position:relative; padding-right:22px; font-size:clamp(14px,1.35vw,21px); }.project-gantry-sign h2 span { position:absolute; right:0; top:0; float:none; }
 
 .lower-facades img { width:100%; height:100%; display:block; }
+
+.scene-overlay { position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(ellipse at 50% 40%,transparent 30%,#08091866 83%,#080918c9 100%),linear-gradient(transparent 65%,#0e0d20b0),repeating-linear-gradient(transparent 0 3px,#03000c14 3px 4px),url('/assets/effects/grain.webp'); background-size:auto,auto,auto,256px 256px; box-shadow:inset 3px 0 30px #ff2a8a14,inset -3px 0 30px #25f4ee14; }
+.scene-layer { contain:layout paint style; }
+.plain-content>section:not(:first-child) { content-visibility:auto; contain-intrinsic-size:auto 700px; }
+@media(max-width:767px) { .scene-overlay { background-image:radial-gradient(ellipse at 50% 40%,transparent 30%,#08091866 83%,#080918c9 100%),linear-gradient(transparent 65%,#0e0d20b0),repeating-linear-gradient(transparent 0 3px,#03000c14 3px 4px);box-shadow:none; } }

@@ -1,1 +1,2 @@
-export function Overlay() { return <><svg className="grain"><filter id="film-grain"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#film-grain)" opacity=".17"/></svg><div className="scanlines"/><div className="vignette"/><div className="chromatic"/></>; }
+import { memo } from 'react';
+export const Overlay=memo(function Overlay(){return <div className="scene-overlay" aria-hidden="true"/>;});
