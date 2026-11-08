@@ -1,3 +1,4 @@
+import { subscribeTick } from '../lib/ticker';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_VOLUME } from '../config';
 import { readPreference, savePreference } from '../lib/preferences';
@@ -14,6 +15,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const unlocked = useRef(false);
   const mutedRef = useRef(muted);
+  const section = useSceneStore(s=>s.section);
   const plain = useSceneStore(state => state.plain);
   const fail = useCallback(() => { setUnavailable(true); setMuted(true); setPlaying(false); audio.current?.pause(); }, []);
   const play = useCallback(() => { const element = audio.current; if (!element || !hasTrack || document.hidden) return; void context.current?.resume().catch(() => {}); void element.play().catch(() => { if (element.error) fail(); }); }, [fail]);
@@ -25,7 +27,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         const ctx = new AudioContext();
         const source = ctx.createMediaElementSource(audio.current);
         const meter = ctx.createAnalyser();
-        meter.fftSize = 512;
+        meter.fftSize = 256;
         meter.smoothingTimeConstant = .82;
         source.connect(meter); meter.connect(ctx.destination);
         context.current = ctx; analyser.current = meter;
@@ -55,23 +57,28 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     return () => document.removeEventListener('visibilitychange', visibility);
   }, [play]);
   useEffect(() => {
-    let frame = 0;
+    let accumulated = 0;
     const root = document.documentElement;
     const active = playing && !muted && !unavailable && !plain;
     root.dataset.audio = active ? 'reactive' : 'fallback';
     const data = new Uint8Array(analyser.current?.frequencyBinCount ?? 256);
-    const tick = () => {
+    let scales:HTMLElement[]=[],glows:HTMLElement[]=[],brakes:SVGElement[]=[];
+    const collect=()=>{scales=Array.from(document.querySelectorAll<HTMLElement>('.sun-disc'));glows=Array.from(document.querySelectorAll<HTMLElement>('.sun-aura,.road-sign'));brakes=Array.from(document.querySelectorAll<SVGElement>('.brake-lights'));};
+    collect();const observer=new MutationObserver(collect);
+    if(active)observer.observe(document.body,{childList:true,subtree:true});
+    const tick = (dt:number) => {
+      accumulated+=dt;if(accumulated<1/30)return;accumulated%=1/30;
       if (document.hidden || !active || !analyser.current) return;
       analyser.current.getByteFrequencyData(data);
       const energy = (data[1]+data[2]+data[3]+data[4]) / (255*4);
-      root.style.setProperty('--audio-scale', String(1+energy*.035));
-      root.style.setProperty('--audio-glow', String(.45+energy*.55));
-      root.style.setProperty('--audio-brake', String(.7+energy*.3));
-      frame = requestAnimationFrame(tick);
+      scales.forEach(n=>n.style.setProperty('--audio-scale', String(1+energy*.035)));
+      glows.forEach(n=>n.style.setProperty('--audio-glow', String(.45+energy*.55)));
+      brakes.forEach(n=>n.style.setProperty('--audio-brake', String(.7+energy*.3)));
+
     };
-    if (active) tick();
-    return () => { cancelAnimationFrame(frame); root.dataset.audio = 'fallback'; };
-  }, [playing, muted, unavailable, plain]);
+    const unsubscribe=active?subscribeTick(tick,{priority:20,quality:'medium'}):()=>{};
+    return () => { observer.disconnect(); unsubscribe(); root.dataset.audio = 'fallback'; };
+  }, [playing, muted, unavailable, plain, section]);
   useEffect(() => () => { void context.current?.close().catch(() => {}); context.current = null; analyser.current = null; }, []);
   const value = useMemo(() => ({ muted, unavailable, unlock, toggle }), [muted, unavailable, unlock, toggle]);
   return <AudioControlContext.Provider value={value}><audio ref={audio} src={hasTrack ? '/assets/audio/resonance.mp3' : undefined} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>{children}</AudioControlContext.Provider>;

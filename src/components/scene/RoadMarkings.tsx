@@ -1,3 +1,4 @@
+import { subscribeTick } from '../../lib/ticker';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import { useSceneStore } from '../../state/useSceneStore';
@@ -62,7 +63,7 @@ export function RoadMarkings(){
     const pool=streaks.current!;
     const diagnostic:RoadDiagnostics={phase:phase.current,vp:m.vp,s0:m.s0,h:m.h,F:m.F,rail:m.rail,raf:false,fps:0,drawMs:0,frames:0};
     window.__road=diagnostic;
-    let raf=0,last=0,fpsTime=0,fpsFrames=0,cost=0;
+    let unsubscribe=()=>{},fpsTime=0,fpsFrames=0,cost=0;
     const clip=new Path2D();
     clip.moveTo(m.vp.x-m.rail*sForY(m.top,m),m.top);clip.lineTo(m.vp.x+m.rail*sForY(m.top,m),m.top);clip.lineTo(m.vp.x+m.rail*sForY(m.height,m),m.height);clip.lineTo(m.vp.x-m.rail*sForY(m.height,m),m.height);clip.closePath();
     // Reuse the context's current path. No arrays, points or Path2Ds are allocated in a frame.
@@ -124,17 +125,16 @@ export function RoadMarkings(){
       }
       ctx.restore();diagnostic.phase=phase.current;diagnostic.frames++;cost+=performance.now()-start;
     };
-    const tick=(now:number)=>{
-      const dt=last?(now-last)/1000:0;last=now;
+    const tick=(dt:number)=>{
       phase.current+=BASE_V*(useSceneStore.getState().speed/CRUISE_SPEED)*dt;time.current+=dt;
       draw(true);fpsTime+=dt;fpsFrames++;
       if(fpsTime>=1){diagnostic.fps=Math.round(fpsFrames/fpsTime);diagnostic.drawMs=cost/fpsFrames;fpsTime=0;fpsFrames=0;cost=0;}
-      diagnostic.raf=true;raf=requestAnimationFrame(tick);
+      diagnostic.raf=true;
     };
     root.style.visibility=active?'visible':'hidden';
     if(active&&!hidden)draw(running);
-    if(running){diagnostic.raf=true;raf=requestAnimationFrame(tick);}
-    return()=>{cancelAnimationFrame(raf);diagnostic.raf=false;};
+    if(running){diagnostic.raf=true;unsubscribe=subscribeTick(tick,{priority:0});}
+    return()=>{unsubscribe();diagnostic.raf=false;};
   },[model,reduced,hidden,ignited,section]);
   const debug=new URLSearchParams(location.search).get('debug')==='road';
   const perf=new URLSearchParams(location.search).get('perf')==='1';

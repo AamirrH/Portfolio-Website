@@ -1,3 +1,4 @@
+import { subscribeTick } from '../../lib/ticker';
 import { useEffect, useRef, type RefObject } from 'react';
 import { messageSprites, type StopConfig } from '../../data/stops';
 import { useStopPreferences } from '../../hooks/useStopAnimations';
@@ -14,7 +15,7 @@ export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; st
     if (!scene || !container) return;
     scene.dataset.signal = 'green';
     if (!active || reduced || hidden) return;
-    let frame = 0, start = 0, nextSpawn = 0, lastSignal: Signal = 'green';
+    let start = 0, nextSpawn = 0, lastSignal: Signal = 'green';
     let packets: Packet[] = [];
     const nodes = Array.from(container.querySelectorAll<HTMLSpanElement>('.message-packet'));
     const leds = Array.from(scene.querySelectorAll<HTMLElement>('.rack-led')).map(node => ({node, next:0}));
@@ -83,11 +84,11 @@ export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; st
       for(const [node,at] of flashes) { node.style.opacity=String(Math.max(0,1-(time-at)/200)); if(time-at>=200) flashes.delete(node); }
       scene.dataset.messageActive = String(packets.length);
       scene.dataset.signalFrameCount='1';
-      frame=requestAnimationFrame(tick);
+
     };
-    frame=requestAnimationFrame(tick);
+    const unsubscribe=subscribeTick((_dt,now)=>tick(now),{quality:'medium'});
     return () => {
-      cancelAnimationFrame(frame); packets=[]; flashes.clear();
+      unsubscribe(); packets=[]; flashes.clear();
       nodes.forEach(node=>{node.style.opacity='0';});
       scene.querySelectorAll<HTMLElement>('.rack-led,.chute-glow,.barrier-glow').forEach(node=>node.style.removeProperty('opacity'));
       scene.dataset.signal='green'; scene.dataset.messageActive='0'; scene.dataset.signalFrameCount='0';
