@@ -1,3 +1,4 @@
+import { responsiveArt } from '../../lib/responsiveArt';
 import { idleTask } from '../../lib/idle';
 import { useEffect, useRef, useId, type CSSProperties } from 'react';
 import { type StopConfig, stops, stopArtOrder } from '../../data/stops';
@@ -37,7 +38,7 @@ export function StopScene({ stop }: { stop: StopConfig }) {
     return()=>{cancelled=true;cancel();};
   }, [stop.id,ignited,active]);
   const style: StopStyle = { '--height-vh': building.heightVh, '--mobile-height-vh': building.mobileHeightVh, '--anchor-x': building.anchorXPct, '--building-aspect': building.aspect, '--building-mask': building.silhouette ? `url("${building.silhouette}")` : 'none' };
-  const art = building.src ? <img className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
+  const art = building.src ? <img {...responsiveArt(building.src,'(max-width:767px) 85vw, 55vw')} className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
   return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
     <SceneSky/>
     <div className="stop-city-near" data-stop-depth="6"><NearBuildings/></div>

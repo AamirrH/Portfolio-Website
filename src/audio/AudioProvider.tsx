@@ -5,7 +5,7 @@ import { readPreference, savePreference } from '../lib/preferences';
 import { useSceneStore } from '../state/useSceneStore';
 interface AudioControls { muted: boolean; unavailable: boolean; unlock: () => void; toggle: () => void; }
 const AudioControlContext = createContext<AudioControls | null>(null);
-const hasTrack = Object.keys(import.meta.glob('/public/assets/audio/resonance.mp3', { query: '?url', import: 'default', eager: true })).length > 0;
+const hasTrack = Object.keys(import.meta.glob('/public/assets/audio/resonance.webm', { query: '?url', import: 'default', eager: true })).length > 0;
 export function AudioProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null);
   const context = useRef<AudioContext | null>(null);
@@ -40,6 +40,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
       audio.current.volume = DEFAULT_VOLUME;
       audio.current.muted = mutedRef.current;
+      if(mutedRef.current)void context.current?.suspend().catch(()=>{});
       if (!mutedRef.current) play();
     } catch { fail(); }
   }, [play, fail]);
@@ -50,7 +51,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     if (audio.current) audio.current.muted = next;
     if (next) audio.current?.pause(); else { unlock(); play(); }
   }, [unavailable, unlock, play]);
-  useEffect(() => { mutedRef.current = muted; }, [muted]);
+  useEffect(() => { mutedRef.current = muted;if(!muted)return;const timer=setTimeout(()=>{void context.current?.suspend().catch(()=>{});},60000);return()=>clearTimeout(timer); }, [muted]);
   useEffect(() => {
     const visibility = () => { if (document.hidden) { audio.current?.pause(); void context.current?.suspend().catch(() => {}); } else if (unlocked.current && !mutedRef.current) play(); };
     document.addEventListener('visibilitychange', visibility);
@@ -81,6 +82,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   }, [playing, muted, unavailable, plain, section]);
   useEffect(() => () => { void context.current?.close().catch(() => {}); context.current = null; analyser.current = null; }, []);
   const value = useMemo(() => ({ muted, unavailable, unlock, toggle }), [muted, unavailable, unlock, toggle]);
-  return <AudioControlContext.Provider value={value}><audio ref={audio} src={hasTrack ? '/assets/audio/resonance.mp3' : undefined} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>{children}</AudioControlContext.Provider>;
+  return <AudioControlContext.Provider value={value}><audio ref={audio} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>{hasTrack&&<><source src="/assets/audio/resonance.webm" type='audio/webm; codecs="opus"'/><source src="/assets/audio/resonance.m4a" type="audio/mp4"/></>}</audio>{children}</AudioControlContext.Provider>;
 }
 export function useAudio() { const controls = useContext(AudioControlContext); if (!controls) throw new Error('AudioProvider is required'); return controls; }

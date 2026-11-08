@@ -1,0 +1,452 @@
+[
+  {
+    "file": "assets/index-S2bctN6O.js",
+    "entry": true,
+    "raw": 248543,
+    "gzip": 85596,
+    "imports": [],
+    "modules": [
+      {
+        "name": "D:/Portfolio/node_modules/gsap/gsap-core.js",
+        "bytes": 170543
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react-dom/cjs/react-dom.production.min.js",
+        "bytes": 133838
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/CSSPlugin.js",
+        "bytes": 64563
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react/cjs/react.production.min.js",
+        "bytes": 7672
+      },
+      {
+        "name": "D:/Portfolio/src/data/content.ts",
+        "bytes": 7190
+      },
+      {
+        "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
+        "bytes": 6527
+      },
+      {
+        "name": "D:/Portfolio/node_modules/scheduler/cjs/scheduler.production.min.js",
+        "bytes": 4616
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/PlainMode.tsx",
+        "bytes": 3796
+      },
+      {
+        "name": "D:/Portfolio/src/components/Gate.tsx",
+        "bytes": 3267
+      },
+      {
+        "name": "D:/Portfolio/src/App.tsx",
+        "bytes": 2824
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/Contact.tsx",
+        "bytes": 2411
+      },
+      {
+        "name": "\u0000vite/preload-helper.js",
+        "bytes": 2206
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useScrollJourney.ts",
+        "bytes": 2021
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/About.tsx",
+        "bytes": 1924
+      },
+      {
+        "name": "D:/Portfolio/src/components/projects/ProjectBody.tsx",
+        "bytes": 1890
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useAtmosphere.ts",
+        "bytes": 1884
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/GantryNav.tsx",
+        "bytes": 1734
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/TopBar.tsx",
+        "bytes": 1718
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/ProjectPanel.tsx",
+        "bytes": 1627
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/JourneyFooter.tsx",
+        "bytes": 1621
+      },
+      {
+        "name": "D:/Portfolio/src/lib/ticker.ts",
+        "bytes": 1486
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useJourney.ts",
+        "bytes": 1477
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useHighwayState.ts",
+        "bytes": 1333
+      },
+      {
+        "name": "\u0000vite/modulepreload-polyfill.js",
+        "bytes": 1280
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+        "bytes": 1201
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/ProjectsIndex.tsx",
+        "bytes": 1156
+      },
+      {
+        "name": "D:/Portfolio/src/components/views/Home.tsx",
+        "bytes": 1124
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/MobileNav.tsx",
+        "bytes": 1092
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/AudioToggle.tsx",
+        "bytes": 978
+      },
+      {
+        "name": "D:/Portfolio/node_modules/zustand/esm/vanilla.mjs",
+        "bytes": 975
+      },
+      {
+        "name": "D:/Portfolio/src/state/useSceneStore.ts",
+        "bytes": 805
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/usePreferences.ts",
+        "bytes": 773
+      },
+      {
+        "name": "D:/Portfolio/node_modules/zustand/esm/react.mjs",
+        "bytes": 597
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react-dom/index.js",
+        "bytes": 524
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/PlainToggle.tsx",
+        "bytes": 487
+      },
+      {
+        "name": "D:/Portfolio/src/components/navigation/RoadSign.tsx",
+        "bytes": 321
+      },
+      {
+        "name": "D:/Portfolio/src/main.tsx",
+        "bytes": 247
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react/jsx-runtime.js",
+        "bytes": 243
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react-dom/client.js",
+        "bytes": 242
+      },
+      {
+        "name": "D:/Portfolio/node_modules/scheduler/index.js",
+        "bytes": 230
+      },
+      {
+        "name": "D:/Portfolio/src/lib/preferences.ts",
+        "bytes": 213
+      },
+      {
+        "name": "D:/Portfolio/node_modules/react/index.js",
+        "bytes": 198
+      },
+      {
+        "name": "\u0000commonjsHelpers.js",
+        "bytes": 140
+      },
+      {
+        "name": "D:/Portfolio/src/scene/cameraPresets.ts",
+        "bytes": 121
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/index.js",
+        "bytes": 117
+      },
+      {
+        "name": "D:/Portfolio/src/config.ts",
+        "bytes": 115
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react-dom/client.js?commonjs-es-import",
+        "bytes": 106
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/index.js?commonjs-es-import",
+        "bytes": 100
+      },
+      {
+        "name": "D:/Portfolio/src/lib/environment.ts",
+        "bytes": 55
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/jsx-runtime.js?commonjs-es-import",
+        "bytes": 44
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/cjs/react-jsx-runtime.production.min.js?commonjs-exports",
+        "bytes": 40
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/scheduler/cjs/scheduler.production.min.js?commonjs-exports",
+        "bytes": 34
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react-dom/cjs/react-dom.production.min.js?commonjs-exports",
+        "bytes": 33
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/jsx-runtime.js?commonjs-module",
+        "bytes": 31
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/cjs/react.production.min.js?commonjs-exports",
+        "bytes": 30
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/scheduler/index.js?commonjs-module",
+        "bytes": 30
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react-dom/index.js?commonjs-module",
+        "bytes": 29
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react/index.js?commonjs-module",
+        "bytes": 26
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react-dom/client.js?commonjs-exports",
+        "bytes": 16
+      },
+      {
+        "name": "D:/Portfolio/index.html?html-proxy&inline-css&index=0.css",
+        "bytes": 0
+      },
+      {
+        "name": "D:/Portfolio/src/styles.css",
+        "bytes": 0
+      },
+      {
+        "name": "D:/Portfolio/src/stops.css",
+        "bytes": 0
+      },
+      {
+        "name": "D:/Portfolio/index.html",
+        "bytes": 0
+      }
+    ]
+  },
+  {
+    "file": "assets/CameraRig-Dh-qsAJF.js",
+    "entry": false,
+    "raw": 3789,
+    "gzip": 1716,
+    "imports": [
+      "assets/index-S2bctN6O.js"
+    ],
+    "modules": [
+      {
+        "name": "D:/Portfolio/src/components/scene/CameraRig.tsx",
+        "bytes": 4594
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/SceneLayer.tsx",
+        "bytes": 641
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/LayerArt.tsx",
+        "bytes": 484
+      },
+      {
+        "name": "D:/Portfolio/src/lib/idle.ts",
+        "bytes": 379
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Overlay.tsx",
+        "bytes": 169
+      }
+    ]
+  },
+  {
+    "file": "assets/ScrollTrigger-7Zy99s9Q.js",
+    "entry": false,
+    "raw": 43986,
+    "gzip": 18265,
+    "imports": [],
+    "modules": [
+      {
+        "name": "D:/Portfolio/node_modules/gsap/ScrollTrigger.js",
+        "bytes": 112358
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/Observer.js",
+        "bytes": 26311
+      }
+    ]
+  },
+  {
+    "file": "assets/ProjectStops-DLAOy9WU.js",
+    "entry": false,
+    "raw": 18871,
+    "gzip": 6571,
+    "imports": [
+      "assets/index-S2bctN6O.js",
+      "assets/TravelScenes-BX_asm8q.js",
+      "assets/CameraRig-Dh-qsAJF.js"
+    ],
+    "modules": [
+      {
+        "name": "D:/Portfolio/src/components/stops/SignalFlow.tsx",
+        "bytes": 6739
+      },
+      {
+        "name": "D:/Portfolio/src/components/stops/StopScene.tsx",
+        "bytes": 6478
+      },
+      {
+        "name": "D:/Portfolio/src/data/stops.ts",
+        "bytes": 4715
+      },
+      {
+        "name": "D:/Portfolio/src/components/stops/StopOverlays.tsx",
+        "bytes": 3940
+      },
+      {
+        "name": "D:/Portfolio/src/components/stops/SignalBuilding.tsx",
+        "bytes": 3224
+      },
+      {
+        "name": "D:/Portfolio/src/components/stops/StopProps.tsx",
+        "bytes": 2402
+      },
+      {
+        "name": "D:/Portfolio/src/data/propAssets.ts",
+        "bytes": 1160
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useStopPolish.ts",
+        "bytes": 1139
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/SideCar.tsx",
+        "bytes": 1022
+      },
+      {
+        "name": "D:/Portfolio/src/components/stops/ProjectStops.tsx",
+        "bytes": 342
+      }
+    ]
+  },
+  {
+    "file": "assets/TravelScenes-BX_asm8q.js",
+    "entry": false,
+    "raw": 30636,
+    "gzip": 10462,
+    "imports": [
+      "assets/index-S2bctN6O.js",
+      "assets/CameraRig-Dh-qsAJF.js"
+    ],
+    "modules": [
+      {
+        "name": "D:/Portfolio/src/components/scene/RoadMarkings.tsx",
+        "bytes": 11451
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useStopAnimations.ts",
+        "bytes": 7052
+      },
+      {
+        "name": "D:/Portfolio/src/components/highway/Rain.tsx",
+        "bytes": 6461
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/TravelScenes.tsx",
+        "bytes": 4728
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Highway.tsx",
+        "bytes": 4384
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Skyline.tsx",
+        "bytes": 3376
+      },
+      {
+        "name": "D:/Portfolio/src/data/imageManifest.json",
+        "bytes": 2968
+      },
+      {
+        "name": "D:/Portfolio/src/scene/roadModel.ts",
+        "bytes": 2698
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Car.tsx",
+        "bytes": 2006
+      },
+      {
+        "name": "D:/Portfolio/src/hooks/useSceneMotion.ts",
+        "bytes": 2000
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Gantry.tsx",
+        "bytes": 1535
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Sky.tsx",
+        "bytes": 898
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/PowerLines.tsx",
+        "bytes": 716
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Cockpit.tsx",
+        "bytes": 578
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Sun.tsx",
+        "bytes": 358
+      },
+      {
+        "name": "D:/Portfolio/src/lib/responsiveArt.ts",
+        "bytes": 272
+      },
+      {
+        "name": "\u0000D:/Portfolio/node_modules/react-dom/index.js?commonjs-es-import",
+        "bytes": 40
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/roadMarkings.css",
+        "bytes": 0
+      },
+      {
+        "name": "D:/Portfolio/src/components/highway/highway.css",
+        "bytes": 0
+      }
+    ]
+  }
+]

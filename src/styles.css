@@ -257,3 +257,6 @@ button,a { touch-action:manipulation; }
 .scene-layer { contain:layout paint style; }
 .plain-content>section:not(:first-child) { content-visibility:auto; contain-intrinsic-size:auto 700px; }
 @media(max-width:767px) { .scene-overlay { background-image:radial-gradient(ellipse at 50% 40%,transparent 30%,#08091866 83%,#080918c9 100%),linear-gradient(transparent 65%,#0e0d20b0),repeating-linear-gradient(transparent 0 3px,#03000c14 3px 4px);box-shadow:none; } }
+
+@font-face { font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/space-grotesk-400.woff2') format('woff2'); }
+@font-face { font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/space-grotesk-500.woff2') format('woff2'); }

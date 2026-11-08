@@ -1,0 +1,10 @@
+assets-src/
+assests-src/
+screenshots/
+context/
+perf/
+.qa/
+tests/
+public/assets/audio/resonance.mp3
+public/assets/traffic/
+public/assets/sides/

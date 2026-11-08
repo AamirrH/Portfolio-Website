@@ -1,3 +1,4 @@
+import { responsiveArt } from '../../lib/responsiveArt';
 import { memo } from 'react';
 import type { CSSProperties } from 'react';
 type Depth = 'far' | 'mid' | 'near';
@@ -7,7 +8,7 @@ const Skyline=memo(function Skyline({depth}:{depth:Depth}) {
  const debug = new URLSearchParams(location.search).get('debug') === 'rects';
  return <div className={`raster-city city-${depth}`} aria-hidden="true"><div className="city-tiles">
   {[-2,-1,0,1,2].map((tile)=><div key={tile} className={`city-tile ${tile%2 ? 'city-mirrored' : ''} ${debug ? 'city-debug' : ''}`} style={{'--tile':tile} as CSSProperties}>
-   <img src={`/assets/skyline/${depth}.webp`} alt="" decoding="async"/>
+   <img {...responsiveArt(`/assets/skyline/${depth}.webp`,'(max-width:767px) 65vw, 95vh')} src={`/assets/skyline/${depth}.webp`} alt="" decoding="async"/>
    {depth !== 'far' && <>
     {lights.map((p,i)=><span key={`light-${i}`} className="raster-aviation aviation-light" style={{left:`${p.x}%`,top:`${p.y}%`,animationDuration:`${1.3+i*.5}s`,animationDelay:`${-i*.6}s`}}/>)}
     {signs.map((p,i)=><span key={`sign-${i}`} className="raster-neon city-neon" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.w}%`,height:`${p.h}%`,color:i%2?'#ff4b9b':'#25f4ee',animationDelay:`${-i*1.3}s`}}/>)}

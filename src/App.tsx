@@ -1,7 +1,7 @@
 import { useHighwayState } from './hooks/useHighwayState';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { content, projects } from './data/content';
-import { CameraRig } from './components/scene/CameraRig';
+const CameraRig=lazy(()=>import('./components/scene/CameraRig').then(m=>({default:m.CameraRig})));
 import { TopBar } from './components/navigation/TopBar';
 import { JourneyFooter } from './components/navigation/JourneyFooter';
 import { MobileNav } from './components/navigation/MobileNav';
@@ -36,7 +36,7 @@ export default function App() {
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus({ preventScroll: true }); }}>{content.controls.skip}</a>
       <TopBar/>
       {plain ? <PlainMode/> : <>
-        <CameraRig/><div className="journey-track" aria-hidden="true"/>
+        <Suspense fallback={null}><CameraRig/></Suspense><div className="journey-track" aria-hidden="true"/>
         {section === 'home' && <button className="sun-control" onClick={cyclePalette} aria-label={content.controls.palette} title={content.controls.palette}/>}
         <main id="main-content" tabIndex={-1} className="drive-content" key={section}>
           {section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}
