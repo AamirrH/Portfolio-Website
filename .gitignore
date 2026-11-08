@@ -4,3 +4,6 @@ dist/
 *.local
 .qa/
 *.tsbuildinfo
+
+perf/**/*-trace.json
+perf/baseline-initial-timing-invalid.json

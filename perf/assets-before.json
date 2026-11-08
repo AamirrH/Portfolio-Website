@@ -1,0 +1,332 @@
+[
+  {
+    "path": "public/assets/audio/resonance.mp3",
+    "bytes": 7135090
+  },
+  {
+    "path": "public/assets/sides/city-below.webp",
+    "bytes": 278598,
+    "width": 2752,
+    "height": 1273
+  },
+  {
+    "path": "public/assets/stops/roomly.webp",
+    "bytes": 185348,
+    "width": 948,
+    "height": 1200
+  },
+  {
+    "path": "public/assets/skyline/far.webp",
+    "bytes": 138726,
+    "width": 1800,
+    "height": 959
+  },
+  {
+    "path": "public/assets/skyline/mid.webp",
+    "bytes": 133426,
+    "width": 1800,
+    "height": 959
+  },
+  {
+    "path": "public/assets/documents/Resume_Aamir.pdf",
+    "bytes": 130890
+  },
+  {
+    "path": "public/assets/skyline/near.webp",
+    "bytes": 127308,
+    "width": 1800,
+    "height": 959
+  },
+  {
+    "path": "public/assets/neighbors/left.webp",
+    "bytes": 108422,
+    "width": 663,
+    "height": 900
+  },
+  {
+    "path": "public/assets/neighbors/right.webp",
+    "bytes": 82112,
+    "width": 657,
+    "height": 900
+  },
+  {
+    "path": "public/assets/stops/signalroute.webp",
+    "bytes": 69624,
+    "width": 1439,
+    "height": 720
+  },
+  {
+    "path": "public/assets/stops/swiftship.webp",
+    "bytes": 65620,
+    "width": 1445,
+    "height": 900
+  },
+  {
+    "path": "public/assets/cars/top.webp",
+    "bytes": 52466,
+    "width": 480,
+    "height": 944
+  },
+  {
+    "path": "public/assets/traffic/truck.webp",
+    "bytes": 50900,
+    "width": 611,
+    "height": 700
+  },
+  {
+    "path": "public/assets/props/bistro.webp",
+    "bytes": 42996,
+    "width": 532,
+    "height": 306
+  },
+  {
+    "path": "public/assets/traffic/swiftship-van.webp",
+    "bytes": 42732,
+    "width": 582,
+    "height": 599
+  },
+  {
+    "path": "public/assets/props/bike-rack.webp",
+    "bytes": 41948,
+    "width": 563,
+    "height": 310
+  },
+  {
+    "path": "public/assets/traffic/camper.webp",
+    "bytes": 40814,
+    "width": 511,
+    "height": 483
+  },
+  {
+    "path": "public/assets/traffic/taxi.webp",
+    "bytes": 38586,
+    "width": 639,
+    "height": 441
+  },
+  {
+    "path": "public/assets/stops/msg-image.png",
+    "bytes": 31923,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/cars/side.webp",
+    "bytes": 31168,
+    "width": 1000,
+    "height": 270
+  },
+  {
+    "path": "public/assets/cars/rear.webp",
+    "bytes": 29580,
+    "width": 640,
+    "height": 418
+  },
+  {
+    "path": "public/assets/stops/msg-voice.png",
+    "bytes": 28232,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/stops/msg-envelope.png",
+    "bytes": 28054,
+    "width": 160,
+    "height": 103
+  },
+  {
+    "path": "public/assets/traffic/sedan.webp",
+    "bytes": 26552,
+    "width": 620,
+    "height": 338
+  },
+  {
+    "path": "public/assets/props/scooter.webp",
+    "bytes": 24020,
+    "width": 529,
+    "height": 353
+  },
+  {
+    "path": "public/assets/traffic/hatch.webp",
+    "bytes": 23682,
+    "width": 467,
+    "height": 321
+  },
+  {
+    "path": "public/assets/stops/msg-text-cyan.png",
+    "bytes": 23307,
+    "width": 160,
+    "height": 121
+  },
+  {
+    "path": "public/assets/props/topiary.webp",
+    "bytes": 23020,
+    "width": 325,
+    "height": 630
+  },
+  {
+    "path": "public/assets/stops/msg-text-pink.png",
+    "bytes": 22883,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/cars/wheel.webp",
+    "bytes": 21896,
+    "width": 256,
+    "height": 256
+  },
+  {
+    "path": "public/assets/traffic/rickshaw.webp",
+    "bytes": 19246,
+    "width": 366,
+    "height": 467
+  },
+  {
+    "path": "public/assets/props/parisian-lamp.webp",
+    "bytes": 18648,
+    "width": 112,
+    "height": 700
+  },
+  {
+    "path": "public/assets/stops/msg-flagged.png",
+    "bytes": 17147,
+    "width": 160,
+    "height": 127
+  },
+  {
+    "path": "public/assets/props/bench.webp",
+    "bytes": 17020,
+    "width": 551,
+    "height": 266
+  },
+  {
+    "path": "public/assets/props/kiosk.webp",
+    "bytes": 16726,
+    "width": 649,
+    "height": 456
+  },
+  {
+    "path": "public/assets/props/modern-lamp.webp",
+    "bytes": 16632,
+    "width": 321,
+    "height": 700
+  },
+  {
+    "path": "public/assets/props/bollards.webp",
+    "bytes": 12894,
+    "width": 561,
+    "height": 259
+  },
+  {
+    "path": "public/assets/props/trash-bin.webp",
+    "bytes": 11928,
+    "width": 214,
+    "height": 318
+  },
+  {
+    "path": "public/assets/props/hydrant.webp",
+    "bytes": 9230,
+    "width": 167,
+    "height": 306
+  },
+  {
+    "path": "public/assets/props/phone-booth.webp",
+    "bytes": 8288,
+    "width": 284,
+    "height": 457
+  },
+  {
+    "path": "public/assets/stops/msg-flagged.webp",
+    "bytes": 4758,
+    "width": 160,
+    "height": 127
+  },
+  {
+    "path": "public/assets/stops/msg-voice.webp",
+    "bytes": 4072,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/stops/msg-envelope.webp",
+    "bytes": 3792,
+    "width": 160,
+    "height": 103
+  },
+  {
+    "path": "public/assets/stops/msg-image.webp",
+    "bytes": 3772,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/stops/msg-text-cyan.webp",
+    "bytes": 3374,
+    "width": 160,
+    "height": 121
+  },
+  {
+    "path": "public/assets/props/asset-report.json",
+    "bytes": 3252
+  },
+  {
+    "path": "public/assets/stops/signalroute-silhouette.png",
+    "bytes": 3159,
+    "width": 1439,
+    "height": 720
+  },
+  {
+    "path": "public/assets/stops/msg-text-pink.webp",
+    "bytes": 2782,
+    "width": 160,
+    "height": 120
+  },
+  {
+    "path": "public/assets/stops/roomly-silhouette.png",
+    "bytes": 2571,
+    "width": 948,
+    "height": 1200
+  },
+  {
+    "path": "public/assets/stops/swiftship-silhouette.png",
+    "bytes": 1741,
+    "width": 1445,
+    "height": 900
+  },
+  {
+    "path": "public/og-placeholder.svg",
+    "bytes": 1200
+  },
+  {
+    "path": "public/assets/stops/asset-report.json",
+    "bytes": 1080
+  },
+  {
+    "path": "public/assets/stops/signalroute-report.json",
+    "bytes": 926
+  },
+  {
+    "path": "public/assets/traffic/traffic.json",
+    "bytes": 420
+  },
+  {
+    "path": "public/favicon.svg",
+    "bytes": 379
+  },
+  {
+    "path": "public/assets/sides/city-below.json",
+    "bytes": 239
+  },
+  {
+    "path": "public/assets/skyline/asset-report.json",
+    "bytes": 218
+  },
+  {
+    "path": "public/assets/layers/.gitkeep",
+    "bytes": 1
+  },
+  {
+    "path": "public/audio/.gitkeep",
+    "bytes": 1
+  }
+]

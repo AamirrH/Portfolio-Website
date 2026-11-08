@@ -1,0 +1,1413 @@
+{
+  "results": [
+    {
+      "route": "home",
+      "width": 1440,
+      "rate": 1,
+      "frames": 199,
+      "p50": 50,
+      "p95": 83.5,
+      "p99": 133.30000000000018,
+      "worst": 149.89999999999964,
+      "over20": 92.96482412060301,
+      "longTasks": 93,
+      "longMs": 6055,
+      "postGateMaxLong": 143,
+      "heapStart": 5105516,
+      "heapEnd": 6032812,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 7453.839,
+      "scriptMs": 269.35200000000003,
+      "taskMs": 10019.878999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 524,
+      "cls": 0.003581349012586806,
+      "tbtProxy": 1859,
+      "gateReadyMs": 1446.7000000178814,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 1440,
+      "rate": 1,
+      "frames": 128,
+      "p50": 83.29999999999927,
+      "p95": 116.60000000000036,
+      "p99": 133.30000000000018,
+      "worst": 183.30000000000018,
+      "over20": 96.875,
+      "longTasks": 110,
+      "longMs": 8945,
+      "postGateMaxLong": 272,
+      "heapStart": 7218768,
+      "heapEnd": 5882732,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8007.840999999999,
+      "scriptMs": 214.71400000000003,
+      "taskMs": 10226.981,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 588,
+      "cls": 0.006002918912157601,
+      "tbtProxy": 4434,
+      "gateReadyMs": 1524.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 1440,
+      "rate": 1,
+      "frames": 281,
+      "p50": 33.399999999999636,
+      "p95": 50.100000000000364,
+      "p99": 50.30000000000109,
+      "worst": 100,
+      "over20": 83.62989323843416,
+      "longTasks": 5,
+      "longMs": 315,
+      "postGateMaxLong": 270,
+      "heapStart": 5965464,
+      "heapEnd": 5810772,
+      "layoutCount": 6,
+      "layoutMs": 3.6710000000000074,
+      "styleMs": 7332.123,
+      "scriptMs": 165.307,
+      "taskMs": 9682.728000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 1180304,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 1180431,
+        "requests": 25
+      },
+      "lcp": 764,
+      "cls": 0.0022979103370949073,
+      "tbtProxy": 298,
+      "gateReadyMs": 1487.4000000059605,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "swiftship",
+      "width": 1440,
+      "rate": 1,
+      "frames": 278,
+      "p50": 33.399999999999636,
+      "p95": 50.19999999999891,
+      "p99": 66.60000000000036,
+      "worst": 83.19999999999891,
+      "over20": 85.97122302158273,
+      "longTasks": 5,
+      "longMs": 294,
+      "postGateMaxLong": 244,
+      "heapStart": 6048224,
+      "heapEnd": 6211740,
+      "layoutCount": 1,
+      "layoutMs": 0.6060000000000232,
+      "styleMs": 7198.371000000001,
+      "scriptMs": 274.319,
+      "taskMs": 9628.475,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 882987,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 883114,
+        "requests": 25
+      },
+      "lcp": 708,
+      "cls": 0.002908508551954733,
+      "tbtProxy": 256,
+      "gateReadyMs": 1416.0999999940395,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "signalroute",
+      "width": 1440,
+      "rate": 1,
+      "frames": 244,
+      "p50": 33.5,
+      "p95": 66.59999999999945,
+      "p99": 66.80000000000018,
+      "worst": 100,
+      "over20": 92.62295081967213,
+      "longTasks": 41,
+      "longMs": 2235,
+      "postGateMaxLong": 230,
+      "heapStart": 6059576,
+      "heapEnd": 6215808,
+      "layoutCount": 296,
+      "layoutMs": 54.398,
+      "styleMs": 6939.864999999999,
+      "scriptMs": 303.653,
+      "taskMs": 9777.588000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 967036,
+        "requests": 26
+      },
+      "total": {
+        "bytes": 972187,
+        "requests": 29
+      },
+      "lcp": 544,
+      "cls": 0.006053716295867628,
+      "tbtProxy": 410,
+      "gateReadyMs": 1447.3999999761581,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/roomly.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "about",
+      "width": 1440,
+      "rate": 1,
+      "frames": 430,
+      "p50": 16.700000000000728,
+      "p95": 33.5,
+      "p99": 50.100000000000364,
+      "worst": 66.70000000000073,
+      "over20": 37.44186046511628,
+      "longTasks": 5,
+      "longMs": 279,
+      "postGateMaxLong": 626,
+      "heapStart": 5465492,
+      "heapEnd": 5328316,
+      "layoutCount": 432,
+      "layoutMs": 40.083000000000006,
+      "styleMs": 7152.830999999999,
+      "scriptMs": 141.853,
+      "taskMs": 9872.237,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 552,
+      "cls": 0.0030130301769868825,
+      "tbtProxy": 607,
+      "gateReadyMs": 1811.5,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 1440,
+      "rate": 1,
+      "frames": 133,
+      "p50": 83.19999999999891,
+      "p95": 116.60000000000036,
+      "p99": 133.5,
+      "worst": 150,
+      "over20": 97.74436090225564,
+      "longTasks": 113,
+      "longMs": 9120,
+      "postGateMaxLong": 251,
+      "heapStart": 9030068,
+      "heapEnd": 6232808,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 7778.433,
+      "scriptMs": 269.71500000000003,
+      "taskMs": 10144.912000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 548,
+      "cls": 0.003034602563175154,
+      "tbtProxy": 4705,
+      "gateReadyMs": 1651.4000000059605,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "rate": 1,
+      "frames": 176,
+      "p50": 50.20000000000073,
+      "p95": 83.80000000000109,
+      "p99": 133.39999999999964,
+      "worst": 150.10000000000036,
+      "over20": 92.61363636363636,
+      "longTasks": 87,
+      "longMs": 6688,
+      "postGateMaxLong": 208,
+      "heapStart": 5798896,
+      "heapEnd": 5683444,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8203.231,
+      "scriptMs": 224.20000000000002,
+      "taskMs": 9998.712000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 524,
+      "cls": 0,
+      "tbtProxy": 2941,
+      "gateReadyMs": 1318.5999999940395,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 390,
+      "rate": 1,
+      "frames": 168,
+      "p50": 66.60000000000036,
+      "p95": 83.40000000000055,
+      "p99": 166.6999999999989,
+      "worst": 216.8000000000011,
+      "over20": 95.23809523809523,
+      "longTasks": 87,
+      "longMs": 6971,
+      "postGateMaxLong": 246,
+      "heapStart": 5581536,
+      "heapEnd": 5747432,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8315.047999999999,
+      "scriptMs": 289.858,
+      "taskMs": 10176.992,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 436,
+      "cls": 0,
+      "tbtProxy": 3507,
+      "gateReadyMs": 1455.800000011921,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 390,
+      "rate": 1,
+      "frames": 405,
+      "p50": 16.800000000000182,
+      "p95": 33.5,
+      "p99": 50.100000000000364,
+      "worst": 66.79999999999927,
+      "over20": 43.7037037037037,
+      "longTasks": 3,
+      "longMs": 178,
+      "postGateMaxLong": 245,
+      "heapStart": 5953588,
+      "heapEnd": 5535360,
+      "layoutCount": 8,
+      "layoutMs": 3.4310000000000036,
+      "styleMs": 7685.872999999999,
+      "scriptMs": 156.08999999999995,
+      "taskMs": 9788.151,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 1180125,
+        "requests": 22
+      },
+      "total": {
+        "bytes": 1180252,
+        "requests": 24
+      },
+      "lcp": 544,
+      "cls": 0,
+      "tbtProxy": 223,
+      "gateReadyMs": 1384.699999988079,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "swiftship",
+      "width": 390,
+      "rate": 1,
+      "frames": 443,
+      "p50": 16.700000000000728,
+      "p95": 33.5,
+      "p99": 50,
+      "worst": 66.60000000000036,
+      "over20": 34.08577878103837,
+      "longTasks": 3,
+      "longMs": 163,
+      "postGateMaxLong": 238,
+      "heapStart": 5921824,
+      "heapEnd": 5509416,
+      "layoutCount": 1,
+      "layoutMs": 0.3480000000000011,
+      "styleMs": 7623.027,
+      "scriptMs": 129.23299999999998,
+      "taskMs": 9786.408,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 882629,
+        "requests": 21
+      },
+      "total": {
+        "bytes": 882756,
+        "requests": 23
+      },
+      "lcp": 532,
+      "cls": 0,
+      "tbtProxy": 224,
+      "gateReadyMs": 1375.4000000059605,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "signalroute",
+      "width": 390,
+      "rate": 1,
+      "frames": 400,
+      "p50": 16.899999999999636,
+      "p95": 33.5,
+      "p99": 50.099999999998545,
+      "worst": 50.100000000000364,
+      "over20": 48.75,
+      "longTasks": 2,
+      "longMs": 105,
+      "postGateMaxLong": 212,
+      "heapStart": 5499952,
+      "heapEnd": 5676872,
+      "layoutCount": 47,
+      "layoutMs": 16.33399999999999,
+      "styleMs": 7717.429999999999,
+      "scriptMs": 275.374,
+      "taskMs": 9921.145,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 962620,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 971829,
+        "requests": 27
+      },
+      "lcp": 644,
+      "cls": 0,
+      "tbtProxy": 184,
+      "gateReadyMs": 1395.5,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/roomly.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "about",
+      "width": 390,
+      "rate": 1,
+      "frames": 593,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 33.399999999999636,
+      "worst": 50.5,
+      "over20": 1.5177065767284992,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 233,
+      "heapStart": 5221384,
+      "heapEnd": 5320388,
+      "layoutCount": 596,
+      "layoutMs": 47.952,
+      "styleMs": 6234.876,
+      "scriptMs": 144.376,
+      "taskMs": 8429.688,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 372,
+      "cls": 0,
+      "tbtProxy": 183,
+      "gateReadyMs": 1346.1000000238419,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 390,
+      "rate": 1,
+      "frames": 168,
+      "p50": 50.100000000000364,
+      "p95": 99.89999999999964,
+      "p99": 116.69999999999982,
+      "worst": 199.89999999999964,
+      "over20": 95.83333333333334,
+      "longTasks": 85,
+      "longMs": 6708,
+      "postGateMaxLong": 231,
+      "heapStart": 6321184,
+      "heapEnd": 6069940,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8144.051000000001,
+      "scriptMs": 251.31199999999998,
+      "taskMs": 10063.4,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 540,
+      "cls": 0,
+      "tbtProxy": 3093,
+      "gateReadyMs": 1445.7000000178814,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 1440,
+      "rate": 4,
+      "frames": 6,
+      "p50": 1999.9000000000015,
+      "p95": 2033.2999999999993,
+      "p99": 2033.2999999999993,
+      "worst": 2033.2999999999993,
+      "over20": 100,
+      "longTasks": 7,
+      "longMs": 10596,
+      "postGateMaxLong": 2076,
+      "heapStart": 6702372,
+      "heapEnd": 5500452,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 9884.952999999998,
+      "scriptMs": 557.7239999999999,
+      "taskMs": 12812.147000000003,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 2292,
+      "cls": 0.003581349012586806,
+      "tbtProxy": 28664,
+      "gateReadyMs": 13185.700000017881,
+      "errors": [],
+      "costs": [
+        [
+          "RunTask",
+          39317.56200000058
+        ],
+        [
+          "ProxyMain::BeginMainFrame",
+          12400.639
+        ],
+        [
+          "WebFrameWidgetImpl::UpdateLifecycle",
+          11062.295
+        ],
+        [
+          "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+          9917.447
+        ],
+        [
+          "LocalFrameView::UpdateStyleAndLayout",
+          9914.033
+        ],
+        [
+          "Blink.Style.UpdateTime",
+          9888.521999999999
+        ],
+        [
+          "UpdateLayoutTree",
+          9885.637999999999
+        ],
+        [
+          "Document::updateStyle",
+          9878.932999999999
+        ],
+        [
+          "Document::recalcStyle",
+          9871.428
+        ],
+        [
+          "Scheduler::RunTask",
+          4735.248999999977
+        ],
+        [
+          "ProxyImpl::ScheduledActionDraw",
+          1419.4089999999999
+        ],
+        [
+          "MainFrame.Draw",
+          1414.3259999999993
+        ],
+        [
+          "WebFrameWidgetImpl::BeginMainFrame",
+          1125.065
+        ],
+        [
+          "Blink.Animate.UpdateTime",
+          1122.1219999999998
+        ],
+        [
+          "PageAnimator::serviceScriptedAnimations",
+          1120.569
+        ],
+        [
+          "AsyncTask Run",
+          1068.7700000000004
+        ],
+        [
+          "LocalFrameView::RunPaintLifecyclePhase",
+          1046.876
+        ],
+        [
+          "EventDispatch",
+          819.6469999999997
+        ],
+        [
+          "LayerTreeHostImpl::PrepareToDraw",
+          806.027999999999
+        ],
+        [
+          "FunctionCall",
+          685.9169999999997
+        ],
+        [
+          "DXGISwapChainImageBacking::Present",
+          683.1930000000009
+        ],
+        [
+          "LocalFrameView::pushPaintArtifactToCompositor",
+          615.877
+        ],
+        [
+          "Blink.CompositingCommit.UpdateTime",
+          614.356
+        ],
+        [
+          "Layerize",
+          613.4259999999999
+        ],
+        [
+          "PaintArtifactCompositor::Update",
+          610.092
+        ],
+        [
+          "Paint",
+          474.1920000000001
+        ],
+        [
+          "LayerTreeImpl::UpdateDrawProperties",
+          460.86899999999974
+        ],
+        [
+          "GpuChannel::ExecuteDeferredRequest",
+          408.08
+        ],
+        [
+          "GPUTask",
+          405.2060000000001
+        ],
+        [
+          "CommandBuffer::Flush",
+          400.3179999999999
+        ],
+        [
+          "CommandBufferStub::OnAsyncFlush",
+          399.82499999999993
+        ],
+        [
+          "CommandBufferService:PutChanged",
+          398.4789999999999
+        ],
+        [
+          "LayerTreeImpl::UpdateDrawProperties::CalculateDrawProperties",
+          319.507
+        ],
+        [
+          "Blink.Paint.UpdateTime",
+          314.39399999999995
+        ],
+        [
+          "RendererRasterWorker",
+          310.27
+        ],
+        [
+          "Scheduler::BeginFrame",
+          276.3439999999999
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM",
+          259.54400000000004
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM::Flush",
+          254.95000000000013
+        ],
+        [
+          "Scheduler::BeginImplFrame",
+          254.90600000000003
+        ],
+        [
+          "LayerTreeHostImpl::CalculateRenderPasses",
+          245.23000000000016
+        ]
+      ]
+    },
+    {
+      "route": "projects",
+      "width": 1440,
+      "rate": 4,
+      "frames": 50,
+      "p50": 150.10000000000036,
+      "p95": 533.2999999999993,
+      "p99": 1166.7000000000007,
+      "worst": 1166.7000000000007,
+      "over20": 98,
+      "longTasks": 46,
+      "longMs": 9540,
+      "postGateMaxLong": 1164,
+      "heapStart": 6970064,
+      "heapEnd": 6610516,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8827.143,
+      "scriptMs": 239.9929999999999,
+      "taskMs": 10810.579999999998,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 1788,
+      "cls": 0.006002918912157601,
+      "tbtProxy": 10633,
+      "gateReadyMs": 2208.5999999940395,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 1440,
+      "rate": 4,
+      "frames": 31,
+      "p50": 316.7000000000007,
+      "p95": 616.6000000000022,
+      "p99": 683.3999999999996,
+      "worst": 683.3999999999996,
+      "over20": 100,
+      "longTasks": 31,
+      "longMs": 9555,
+      "postGateMaxLong": 675,
+      "heapStart": 8011864,
+      "heapEnd": 5903892,
+      "layoutCount": 4,
+      "layoutMs": 21.44600000000002,
+      "styleMs": 7715.227,
+      "scriptMs": 349.04999999999984,
+      "taskMs": 10607.466000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 1180304,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 1180431,
+        "requests": 25
+      },
+      "lcp": 2372,
+      "cls": 0,
+      "tbtProxy": 10752,
+      "gateReadyMs": 2637.0999999940395,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ],
+      "costs": [
+        [
+          "RunTask",
+          28471.562000001184
+        ],
+        [
+          "ProxyMain::BeginMainFrame",
+          10245.996999999998
+        ],
+        [
+          "WebFrameWidgetImpl::UpdateLifecycle",
+          9097.241
+        ],
+        [
+          "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+          7806.932999999999
+        ],
+        [
+          "LocalFrameView::UpdateStyleAndLayout",
+          7799.275999999999
+        ],
+        [
+          "Blink.Style.UpdateTime",
+          7717.919000000002
+        ],
+        [
+          "UpdateLayoutTree",
+          7715.509000000001
+        ],
+        [
+          "Document::updateStyle",
+          7710.813999999999
+        ],
+        [
+          "Document::recalcStyle",
+          7681.311
+        ],
+        [
+          "Scheduler::RunTask",
+          3592.1150000000075
+        ],
+        [
+          "ProxyImpl::ScheduledActionDraw",
+          1257.2750000000012
+        ],
+        [
+          "MainFrame.Draw",
+          1254.3579999999995
+        ],
+        [
+          "LocalFrameView::RunPaintLifecyclePhase",
+          961.4849999999999
+        ],
+        [
+          "WebFrameWidgetImpl::BeginMainFrame",
+          735.5369999999999
+        ],
+        [
+          "Blink.Animate.UpdateTime",
+          713.031
+        ],
+        [
+          "PageAnimator::serviceScriptedAnimations",
+          706.856
+        ],
+        [
+          "LayerTreeHostImpl::PrepareToDraw",
+          605.8429999999992
+        ],
+        [
+          "AsyncTask Run",
+          597.4740000000002
+        ],
+        [
+          "GpuChannel::ExecuteDeferredRequest",
+          587.6899999999999
+        ],
+        [
+          "GPUTask",
+          578.926
+        ],
+        [
+          "RendererRasterWorker",
+          575.0469999999998
+        ],
+        [
+          "CommandBuffer::Flush",
+          574.3090000000002
+        ],
+        [
+          "CommandBufferStub::OnAsyncFlush",
+          573.941
+        ],
+        [
+          "CommandBufferService:PutChanged",
+          572.6020000000002
+        ],
+        [
+          "Paint",
+          550.4649999999997
+        ],
+        [
+          "DXGISwapChainImageBacking::Present",
+          502.86999999999955
+        ],
+        [
+          "FunctionCall",
+          437.83199999999937
+        ],
+        [
+          "LocalFrameView::pushPaintArtifactToCompositor",
+          385.216
+        ],
+        [
+          "Blink.CompositingCommit.UpdateTime",
+          383.90299999999996
+        ],
+        [
+          "Layerize",
+          382.1480000000001
+        ],
+        [
+          "EventDispatch",
+          379.6030000000004
+        ],
+        [
+          "PaintArtifactCompositor::Update",
+          378.5559999999999
+        ],
+        [
+          "Blink.Paint.UpdateTime",
+          376.8210000000001
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM",
+          375.6560000000005
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM::Flush",
+          369.86100000000033
+        ],
+        [
+          "LayerTreeImpl::UpdateDrawProperties",
+          350.35799999999983
+        ],
+        [
+          "Commit",
+          326.89000000000004
+        ],
+        [
+          "PrePaint",
+          290.2689999999999
+        ],
+        [
+          "Scheduler::BeginFrame",
+          243.35900000000004
+        ],
+        [
+          "AnimationHost::TickAnimations",
+          242.5990000000001
+        ]
+      ]
+    },
+    {
+      "route": "swiftship",
+      "width": 1440,
+      "rate": 4,
+      "frames": 25,
+      "p50": 416.7000000000007,
+      "p95": 666.7000000000007,
+      "p99": 700.1999999999989,
+      "worst": 700.1999999999989,
+      "over20": 100,
+      "longTasks": 24,
+      "longMs": 9658,
+      "postGateMaxLong": 693,
+      "heapStart": 10200104,
+      "heapEnd": 5754172,
+      "layoutCount": 1,
+      "layoutMs": 3.3199999999999896,
+      "styleMs": 8493.109,
+      "scriptMs": 448.90100000000024,
+      "taskMs": 10794.839000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 882987,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 883114,
+        "requests": 25
+      },
+      "lcp": 3556,
+      "cls": 0.002908508551954733,
+      "tbtProxy": 13003,
+      "gateReadyMs": 3832.800000011921,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "signalroute",
+      "width": 1440,
+      "rate": 4,
+      "frames": 21,
+      "p50": 483.39999999999964,
+      "p95": 600.0999999999985,
+      "p99": 683.4000000000015,
+      "worst": 683.4000000000015,
+      "over20": 100,
+      "longTasks": 21,
+      "longMs": 9854,
+      "postGateMaxLong": 666,
+      "heapStart": 10000260,
+      "heapEnd": 5753832,
+      "layoutCount": 44,
+      "layoutMs": 106.67400000000005,
+      "styleMs": 7831.342999999999,
+      "scriptMs": 360.37300000000005,
+      "taskMs": 10191.11,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 967036,
+        "requests": 26
+      },
+      "total": {
+        "bytes": 972314,
+        "requests": 30
+      },
+      "lcp": 2796,
+      "cls": 0,
+      "tbtProxy": 12778,
+      "gateReadyMs": 3767.5999999940395,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/roomly.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "about",
+      "width": 1440,
+      "rate": 4,
+      "frames": 50,
+      "p50": 183.40000000000146,
+      "p95": 499.89999999999964,
+      "p99": 583.3999999999996,
+      "worst": 583.3999999999996,
+      "over20": 100,
+      "longTasks": 40,
+      "longMs": 9479,
+      "postGateMaxLong": 567,
+      "heapStart": 9513348,
+      "heapEnd": 5402588,
+      "layoutCount": 51,
+      "layoutMs": 22.48400000000006,
+      "styleMs": 8318.861000000003,
+      "scriptMs": 226.82599999999996,
+      "taskMs": 10366.184000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 2908,
+      "cls": 0.0030130301769868825,
+      "tbtProxy": 10680,
+      "gateReadyMs": 3016.699999988079,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 1440,
+      "rate": 4,
+      "frames": 16,
+      "p50": 450,
+      "p95": 1299.800000000003,
+      "p99": 1299.800000000003,
+      "worst": 1299.800000000003,
+      "over20": 100,
+      "longTasks": 16,
+      "longMs": 10656,
+      "postGateMaxLong": 1294,
+      "heapStart": 5607684,
+      "heapEnd": 7138452,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 9114.175,
+      "scriptMs": 180.18599999999995,
+      "taskMs": 11008.68,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 3300,
+      "cls": 0.003034602563175154,
+      "tbtProxy": 14555,
+      "gateReadyMs": 4368.799999982119,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "rate": 4,
+      "frames": 48,
+      "p50": 233,
+      "p95": 350,
+      "p99": 416.7000000000007,
+      "worst": 416.7000000000007,
+      "over20": 100,
+      "longTasks": 47,
+      "longMs": 9897,
+      "postGateMaxLong": 408,
+      "heapStart": 5164616,
+      "heapEnd": 8130320,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 8761.17,
+      "scriptMs": 85.40399999999981,
+      "taskMs": 10419.612,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 2408,
+      "cls": 0,
+      "tbtProxy": 10527,
+      "gateReadyMs": 2233.300000011921,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 390,
+      "rate": 4,
+      "frames": 22,
+      "p50": 500.10000000000036,
+      "p95": 733.3000000000011,
+      "p99": 900,
+      "worst": 900,
+      "over20": 95.45454545454545,
+      "longTasks": 21,
+      "longMs": 9895,
+      "postGateMaxLong": 908,
+      "heapStart": 7064228,
+      "heapEnd": 5853820,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 9521.942,
+      "scriptMs": 152.45399999999987,
+      "taskMs": 10793.521999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 2828,
+      "cls": 0,
+      "tbtProxy": 13479,
+      "gateReadyMs": 2761.0999999940395,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 390,
+      "rate": 4,
+      "frames": 46,
+      "p50": 233.1999999999989,
+      "p95": 349.90000000000146,
+      "p99": 416.60000000000036,
+      "worst": 416.60000000000036,
+      "over20": 100,
+      "longTasks": 44,
+      "longMs": 9511,
+      "postGateMaxLong": 433,
+      "heapStart": 10114452,
+      "heapEnd": 5834836,
+      "layoutCount": 6,
+      "layoutMs": 16.99800000000007,
+      "styleMs": 8543.256,
+      "scriptMs": 209.851,
+      "taskMs": 10411.976999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 1180125,
+        "requests": 22
+      },
+      "total": {
+        "bytes": 1180252,
+        "requests": 24
+      },
+      "lcp": 2564,
+      "cls": 0,
+      "tbtProxy": 10672,
+      "gateReadyMs": 2974.7000000178814,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/swiftship.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "swiftship",
+      "width": 390,
+      "rate": 4,
+      "frames": 47,
+      "p50": 216.60000000000218,
+      "p95": 333.1999999999971,
+      "p99": 433.1999999999989,
+      "worst": 433.1999999999989,
+      "over20": 95.74468085106383,
+      "longTasks": 44,
+      "longMs": 9660,
+      "postGateMaxLong": 412,
+      "heapStart": 9697340,
+      "heapEnd": 6005320,
+      "layoutCount": 1,
+      "layoutMs": 1.2659999999999894,
+      "styleMs": 8551.342999999999,
+      "scriptMs": 314.6870000000002,
+      "taskMs": 10469.443000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 882629,
+        "requests": 21
+      },
+      "total": {
+        "bytes": 882756,
+        "requests": 23
+      },
+      "lcp": 3344,
+      "cls": 0,
+      "tbtProxy": 10430,
+      "gateReadyMs": 2480.4000000059605,
+      "errors": [
+        "warning: The resource http://127.0.0.1:4173/assets/stops/signalroute.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    },
+    {
+      "route": "signalroute",
+      "width": 390,
+      "rate": 4,
+      "frames": 41,
+      "p50": 266.39999999999964,
+      "p95": 333.39999999999964,
+      "p99": 383.39999999999964,
+      "worst": 383.39999999999964,
+      "over20": 97.5609756097561,
+      "longTasks": 40,
+      "longMs": 9721,
+      "postGateMaxLong": 413,
+      "heapStart": 10191464,
+      "heapEnd": 5857608,
+      "layoutCount": 37,
+      "layoutMs": 84.16800000000002,
+      "styleMs": 8142.374,
+      "scriptMs": 361.124,
+      "taskMs": 10120.710999999998,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 962620,
+        "requests": 23
+      },
+      "total": {
+        "bytes": 971829,
+        "requests": 27
+      },
+      "lcp": 2564,
+      "cls": 0,
+      "tbtProxy": 11190,
+      "gateReadyMs": 3222.7000000178814,
+      "errors": []
+    },
+    {
+      "route": "about",
+      "width": 390,
+      "rate": 4,
+      "frames": 71,
+      "p50": 149.79999999999927,
+      "p95": 233.5,
+      "p99": 266.59999999999854,
+      "worst": 266.59999999999854,
+      "over20": 97.1830985915493,
+      "longTasks": 67,
+      "longMs": 9413,
+      "postGateMaxLong": 242,
+      "heapStart": 9444692,
+      "heapEnd": 5612788,
+      "layoutCount": 73,
+      "layoutMs": 33.48199999999996,
+      "styleMs": 8001.884,
+      "scriptMs": 276.90000000000003,
+      "taskMs": 10338.392,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 1984,
+      "cls": 0,
+      "tbtProxy": 8386,
+      "gateReadyMs": 2065.300000011921,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 390,
+      "rate": 4,
+      "frames": 16,
+      "p50": 716.6999999999989,
+      "p95": 883.2000000000007,
+      "p99": 883.2000000000007,
+      "worst": 883.2000000000007,
+      "over20": 100,
+      "longTasks": 14,
+      "longMs": 9178,
+      "postGateMaxLong": 885,
+      "heapStart": 7063844,
+      "heapEnd": 5577748,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 9731.132,
+      "scriptMs": 357.00100000000003,
+      "taskMs": 11532.206000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 595233,
+        "requests": 10
+      },
+      "total": {
+        "bytes": 595360,
+        "requests": 12
+      },
+      "lcp": 1984,
+      "cls": 0,
+      "tbtProxy": 13603,
+      "gateReadyMs": 3683.7000000178814,
+      "errors": []
+    }
+  ],
+  "transitions": [
+    {
+      "width": 1440,
+      "rate": 4,
+      "frames": 28,
+      "p50": 1016.7000000000007,
+      "p95": 2800,
+      "p99": 3933.2999999999993,
+      "worst": 3933.2999999999993,
+      "over20": 100
+    },
+    {
+      "width": 1440,
+      "rate": 1,
+      "frames": 241,
+      "p50": 66.60000000000218,
+      "p95": 149.79999999999927,
+      "p99": 316.7000000000007,
+      "worst": 349.90000000000055,
+      "over20": 93.7759336099585
+    },
+    {
+      "width": 390,
+      "rate": 1,
+      "frames": 367,
+      "p50": 33.5,
+      "p95": 83.59999999999945,
+      "p99": 233.3000000000011,
+      "worst": 316.5,
+      "over20": 80.10899182561307
+    },
+    {
+      "width": 390,
+      "rate": 4,
+      "frames": 26,
+      "p50": 1416.5999999999985,
+      "p95": 3133.3999999999996,
+      "p99": 3449.9000000000015,
+      "worst": 3449.9000000000015,
+      "over20": 100
+    }
+  ],
+  "jsGzip": 118630,
+  "notes": [
+    "Production Vite preview; cold context per route; high quality forced.",
+    "TBT proxy is sum(max(longtask-50,0)) after gate, not Lighthouse navigation TBT.",
+    "LCP describes the gate/first navigation, not post-click scene readiness.",
+    "CPU throttling is not a physical mid-range phone or GPU throttle.",
+    "Trace event totals are inclusive and overlap; not additive. Paint count unavailable in Performance.getMetrics."
+  ],
+  "sourceCommit": "0b5ed88"
+}
