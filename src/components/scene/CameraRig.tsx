@@ -1,3 +1,4 @@
+import { decodeScene } from '../../lib/idle';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { useSceneStore, type CameraPreset } from '../../state/useSceneStore';
@@ -13,9 +14,11 @@ function SceneFrame({ id, active, remove }: { id: SceneId; active: boolean; remo
   const ref = useRef<HTMLDivElement>(null);
   const motion=useSceneStore(state=>state.motion);
   useLayoutEffect(() => {
-    const tween = gsap.to(ref.current, { opacity: active ? 1 : 0, duration: !motion || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION,
-      ease: 'power3.inOut', onComplete: () => { if (!active) remove(id); } });
-    return () => { tween.kill(); };
+    let cancelled=false;let tween:gsap.core.Tween|undefined;
+    const start=()=>{if(cancelled)return;tween = gsap.to(ref.current, { opacity: active ? 1 : 0, duration: !motion || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION,
+      ease: 'power3.inOut', onComplete: () => { if (!active) remove(id); } });};
+    if(active&&ref.current)void decodeScene(ref.current).then(start);else start();
+    return () => { cancelled=true;tween?.kill(); };
   }, [id, active, remove, motion]);
   const Component = scenes[id];
   return <div ref={ref} className="scene-frame" data-scene={id} data-active={active} style={{ zIndex: active ? 2 : 1 }}><Component/></div>;

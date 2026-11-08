@@ -1,3 +1,4 @@
+import { idleTask } from '../../lib/idle';
 import { useEffect, useRef, useId, type CSSProperties } from 'react';
 import { type StopConfig, stops, stopArtOrder } from '../../data/stops';
 import { content, projects } from '../../data/content';
@@ -24,15 +25,17 @@ export function StopScene({ stop }: { stop: StopConfig }) {
   const tickets = stop.overlays.find(rect => rect.kind === 'tickets');
   const { building, door } = stop;
   const project = projects.find(item => item.id === stop.id);
+  const ignited=useSceneStore(s=>s.ignited);
   const active = useSceneStore(state => state.section === stop.id);
   useEffect(() => {
+    if(!ignited||!active)return;
     const nextId = stopArtOrder[(stopArtOrder.indexOf(stop.id)+1)%stopArtOrder.length];
     const src = stops[nextId].building.src;
     if (!src) return;
-    const link = document.createElement('link'); link.rel = 'preload'; link.as = 'image'; link.href = src;
-    document.head.append(link);
-    return () => link.remove();
-  }, [stop.id]);
+    let cancelled=false;
+    const cancel=idleTask(()=>{if(cancelled)return;const image=new Image();image.decoding='async';image.src=src;void image.decode().catch(()=>{});});
+    return()=>{cancelled=true;cancel();};
+  }, [stop.id,ignited,active]);
   const style: StopStyle = { '--height-vh': building.heightVh, '--mobile-height-vh': building.mobileHeightVh, '--anchor-x': building.anchorXPct, '--building-aspect': building.aspect, '--building-mask': building.silhouette ? `url("${building.silhouette}")` : 'none' };
   const art = building.src ? <img className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
   return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
