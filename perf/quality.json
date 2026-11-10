@@ -1,0 +1,73 @@
+[
+  {
+    "requested": "high",
+    "p95": 50.30000000000018,
+    "quality": "high",
+    "ticker": {
+      "subscriptions": 4,
+      "running": true,
+      "quality": "high"
+    },
+    "canvas": 1457,
+    "paused": {
+      "subscriptions": 2,
+      "running": false,
+      "quality": "high"
+    },
+    "logs": []
+  },
+  {
+    "requested": "medium",
+    "p95": 116.69999999999891,
+    "quality": "medium",
+    "ticker": {
+      "subscriptions": 4,
+      "running": true,
+      "quality": "medium"
+    },
+    "canvas": 1457,
+    "paused": {
+      "subscriptions": 2,
+      "running": false,
+      "quality": "medium"
+    },
+    "logs": []
+  },
+  {
+    "requested": "low",
+    "p95": 33.5,
+    "quality": "low",
+    "ticker": {
+      "subscriptions": 2,
+      "running": true,
+      "quality": "low"
+    },
+    "canvas": 1457,
+    "paused": {
+      "subscriptions": 1,
+      "running": false,
+      "quality": "low"
+    },
+    "logs": []
+  },
+  {
+    "requested": "auto",
+    "p95": 50.099999999998545,
+    "quality": "low",
+    "ticker": {
+      "subscriptions": 2,
+      "running": true,
+      "quality": "low"
+    },
+    "canvas": 1457,
+    "paused": {
+      "subscriptions": 1,
+      "running": false,
+      "quality": "low"
+    },
+    "logs": [
+      "[quality] medium p95 85.2",
+      "[quality] low p95 71.8"
+    ]
+  }
+]

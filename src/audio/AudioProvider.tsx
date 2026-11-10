@@ -1,3 +1,4 @@
+import { QUALITY } from '../config/quality';
 import { subscribeTick } from '../lib/ticker';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_VOLUME } from '../config';
@@ -15,6 +16,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const unlocked = useRef(false);
   const mutedRef = useRef(muted);
+  const quality=useSceneStore(s=>s.quality);
   const section = useSceneStore(s=>s.section);
   const plain = useSceneStore(state => state.plain);
   const fail = useCallback(() => { setUnavailable(true); setMuted(true); setPlaying(false); audio.current?.pause(); }, []);
@@ -60,7 +62,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let accumulated = 0;
     const root = document.documentElement;
-    const active = playing && !muted && !unavailable && !plain;
+    const active = playing && !muted && !unavailable && !plain && QUALITY[quality].audioReactive;
     root.dataset.audio = active ? 'reactive' : 'fallback';
     const data = new Uint8Array(analyser.current?.frequencyBinCount ?? 256);
     let scales:HTMLElement[]=[],glows:HTMLElement[]=[],brakes:SVGElement[]=[];
@@ -79,7 +81,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     };
     const unsubscribe=active?subscribeTick(tick,{priority:20,quality:'medium'}):()=>{};
     return () => { observer.disconnect(); unsubscribe(); root.dataset.audio = 'fallback'; };
-  }, [playing, muted, unavailable, plain, section]);
+  }, [playing, muted, unavailable, plain, section, quality]);
   useEffect(() => () => { void context.current?.close().catch(() => {}); context.current = null; analyser.current = null; }, []);
   const value = useMemo(() => ({ muted, unavailable, unlock, toggle }), [muted, unavailable, unlock, toggle]);
   return <AudioControlContext.Provider value={value}><audio ref={audio} preload="none" loop onError={fail} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>{hasTrack&&<><source src="/assets/audio/resonance.webm" type='audio/webm; codecs="opus"'/><source src="/assets/audio/resonance.m4a" type="audio/mp4"/></>}</audio>{children}</AudioControlContext.Provider>;

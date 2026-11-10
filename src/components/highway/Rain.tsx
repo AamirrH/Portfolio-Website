@@ -1,3 +1,4 @@
+import { QUALITY } from '../../config/quality';
 import { environmentMotion } from '../../lib/environment';
 import { subscribeTick } from '../../lib/ticker';
 import './highway.css';
@@ -5,17 +6,18 @@ import { useEffect,useRef } from 'react';
 import { useSceneStore } from '../../state/useSceneStore';
 import { useStopPreferences } from '../../hooks/useStopAnimations';
 export function Rain(){
+ const quality=useSceneStore(s=>s.quality);
  const ref=useRef<HTMLDivElement>(null),motion=useSceneStore(s=>s.motion),ignited=useSceneStore(s=>s.ignited),section=useSceneStore(s=>s.section),{mobile,reduced,hidden}=useStopPreferences();
  useEffect(()=>{
   const root=ref.current,canvas=root?.querySelector('canvas');if(!root||!canvas)return;const ctx=canvas.getContext('2d');if(!ctx)return;
   let w=root.clientWidth,h=root.clientHeight,time=0,frames=0,fpsClock=0;
   const drops=Array.from({length:mobile?80:220},()=>({x:Math.random(),y:Math.random(),z:.2+Math.random()*.8}));
-  const ripples=Array.from(root.querySelectorAll<HTMLElement>('.rain-ripple')),lenses=Array.from(root.querySelectorAll<HTMLElement>('.lens-drop'));
+  const ripples=Array.from(root.querySelectorAll<HTMLElement>('.rain-ripple')).slice(0,QUALITY[quality].rainExtras?12:0),lenses=Array.from(root.querySelectorAll<HTMLElement>('.lens-drop')).slice(0,QUALITY[quality].rainExtras?6:0);
   const fog=root.querySelector<HTMLElement>('.rain-fog')!,sheen=root.querySelector<HTMLElement>('.rain-sheen')!;
   let ui:DOMRect[]=[];
-  const resize=()=>{w=root.clientWidth;h=root.clientHeight;const dpr=Math.min(devicePixelRatio,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ui=Array.from(document.querySelectorAll<HTMLElement>('.home-copy,.contact-copy,.view-panel,.gantry-signs,.contact-gantry')).map(el=>el.getBoundingClientRect());};resize();
+  const resize=()=>{w=root.clientWidth;h=root.clientHeight;const dpr=Math.min(devicePixelRatio,QUALITY[quality].dpr);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ui=Array.from(document.querySelectorAll<HTMLElement>('.home-copy,.contact-copy,.view-panel,.gantry-signs,.contact-gantry')).map(el=>el.getBoundingClientRect());};resize();
   root.dataset.pool=String(ripples.length+lenses.length);root.dataset.rainPool=String(drops.length);root.dataset.frames='0';
-  if(hidden||reduced||!motion||!ignited){ctx.clearRect(0,0,w,h);root.style.opacity='0';return;}
+  if(hidden||reduced||!motion||!ignited||!QUALITY[quality].rain){ctx.clearRect(0,0,w,h);root.style.opacity='0';return;}
   root.style.opacity='1';
   let wasWet=false;
   const tick=(dt:number)=>{const realDt=dt;time+=dt;const {speed}=useSceneStore.getState();const {weather}=environmentMotion;if(weather<.001){if(wasWet){ctx.clearRect(0,0,w,h);root.style.opacity='0';wasWet=false;}return;}wasWet=true;root.style.opacity='1';if(root.parentElement){if(root.parentElement.dataset.raining!==String(weather>.1))root.parentElement.dataset.raining=String(weather>.1);if(root.parentElement.style.getPropertyValue('--weather')!==String(weather))root.parentElement.style.setProperty('--weather',String(weather));}ctx.clearRect(0,0,w,h);const count=Math.round(drops.length*weather);
@@ -25,7 +27,7 @@ export function Rain(){
    fog.style.opacity=String(weather*.2);sheen.style.opacity=String(weather*.35);root.dataset.weather=weather.toFixed(2);root.dataset.rainActive=String(count);root.dataset.frames='1';frames++;fpsClock+=realDt;if(fpsClock>=1){root.dataset.fps=String(Math.round(frames/fpsClock));frames=0;fpsClock=0;}
   };const unsubscribe=subscribeTick(tick,{priority:10,quality:'medium'});let resizeTimer:ReturnType<typeof setTimeout>;const observer=new ResizeObserver(()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(resize,150);});observer.observe(root);
   return()=>{unsubscribe();observer.disconnect();clearTimeout(resizeTimer);ctx.clearRect(0,0,w,h);root.dataset.frames='0';};
- },[mobile,reduced,hidden,motion,ignited,section]);
+ },[mobile,reduced,hidden,motion,ignited,section,quality]);
  return <div ref={ref} className="rain-world" aria-hidden="true"><svg className="weather-rail-glow" viewBox="0 0 1440 800" preserveAspectRatio="none"><path d="M0 687L628 529M1440 687L812 529" fill="none" stroke="#ff92b8" strokeWidth="5"/></svg><div className="rain-fog"/><div className="rain-sheen"/><canvas className="rain-canvas"/>{Array.from({length:12},(_,i)=><span key={i} className="rain-ripple"/>)}{!mobile&&Array.from({length:6},(_,i)=><span key={i} className="lens-drop"/>)}</div>;
 }
 export function HighwayPerf(){

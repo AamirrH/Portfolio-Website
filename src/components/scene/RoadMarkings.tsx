@@ -1,3 +1,4 @@
+import { QUALITY } from '../../config/quality';
 import { subscribeTick } from '../../lib/ticker';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
@@ -40,6 +41,7 @@ function RoadDebug({model:m}:{model:RoadModel}) {
 export function RoadMarkings(){
   const ref=useRef<HTMLDivElement>(null),canvasRef=useRef<HTMLCanvasElement>(null);
   const model=useRoadModel(ref);
+  const quality=useSceneStore(s=>s.quality);
   const {reduced,hidden}=useStopPreferences();
   const ignited=useSceneStore(s=>s.ignited),section=useSceneStore(s=>s.section);
   const phase=useRef(Math.random()*108),time=useRef(0);
@@ -54,7 +56,7 @@ export function RoadMarkings(){
     const ctx=canvas.getContext('2d');if(!ctx)return;
     const active=['home','projects','contact'].includes(section);
     const running=active&&ignited&&!reduced&&!hidden;
-    const bounds=root.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,1.5);
+    const bounds=root.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,QUALITY[quality].dpr);
     canvas.width=Math.round(bounds.width*dpr);canvas.height=Math.round(bounds.height*dpr);
     const sx=canvas.width/m.width,sy=canvas.height/m.height;
     const bottomS=sForY(m.height,m);
@@ -101,11 +103,11 @@ export function RoadMarkings(){
       ctx.setTransform(sx,0,0,sy,0,0);ctx.clearRect(0,0,m.width,m.height);
       ctx.save();ctx.clip(clip);
       for(let side=-1;side<=1;side+=2)quad(side*(m.rail-.45),near,depth,.12,'#ffffff',.35);
-      if(animate){
+      if(animate&&quality!=='low'){
         for(let i=0;i<40;i++){const n=i*4,z=near+modulo(pool[n+2]*depth-phase.current*1.15,depth);quad(pool[n],z,pool[n+1],.05,'#ffffff',pool[n+3]);}
       }
       // Two passes: broad pink glow, then the crisp white paint.
-      for(let pass=0;pass<2;pass++){
+      for(let pass=quality==='low'?1:0;pass<2;pass++){
 
         const offset=modulo(-phase.current,9);
         for(let i=-1;i<dashCycle/9;i++){
@@ -145,7 +147,7 @@ export function RoadMarkings(){
     if(active&&!hidden)draw(running);
     if(running){diagnostic.raf=true;unsubscribe=subscribeTick(tick,{priority:0});}
     return()=>{unsubscribe();diagnostic.raf=false;};
-  },[model,reduced,hidden,ignited,section]);
+  },[model,reduced,hidden,ignited,section,quality]);
   const debug=new URLSearchParams(location.search).get('debug')==='road';
   const perf=new URLSearchParams(location.search).get('perf')==='1';
   return <div className="road-markings" ref={ref} aria-hidden="true"><canvas ref={canvasRef}/>{model&&debug&&ref.current?.closest('.rear-scene')&&createPortal(<RoadDebug model={model}/>,ref.current.closest('.rear-scene')!)} {perf&&<RoadPerf/>}</div>;

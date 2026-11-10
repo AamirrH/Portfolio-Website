@@ -260,3 +260,15 @@ button,a { touch-action:manipulation; }
 
 @font-face { font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/space-grotesk-400.woff2') format('woff2'); }
 @font-face { font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/space-grotesk-500.woff2') format('woff2'); }
+.quality-control { display:flex; align-items:center; gap:4px; font-size:10px; color:#c9c0d6; }
+.quality-control select { max-width:74px; padding:5px; color:inherit; background:#151023; border:1px solid #ffffff25; }
+.quality-control select:focus-visible { outline:2px solid var(--cyan);outline-offset:3px; }
+:root[data-quality='medium'] .view-panel,:root[data-quality='low'] .view-panel { backdrop-filter:none; }
+:root[data-quality='medium'] .lens-drop,:root[data-quality='medium'] .rain-ripple,:root[data-quality='medium'] .rain-fog,:root[data-quality='medium'] .rain-sheen { display:none; }
+:root:not([data-quality='high']) .speed-streaks { display:none; }
+:root[data-quality='low'] .scene *,:root[data-quality='low'] .scene *::before,:root[data-quality='low'] .scene *::after { animation-play-state:paused!important;mix-blend-mode:normal!important; }
+:root[data-quality='low']:not(.motion-off):not(.tab-hidden) .rear-car,:root[data-quality='low']:not(.motion-off):not(.tab-hidden) .rear-car svg,:root[data-quality='low']:not(.motion-off):not(.tab-hidden) .sun-aura,:root[data-quality='low']:not(.motion-off):not(.tab-hidden) .brake-lights { animation-play-state:running!important; }
+:root[data-quality='low'] .building-bloom,:root[data-quality='low'] .building-tint,:root[data-quality='low'] .building-grade,:root[data-quality='low'] .ground-spills,:root[data-quality='low'] .prop-tint,:root[data-quality='low'] .signal-road-spill { display:none; }
+:root[data-quality='low'] .reflection-parallax { filter:none; }
+:root[data-quality='low'] .order-ticket,:root[data-quality='low'] .message-packet { display:none; }
+@media(max-width:767px) { .quality-control>span { display:none; }.quality-control select { max-width:55px;padding:4px 0;font-size:9px; }.topbar { column-gap:9px; } }

@@ -11,7 +11,7 @@ npm run build
 npm run preview
 ```
 
-Node 22 is recommended. `npm run build` runs strict TypeScript checking before generating `dist/`. Fonts are bundled locally from Fontsource. The dev server binds to 127.0.0.1.
+Node 22 is recommended. `npm run build` runs strict TypeScript checking before generating `dist/`. Fonts are self-hosted as WOFF2. The dev server binds to 127.0.0.1.
 
 ## Content and links
 
@@ -53,7 +53,7 @@ The `context/` folder is reference material, not a runtime asset source. Updated
 
 The supplied Resonance track is included at `public/assets/audio/resonance.mp3`. Replace that file and rebuild to change the music. It is served as a separate static asset, outside the JavaScript bundle.
 
-The ignition click unlocks AudioContext, optionally synthesizes a short engine start, and plays the local audio at volume 0.35. AnalyserNode reads low-frequency energy to drive sun scale/glow, taillight opacity, and sign illumination. Mute preference persists in localStorage. Audio and animation pause when the tab is hidden. A missing/failed track is silent and shows sound off. The fallback pulse uses `BPM` from `src/config.ts` (92 by default). The browser audio check verifies MP3 decoding, ignition playback, analyser response, looping configuration, volume, and mute persistence: `npx playwright test tests/audio.spec.ts`.
+The ignition click unlocks AudioContext, optionally synthesizes a short engine start, and plays the supplied track at volume 0.35. The browser prefers the compressed Opus WebM at `public/audio/resonance.webm`, then AAC at `public/audio/resonance.m4a`; the original MP3 remains archived under `assets-src/audio/` and is not served. AnalyserNode reads low-frequency energy at 30 Hz to drive sun scale/glow, taillight opacity, and sign illumination. Mute preference persists in localStorage. Audio and animation pause when the tab is hidden. A missing/failed track is silent and shows sound off. The fallback pulse uses `BPM` from `src/config.ts` (92 by default). The browser audio check verifies playback, analyser response, looping configuration, volume, and mute persistence: `npx playwright test tests/audio.spec.ts`.
 
 ## Accessibility and mobile
 
@@ -64,6 +64,12 @@ Below 768px, pointer parallax, near buildings, power lines, grain, and chromatic
 ## Atmosphere and extras
 
 The initial CSS palette is sunset. On load, visitor-local time selects dawn (05:00–07:59), sunset (17:00–19:59), or deep night otherwise. Click/focus the sun on the home scene to cycle palettes. The Konami sequence (up, up, down, down, left, right, left, right, B, A) adds a three-second speed boost; it is disabled in plain/reduced-motion mode. The about dashboard’s CS/∞ dials are decorative, not skill ratings or claimed performance metrics.
+
+### Quality and performance checks
+
+The top bar's Quality selector offers Auto, High, Medium, and Low. `?quality=high|medium|low` pins a tier; without it, Auto chooses an initial tier from device capabilities and can adjust while the scene is running. Motion Off, Plain mode, reduced-motion, and hidden tabs pause the shared animation ticker. Diagnostics are available with `?perf=1`.
+
+The reproducible production-preview harness is `node --experimental-strip-types scripts/perf-run.ts after`; route/profile filters are documented in `scripts/perf-run.ts`. `scripts/perf-leaks.ts` checks cleanup and heap/DOM growth. Results and comparison tables are written under `perf/`. `npm run build` regenerates the strict TypeScript production bundle.
 
 ## Vercel
 

@@ -1,3 +1,4 @@
+import { QUALITY } from '../../config/quality';
 import { responsiveArt } from '../../lib/responsiveArt';
 import { idleTask } from '../../lib/idle';
 import { useEffect, useRef, useId, type CSSProperties } from 'react';
@@ -18,6 +19,7 @@ import { NearBuildings } from '../scene/Skyline';
 
 type StopStyle = CSSProperties & Record<`--${string}`, string | number>;
 export function StopScene({ stop }: { stop: StopConfig }) {
+  const quality=useSceneStore(s=>s.quality);
   const ref = useRef<HTMLDivElement>(null);
   useStopAnimations(ref, stop);
   useStopPolish(ref);
@@ -38,14 +40,14 @@ export function StopScene({ stop }: { stop: StopConfig }) {
     return()=>{cancelled=true;cancel();};
   }, [stop.id,ignited,active]);
   const style: StopStyle = { '--height-vh': building.heightVh, '--mobile-height-vh': building.mobileHeightVh, '--anchor-x': building.anchorXPct, '--building-aspect': building.aspect, '--building-mask': building.silhouette ? `url("${building.silhouette}")` : 'none' };
-  const art = building.src ? <img {...responsiveArt(building.src,'(max-width:767px) 85vw, 55vw')} className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
+  const art = building.src ? <img {...responsiveArt(building.src,'(max-width:767px) 85vw, 55vw',quality==='low')} className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
   return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id} style={style}>
     <SceneSky/>
     <div className="stop-city-near" data-stop-depth="6"><NearBuildings/></div>
-    {SCENE_QUALITY.reflectionRipple && <svg className="reflection-filter" aria-hidden="true"><defs><filter id={rippleId} x="-10%" width="120%"><feTurbulence type="fractalNoise" baseFrequency=".008 .1" numOctaves="1" seed="7" result="noise"/><feColorMatrix in="noise" type="matrix" values="1 0 0 0 0  0 0 0 0 .5  0 0 1 0 0  0 0 0 1 0" result="horizontalNoise"/><feDisplacementMap in="SourceGraphic" in2="horizontalNoise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>}
+    {(SCENE_QUALITY.reflectionRipple&&QUALITY[quality].ripple) && <svg className="reflection-filter" aria-hidden="true"><defs><filter id={rippleId} x="-10%" width="120%"><feTurbulence type="fractalNoise" baseFrequency=".008 .1" numOctaves="1" seed="7" result="noise"/><feColorMatrix in="noise" type="matrix" values="1 0 0 0 0  0 0 0 0 .5  0 0 1 0 0  0 0 0 1 0" result="horizontalNoise"/><feDisplacementMap in="SourceGraphic" in2="horizontalNoise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>}
     <div className="building-anchor"><div className="building-parallax" data-stop-depth="8"><div className="building-contact-shadow"/><div className="building-arrival">
       {art}{building.silhouette && <><div className="building-tint"/><div className="building-rim"/><div className="building-grade"/><div className="building-occlusion"/></>}
-      {SCENE_QUALITY.bloom && building.src && <img className="building-bloom" src={building.src} alt=""/>}
+      {SCENE_QUALITY.bloom && QUALITY[quality].bloom && building.src && <img className="building-bloom" src={building.src} alt=""/>}
       <StopOverlays stop={stop} debug={debug}/>
       {active && door && project?.live && <a className="building-door" href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${content.projects.door}: ${project.title}`} style={{ left: `${door.x}%`, top: `${door.y}%`, width: `${door.width}%`, height: `${door.height}%` }}><span>{content.projects.door} ↗</span></a>}
     </div></div></div>

@@ -1,0 +1,89 @@
+{
+  "results": [
+    {
+      "route": "home",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 436,
+      "frames": 599,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 17.399999999999636,
+      "worst": 33.5,
+      "over20": 0.5008347245409015,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 611,
+      "heapStart": 5513912,
+      "heapEnd": 5082828,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 2233.114,
+      "scriptMs": 601.1860000000001,
+      "taskMs": 6231.554,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 366517,
+        "requests": 15
+      },
+      "total": {
+        "bytes": 1783441,
+        "requests": 18
+      },
+      "lcp": 1300,
+      "cls": 0.002042093661586934,
+      "tbtProxy": 566,
+      "gateReadyMs": 2183.60000000149,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 450,
+      "frames": 598,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 17,
+      "worst": 50,
+      "over20": 0.33444816053511706,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 209,
+      "heapStart": 6071652,
+      "heapEnd": 4597536,
+      "layoutCount": 6,
+      "layoutMs": 4.4789999999999965,
+      "styleMs": 1808.3029999999999,
+      "scriptMs": 206.83300000000006,
+      "taskMs": 4659.866000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 826096,
+        "requests": 27
+      },
+      "total": {
+        "bytes": 2308908,
+        "requests": 31
+      },
+      "lcp": 764,
+      "cls": 0.001844928681801376,
+      "tbtProxy": 159,
+      "gateReadyMs": 1743,
+      "errors": []
+    }
+  ],
+  "transitions": [],
+  "jsGzip": 123839,
+  "notes": [
+    "Production Vite preview; cold context per route; high quality forced.",
+    "TBT proxy is sum(max(longtask-50,0)) after gate, not Lighthouse navigation TBT.",
+    "LCP describes the gate/first navigation, not post-click scene readiness.",
+    "CPU throttling is not a physical mid-range phone or GPU throttle.",
+    "Trace event totals are inclusive and overlap; not additive. Paint count unavailable in Performance.getMetrics."
+  ]
+}

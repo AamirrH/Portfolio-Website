@@ -17,6 +17,7 @@ export function useStopPreferences() {
 }
 
 export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConfig) {
+  const quality=useSceneStore(s=>s.quality);
   const ignited = useSceneStore(state => state.ignited);
   const section = useSceneStore(state => state.section);
   const plain = useSceneStore(state => state.plain);
@@ -25,7 +26,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
   useLayoutEffect(() => {
     const root = ref.current;
     if (!root || !active) return;
-    if (reduced) { root.dataset.arrived = 'true'; return; }
+    if (reduced||quality!=='high') { root.dataset.arrived = 'true'; return; }
     root.dataset.arrived = 'false';
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({ onComplete: () => { root.dataset.arrived = 'true'; } });
@@ -36,11 +37,11 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
       timeline.fromTo('.parked-car .brake-lights', { opacity: .2 }, { opacity: 1, duration: .15 }, .05).to('.parked-car .brake-lights', { opacity: .65, duration: .6 }, .6);
     }, root);
     return () => { ctx.revert(); };
-  }, [ref, active, reduced]);
+  }, [ref, active, reduced,quality]);
 
   useEffect(() => {
     const root = ref.current;
-    if (!root || !active || reduced || hidden) return;
+    if (!root || !active || reduced || hidden || quality==='low') return;
     let disposed = false;
     const timers = new Set<ReturnType<typeof setTimeout>>();
     const tweens = new Set<gsap.core.Animation>();
@@ -57,7 +58,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
       const tween = gsap.to(target, { ...vars, onComplete: () => { tweens.delete(tween); diagnostics(); } });
       tweens.add(tween); diagnostics();
     };
-    const windows = Array.from(root.querySelectorAll<HTMLElement>('.overlay-window')).slice(0, mobile ? 3 : 10);
+    const windows = Array.from(root.querySelectorAll<HTMLElement>('.overlay-window')).slice(0, quality==='medium'?(mobile?2:5):mobile ? 3 : 10);
     const darkWindows = new Set<HTMLElement>();
     if (windows.length) repeat(() => {
       const window = windows[Math.floor(Math.random() * windows.length)];
@@ -85,7 +86,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
         later(() => animate(neon, { opacity: .8, duration: .06 }), 260);
       }, 6000, 10000);
       if (!mobile) {
-        const tickets = Array.from(root.querySelectorAll<HTMLElement>('.order-ticket'));
+        const tickets = Array.from(root.querySelectorAll<HTMLElement>('.order-ticket')).slice(0,quality==='medium'?3:6);
         const origin = stop.overlays.find(rect => rect.kind === 'tickets');
         let index = 0;
         if (origin && tickets.length) repeat(() => {
@@ -108,5 +109,5 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
       gsap.set(root.querySelectorAll('.window-dark,.window-warm,.vacancy-full,.order-ticket'), { clearProps: 'transform,opacity' });
       gsap.set(root.querySelectorAll('.vacancy-open,.neon-glow,.interior-grade,.spill-secondary,.spill-main'), { clearProps: 'opacity' });
     };
-  }, [ref, stop, active, reduced, mobile, hidden]);
+  }, [ref, stop, active, reduced, mobile, hidden,quality]);
 }

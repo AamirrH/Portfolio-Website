@@ -1,3 +1,4 @@
+import { startQualityManager } from './lib/quality';
 import { useHighwayState } from './hooks/useHighwayState';
 import { useEffect, lazy, Suspense } from 'react';
 import { content, projects } from './data/content';
@@ -18,6 +19,7 @@ import { usePreferences } from './hooks/usePreferences';
 import { useSceneStore } from './state/useSceneStore';
 import { useAtmosphere } from './hooks/useAtmosphere';
 export default function App() {
+  useEffect(startQualityManager,[]);
   useJourney();
   useHighwayState();
   usePreferences();

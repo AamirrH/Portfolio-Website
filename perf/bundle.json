@@ -1,9 +1,9 @@
 [
   {
-    "file": "assets/index-S2bctN6O.js",
+    "file": "assets/index-BZWE1eNR.js",
     "entry": true,
-    "raw": 248543,
-    "gzip": 85596,
+    "raw": 251429,
+    "gzip": 86541,
     "imports": [],
     "modules": [
       {
@@ -24,11 +24,11 @@
       },
       {
         "name": "D:/Portfolio/src/data/content.ts",
-        "bytes": 7190
+        "bytes": 7296
       },
       {
         "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
-        "bytes": 6527
+        "bytes": 6705
       },
       {
         "name": "D:/Portfolio/node_modules/scheduler/cjs/scheduler.production.min.js",
@@ -44,7 +44,7 @@
       },
       {
         "name": "D:/Portfolio/src/App.tsx",
-        "bytes": 2824
+        "bytes": 2875
       },
       {
         "name": "D:/Portfolio/src/components/views/Contact.tsx",
@@ -53,6 +53,10 @@
       {
         "name": "\u0000vite/preload-helper.js",
         "bytes": 2206
+      },
+      {
+        "name": "D:/Portfolio/src/lib/quality.ts",
+        "bytes": 2137
       },
       {
         "name": "D:/Portfolio/src/hooks/useScrollJourney.ts",
@@ -71,12 +75,12 @@
         "bytes": 1884
       },
       {
-        "name": "D:/Portfolio/src/components/navigation/GantryNav.tsx",
-        "bytes": 1734
+        "name": "D:/Portfolio/src/components/navigation/TopBar.tsx",
+        "bytes": 1781
       },
       {
-        "name": "D:/Portfolio/src/components/navigation/TopBar.tsx",
-        "bytes": 1718
+        "name": "D:/Portfolio/src/components/navigation/GantryNav.tsx",
+        "bytes": 1734
       },
       {
         "name": "D:/Portfolio/src/components/views/ProjectPanel.tsx",
@@ -88,7 +92,7 @@
       },
       {
         "name": "D:/Portfolio/src/lib/ticker.ts",
-        "bytes": 1486
+        "bytes": 1539
       },
       {
         "name": "D:/Portfolio/src/hooks/useJourney.ts",
@@ -111,8 +115,16 @@
         "bytes": 1156
       },
       {
+        "name": "D:/Portfolio/src/config/quality.ts",
+        "bytes": 1130
+      },
+      {
         "name": "D:/Portfolio/src/components/views/Home.tsx",
         "bytes": 1124
+      },
+      {
+        "name": "D:/Portfolio/src/state/useSceneStore.ts",
+        "bytes": 1092
       },
       {
         "name": "D:/Portfolio/src/components/navigation/MobileNav.tsx",
@@ -127,8 +139,8 @@
         "bytes": 975
       },
       {
-        "name": "D:/Portfolio/src/state/useSceneStore.ts",
-        "bytes": 805
+        "name": "D:/Portfolio/src/components/navigation/QualityControl.tsx",
+        "bytes": 949
       },
       {
         "name": "D:/Portfolio/src/hooks/usePreferences.ts",
@@ -261,12 +273,12 @@
     ]
   },
   {
-    "file": "assets/CameraRig-Dh-qsAJF.js",
+    "file": "assets/CameraRig-MiupKdRm.js",
     "entry": false,
     "raw": 3789,
-    "gzip": 1716,
+    "gzip": 1717,
     "imports": [
-      "assets/index-S2bctN6O.js"
+      "assets/index-BZWE1eNR.js"
     ],
     "modules": [
       {
@@ -309,23 +321,23 @@
     ]
   },
   {
-    "file": "assets/ProjectStops-DLAOy9WU.js",
+    "file": "assets/ProjectStops-Dc2or9NX.js",
     "entry": false,
-    "raw": 18871,
-    "gzip": 6571,
+    "raw": 19033,
+    "gzip": 6660,
     "imports": [
-      "assets/index-S2bctN6O.js",
-      "assets/TravelScenes-BX_asm8q.js",
-      "assets/CameraRig-Dh-qsAJF.js"
+      "assets/index-BZWE1eNR.js",
+      "assets/TravelScenes-CPWJMeiz.js",
+      "assets/CameraRig-MiupKdRm.js"
     ],
     "modules": [
       {
         "name": "D:/Portfolio/src/components/stops/SignalFlow.tsx",
-        "bytes": 6739
+        "bytes": 6885
       },
       {
         "name": "D:/Portfolio/src/components/stops/StopScene.tsx",
-        "bytes": 6478
+        "bytes": 6601
       },
       {
         "name": "D:/Portfolio/src/data/stops.ts",
@@ -344,12 +356,12 @@
         "bytes": 2402
       },
       {
-        "name": "D:/Portfolio/src/data/propAssets.ts",
-        "bytes": 1160
+        "name": "D:/Portfolio/src/hooks/useStopPolish.ts",
+        "bytes": 1221
       },
       {
-        "name": "D:/Portfolio/src/hooks/useStopPolish.ts",
-        "bytes": 1139
+        "name": "D:/Portfolio/src/data/propAssets.ts",
+        "bytes": 1160
       },
       {
         "name": "D:/Portfolio/src/components/scene/SideCar.tsx",
@@ -362,30 +374,30 @@
     ]
   },
   {
-    "file": "assets/TravelScenes-BX_asm8q.js",
+    "file": "assets/TravelScenes-CPWJMeiz.js",
     "entry": false,
-    "raw": 30636,
-    "gzip": 10462,
+    "raw": 30956,
+    "gzip": 10592,
     "imports": [
-      "assets/index-S2bctN6O.js",
-      "assets/CameraRig-Dh-qsAJF.js"
+      "assets/index-BZWE1eNR.js",
+      "assets/CameraRig-MiupKdRm.js"
     ],
     "modules": [
       {
         "name": "D:/Portfolio/src/components/scene/RoadMarkings.tsx",
-        "bytes": 11451
+        "bytes": 11573
       },
       {
         "name": "D:/Portfolio/src/hooks/useStopAnimations.ts",
-        "bytes": 7052
+        "bytes": 7243
       },
       {
         "name": "D:/Portfolio/src/components/highway/Rain.tsx",
-        "bytes": 6461
+        "bytes": 6657
       },
       {
         "name": "D:/Portfolio/src/components/scene/TravelScenes.tsx",
-        "bytes": 4728
+        "bytes": 4800
       },
       {
         "name": "D:/Portfolio/src/components/scene/Highway.tsx",
@@ -404,12 +416,12 @@
         "bytes": 2698
       },
       {
-        "name": "D:/Portfolio/src/components/scene/Car.tsx",
-        "bytes": 2006
+        "name": "D:/Portfolio/src/hooks/useSceneMotion.ts",
+        "bytes": 2082
       },
       {
-        "name": "D:/Portfolio/src/hooks/useSceneMotion.ts",
-        "bytes": 2000
+        "name": "D:/Portfolio/src/components/scene/Car.tsx",
+        "bytes": 2006
       },
       {
         "name": "D:/Portfolio/src/components/scene/Gantry.tsx",

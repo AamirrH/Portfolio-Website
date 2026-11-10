@@ -7,6 +7,7 @@ import { useSceneStore } from '../../state/useSceneStore';
 type Signal = 'green' | 'amber' | 'red';
 interface Packet { active:boolean; img:HTMLImageElement; burst:HTMLElement; node: HTMLSpanElement; start: number; duration: number; flagged: boolean; route?: Signal; arrival?: number; x: number; }
 export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; stop: StopConfig }) {
+  const quality=useSceneStore(s=>s.quality);
   const stage = useRef<HTMLDivElement>(null);
   const { reduced, mobile, hidden } = useStopPreferences();
   const active = useSceneStore(state => state.ignited && !state.plain && state.section === 'signalroute');
@@ -14,10 +15,10 @@ export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; st
     const scene = root.current, container = stage.current;
     if (!scene || !container) return;
     scene.dataset.signal = 'green';
-    if (!active || reduced || hidden) return;
+    if (!active || reduced || hidden || quality==='low') return;
     let start = 0, nextSpawn = 0, lastSignal: Signal = 'green';
 
-    const nodes = Array.from(container.querySelectorAll<HTMLSpanElement>('.message-packet'));
+    const nodes = Array.from(container.querySelectorAll<HTMLSpanElement>('.message-packet')).slice(0,quality==='medium'?(mobile?2:4):mobile?4:8);
     const packets:Packet[]=nodes.map(node=>({node,img:node.querySelector('img')!,burst:node.querySelector<HTMLElement>('.message-burst')!,active:false,start:0,duration:0,flagged:false,x:0}));
     let box=container.getBoundingClientRect();let resizeTimer:ReturnType<typeof setTimeout>;
     const observer=new ResizeObserver(()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{box=container.getBoundingClientRect();},150);});observer.observe(container);
@@ -98,7 +99,7 @@ export function SignalFlow({ root, stop }: { root: RefObject<HTMLDivElement>; st
       scene.querySelectorAll<HTMLElement>('.rack-led,.chute-glow,.barrier-glow').forEach(node=>node.style.removeProperty('opacity'));
       scene.dataset.signal='green'; scene.dataset.messageActive='0'; scene.dataset.signalFrameCount='0';
     };
-  }, [root, stop, active, reduced, mobile, hidden]);
+  }, [root, stop, active, reduced, mobile, hidden,quality]);
   return <div ref={stage} className="signal-flow" data-stop-depth="8" aria-hidden="true">
     <div className="signal-road-spill"/>
     {!reduced && Array.from({length:mobile?4:8},(_,i)=><span className="message-packet" key={i}><img src={`/assets/stops/msg-${messageSprites[i%messageSprites.length]}.webp`} alt=""/><span className="message-burst">×</span></span>)}
