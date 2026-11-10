@@ -2,10 +2,139 @@ export type Section = 'home' | 'projects' | 'roomly' | 'swiftship' | 'signalrout
 export type ProjectId = 'roomly' | 'swiftship' | 'signalroute';
 export interface Metric { label: string; value: string; detail: string; progress?: number; }
 export interface Project { id: ProjectId; exit: string; title: string; category: string; pitch: string; stack: string[]; highlights: string[]; metrics: Metric[]; live?: string; repo?: string; repoTodo?: string; }
+// Project claims follow the supplied resume; READMEs supply supporting product details.
 export const projects: Project[] = [
-  { id: 'roomly', exit: '01', title: 'Roomly', category: 'FULL-STACK / RESERVATIONS', pitch: 'A Hotel Reservation and Management platform with secure bookings, concurrency handling, dynamic pricing, and integrated payments. Transactional availability checks with pessimistic locking: across three runs of 100 requests for 10 rooms, exactly 10 bookings committed and 90 were rejected, with zero overselling. Optimistic (@Version) locking, BCrypt password hashing, and role-based access control. Strategy Pattern pricing with Google Calendar holiday detection and 5+ multipliers. Server-side payment orders and HMAC-SHA256 webhook verification.', stack: ['Spring Boot', 'React', 'PostgreSQL', 'Razorpay', 'JWT', 'Google Calendar API', 'Docker'], highlights: ['Booking, inventory, and operations dashboards across four user roles.', 'Demand, occupancy, urgency, and holiday-aware room pricing.', 'Secure JWT access and verified Razorpay payments.'], metrics: [{ label: 'Access tiers', value: '04', detail: 'Role hierarchy' }, { label: 'Pricing factors', value: '5+', detail: 'Dynamic multipliers' }, { label: 'Booking integrity', value: '2', detail: 'Locking strategies' }], live: 'https://roomly-xi.vercel.app', repo: 'https://github.com/AamirrH/Roomly' },
-  { id: 'swiftship', exit: '02', title: 'SwiftShip', category: 'DISTRIBUTED SYSTEMS / FULFILLMENT', pitch: 'A Distributed Order Fulfillment System with event streaming and real-time delivery updates. Spring Cloud Gateway, JWT/OAuth2, and Resilience4j circuit breakers, retries, and rate limiters isolate failures. Indexed PostGIS distance queries brought warehouse selection to 100 ms; OpenRouteService and Spring AI/Gemini support route selection. 98.2 req/s at 100 virtual users, 28 ms p95, and zero errors over a 90-minute soak. 100 concurrent authenticated WebSocket clients; 200/200 messages, zero loss, and 4 ms p95. Kafka producer throughput: 61.8K records/s.', stack: ['Spring Boot', 'Kafka', 'Redis', 'WebSocket', 'Spring Cloud Gateway', 'PostgreSQL/PostGIS', 'Docker', 'GitHub Actions'], highlights: ['Eight-plus microservices coordinate orders, stock, and fulfillment through Kafka.', 'PostGIS warehouse selection and road-aware delivery routing.', 'Live order tracking with WebSocket updates and multi-channel notifications.'], metrics: [{ label: 'Throughput', value: '98.2', detail: 'req/s · 100 VUs', progress: 0.8183 }, { label: 'p95 latency', value: '28', detail: 'ms · HTTP', progress: 0.28 }, { label: 'Delivery', value: '100%', detail: '200 / 200 messages', progress: 1 }], live: 'https://swift-ship-nu.vercel.app', repo: 'https://github.com/AamirrH/SwiftShip' },
-  { id: 'signalroute', exit: '03', title: 'SignalRoute AI', category: 'AI / DETERMINISTIC ROUTING', pitch: 'A Multimodal WhatsApp Notification Router combining Gemini perception with deterministic routing. Recipient-scoped TF-IDF retrieval over 400+ prior messages, with evidence validation against known message IDs. Hard 0.72 risk threshold; personalization cannot override a safety veto. 1.00 action, type, and joint accuracy on the organizer’s labeled evaluation set; validated with 34 unit tests. Ranked 365th of 1,983 (top 18%) at HackerRank Orchestrate.', stack: ['Python', 'Pandas', 'Pydantic', 'scikit-learn', 'Gemini API', 'Pillow'], highlights: ['Routes WhatsApp text, images, and voice notes into notify, digest, or mute.', 'Gemini extracts context; a local policy engine makes the final decision.', 'A non-overridable safety gate blocks scams and credential harvesting.'], metrics: [{ label: 'Orchestrate', value: 'Top 18%', detail: '365th / 1,983' }, { label: 'Risk threshold', value: '0.72', detail: 'Hard safety gate' }, { label: 'Final decision', value: 'Local', detail: 'Deterministic engine' }], repo: 'https://github.com/AamirrH/SignalRoute-AI' }
+  {
+    "id": "roomly",
+    "exit": "01",
+    "title": "Roomly",
+    "category": "FULL-STACK / RESERVATIONS",
+    "pitch": "A hotel booking and operations platform where guests can find rooms, book stays, and manage reservations, while hotel teams handle inventory and bookings.",
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "Spring Data JPA",
+      "React",
+      "PostgreSQL",
+      "Razorpay",
+      "Google Calendar API",
+      "JWT",
+      "Docker"
+    ],
+    "highlights": [
+      "Built booking, inventory, and management dashboards with access tailored to four user roles.",
+      "Protected accounts with JWT, BCrypt password hashing, and role-based access. Razorpay test payments use server-created orders and cryptographic signature verification.",
+      "Calculated room prices using demand, occupancy, and booking urgency, with Google Calendar holiday data feeding a Strategy Pattern pricing engine.",
+      "Prevented double-booking with pessimistic locking and transactional availability checks. In each of three tests, 100 concurrent requests competed for 10 rooms: 10 bookings succeeded, 90 were rejected, and no rooms were oversold."
+    ],
+    "metrics": [
+      {
+        "label": "User roles",
+        "value": "4",
+        "detail": "Guest and hotel operations access"
+      },
+      {
+        "label": "Concurrent requests",
+        "value": "100",
+        "detail": "Competing for 10 rooms in each of 3 tests"
+      },
+      {
+        "label": "Overselling",
+        "value": "0",
+        "detail": "Across all 3 concurrency tests"
+      }
+    ],
+    "live": "https://roomly-xi.vercel.app",
+    "repo": "https://github.com/AamirrH/Roomly"
+  },
+  {
+    "id": "swiftship",
+    "exit": "02",
+    "title": "SwiftShip",
+    "category": "DISTRIBUTED SYSTEMS / FULFILLMENT",
+    "pitch": "A distributed order fulfillment platform that connects checkout, stock reservation, warehouse selection, and delivery tracking through an event-driven workflow.",
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "React",
+      "Spring Cloud Gateway",
+      "Kafka",
+      "PostgreSQL / PostGIS",
+      "Redis",
+      "WebSocket",
+      "Resilience4j",
+      "Spring AI / Gemini",
+      "OpenRouteService",
+      "Docker"
+    ],
+    "highlights": [
+      "Connected 8+ Spring Boot microservices through Kafka to coordinate orders, inventory, warehouse assignment, routing, tracking, and notifications.",
+      "Used JWT/OAuth2 and Spring Cloud Gateway for access control, with Resilience4j circuit breakers, retries, and rate limits to contain failures between services.",
+      "Replaced application-side coordinate scans with indexed PostGIS distance queries, bringing nearest-warehouse selection latency to 100 ms.",
+      "Combined OpenRouteService with Spring AI/Gemini to select road-aware delivery routes using ETA, distance, and delivery context, with a fallback when the routing API fails.",
+      "Streamed tracking updates to 100 concurrent authenticated WebSocket clients at 4 ms p95 latency with 0% message loss. Redis stores the latest tracking state; Kafka and Resend support customer notifications."
+    ],
+    "metrics": [
+      {
+        "label": "Warehouse lookup",
+        "value": "100",
+        "detail": "ms ? indexed PostGIS queries"
+      },
+      {
+        "label": "Tracking p95",
+        "value": "4",
+        "detail": "ms ? 100 concurrent authenticated clients"
+      },
+      {
+        "label": "Message loss",
+        "value": "0%",
+        "detail": "WebSocket tracking test"
+      }
+    ],
+    "live": "https://swift-ship-nu.vercel.app",
+    "repo": "https://github.com/AamirrH/SwiftShip"
+  },
+  {
+    "id": "signalroute",
+    "exit": "03",
+    "title": "SignalRoute AI",
+    "category": "AI / DETERMINISTIC ROUTING",
+    "pitch": "A command-line notification router that sorts WhatsApp text, images, and voice notes into notify, digest, or mute, using message context and recipient history.",
+    "stack": [
+      "Python",
+      "Pandas",
+      "Pydantic",
+      "scikit-learn",
+      "Gemini API",
+      "Pillow"
+    ],
+    "highlights": [
+      "Used Gemini for image and voice extraction, with a local deterministic policy engine making the final routing decisions.",
+      "Built a safety gate for credential and OTP harvesting, payment-pressure scams, impersonation, and prompt injection. Personalization cannot override a safety veto.",
+      "Retrieved relevant evidence from 400+ historical messages using recipient-scoped TF-IDF search. Evidence stays within the receiving user?s history and is checked against known message IDs.",
+      "Scored 1.00 on action, message-type, and joint accuracy on the organizer?s labeled evaluation set, compared with 0.90, 0.90, and 0.80 for a schema-constrained Gemini reasoner.",
+      "Validated the pipeline with 34 unit tests and placed 365th of 1,983 participants ? top 18% ? in HackerRank Orchestrate."
+    ],
+    "metrics": [
+      {
+        "label": "Evaluation accuracy",
+        "value": "1.00",
+        "detail": "Action, type, and joint ? organizer?s labeled set"
+      },
+      {
+        "label": "Unit tests",
+        "value": "34",
+        "detail": "Pipeline validation"
+      },
+      {
+        "label": "Orchestrate",
+        "value": "Top 18%",
+        "detail": "365th of 1,983 participants"
+      }
+    ],
+    "repo": "https://github.com/AamirrH/SignalRoute-AI"
+  }
 ];
 export const content = {
   owner: { name: 'Aamir Hussain', initials: 'AH', role: 'CS STUDENT & SOFTWARE BUILDER', tagline: 'Drive Forever', intro: 'Building thoughtful software. Taking the scenic route.', education: 'Computer Science · Ramdeobaba University, Nagpur', availability: 'OPEN TO SDE OPPORTUNITIES', github: 'https://github.com/AamirrH', linkedin: 'https://linkedin.com/in/aamir-hussain-359513328', email: null as string | null, emailTodo: 'TODO: Add contact email', biography: 'I’m Aamir, a computer science student at Ramdeobaba University in Nagpur. I build full-stack applications and backend systems, with an interest in reliable software and the decisions behind it. I’m working toward an SDE role at a product company.' },
@@ -13,7 +142,7 @@ export const content = {
   nav: [{ id: 'projects', label: 'Projects', subtitle: 'SELECTED WORK' }, { id: 'about', label: 'About', subtitle: 'BEHIND THE WHEEL' }, { id: 'contact', label: 'Contact', subtitle: 'NEXT DESTINATION' }] satisfies { id: Section; label: string; subtitle: string }[],
   sectionNames: { home: 'The open road', projects: 'Choose your exit', roomly: 'Exit 01 · Roomly', swiftship: 'Exit 02 · SwiftShip', signalroute: 'Exit 03 · SignalRoute AI', about: 'Behind the wheel', contact: 'The way back home' } satisfies Record<Section, string>,
   hero: { eyebrow: 'A LITTLE CURIOUS. ALWAYS MOVING.', line1: 'Good things', line2: 'are up ahead.', description: 'Software, systems, and a few late-night ideas.', cta: 'Explore my work', hint: 'SCROLL TO TAKE THE NEXT EXIT', journey: 'THE JOURNEY', journeyDetail: '3 PROJECTS · ONE OPEN ROAD' },
-  projects: { eyebrow: 'NEXT 3 EXITS', title: 'Built along the way.', description: 'A few things I’ve put into the world. Pick an exit to take a closer look.', notes: 'Technical notes', board: 'PROJECT DIRECTORY', door: 'Open live project', back: 'All projects', live: 'Live project', repo: 'Source code', overview: 'Features', tech: 'Tech stack', exit: 'EXIT', next: 'Next project', previous: 'Previous project', indexLabel: 'Project exits', gaugeNote: 'Gauge scales: throughput 0–120 req/s; latency 0–100 ms. Measured test results, not a live feed.' },
+  projects: { eyebrow: 'NEXT 3 EXITS', title: 'Built along the way.', description: 'A few things I’ve put into the world. Pick an exit to take a closer look.', notes: 'Technical notes', board: 'PROJECT DIRECTORY', door: 'Open live project', back: 'All projects', live: 'Live project', repo: 'Source code', overview: 'Features', tech: 'Tech stack', exit: 'EXIT', next: 'Next project', previous: 'Previous project', indexLabel: 'Project exits', gaugeNote: 'Results are from project tests, not a live performance feed.' },
   about: { eyebrow: 'BEHIND THE WHEEL', title: 'Curiosity is the engine.', skillsTitle: 'SYSTEMS ON BOARD', educationTitle: 'CURRENT DIRECTION', skills: ['Java / Spring Boot', 'React / TypeScript', 'PostgreSQL / Redis', 'Kafka / WebSocket', 'Docker / GitHub Actions'], speed: 'MOMENTUM', rpm: 'CURIOSITY', gaugeCaption: 'Decorative instrument readouts', educationTodo: 'TODO: Graduation year', resume: 'Download résumé', resumeUrl: '/assets/documents/Resume_Aamir.pdf' },
   contact: { eyebrow: 'THE NEXT CHAPTER', title: 'The Way Back Home', description: 'Have a product to build or a problem worth solving? Let’s see where the road goes.', github: 'GitHub', linkedin: 'LinkedIn', email: 'Send an email', home: 'Back to the open road' },
   controls: { quality: 'Quality', qualityAuto: 'Auto', qualityHigh: 'High', qualityMedium: 'Medium', qualityLow: 'Low', motionOn: 'Motion on', motionOff: 'Motion off', mute: 'Mute audio', unmute: 'Unmute audio', unavailable: 'Audio unavailable', plain: 'Plain mode', scene: 'Drive mode', next: 'Next section', previous: 'Previous section', palette: 'Change sky palette', skip: 'Skip to content', navigation: 'Main navigation', home: 'Go home', camera: 'CAM', sound: 'SOUND', on: 'ON', off: 'OFF', reduced: 'Reduced motion enabled', mode: 'Display mode' },

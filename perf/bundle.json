@@ -1,14 +1,18 @@
 [
   {
-    "file": "assets/index-BhFo9qMD.js",
+    "file": "assets/index-Dd64cAmb.js",
     "entry": true,
-    "raw": 167117,
-    "gzip": 55396,
+    "raw": 167857,
+    "gzip": 55584,
     "imports": [],
     "modules": [
       {
         "name": "D:/Portfolio/node_modules/react-dom/cjs/react-dom.production.min.js",
         "bytes": 133838
+      },
+      {
+        "name": "D:/Portfolio/src/data/content.ts",
+        "bytes": 8386
       },
       {
         "name": "D:/Portfolio/node_modules/react/cjs/react.production.min.js",
@@ -17,10 +21,6 @@
       {
         "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
         "bytes": 6944
-      },
-      {
-        "name": "D:/Portfolio/src/data/content.ts",
-        "bytes": 6774
       },
       {
         "name": "D:/Portfolio/src/App.tsx",
@@ -201,14 +201,14 @@
     ]
   },
   {
-    "file": "assets/CameraRig-BqMRFIdA.js",
+    "file": "assets/CameraRig-DEdhMICe.js",
     "entry": false,
     "raw": 2727,
-    "gzip": 1218,
+    "gzip": 1220,
     "imports": [
-      "assets/index-BhFo9qMD.js",
+      "assets/index-Dd64cAmb.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-D6Op1CTK.js"
+      "assets/SceneLayer-DrhEPb_h.js"
     ],
     "modules": [
       {
@@ -222,12 +222,12 @@
     ]
   },
   {
-    "file": "assets/TopBar-B6hdhDdT.js",
+    "file": "assets/TopBar-CI2DT5cp.js",
     "entry": false,
     "raw": 1609,
     "gzip": 681,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -245,12 +245,12 @@
     ]
   },
   {
-    "file": "assets/JourneyFooter-Bs8epVvV.js",
+    "file": "assets/JourneyFooter-BeJRlOyQ.js",
     "entry": false,
     "raw": 934,
-    "gzip": 473,
+    "gzip": 474,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -260,12 +260,12 @@
     ]
   },
   {
-    "file": "assets/MobileNav-CNaNwETo.js",
+    "file": "assets/MobileNav-C1ocLr-C.js",
     "entry": false,
     "raw": 705,
     "gzip": 390,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -275,13 +275,13 @@
     ]
   },
   {
-    "file": "assets/Home-Bk_H_ZJZ.js",
+    "file": "assets/Home-BenzImWI.js",
     "entry": false,
     "raw": 1530,
-    "gzip": 563,
+    "gzip": 560,
     "imports": [
-      "assets/index-BhFo9qMD.js",
-      "assets/RoadSign-CrLqqb5P.js"
+      "assets/index-Dd64cAmb.js",
+      "assets/RoadSign-Bq6uiskt.js"
     ],
     "modules": [
       {
@@ -295,13 +295,13 @@
     ]
   },
   {
-    "file": "assets/ProjectsIndex-BkCgq6rp.js",
+    "file": "assets/ProjectsIndex-CNZ23mwV.js",
     "entry": false,
     "raw": 710,
-    "gzip": 397,
+    "gzip": 393,
     "imports": [
-      "assets/index-BhFo9qMD.js",
-      "assets/RoadSign-CrLqqb5P.js"
+      "assets/index-Dd64cAmb.js",
+      "assets/RoadSign-Bq6uiskt.js"
     ],
     "modules": [
       {
@@ -311,12 +311,12 @@
     ]
   },
   {
-    "file": "assets/RoadSign-CrLqqb5P.js",
+    "file": "assets/RoadSign-Bq6uiskt.js",
     "entry": false,
     "raw": 257,
     "gzip": 178,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -326,13 +326,13 @@
     ]
   },
   {
-    "file": "assets/ProjectPanel-MBwux0dN.js",
+    "file": "assets/ProjectPanel-BaDk6qD8.js",
     "entry": false,
     "raw": 986,
     "gzip": 443,
     "imports": [
-      "assets/index-BhFo9qMD.js",
-      "assets/ProjectBody-DcsbZm3H.js"
+      "assets/index-Dd64cAmb.js",
+      "assets/ProjectBody-1IYLtfL7.js"
     ],
     "modules": [
       {
@@ -342,12 +342,12 @@
     ]
   },
   {
-    "file": "assets/About-D7upqIZt.js",
+    "file": "assets/About-CR_RTCB_.js",
     "entry": false,
     "raw": 1121,
-    "gzip": 472,
+    "gzip": 471,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -357,14 +357,14 @@
     ]
   },
   {
-    "file": "assets/PlainMode-B0ZEH375.js",
+    "file": "assets/PlainMode-B6D-dTHz.js",
     "entry": false,
     "raw": 2203,
     "gzip": 686,
     "imports": [
-      "assets/index-BhFo9qMD.js",
-      "assets/ProjectBody-DcsbZm3H.js",
-      "assets/Contact-Bm27hGcr.js"
+      "assets/index-Dd64cAmb.js",
+      "assets/ProjectBody-1IYLtfL7.js",
+      "assets/Contact-T1ga3WcB.js"
     ],
     "modules": [
       {
@@ -374,12 +374,12 @@
     ]
   },
   {
-    "file": "assets/ProjectBody-DcsbZm3H.js",
+    "file": "assets/ProjectBody-1IYLtfL7.js",
     "entry": false,
     "raw": 1042,
-    "gzip": 442,
+    "gzip": 441,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -389,12 +389,12 @@
     ]
   },
   {
-    "file": "assets/Contact-Bm27hGcr.js",
+    "file": "assets/Contact-T1ga3WcB.js",
     "entry": false,
     "raw": 1355,
     "gzip": 513,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
@@ -404,16 +404,16 @@
     ]
   },
   {
-    "file": "assets/ProjectStops-B4YaKDFV.js",
+    "file": "assets/ProjectStops-DOJCZEqf.js",
     "entry": false,
     "raw": 15562,
-    "gzip": 5714,
+    "gzip": 5716,
     "imports": [
-      "assets/index-BhFo9qMD.js",
+      "assets/index-Dd64cAmb.js",
       "assets/stops-C3EALcIS.js",
-      "assets/TravelScenes-Bg-oRgYb.js",
+      "assets/TravelScenes-CYWB65jG.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-D6Op1CTK.js"
+      "assets/SceneLayer-DrhEPb_h.js"
     ],
     "modules": [
       {
@@ -455,14 +455,14 @@
     ]
   },
   {
-    "file": "assets/TravelScenes-Bg-oRgYb.js",
+    "file": "assets/TravelScenes-CYWB65jG.js",
     "entry": false,
     "raw": 31722,
     "gzip": 10790,
     "imports": [
-      "assets/index-BhFo9qMD.js",
+      "assets/index-Dd64cAmb.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-D6Op1CTK.js"
+      "assets/SceneLayer-DrhEPb_h.js"
     ],
     "modules": [
       {
@@ -544,12 +544,12 @@
     ]
   },
   {
-    "file": "assets/SceneLayer-D6Op1CTK.js",
+    "file": "assets/SceneLayer-DrhEPb_h.js",
     "entry": false,
     "raw": 806,
-    "gzip": 488,
+    "gzip": 486,
     "imports": [
-      "assets/index-BhFo9qMD.js"
+      "assets/index-Dd64cAmb.js"
     ],
     "modules": [
       {
