@@ -10,6 +10,14 @@ export function Gate() {
   useEffect(() => {
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    document.getElementById('critical-gate')?.remove();
+    if (document.documentElement.dataset.earlyIgnition === 'true') {
+      delete document.documentElement.dataset.earlyIgnition;
+      document.dispatchEvent(new Event('endless:prepare-scene'));
+      unlock();
+      setStarting(true);
+      timer.current = setTimeout(() => useSceneStore.getState().ignite(), 950);
+    }
     ref.current?.querySelector<HTMLButtonElement>('button')?.focus();
     const art = Array.from(document.querySelectorAll<HTMLImageElement>('.layer-art')).map(img => img.decode().catch(() => {}));
     void Promise.allSettled([document.fonts.ready, ...art]);
@@ -17,6 +25,7 @@ export function Gate() {
   }, []);
   const start = () => {
     if (starting) return;
+    document.dispatchEvent(new Event('endless:prepare-scene'));
     unlock(); setStarting(true);
     timer.current = setTimeout(() => useSceneStore.getState().ignite(), 950);
   };

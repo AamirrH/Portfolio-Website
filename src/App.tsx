@@ -1,17 +1,17 @@
 import { startQualityManager } from './lib/quality';
 import { useHighwayState } from './hooks/useHighwayState';
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { content, projects } from './data/content';
 const CameraRig=lazy(()=>import('./components/scene/CameraRig').then(m=>({default:m.CameraRig})));
-import { TopBar } from './components/navigation/TopBar';
-import { JourneyFooter } from './components/navigation/JourneyFooter';
-import { MobileNav } from './components/navigation/MobileNav';
-import { Home } from './components/views/Home';
-import { ProjectsIndex } from './components/views/ProjectsIndex';
-import { ProjectPanel } from './components/views/ProjectPanel';
-import { About } from './components/views/About';
-import { Contact } from './components/views/Contact';
-import { PlainMode } from './components/views/PlainMode';
+const TopBar=lazy(()=>import('./components/navigation/TopBar').then(m=>({default:m.TopBar})));
+const JourneyFooter=lazy(()=>import('./components/navigation/JourneyFooter').then(m=>({default:m.JourneyFooter})));
+const MobileNav=lazy(()=>import('./components/navigation/MobileNav').then(m=>({default:m.MobileNav})));
+const Home=lazy(()=>import('./components/views/Home').then(m=>({default:m.Home})));
+const ProjectsIndex=lazy(()=>import('./components/views/ProjectsIndex').then(m=>({default:m.ProjectsIndex})));
+const ProjectPanel=lazy(()=>import('./components/views/ProjectPanel').then(m=>({default:m.ProjectPanel})));
+const About=lazy(()=>import('./components/views/About').then(m=>({default:m.About})));
+const Contact=lazy(()=>import('./components/views/Contact').then(m=>({default:m.Contact})));
+const PlainMode=lazy(()=>import('./components/views/PlainMode').then(m=>({default:m.PlainMode})));
 import { Gate } from './components/Gate';
 import { useJourney } from './hooks/useJourney';
 import { useScrollJourney } from './hooks/useScrollJourney';
@@ -27,6 +27,14 @@ export default function App() {
   const ignited = useSceneStore(state => state.ignited);
   const plain = useSceneStore(state => state.plain);
   const section = useSceneStore(state => state.section);
+  const [scenePrepared, setScenePrepared] = useState(false);
+  useEffect(() => {
+    if (ignited) setScenePrepared(true);
+    const prepare = () => setScenePrepared(true);
+    document.addEventListener('endless:prepare-scene', prepare);
+    return () => document.removeEventListener('endless:prepare-scene', prepare);
+  }, [ignited]);
+  const appReady = ignited || scenePrepared;
   useScrollJourney(ignited && !plain);
   const project = projects.find(item => item.id === section);
   useEffect(() => {
@@ -34,19 +42,21 @@ export default function App() {
     document.getElementById('main-content')?.focus({ preventScroll: true });
   }, [section, ignited, plain]);
   return <>
-    <div {...{ inert: !ignited ? '' : undefined }} aria-hidden={!ignited || undefined}>
+    <div className={!ignited ? 'pre-ignition' : undefined} {...{ inert: !ignited ? '' : undefined }} aria-hidden={!ignited || undefined}>
+      {appReady && <>
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus({ preventScroll: true }); }}>{content.controls.skip}</a>
-      <TopBar/>
-      {plain ? <PlainMode/> : <>
+      <Suspense fallback={null}><TopBar/></Suspense>
+      {plain ? <Suspense fallback={null}><PlainMode/></Suspense> : <>
         <Suspense fallback={null}><CameraRig/></Suspense><div className="journey-track" aria-hidden="true"/>
         {section === 'home' && <button className="sun-control" onClick={cyclePalette} aria-label={content.controls.palette} title={content.controls.palette}/>}
         <main id="main-content" tabIndex={-1} className="drive-content" key={section}>
-          {section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}
+          <Suspense fallback={null}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</Suspense>
         </main>
-        <JourneyFooter/>
+        <Suspense fallback={null}><JourneyFooter/></Suspense>
       </>}
-      <MobileNav/>
+      <Suspense fallback={null}><MobileNav/></Suspense>
       <span className="sr-only" role="status" aria-live="polite">{content.sectionNames[section]}</span>
+      </>}
     </div>
     {!ignited && <Gate/>}
   </>;

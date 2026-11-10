@@ -67,7 +67,7 @@ The initial CSS palette is sunset. On load, visitor-local time selects dawn (05:
 
 ### Quality and performance checks
 
-The top bar's Quality selector offers Auto, High, Medium, and Low. `?quality=high|medium|low` pins a tier; without it, Auto chooses an initial tier from device capabilities and can adjust while the scene is running. Motion Off, Plain mode, reduced-motion, and hidden tabs pause the shared animation ticker. Diagnostics are available with `?perf=1`.
+The top bar's Quality selector offers Auto, High, Medium, and Low. `?quality=high|medium|low` pins a tier; without it, Auto chooses an initial tier from device capabilities and can adjust while the scene is running. Motion Off, Plain mode, reduced-motion, and hidden tabs pause the shared animation ticker. The lightweight inline gate paints before React; scene and animation modules begin loading when ignition starts. Diagnostics are available with `?perf=1`.
 
 The reproducible production-preview harness is `node --experimental-strip-types scripts/perf-run.ts after`; route/profile filters are documented in `scripts/perf-run.ts`. `scripts/perf-leaks.ts` checks cleanup and heap/DOM growth. Results and comparison tables are written under `perf/`. `npm run build` regenerates the strict TypeScript production bundle.
 
