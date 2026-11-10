@@ -1,0 +1,1442 @@
+{
+  "results": [
+    {
+      "route": "home",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 440,
+      "frames": 222,
+      "p50": 49.80000000000018,
+      "p95": 83.39999999999964,
+      "p99": 100.10000000000036,
+      "worst": 116.59999999999854,
+      "over20": 79.27927927927928,
+      "longTasks": 73,
+      "longMs": 4863,
+      "postGateMaxLong": 104,
+      "heapStart": 6206036,
+      "heapEnd": 5848660,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 3863.765,
+      "scriptMs": 739.073,
+      "taskMs": 9841.449,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787838,
+        "requests": 24
+      },
+      "lcp": 720,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 1310,
+      "gateReadyMs": 1642.1000000238419,
+      "errors": [],
+      "costs": [
+        [
+          "RunTask",
+          28185.064000001763
+        ],
+        [
+          "ProxyMain::BeginMainFrame",
+          9474.230000000001
+        ],
+        [
+          "WebFrameWidgetImpl::UpdateLifecycle",
+          6955.828000000002
+        ],
+        [
+          "Scheduler::RunTask",
+          4493.783999999987
+        ],
+        [
+          "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+          4014.121999999997
+        ],
+        [
+          "LocalFrameView::UpdateStyleAndLayout",
+          3990.807999999999
+        ],
+        [
+          "Blink.Style.UpdateTime",
+          3882.2409999999995
+        ],
+        [
+          "UpdateLayoutTree",
+          3868.217000000001
+        ],
+        [
+          "Document::updateStyle",
+          3840.582000000002
+        ],
+        [
+          "Document::recalcStyle",
+          3743.2349999999983
+        ],
+        [
+          "LocalFrameView::RunPaintLifecyclePhase",
+          2301.105000000001
+        ],
+        [
+          "GpuChannel::ExecuteDeferredRequest",
+          2034.4370000000008
+        ],
+        [
+          "GPUTask",
+          2021.946999999998
+        ],
+        [
+          "CommandBuffer::Flush",
+          1961.801999999997
+        ],
+        [
+          "CommandBufferStub::OnAsyncFlush",
+          1959.3159999999993
+        ],
+        [
+          "CommandBufferService:PutChanged",
+          1948.4869999999976
+        ],
+        [
+          "RendererRasterWorker",
+          1544.082
+        ],
+        [
+          "WebFrameWidgetImpl::BeginMainFrame",
+          1307.4319999999996
+        ],
+        [
+          "Blink.Animate.UpdateTime",
+          1295.4839999999995
+        ],
+        [
+          "PageAnimator::serviceScriptedAnimations",
+          1286.1750000000006
+        ],
+        [
+          "LocalFrameView::pushPaintArtifactToCompositor",
+          1247.1470000000006
+        ],
+        [
+          "Blink.CompositingCommit.UpdateTime",
+          1238.7680000000005
+        ],
+        [
+          "Layerize",
+          1231.8930000000003
+        ],
+        [
+          "PaintArtifactCompositor::Update",
+          1218.768
+        ],
+        [
+          "ProxyImpl::ScheduledActionDraw",
+          1124.4959999999999
+        ],
+        [
+          "MainFrame.Draw",
+          1121.629000000001
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM",
+          1114.3970000000004
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM::Flush",
+          1084.1249999999989
+        ],
+        [
+          "Commit",
+          998.9010000000002
+        ],
+        [
+          "AsyncTask Run",
+          973.5440000000011
+        ],
+        [
+          "Paint",
+          947.2509999999996
+        ],
+        [
+          "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+          819.6270000000002
+        ],
+        [
+          "FireAnimationFrame",
+          818.3520000000012
+        ],
+        [
+          "FunctionCall",
+          805.2259999999995
+        ],
+        [
+          "Blink.Paint.UpdateTime",
+          671.0750000000002
+        ],
+        [
+          "PrePaint",
+          593.907
+        ],
+        [
+          "RasterDecoderImpl::DoRasterCHROMIUM",
+          549.7029999999991
+        ],
+        [
+          "RasterDecoderImpl::DoRasterCHROMIUM::Deserializing",
+          538.9960000000003
+        ],
+        [
+          "LocalFrameView::RunPrePaintLifecyclePhase",
+          489.79099999999994
+        ],
+        [
+          "Blink.PrePaint.UpdateTime",
+          477.3629999999999
+        ]
+      ]
+    },
+    {
+      "route": "projects",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 413,
+      "frames": 255,
+      "p50": 33.399999999999636,
+      "p95": 83.29999999999927,
+      "p99": 83.5,
+      "worst": 100.09999999999854,
+      "over20": 71.37254901960785,
+      "longTasks": 61,
+      "longMs": 3867,
+      "postGateMaxLong": 120,
+      "heapStart": 6528552,
+      "heapEnd": 5557640,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 4098.994000000001,
+      "scriptMs": 737.4369999999999,
+      "taskMs": 9814.637,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787937,
+        "requests": 24
+      },
+      "lcp": 932,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 1075,
+      "gateReadyMs": 1925.199999988079,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 454,
+      "frames": 311,
+      "p50": 33.29999999999927,
+      "p95": 66.60000000000036,
+      "p99": 83.5,
+      "worst": 100.10000000000036,
+      "over20": 57.87781350482315,
+      "longTasks": 34,
+      "longMs": 2113,
+      "postGateMaxLong": 99,
+      "heapStart": 5403432,
+      "heapEnd": 6154880,
+      "layoutCount": 6,
+      "layoutMs": 11.755000000000015,
+      "styleMs": 3391.7679999999996,
+      "scriptMs": 541.8230000000001,
+      "taskMs": 9393.409,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2313919,
+        "requests": 37
+      },
+      "lcp": 264,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 448,
+      "gateReadyMs": 2014.699999988079,
+      "errors": [],
+      "costs": [
+        [
+          "RunTask",
+          28250.30100000163
+        ],
+        [
+          "ProxyMain::BeginMainFrame",
+          9062.520000000002
+        ],
+        [
+          "WebFrameWidgetImpl::UpdateLifecycle",
+          6339.389000000003
+        ],
+        [
+          "Scheduler::RunTask",
+          4717.600999999981
+        ],
+        [
+          "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+          3537.4489999999987
+        ],
+        [
+          "LocalFrameView::UpdateStyleAndLayout",
+          3511.266000000003
+        ],
+        [
+          "Blink.Style.UpdateTime",
+          3405.901000000001
+        ],
+        [
+          "UpdateLayoutTree",
+          3394.8140000000035
+        ],
+        [
+          "Document::updateStyle",
+          3356.9630000000006
+        ],
+        [
+          "Document::recalcStyle",
+          3245.7439999999974
+        ],
+        [
+          "LocalFrameView::RunPaintLifecyclePhase",
+          2143.567
+        ],
+        [
+          "GpuChannel::ExecuteDeferredRequest",
+          2101.162999999999
+        ],
+        [
+          "GPUTask",
+          2087.695
+        ],
+        [
+          "RendererRasterWorker",
+          2064.2639999999983
+        ],
+        [
+          "CommandBuffer::Flush",
+          2061.050000000001
+        ],
+        [
+          "CommandBufferStub::OnAsyncFlush",
+          2059.1819999999984
+        ],
+        [
+          "CommandBufferService:PutChanged",
+          2051.4790000000003
+        ],
+        [
+          "LocalFrameView::pushPaintArtifactToCompositor",
+          1663.5659999999991
+        ],
+        [
+          "Blink.CompositingCommit.UpdateTime",
+          1657.0320000000015
+        ],
+        [
+          "Layerize",
+          1654.0270000000005
+        ],
+        [
+          "PaintArtifactCompositor::Update",
+          1630.8299999999995
+        ],
+        [
+          "WebFrameWidgetImpl::BeginMainFrame",
+          1459.7960000000005
+        ],
+        [
+          "Blink.Animate.UpdateTime",
+          1424.2319999999988
+        ],
+        [
+          "PageAnimator::serviceScriptedAnimations",
+          1415.888
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM",
+          1374.5310000000004
+        ],
+        [
+          "RasterDecoderImpl::DoEndRasterCHROMIUM::Flush",
+          1351.0830000000017
+        ],
+        [
+          "ProxyImpl::ScheduledActionDraw",
+          1261.52
+        ],
+        [
+          "MainFrame.Draw",
+          1259.1059999999998
+        ],
+        [
+          "AsyncTask Run",
+          964.1769999999996
+        ],
+        [
+          "Commit",
+          888.8040000000001
+        ],
+        [
+          "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+          785.2299999999999
+        ],
+        [
+          "FireAnimationFrame",
+          772.0990000000004
+        ],
+        [
+          "FunctionCall",
+          701.0300000000005
+        ],
+        [
+          "PrePaint",
+          572.5590000000003
+        ],
+        [
+          "RasterDecoderImpl::DoRasterCHROMIUM",
+          560.9389999999999
+        ],
+        [
+          "RasterDecoderImpl::DoRasterCHROMIUM::Deserializing",
+          549.4809999999992
+        ],
+        [
+          "LayerTreeHostImpl::PrepareToDraw",
+          487.98100000000017
+        ],
+        [
+          "LocalFrameView::RunPrePaintLifecyclePhase",
+          430.63299999999947
+        ],
+        [
+          "ProxyImpl::ReadyToCommit",
+          417.903
+        ],
+        [
+          "Blink.PrePaint.UpdateTime",
+          412.5789999999998
+        ]
+      ]
+    },
+    {
+      "route": "swiftship",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 421,
+      "frames": 398,
+      "p50": 16.799999999999272,
+      "p95": 50,
+      "p99": 66.60000000000036,
+      "worst": 66.79999999999927,
+      "over20": 37.437185929648244,
+      "longTasks": 11,
+      "longMs": 575,
+      "postGateMaxLong": 100,
+      "heapStart": 5549496,
+      "heapEnd": 5846140,
+      "layoutCount": 1,
+      "layoutMs": 0.26199999999998447,
+      "styleMs": 3133.1919999999996,
+      "scriptMs": 616.498,
+      "taskMs": 8713.418999999998,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2089290,
+        "requests": 38
+      },
+      "lcp": 940,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 134,
+      "gateReadyMs": 2329.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "signalroute",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 464,
+      "frames": 264,
+      "p50": 33.399999999999636,
+      "p95": 66.80000000000109,
+      "p99": 83.60000000000036,
+      "worst": 100.10000000000036,
+      "over20": 71.96969696969697,
+      "longTasks": 54,
+      "longMs": 3427,
+      "postGateMaxLong": 92,
+      "heapStart": 5701168,
+      "heapEnd": 5897920,
+      "layoutCount": 268,
+      "layoutMs": 196.00300000000004,
+      "styleMs": 3238.9850000000006,
+      "scriptMs": 445.94899999999996,
+      "taskMs": 9698.560000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2139836,
+        "requests": 45
+      },
+      "lcp": 924,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 867,
+      "gateReadyMs": 2174.5999999940395,
+      "errors": []
+    },
+    {
+      "route": "about",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 362,
+      "frames": 334,
+      "p50": 33.19999999999891,
+      "p95": 66.59999999999945,
+      "p99": 83.19999999999982,
+      "worst": 100.20000000000073,
+      "over20": 53.59281437125748,
+      "longTasks": 30,
+      "longMs": 1843,
+      "postGateMaxLong": 90,
+      "heapStart": 4859192,
+      "heapEnd": 5400184,
+      "layoutCount": 336,
+      "layoutMs": 112.24500000000003,
+      "styleMs": 3590.2999999999997,
+      "scriptMs": 355.82099999999997,
+      "taskMs": 9392.57,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 1757323,
+        "requests": 22
+      },
+      "lcp": 352,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 430,
+      "gateReadyMs": 1523.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 1440,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 413,
+      "frames": 247,
+      "p50": 33.399999999999636,
+      "p95": 83.39999999999964,
+      "p99": 100.09999999999854,
+      "worst": 100.10000000000036,
+      "over20": 72.06477732793523,
+      "longTasks": 64,
+      "longMs": 4173,
+      "postGateMaxLong": 211,
+      "heapStart": 5523796,
+      "heapEnd": 6669516,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 3578.2219999999998,
+      "scriptMs": 1286.4259999999997,
+      "taskMs": 9742.633000000002,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787212,
+        "requests": 23
+      },
+      "lcp": 884,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 1885,
+      "gateReadyMs": 1505,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 440,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000000546,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5923300,
+      "heapEnd": 4674980,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1507.1380000000001,
+      "scriptMs": 435.42,
+      "taskMs": 4625.769,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787838,
+        "requests": 24
+      },
+      "lcp": 196,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1118.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 413,
+      "frames": 603,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.899999999999636,
+      "worst": 17.300000000000182,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 6049024,
+      "heapEnd": 4559140,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1656.782,
+      "scriptMs": 447.642,
+      "taskMs": 4997.053,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787937,
+        "requests": 24
+      },
+      "lcp": 212,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1138.7999999821186,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 454,
+      "frames": 602,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000001455,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5783536,
+      "heapEnd": 4494640,
+      "layoutCount": 4,
+      "layoutMs": 1.905999999999991,
+      "styleMs": 1019.6909999999999,
+      "scriptMs": 154.396,
+      "taskMs": 2894.6950000000006,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2313919,
+        "requests": 37
+      },
+      "lcp": 204,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1159.4000000059605,
+      "errors": []
+    },
+    {
+      "route": "swiftship",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 421,
+      "frames": 603,
+      "p50": 16.699999999999818,
+      "p95": 16.800000000000182,
+      "p99": 16.899999999999636,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5982172,
+      "heapEnd": 5068964,
+      "layoutCount": 1,
+      "layoutMs": 0.3060000000000007,
+      "styleMs": 1263.841,
+      "scriptMs": 335.80899999999997,
+      "taskMs": 3997.859,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2089290,
+        "requests": 38
+      },
+      "lcp": 212,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1133,
+      "errors": []
+    },
+    {
+      "route": "signalroute",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 464,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000000546,
+      "worst": 17.100000000000364,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5990636,
+      "heapEnd": 5084204,
+      "layoutCount": 605,
+      "layoutMs": 80.33800000000001,
+      "styleMs": 1389.183,
+      "scriptMs": 229.539,
+      "taskMs": 4979.212,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2139582,
+        "requests": 43
+      },
+      "lcp": 200,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1177.2999999821186,
+      "errors": []
+    },
+    {
+      "route": "about",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 362,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000001455,
+      "worst": 17.600000000000364,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 4964600,
+      "heapEnd": 3981784,
+      "layoutCount": 604,
+      "layoutMs": 50.928000000000004,
+      "styleMs": 1018.4340000000001,
+      "scriptMs": 103.524,
+      "taskMs": 3458.463,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 1757323,
+        "requests": 22
+      },
+      "lcp": 232,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1146.699999988079,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 1440,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 413,
+      "frames": 602,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 16.900000000000546,
+      "worst": 33.5,
+      "over20": 0.16611295681063123,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 4665432,
+      "heapEnd": 5390352,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1983.7150000000001,
+      "scriptMs": 1052.043,
+      "taskMs": 6113.15,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1787212,
+        "requests": 23
+      },
+      "lcp": 204,
+      "cls": 0.0004919252079046639,
+      "tbtProxy": 0,
+      "gateReadyMs": 1149.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 434,
+      "frames": 602,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 17,
+      "worst": 17.100000000000364,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5671860,
+      "heapEnd": 5280160,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1295.841,
+      "scriptMs": 363.08000000000004,
+      "taskMs": 3270.7079999999996,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1758117,
+        "requests": 23
+      },
+      "lcp": 192,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1147.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 407,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000000546,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 6219544,
+      "heapEnd": 4383448,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1304.9650000000001,
+      "scriptMs": 375.034,
+      "taskMs": 3494.6940000000004,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1758216,
+        "requests": 23
+      },
+      "lcp": 196,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1142.0999999940395,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 454,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 16.900000000000546,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5798508,
+      "heapEnd": 5416564,
+      "layoutCount": 4,
+      "layoutMs": 1.3029999999999986,
+      "styleMs": 808.5020000000001,
+      "scriptMs": 124.26099999999995,
+      "taskMs": 2069.591,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2284019,
+        "requests": 35
+      },
+      "lcp": 212,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1171.699999988079,
+      "errors": []
+    },
+    {
+      "route": "swiftship",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 421,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 16.900000000001455,
+      "worst": 17.399999999999636,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5741388,
+      "heapEnd": 5200848,
+      "layoutCount": 1,
+      "layoutMs": 0.1759999999999956,
+      "styleMs": 868.9019999999999,
+      "scriptMs": 111.97500000000002,
+      "taskMs": 2302.36,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2059211,
+        "requests": 35
+      },
+      "lcp": 220,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1164.7000000178814,
+      "errors": []
+    },
+    {
+      "route": "signalroute",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 452,
+      "frames": 600,
+      "p50": 16.69999999999891,
+      "p95": 16.899999999999636,
+      "p99": 16.900000000001455,
+      "worst": 17.200000000000728,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5927984,
+      "heapEnd": 4461808,
+      "layoutCount": 43,
+      "layoutMs": 16.433000000000003,
+      "styleMs": 1083.035,
+      "scriptMs": 213.759,
+      "taskMs": 3021.7900000000004,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2109503,
+        "requests": 40
+      },
+      "lcp": 196,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1156.3999999761581,
+      "errors": []
+    },
+    {
+      "route": "about",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 362,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.90000000000009,
+      "worst": 17.100000000000364,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5010384,
+      "heapEnd": 5436220,
+      "layoutCount": 602,
+      "layoutMs": 40.898,
+      "styleMs": 623.907,
+      "scriptMs": 87.942,
+      "taskMs": 2094.5879999999997,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 1727602,
+        "requests": 21
+      },
+      "lcp": 188,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1158.800000011921,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 390,
+      "rate": 1,
+      "idleCommits": 0,
+      "domNodes": 407,
+      "frames": 601,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 16.900000000000546,
+      "worst": 17,
+      "over20": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 5410432,
+      "heapEnd": 5740744,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 1541.1160000000002,
+      "scriptMs": 725.986,
+      "taskMs": 4220.432,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1757491,
+        "requests": 22
+      },
+      "lcp": 212,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1258.7999999821186,
+      "errors": []
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 434,
+      "frames": 358,
+      "p50": 33.19999999999982,
+      "p95": 50.099999999999454,
+      "p99": 66.60000000000036,
+      "worst": 83.39999999999964,
+      "over20": 52.79329608938548,
+      "longTasks": 12,
+      "longMs": 662,
+      "postGateMaxLong": 77,
+      "heapStart": 5589444,
+      "heapEnd": 6670292,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 3959.5520000000006,
+      "scriptMs": 843.047,
+      "taskMs": 9503.361,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1758117,
+        "requests": 23
+      },
+      "lcp": 420,
+      "cls": 0,
+      "tbtProxy": 123,
+      "gateReadyMs": 1693.9000000059605,
+      "errors": []
+    },
+    {
+      "route": "projects",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 407,
+      "frames": 365,
+      "p50": 16.900000000000546,
+      "p95": 50,
+      "p99": 66.60000000000036,
+      "worst": 66.90000000000146,
+      "over20": 49.31506849315068,
+      "longTasks": 21,
+      "longMs": 1155,
+      "postGateMaxLong": 84,
+      "heapStart": 5140956,
+      "heapEnd": 6741520,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 4071.7289999999994,
+      "scriptMs": 805.034,
+      "taskMs": 9290.963,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1758216,
+        "requests": 23
+      },
+      "lcp": 280,
+      "cls": 0,
+      "tbtProxy": 231,
+      "gateReadyMs": 1986.0999999940395,
+      "errors": []
+    },
+    {
+      "route": "roomly",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 454,
+      "frames": 417,
+      "p50": 16.799999999999272,
+      "p95": 33.5,
+      "p99": 50,
+      "worst": 50.20000000000073,
+      "over20": 40.52757793764988,
+      "longTasks": 1,
+      "longMs": 59,
+      "postGateMaxLong": 59,
+      "heapStart": 5469476,
+      "heapEnd": 6124540,
+      "layoutCount": 6,
+      "layoutMs": 11.271999999999949,
+      "styleMs": 4048.8669999999997,
+      "scriptMs": 438.57499999999993,
+      "taskMs": 9295.707999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2284019,
+        "requests": 35
+      },
+      "lcp": 300,
+      "cls": 0,
+      "tbtProxy": 9,
+      "gateReadyMs": 1990.300000011921,
+      "errors": []
+    },
+    {
+      "route": "swiftship",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 421,
+      "frames": 507,
+      "p50": 16.699999999999818,
+      "p95": 33.399999999999636,
+      "p99": 33.600000000000364,
+      "worst": 50,
+      "over20": 17.75147928994083,
+      "longTasks": 1,
+      "longMs": 59,
+      "postGateMaxLong": 59,
+      "heapStart": 5407524,
+      "heapEnd": 6011920,
+      "layoutCount": 1,
+      "layoutMs": 0.7220000000000004,
+      "styleMs": 3317.8759999999997,
+      "scriptMs": 406.2560000000001,
+      "taskMs": 8175.152000000001,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2059211,
+        "requests": 35
+      },
+      "lcp": 296,
+      "cls": 0,
+      "tbtProxy": 9,
+      "gateReadyMs": 1627.5,
+      "errors": []
+    },
+    {
+      "route": "signalroute",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 452,
+      "frames": 395,
+      "p50": 16.800000000000182,
+      "p95": 50,
+      "p99": 50.100000000000364,
+      "worst": 66.5,
+      "over20": 44.050632911392405,
+      "longTasks": 3,
+      "longMs": 160,
+      "postGateMaxLong": 59,
+      "heapStart": 5574668,
+      "heapEnd": 5669008,
+      "layoutCount": 44,
+      "layoutMs": 60.53599999999998,
+      "styleMs": 3649.8940000000007,
+      "scriptMs": 506.4629999999999,
+      "taskMs": 9233.989999999998,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 2109376,
+        "requests": 39
+      },
+      "lcp": 288,
+      "cls": 0,
+      "tbtProxy": 19,
+      "gateReadyMs": 1972.5999999940395,
+      "errors": []
+    },
+    {
+      "route": "about",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 362,
+      "frames": 502,
+      "p50": 16.699999999999818,
+      "p95": 33.399999999999636,
+      "p99": 33.5,
+      "worst": 50.19999999999982,
+      "over20": 19.12350597609562,
+      "longTasks": 0,
+      "longMs": 0,
+      "postGateMaxLong": 0,
+      "heapStart": 4877312,
+      "heapEnd": 5277472,
+      "layoutCount": 504,
+      "layoutMs": 145.347,
+      "styleMs": 3374.88,
+      "scriptMs": 366.58900000000006,
+      "taskMs": 8981.128999999999,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 104246,
+        "requests": 6
+      },
+      "total": {
+        "bytes": 1727602,
+        "requests": 21
+      },
+      "lcp": 216,
+      "cls": 0,
+      "tbtProxy": 0,
+      "gateReadyMs": 1296.7000000178814,
+      "errors": []
+    },
+    {
+      "route": "contact",
+      "width": 390,
+      "rate": 4,
+      "idleCommits": 0,
+      "domNodes": 407,
+      "frames": 327,
+      "p50": 33.29999999999927,
+      "p95": 50.100000000000364,
+      "p99": 66.70000000000073,
+      "worst": 83.5,
+      "over20": 59.63302752293578,
+      "longTasks": 21,
+      "longMs": 1199,
+      "postGateMaxLong": 138,
+      "heapStart": 6275424,
+      "heapEnd": 4873060,
+      "layoutCount": 0,
+      "layoutMs": 0,
+      "styleMs": 3812.4960000000005,
+      "scriptMs": 969.013,
+      "taskMs": 9745.013,
+      "paintCount": null,
+      "gpu": "See trace; CDP Performance does not expose GPU raster duration",
+      "beforeGate": {
+        "bytes": 134094,
+        "requests": 7
+      },
+      "total": {
+        "bytes": 1757491,
+        "requests": 22
+      },
+      "lcp": 320,
+      "cls": 0,
+      "tbtProxy": 784,
+      "gateReadyMs": 1838,
+      "errors": []
+    }
+  ],
+  "transitions": [
+    {
+      "width": 1440,
+      "rate": 4,
+      "frames": 211,
+      "p50": 50.099999999998545,
+      "p95": 199.89999999999964,
+      "p99": 500,
+      "worst": 633.3999999999978,
+      "over20": 81.99052132701422
+    },
+    {
+      "width": 1440,
+      "rate": 1,
+      "frames": 604,
+      "p50": 16.799999999999272,
+      "p95": 50.100000000000364,
+      "p99": 83.5,
+      "worst": 166.89999999999964,
+      "over20": 36.423841059602644
+    },
+    {
+      "width": 390,
+      "rate": 1,
+      "frames": 826,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000109,
+      "p99": 50.20000000000073,
+      "worst": 83.40000000000055,
+      "over20": 9.443099273607748
+    },
+    {
+      "width": 390,
+      "rate": 4,
+      "frames": 261,
+      "p50": 33.400000000001455,
+      "p95": 183.3000000000011,
+      "p99": 416.6999999999989,
+      "worst": 483.5,
+      "over20": 77.01149425287356
+    }
+  ],
+  "jsGzip": 127586,
+  "notes": [
+    "Production Vite preview; cold context per route; high quality forced.",
+    "TBT proxy is sum(max(longtask-50,0)) after gate, not Lighthouse navigation TBT.",
+    "LCP describes the gate/first navigation, not post-click scene readiness.",
+    "CPU throttling is not a physical mid-range phone or GPU throttle.",
+    "Trace event totals are inclusive and overlap; not additive. Paint count unavailable in Performance.getMetrics."
+  ]
+}

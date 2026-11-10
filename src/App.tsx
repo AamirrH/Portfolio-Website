@@ -18,6 +18,7 @@ import { useScrollJourney } from './hooks/useScrollJourney';
 import { usePreferences } from './hooks/usePreferences';
 import { useSceneStore } from './state/useSceneStore';
 import { useAtmosphere } from './hooks/useAtmosphere';
+import { idleTask } from './lib/idle';
 export default function App() {
   useEffect(startQualityManager,[]);
   useJourney();
@@ -34,6 +35,30 @@ export default function App() {
     document.addEventListener('endless:prepare-scene', prepare);
     return () => document.removeEventListener('endless:prepare-scene', prepare);
   }, [ignited]);
+  useEffect(() => {
+    if (!scenePrepared || plain) return;
+    return idleTask(() => {
+      void Promise.allSettled([
+        import('./components/scene/CameraRig'),
+        import('./components/scene/TravelScenes'),
+        import('./components/stops/ProjectStops'),
+        import('./components/views/ProjectsIndex'),
+        import('./components/views/ProjectPanel'),
+        import('./components/views/About'),
+        import('./components/views/Contact'),
+        import('./components/navigation/TopBar'),
+        import('./components/navigation/JourneyFooter'),
+        import('./components/navigation/MobileNav')
+      ]);
+      void import('./data/stops').then(({ stops }) => Promise.all(Object.values(stops).map(stop => {
+        if (!stop.building.src) return Promise.resolve();
+        const image = new Image();
+        image.decoding = 'async';
+        image.src = stop.building.src;
+        return image.decode().catch(() => {});
+      })));
+    }, 500);
+  }, [scenePrepared, plain]);
   const appReady = ignited || scenePrepared;
   useScrollJourney(ignited && !plain);
   const project = projects.find(item => item.id === section);

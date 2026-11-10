@@ -1,9 +1,9 @@
 [
   {
-    "file": "assets/index-EnNo_L6P.js",
+    "file": "assets/index-JTCNYBdY.js",
     "entry": true,
-    "raw": 170148,
-    "gzip": 56648,
+    "raw": 171434,
+    "gzip": 56951,
     "imports": [],
     "modules": [
       {
@@ -19,12 +19,12 @@
         "bytes": 7296
       },
       {
-        "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
-        "bytes": 6705
+        "name": "D:/Portfolio/src/App.tsx",
+        "bytes": 7230
       },
       {
-        "name": "D:/Portfolio/src/App.tsx",
-        "bytes": 5510
+        "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
+        "bytes": 6705
       },
       {
         "name": "D:/Portfolio/node_modules/scheduler/cjs/scheduler.production.min.js",
@@ -93,6 +93,10 @@
       {
         "name": "D:/Portfolio/node_modules/react-dom/index.js",
         "bytes": 524
+      },
+      {
+        "name": "D:/Portfolio/src/lib/idle.ts",
+        "bytes": 408
       },
       {
         "name": "D:/Portfolio/src/main.tsx",
@@ -201,30 +205,19 @@
     ]
   },
   {
-    "file": "assets/CameraRig-DCMHxLaI.js",
+    "file": "assets/CameraRig-WcrBC0of.js",
     "entry": false,
-    "raw": 3812,
-    "gzip": 1725,
+    "raw": 2727,
+    "gzip": 1217,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/index-Bvu9zNsI.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/index-Bvu9zNsI.js",
+      "assets/SceneLayer-DNFj7Ost.js"
     ],
     "modules": [
       {
         "name": "D:/Portfolio/src/components/scene/CameraRig.tsx",
         "bytes": 4594
-      },
-      {
-        "name": "D:/Portfolio/src/components/scene/SceneLayer.tsx",
-        "bytes": 641
-      },
-      {
-        "name": "D:/Portfolio/src/components/scene/LayerArt.tsx",
-        "bytes": 484
-      },
-      {
-        "name": "D:/Portfolio/src/lib/idle.ts",
-        "bytes": 379
       },
       {
         "name": "D:/Portfolio/src/components/scene/Overlay.tsx",
@@ -233,12 +226,12 @@
     ]
   },
   {
-    "file": "assets/TopBar-B24-ZGSr.js",
+    "file": "assets/TopBar-D9obdQwm.js",
     "entry": false,
     "raw": 2318,
     "gzip": 873,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -260,12 +253,12 @@
     ]
   },
   {
-    "file": "assets/JourneyFooter-DDbkq_Hj.js",
+    "file": "assets/JourneyFooter-CYm9S-ks.js",
     "entry": false,
     "raw": 929,
     "gzip": 473,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -275,12 +268,12 @@
     ]
   },
   {
-    "file": "assets/MobileNav-DGOuIyXf.js",
+    "file": "assets/MobileNav-D9VTCOdc.js",
     "entry": false,
     "raw": 705,
-    "gzip": 389,
+    "gzip": 391,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -290,13 +283,13 @@
     ]
   },
   {
-    "file": "assets/Home-DQiBQFqH.js",
+    "file": "assets/Home-CiLopbWv.js",
     "entry": false,
     "raw": 1530,
-    "gzip": 562,
+    "gzip": 561,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/RoadSign-CzIau0Du.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/RoadSign-CNOFHrpr.js"
     ],
     "modules": [
       {
@@ -310,13 +303,13 @@
     ]
   },
   {
-    "file": "assets/ProjectsIndex-CQtzKjCD.js",
+    "file": "assets/ProjectsIndex-CTMBZu_g.js",
     "entry": false,
     "raw": 710,
     "gzip": 395,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/RoadSign-CzIau0Du.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/RoadSign-CNOFHrpr.js"
     ],
     "modules": [
       {
@@ -326,12 +319,12 @@
     ]
   },
   {
-    "file": "assets/RoadSign-CzIau0Du.js",
+    "file": "assets/RoadSign-CNOFHrpr.js",
     "entry": false,
     "raw": 257,
     "gzip": 179,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -341,13 +334,13 @@
     ]
   },
   {
-    "file": "assets/ProjectPanel-DAWoxrYQ.js",
+    "file": "assets/ProjectPanel-CzpjKMiQ.js",
     "entry": false,
     "raw": 986,
     "gzip": 444,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/ProjectBody-Bqq7tzVV.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/ProjectBody-7-7sZttF.js"
     ],
     "modules": [
       {
@@ -357,12 +350,12 @@
     ]
   },
   {
-    "file": "assets/About-CHhuzfKm.js",
+    "file": "assets/About-CJ5GkEIL.js",
     "entry": false,
     "raw": 1121,
-    "gzip": 473,
+    "gzip": 472,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -372,14 +365,14 @@
     ]
   },
   {
-    "file": "assets/PlainMode-CvbiYJTg.js",
+    "file": "assets/PlainMode-D8Nr8vXI.js",
     "entry": false,
     "raw": 2198,
-    "gzip": 686,
+    "gzip": 684,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/ProjectBody-Bqq7tzVV.js",
-      "assets/Contact-DJ8bM0BS.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/ProjectBody-7-7sZttF.js",
+      "assets/Contact-C0Z17B0g.js"
     ],
     "modules": [
       {
@@ -389,12 +382,12 @@
     ]
   },
   {
-    "file": "assets/ProjectBody-Bqq7tzVV.js",
+    "file": "assets/ProjectBody-7-7sZttF.js",
     "entry": false,
     "raw": 1037,
-    "gzip": 438,
+    "gzip": 440,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -404,12 +397,12 @@
     ]
   },
   {
-    "file": "assets/Contact-DJ8bM0BS.js",
+    "file": "assets/Contact-C0Z17B0g.js",
     "entry": false,
     "raw": 1355,
-    "gzip": 514,
+    "gzip": 515,
     "imports": [
-      "assets/index-EnNo_L6P.js"
+      "assets/index-JTCNYBdY.js"
     ],
     "modules": [
       {
@@ -419,53 +412,16 @@
     ]
   },
   {
-    "file": "assets/index-Bvu9zNsI.js",
+    "file": "assets/ProjectStops-DhkOPp0T.js",
     "entry": false,
-    "raw": 70848,
-    "gzip": 27953,
-    "imports": [],
-    "modules": [
-      {
-        "name": "D:/Portfolio/node_modules/gsap/gsap-core.js",
-        "bytes": 170702
-      },
-      {
-        "name": "D:/Portfolio/node_modules/gsap/CSSPlugin.js",
-        "bytes": 64563
-      },
-      {
-        "name": "D:/Portfolio/node_modules/gsap/index.js",
-        "bytes": 135
-      }
-    ]
-  },
-  {
-    "file": "assets/ScrollTrigger-7Zy99s9Q.js",
-    "entry": false,
-    "raw": 43986,
-    "gzip": 18265,
-    "imports": [],
-    "modules": [
-      {
-        "name": "D:/Portfolio/node_modules/gsap/ScrollTrigger.js",
-        "bytes": 112358
-      },
-      {
-        "name": "D:/Portfolio/node_modules/gsap/Observer.js",
-        "bytes": 26311
-      }
-    ]
-  },
-  {
-    "file": "assets/ProjectStops-DdvDs030.js",
-    "entry": false,
-    "raw": 19061,
-    "gzip": 6669,
+    "raw": 15562,
+    "gzip": 5714,
     "imports": [
-      "assets/index-EnNo_L6P.js",
-      "assets/TravelScenes-CgR2Iqn5.js",
-      "assets/CameraRig-DCMHxLaI.js",
-      "assets/index-Bvu9zNsI.js"
+      "assets/index-JTCNYBdY.js",
+      "assets/stops-C3EALcIS.js",
+      "assets/TravelScenes-DEOVuXat.js",
+      "assets/index-Bvu9zNsI.js",
+      "assets/SceneLayer-DNFj7Ost.js"
     ],
     "modules": [
       {
@@ -475,10 +431,6 @@
       {
         "name": "D:/Portfolio/src/components/stops/StopScene.tsx",
         "bytes": 6601
-      },
-      {
-        "name": "D:/Portfolio/src/data/stops.ts",
-        "bytes": 4715
       },
       {
         "name": "D:/Portfolio/src/components/stops/StopOverlays.tsx",
@@ -511,14 +463,14 @@
     ]
   },
   {
-    "file": "assets/TravelScenes-CgR2Iqn5.js",
+    "file": "assets/TravelScenes-DEOVuXat.js",
     "entry": false,
-    "raw": 30984,
-    "gzip": 10602,
+    "raw": 30985,
+    "gzip": 10605,
     "imports": [
-      "assets/index-EnNo_L6P.js",
+      "assets/index-JTCNYBdY.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/CameraRig-DCMHxLaI.js"
+      "assets/SceneLayer-DNFj7Ost.js"
     ],
     "modules": [
       {
@@ -596,6 +548,76 @@
       {
         "name": "D:/Portfolio/src/components/highway/highway.css",
         "bytes": 0
+      }
+    ]
+  },
+  {
+    "file": "assets/SceneLayer-DNFj7Ost.js",
+    "entry": false,
+    "raw": 806,
+    "gzip": 490,
+    "imports": [
+      "assets/index-JTCNYBdY.js"
+    ],
+    "modules": [
+      {
+        "name": "D:/Portfolio/src/components/scene/SceneLayer.tsx",
+        "bytes": 641
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/LayerArt.tsx",
+        "bytes": 484
+      }
+    ]
+  },
+  {
+    "file": "assets/stops-C3EALcIS.js",
+    "entry": false,
+    "raw": 3682,
+    "gzip": 1241,
+    "imports": [],
+    "modules": [
+      {
+        "name": "D:/Portfolio/src/data/stops.ts",
+        "bytes": 4715
+      }
+    ]
+  },
+  {
+    "file": "assets/index-Bvu9zNsI.js",
+    "entry": false,
+    "raw": 70848,
+    "gzip": 27953,
+    "imports": [],
+    "modules": [
+      {
+        "name": "D:/Portfolio/node_modules/gsap/gsap-core.js",
+        "bytes": 170702
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/CSSPlugin.js",
+        "bytes": 64563
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/index.js",
+        "bytes": 135
+      }
+    ]
+  },
+  {
+    "file": "assets/ScrollTrigger-7Zy99s9Q.js",
+    "entry": false,
+    "raw": 43986,
+    "gzip": 18265,
+    "imports": [],
+    "modules": [
+      {
+        "name": "D:/Portfolio/node_modules/gsap/ScrollTrigger.js",
+        "bytes": 112358
+      },
+      {
+        "name": "D:/Portfolio/node_modules/gsap/Observer.js",
+        "bytes": 26311
       }
     ]
   }

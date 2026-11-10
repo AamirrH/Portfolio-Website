@@ -7,7 +7,7 @@
       "-c",
       "playwright.perf.config.ts",
       "--grep",
-      "(home|roomly) 1440"
+      "roomly 390"
     ],
     "configFile": "D:\\Portfolio\\playwright.perf.config.ts",
     "rootDir": "D:/Portfolio/perf",
@@ -93,8 +93,8 @@
       "line": 0,
       "specs": [
         {
-          "title": "home 1440",
-          "ok": true,
+          "title": "roomly 390",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -107,55 +107,66 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 352,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 441,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mBuffer\u001b[39m\u001b[2m).\u001b[22mtoMatchSnapshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\n  31417 pixels (ratio 0.03 of all image pixels) are different.\n\n  Snapshot: roomly-390.png\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mBuffer\u001b[39m\u001b[2m).\u001b[22mtoMatchSnapshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\n  31417 pixels (ratio 0.03 of all image pixels) are different.\n\n  Snapshot: roomly-390.png\n\n    at D:\\Portfolio\\perf\\visual.spec.ts:3:240",
+                    "location": {
+                      "file": "D:\\Portfolio\\perf\\visual.spec.ts",
+                      "column": 240,
+                      "line": 3
+                    },
+                    "snippet": "  1 | import {test,expect} from '@playwright/test';\n  2 | import {readFileSync} from 'node:fs';\n> 3 | for(const route of ['home','projects','roomly','swiftship','signalroute','about','contact'])for(const width of [1440,390])test(`${route} ${width}`,()=>{expect(readFileSync(`perf/${process.env.PERF_VISUAL||'after'}/${route}-${width}.png`)).toMatchSnapshot(`${route}-${width}.png`);});\n    |                                                                                                                                                                                                                                                ^\n  4 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Portfolio\\perf\\visual.spec.ts",
+                        "column": 240,
+                        "line": 3
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mBuffer\u001b[39m\u001b[2m).\u001b[22mtoMatchSnapshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\n  31417 pixels (ratio 0.03 of all image pixels) are different.\n\n  Snapshot: roomly-390.png\n\n\n  1 | import {test,expect} from '@playwright/test';\n  2 | import {readFileSync} from 'node:fs';\n> 3 | for(const route of ['home','projects','roomly','swiftship','signalroute','about','contact'])for(const width of [1440,390])test(`${route} ${width}`,()=>{expect(readFileSync(`perf/${process.env.PERF_VISUAL||'after'}/${route}-${width}.png`)).toMatchSnapshot(`${route}-${width}.png`);});\n    |                                                                                                                                                                                                                                                ^\n  4 |\n    at D:\\Portfolio\\perf\\visual.spec.ts:3:240"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:38:03.533Z",
+                  "startTime": "2026-11-10T15:28:02.440Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "roomly-390-expected.png",
+                      "contentType": "image/png",
+                      "path": "D:\\Portfolio\\perf\\baseline\\roomly-390.png"
+                    },
+                    {
+                      "name": "roomly-390-actual.png",
+                      "contentType": "image/png",
+                      "path": "D:\\Portfolio\\.qa\\perf-visual\\visual-roomly-390\\roomly-390-actual.png"
+                    },
+                    {
+                      "name": "roomly-390-diff.png",
+                      "contentType": "image/png",
+                      "path": "D:\\Portfolio\\.qa\\perf-visual\\visual-roomly-390\\roomly-390-diff.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Portfolio\\.qa\\perf-visual\\visual-roomly-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Portfolio\\perf\\visual.spec.ts",
+                    "column": 240,
+                    "line": 3
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "8324bb52c49185e48ff4-f619e97bfa7f0eb809b4",
-          "file": "visual.spec.ts",
-          "line": 3,
-          "column": 123
-        },
-        {
-          "title": "roomly 1440",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 226,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-11-08T19:38:04.004Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "8324bb52c49185e48ff4-74cc17357fc3e0bb4222",
+          "id": "8324bb52c49185e48ff4-360a9da998712c05c4a2",
           "file": "visual.spec.ts",
           "line": 3,
           "column": 123
@@ -165,11 +176,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-08T19:38:02.116Z",
-    "duration": 2198.102,
-    "expected": 2,
+    "startTime": "2026-11-10T15:28:01.424Z",
+    "duration": 1553.9009999999998,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
