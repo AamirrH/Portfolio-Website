@@ -205,7 +205,7 @@ button,a { touch-action:manipulation; }
 @keyframes aviation-blink { 0%,18% { opacity:1; } 19%,100% { opacity:.08; } }
 @keyframes city-neon-flicker { 0%,91%,96%,100% { opacity:.7; } 92%,95% { opacity:.15; } }
 @media(prefers-reduced-motion:reduce) { .city-window-twinkle,.aviation-light,.city-neon { animation:none; } }
-@media(max-width:767px) { .rear-scene .layer-near-buildings { display:block; opacity:.65; } }
+@media(max-width:767px) { :is(.rear-scene,.dash-scene) .layer-near-buildings { display:block; opacity:.65; } }
 
 /* Opening-scene sunset bloom uses gradients rather than full-scene blur. */
 .home-sunset-bloom .sun-aura { background:radial-gradient(circle,#ffdc8b85 0%,#ffb47338 33%,#ff809217 53%,transparent 72%); }
@@ -235,10 +235,10 @@ button,a { touch-action:manipulation; }
 
 /* Rear-only facade continuation; inherited tile transforms preserve depth. */
 .lower-facades { display:none; }
-.rear-scene .city-near .lower-facades,.rear-scene .city-mid .lower-facades { display:block; position:absolute; top:calc(100% - 8px); width:100%; height:40vh; mask-image:linear-gradient(transparent,#000 18px); }
-.rear-scene .city-mid .lower-facades { opacity:.65; }
+:is(.rear-scene,.dash-scene) .city-near .lower-facades,:is(.rear-scene,.dash-scene) .city-mid .lower-facades { display:block; position:absolute; top:calc(100% - 8px); width:100%; height:40vh; mask-image:linear-gradient(transparent,#000 18px); }
+:is(.rear-scene,.dash-scene) .city-mid .lower-facades { opacity:.65; }
 .deck-edge { position:absolute; inset:0; width:100%; height:100%; }
-@media(max-width:767px) { .rear-scene .secondary-window { display:none; } }
+@media(max-width:767px) { :is(.rear-scene,.dash-scene) .secondary-window { display:none; } }
 
 .project-gantry { left:16%; width:68%; gap:2%; }
 .project-gantry-sign { flex:1; min-width:0; padding:22px 17px; transition:box-shadow .2s; }
@@ -249,9 +249,9 @@ button,a { touch-action:manipulation; }
 .projects-copy::before { content:''; position:absolute; inset:-40px; z-index:-1; border-radius:0; background:radial-gradient(ellipse at 30% 60%,rgba(8,4,20,.55),transparent 70%); }
 @media(max-width:767px) { .project-gantry { top:15%; left:7%; width:86%; display:grid; gap:12px; }.project-gantry-sign { padding:11px 16px; }.project-gantry-sign h2 { font-size:17px; }.project-gantry-sign p { margin-top:4px; font-size:8px; }.project-gantry-sign::before,.project-gantry-sign::after { height:3px; bottom:-7px; }.projects-copy { bottom:18%; }.projects-copy h1 { font-size:36px; } }
 
-.rear-scene .city-near { bottom:0; height:calc(var(--city-height) + 28.75vh); }
-.rear-scene .city-near .city-tiles { bottom:auto; height:var(--city-height); }
-.rear-scene .city-near .city-tile::after,.rear-scene .city-mid .city-tile::after { content:''; position:absolute; top:calc(100% - 30px); left:0; width:100%; height:90px; background:linear-gradient(transparent,rgba(119,63,112,.45) 35%,transparent); }
+:is(.rear-scene,.dash-scene) .city-near { bottom:0; height:calc(var(--city-height) + 28.75vh); }
+:is(.rear-scene,.dash-scene) .city-near .city-tiles { bottom:auto; height:var(--city-height); }
+:is(.rear-scene,.dash-scene) .city-near .city-tile::after,:is(.rear-scene,.dash-scene) .city-mid .city-tile::after { content:''; position:absolute; top:calc(100% - 30px); left:0; width:100%; height:90px; background:linear-gradient(transparent,rgba(119,63,112,.45) 35%,transparent); }
 
 .project-gantry-sign h2 { position:relative; padding-right:22px; font-size:clamp(14px,1.35vw,21px); }.project-gantry-sign h2 span { position:absolute; right:0; top:0; float:none; }
 

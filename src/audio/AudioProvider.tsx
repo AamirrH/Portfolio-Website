@@ -2,7 +2,7 @@ import { QUALITY } from '../config/quality';
 import { subscribeTick } from '../lib/ticker';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_VOLUME } from '../config';
-import { readPreference, savePreference } from '../lib/preferences';
+import { savePreference } from '../lib/preferences';
 import { useSceneStore } from '../state/useSceneStore';
 interface AudioControls { muted: boolean; unavailable: boolean; unlock: () => void; toggle: () => void; }
 const AudioControlContext = createContext<AudioControls | null>(null);
@@ -12,13 +12,21 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const context = useRef<AudioContext | null>(null);
   const analyser = useRef<AnalyserNode | null>(null);
   const [unavailable, setUnavailable] = useState(!hasTrack);
-  const [muted, setMuted] = useState(() => readPreference('endless-muted') === 'true' || !hasTrack);
+  const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
   const unlocked = useRef(false);
   const mutedRef = useRef(muted);
   const quality=useSceneStore(s=>s.quality);
   const section = useSceneStore(s=>s.section);
   const plain = useSceneStore(state => state.plain);
+  useEffect(() => {
+    if (!plain) return;
+    mutedRef.current = true;
+    setMuted(true);
+    setPlaying(false);
+    if (audio.current) { audio.current.muted = true; audio.current.pause(); }
+    void context.current?.suspend().catch(() => {});
+  }, [plain]);
   const fail = useCallback(() => { setUnavailable(true); setMuted(true); setPlaying(false); audio.current?.pause(); }, []);
   const play = useCallback(() => { const element = audio.current; if (!element || !hasTrack || document.hidden) return; void context.current?.resume().catch(() => {}); void element.play().catch(() => { if (element.error) fail(); }); }, [fail]);
   const unlock = useCallback(() => {

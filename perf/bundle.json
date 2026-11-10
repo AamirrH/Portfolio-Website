@@ -1,9 +1,9 @@
 [
   {
-    "file": "assets/index-DR-sg7Zn.js",
+    "file": "assets/index-BhFo9qMD.js",
     "entry": true,
-    "raw": 169833,
-    "gzip": 56246,
+    "raw": 167117,
+    "gzip": 55396,
     "imports": [],
     "modules": [
       {
@@ -15,24 +15,20 @@
         "bytes": 7672
       },
       {
+        "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
+        "bytes": 6944
+      },
+      {
         "name": "D:/Portfolio/src/data/content.ts",
-        "bytes": 7111
+        "bytes": 6774
       },
       {
         "name": "D:/Portfolio/src/App.tsx",
-        "bytes": 7000
-      },
-      {
-        "name": "D:/Portfolio/src/audio/AudioProvider.tsx",
-        "bytes": 6705
+        "bytes": 6244
       },
       {
         "name": "D:/Portfolio/node_modules/scheduler/cjs/scheduler.production.min.js",
         "bytes": 4616
-      },
-      {
-        "name": "D:/Portfolio/src/components/Gate.tsx",
-        "bytes": 3710
       },
       {
         "name": "D:/Portfolio/src/hooks/useAtmosphere.ts",
@@ -56,7 +52,7 @@
       },
       {
         "name": "D:/Portfolio/src/hooks/useJourney.ts",
-        "bytes": 1477
+        "bytes": 1580
       },
       {
         "name": "\u0000vite/modulepreload-polyfill.js",
@@ -76,7 +72,7 @@
       },
       {
         "name": "D:/Portfolio/src/state/useSceneStore.ts",
-        "bytes": 683
+        "bytes": 675
       },
       {
         "name": "D:/Portfolio/node_modules/zustand/esm/react.mjs",
@@ -205,14 +201,14 @@
     ]
   },
   {
-    "file": "assets/CameraRig-CUZqA7g5.js",
+    "file": "assets/CameraRig-BqMRFIdA.js",
     "entry": false,
     "raw": 2727,
     "gzip": 1218,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
+      "assets/index-BhFo9qMD.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-Dx3C1qtT.js"
+      "assets/SceneLayer-D6Op1CTK.js"
     ],
     "modules": [
       {
@@ -226,12 +222,12 @@
     ]
   },
   {
-    "file": "assets/TopBar-Dltp07F_.js",
+    "file": "assets/TopBar-B6hdhDdT.js",
     "entry": false,
     "raw": 1609,
-    "gzip": 680,
+    "gzip": 681,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -249,12 +245,12 @@
     ]
   },
   {
-    "file": "assets/JourneyFooter-D4cEZClg.js",
+    "file": "assets/JourneyFooter-Bs8epVvV.js",
     "entry": false,
     "raw": 934,
-    "gzip": 474,
+    "gzip": 473,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -264,12 +260,12 @@
     ]
   },
   {
-    "file": "assets/MobileNav-Bapq7ky2.js",
+    "file": "assets/MobileNav-CNaNwETo.js",
     "entry": false,
     "raw": 705,
-    "gzip": 389,
+    "gzip": 390,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -279,13 +275,13 @@
     ]
   },
   {
-    "file": "assets/Home-DCbJ04aa.js",
+    "file": "assets/Home-Bk_H_ZJZ.js",
     "entry": false,
     "raw": 1530,
-    "gzip": 561,
+    "gzip": 563,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
-      "assets/RoadSign-D2Zdt4QU.js"
+      "assets/index-BhFo9qMD.js",
+      "assets/RoadSign-CrLqqb5P.js"
     ],
     "modules": [
       {
@@ -299,13 +295,13 @@
     ]
   },
   {
-    "file": "assets/ProjectsIndex-sXaglsCK.js",
+    "file": "assets/ProjectsIndex-BkCgq6rp.js",
     "entry": false,
     "raw": 710,
-    "gzip": 392,
+    "gzip": 397,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
-      "assets/RoadSign-D2Zdt4QU.js"
+      "assets/index-BhFo9qMD.js",
+      "assets/RoadSign-CrLqqb5P.js"
     ],
     "modules": [
       {
@@ -315,12 +311,12 @@
     ]
   },
   {
-    "file": "assets/RoadSign-D2Zdt4QU.js",
+    "file": "assets/RoadSign-CrLqqb5P.js",
     "entry": false,
     "raw": 257,
-    "gzip": 177,
+    "gzip": 178,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -330,13 +326,13 @@
     ]
   },
   {
-    "file": "assets/ProjectPanel-Zrd9Af9G.js",
+    "file": "assets/ProjectPanel-MBwux0dN.js",
     "entry": false,
     "raw": 986,
-    "gzip": 441,
+    "gzip": 443,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
-      "assets/ProjectBody-Bij9ryYm.js"
+      "assets/index-BhFo9qMD.js",
+      "assets/ProjectBody-DcsbZm3H.js"
     ],
     "modules": [
       {
@@ -346,12 +342,12 @@
     ]
   },
   {
-    "file": "assets/About-mDaFcg7L.js",
+    "file": "assets/About-D7upqIZt.js",
     "entry": false,
     "raw": 1121,
     "gzip": 472,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -361,14 +357,14 @@
     ]
   },
   {
-    "file": "assets/PlainMode-Dx4n0MS7.js",
+    "file": "assets/PlainMode-B0ZEH375.js",
     "entry": false,
     "raw": 2203,
-    "gzip": 685,
+    "gzip": 686,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
-      "assets/ProjectBody-Bij9ryYm.js",
-      "assets/Contact-URIjidxf.js"
+      "assets/index-BhFo9qMD.js",
+      "assets/ProjectBody-DcsbZm3H.js",
+      "assets/Contact-Bm27hGcr.js"
     ],
     "modules": [
       {
@@ -378,12 +374,12 @@
     ]
   },
   {
-    "file": "assets/ProjectBody-Bij9ryYm.js",
+    "file": "assets/ProjectBody-DcsbZm3H.js",
     "entry": false,
     "raw": 1042,
-    "gzip": 441,
+    "gzip": 442,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -393,12 +389,12 @@
     ]
   },
   {
-    "file": "assets/Contact-URIjidxf.js",
+    "file": "assets/Contact-Bm27hGcr.js",
     "entry": false,
     "raw": 1355,
     "gzip": 513,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {
@@ -408,16 +404,16 @@
     ]
   },
   {
-    "file": "assets/ProjectStops-LFHQ9PKZ.js",
+    "file": "assets/ProjectStops-B4YaKDFV.js",
     "entry": false,
     "raw": 15562,
     "gzip": 5714,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
+      "assets/index-BhFo9qMD.js",
       "assets/stops-C3EALcIS.js",
-      "assets/TravelScenes-CC-ZSaa9.js",
+      "assets/TravelScenes-Bg-oRgYb.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-Dx3C1qtT.js"
+      "assets/SceneLayer-D6Op1CTK.js"
     ],
     "modules": [
       {
@@ -459,14 +455,14 @@
     ]
   },
   {
-    "file": "assets/TravelScenes-CC-ZSaa9.js",
+    "file": "assets/TravelScenes-Bg-oRgYb.js",
     "entry": false,
-    "raw": 31709,
-    "gzip": 10791,
+    "raw": 31722,
+    "gzip": 10790,
     "imports": [
-      "assets/index-DR-sg7Zn.js",
+      "assets/index-BhFo9qMD.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-Dx3C1qtT.js"
+      "assets/SceneLayer-D6Op1CTK.js"
     ],
     "modules": [
       {
@@ -483,7 +479,7 @@
       },
       {
         "name": "D:/Portfolio/src/components/scene/TravelScenes.tsx",
-        "bytes": 4999
+        "bytes": 5058
       },
       {
         "name": "D:/Portfolio/src/components/scene/Highway.tsx",
@@ -548,12 +544,12 @@
     ]
   },
   {
-    "file": "assets/SceneLayer-Dx3C1qtT.js",
+    "file": "assets/SceneLayer-D6Op1CTK.js",
     "entry": false,
     "raw": 806,
-    "gzip": 487,
+    "gzip": 488,
     "imports": [
-      "assets/index-DR-sg7Zn.js"
+      "assets/index-BhFo9qMD.js"
     ],
     "modules": [
       {

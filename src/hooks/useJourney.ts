@@ -8,6 +8,7 @@ export function stepSection(direction: number) { const current = useSceneStore.g
 export function useJourney() {
   useEffect(() => {
     const update = () => { useSceneStore.getState().setSection(readHash()); };
+    if (!location.hash) history.replaceState(null, '', `${location.pathname}${location.search}#home`);
     update();
     const key = (event: KeyboardEvent) => {
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.defaultPrevented || useSceneStore.getState().plain || !useSceneStore.getState().ignited) return;

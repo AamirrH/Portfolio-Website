@@ -1,6 +1,6 @@
 import { startQualityManager } from './lib/quality';
 import { useHighwayState } from './hooks/useHighwayState';
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { content, projects } from './data/content';
 const CameraRig=lazy(()=>import('./components/scene/CameraRig').then(m=>({default:m.CameraRig})));
 const TopBar=lazy(()=>import('./components/navigation/TopBar').then(m=>({default:m.TopBar})));
@@ -12,7 +12,7 @@ const ProjectPanel=lazy(()=>import('./components/views/ProjectPanel').then(m=>({
 const About=lazy(()=>import('./components/views/About').then(m=>({default:m.About})));
 const Contact=lazy(()=>import('./components/views/Contact').then(m=>({default:m.Contact})));
 const PlainMode=lazy(()=>import('./components/views/PlainMode').then(m=>({default:m.PlainMode})));
-import { Gate } from './components/Gate';
+
 import { useJourney } from './hooks/useJourney';
 import { useScrollJourney } from './hooks/useScrollJourney';
 import { usePreferences } from './hooks/usePreferences';
@@ -28,15 +28,10 @@ export default function App() {
   const ignited = useSceneStore(state => state.ignited);
   const plain = useSceneStore(state => state.plain);
   const section = useSceneStore(state => state.section);
-  const [scenePrepared, setScenePrepared] = useState(false);
+
+
   useEffect(() => {
-    if (ignited) setScenePrepared(true);
-    const prepare = () => setScenePrepared(true);
-    document.addEventListener('endless:prepare-scene', prepare);
-    return () => document.removeEventListener('endless:prepare-scene', prepare);
-  }, [ignited]);
-  useEffect(() => {
-    if (!scenePrepared || plain) return;
+    if (plain) return;
     return idleTask(() => {
       void Promise.allSettled([
         import('./components/scene/CameraRig'),
@@ -58,8 +53,8 @@ export default function App() {
         return image.decode().catch(() => {});
       })));
     }, 500);
-  }, [scenePrepared, plain]);
-  const appReady = ignited || scenePrepared;
+  }, [plain]);
+
   useScrollJourney(ignited && !plain);
   const project = projects.find(item => item.id === section);
   useEffect(() => {
@@ -67,8 +62,8 @@ export default function App() {
     document.getElementById('main-content')?.focus({ preventScroll: true });
   }, [section, ignited, plain]);
   return <>
-    <div className={!ignited ? 'pre-ignition' : undefined} {...{ inert: !ignited ? '' : undefined }} aria-hidden={!ignited || undefined}>
-      {appReady && <>
+    <div>
+
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus({ preventScroll: true }); }}>{content.controls.skip}</a>
       <Suspense fallback={null}><TopBar/></Suspense>
       {plain ? <Suspense fallback={null}><PlainMode/></Suspense> : <>
@@ -80,8 +75,7 @@ export default function App() {
       </>}
       <Suspense fallback={null}><MobileNav/></Suspense>
       <span className="sr-only" role="status" aria-live="polite">{content.sectionNames[section]}</span>
-      </>}
     </div>
-    {!ignited && <Gate/>}
+
   </>;
 }

@@ -29,7 +29,7 @@ export function RearScene() {
 export function DashScene() {
   const ref = useRef<HTMLDivElement>(null);
   useSceneMotion(ref);
-  return <div ref={ref} className="travel-scene dash-scene"><SceneSky/><Layer name="near-buildings"><NearBuildings/></Layer><Layer name="highway"><div className="rear-road"><Highway/><RoadMarkings/></div></Layer><Cockpit/></div>;
+  return <div ref={ref} className="travel-scene dash-scene"><SceneSky/><Layer name="near-buildings"><NearBuildings/></Layer><Layer name="highway"><div className="rear-road"><DeckEdge/><Highway/><RoadMarkings/></div></Layer><Cockpit/></div>;
 }
 export function AerialScene() {
   return <div className="travel-scene aerial-scene"><SceneSky/>
