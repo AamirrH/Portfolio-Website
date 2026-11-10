@@ -24,7 +24,7 @@ export default function App() {
   useJourney();
   useHighwayState();
   usePreferences();
-  const { cyclePalette } = useAtmosphere();
+  useAtmosphere();
   const ignited = useSceneStore(state => state.ignited);
   const plain = useSceneStore(state => state.plain);
   const section = useSceneStore(state => state.section);
@@ -73,7 +73,6 @@ export default function App() {
       <Suspense fallback={null}><TopBar/></Suspense>
       {plain ? <Suspense fallback={null}><PlainMode/></Suspense> : <>
         <Suspense fallback={null}><CameraRig/></Suspense><div className="journey-track" aria-hidden="true"/>
-        {section === 'home' && <button className="sun-control" onClick={cyclePalette} aria-label={content.controls.palette} title={content.controls.palette}/>}
         <main id="main-content" tabIndex={-1} className="drive-content" key={section}>
           <Suspense fallback={null}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</Suspense>
         </main>

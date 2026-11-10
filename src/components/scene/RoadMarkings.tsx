@@ -54,7 +54,7 @@ export function RoadMarkings(){
     const canvas=canvasRef.current,root=ref.current,m=model;
     if(!canvas||!root||!m)return;
     const ctx=canvas.getContext('2d');if(!ctx)return;
-    const active=['home','projects','contact'].includes(section);
+    const active=(root.closest('.dash-scene') ? section==='about' : ['home','projects','contact'].includes(section));
     const running=active&&ignited&&!reduced&&!hidden;
     const bounds=root.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,QUALITY[quality].dpr);
     canvas.width=Math.round(bounds.width*dpr);canvas.height=Math.round(bounds.height*dpr);

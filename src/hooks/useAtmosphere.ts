@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BPM } from '../config';
 import { cameraPresets } from '../scene/cameraPresets';
 import { useSceneStore } from '../state/useSceneStore';
@@ -8,7 +8,28 @@ const palettes: Palette[] = ['sunset','night','dawn'];
 export function useAtmosphere() {
   const [palette, setPalette] = useState<Palette>(() => paletteForHour(new Date().getHours()));
   useEffect(() => { document.documentElement.dataset.palette = palette; document.documentElement.style.setProperty('--pulse-duration', `${60 / BPM}s`); }, [palette]);
-  const cyclePalette = useCallback(() => setPalette(current => palettes[(palettes.indexOf(current)+1)%palettes.length]), []);
+  const ignited = useSceneStore(state => state.ignited);
+  const plain = useSceneStore(state => state.plain);
+  useEffect(() => {
+    if (!ignited || plain) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      clearTimeout(timer);
+      if (document.hidden || reduced.matches) return;
+      timer = setTimeout(() => {
+        setPalette(current => {
+          const alternatives = palettes.filter(value => value !== current);
+          return alternatives[Math.floor(Math.random() * alternatives.length)];
+        });
+        schedule();
+      }, 18000 + Math.random() * 17000);
+    };
+    schedule();
+    document.addEventListener('visibilitychange', schedule);
+    reduced.addEventListener('change', schedule);
+    return () => { clearTimeout(timer); document.removeEventListener('visibilitychange', schedule); reduced.removeEventListener('change', schedule); };
+  }, [ignited, plain]);
   useEffect(() => {
     const sequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
     let position = 0;
@@ -25,5 +46,5 @@ export function useAtmosphere() {
     window.addEventListener('keydown', key);
     return () => { window.removeEventListener('keydown', key); clearTimeout(timer); document.documentElement.classList.remove('boosting'); };
   }, []);
-  return { cyclePalette };
+
 }

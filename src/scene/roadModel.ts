@@ -11,12 +11,12 @@ export const sForY = (y: number, model: RoadModel = ROAD) => (y - model.vp.y) / 
 export const worldToScreen = (X: number, s: number, model: RoadModel = ROAD) => ({ x: model.vp.x + X * s, y: model.vp.y + model.h * s });
 
 export function measureRoad(root: HTMLElement): RoadModel | null {
-  const scene = root.closest('.rear-scene');
+  const scene = root.closest('.rear-scene,.dash-scene');
   const road = root.querySelector<SVGSVGElement>('.road-base');
   const image = scene?.querySelector<SVGImageElement>('.raster-rear-car image');
   const railPath = road?.querySelector('[data-road-rails]')?.getAttribute('d');
   const matrix = road?.getScreenCTM(), carMatrix = image?.getScreenCTM();
-  if (!road || !image || !railPath || !matrix || !carMatrix) return null;
+  if (!road || !railPath || !matrix || (!scene?.classList.contains('dash-scene') && (!image || !carMatrix))) return null;
   // The two segments are the actual pink neon strokes, not guessed road corners.
   const n = railPath.match(/-?\d+(?:\.\d+)?/g)?.map(Number);
   if (!n || n.length !== 8) return null;
@@ -24,6 +24,17 @@ export function measureRoad(root: HTMLElement): RoadModel | null {
   const leftSlope = (by-ay)/(bx-ax), rightSlope = (dy-cy)/(dx-cx);
   const vx = (cy-rightSlope*cx-ay+leftSlope*ax)/(leftSlope-rightSlope);
   const vy = ay+leftSlope*(vx-ax);
+  // The cockpit has no exterior car sprite. Calibrate its camera against the
+  // same drawn rail rays, with a 10.5 m road and an 8 m near reference point.
+  if (scene?.classList.contains('dash-scene')) {
+    const y0 = road.viewBox.baseVal.height * .9;
+    const lx = ax + (y0-ay)/leftSlope, rx = cx + (y0-cy)/rightSlope;
+    const rail = 5.25, s0 = (rx-lx)/(2*rail), h = (y0-vy)/s0;
+    return { width:road.viewBox.baseVal.width, height:road.viewBox.baseVal.height,
+      vp:{x:vx,y:vy}, s0, h, F:s0*8, rail, y0, railHeight:0,
+      top:road.querySelector<SVGPathElement>('[data-road-surface]')!.getBBox().y };
+  }
+  if (!image || !carMatrix) return null;
   const toRoad = matrix.inverse().multiply(carMatrix);
   const x = image.x.baseVal.value, y = image.y.baseVal.value;
   const width = image.width.baseVal.value, height = image.height.baseVal.value;

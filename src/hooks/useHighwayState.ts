@@ -8,7 +8,7 @@ export function useHighwayState() {
   let cancelled=false;let a:{kill:()=>void}|undefined,b:{kill:()=>void}|undefined;
   const values=environmentMotion;
   const timeOfDay=section==='home'?0:section==='contact'?1:.5;
-  const weather=new URLSearchParams(location.search).get('weather')==='rain'?1:rainOverride===null?(section==='contact'?.7:0):rainOverride? .8:0;
+  const weather=section==='contact'?0:new URLSearchParams(location.search).get('weather')==='rain'?1:rainOverride===null?0:rainOverride? .8:0;
   void import('gsap').then(({default:gsap})=>{if(cancelled)return;a=gsap.to(values,{timeOfDay,duration:1.2,onComplete:()=>useSceneStore.setState({timeOfDay:values.timeOfDay})});b=gsap.to(values,{weather,duration:1.5,onComplete:()=>useSceneStore.setState({weather:values.weather})});});
   return()=>{cancelled=true;a?.kill();b?.kill();};
  },[section,rainOverride,ignited]);

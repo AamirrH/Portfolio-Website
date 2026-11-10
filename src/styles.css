@@ -136,7 +136,11 @@ button,a { touch-action:manipulation; }
 :root { --sky-top:#20162f; --sky-mid:#703054; --sky-horizon:#dc4d83; --sky-low:#f87b96; }
 :root[data-palette='night'] { --sky-top:#0a1026; --sky-mid:#281e4a; --sky-horizon:#633466; --sky-low:#a34c86; }
 :root[data-palette='dawn'] { --sky-top:#32335e; --sky-mid:#88617e; --sky-horizon:#d9869c; --sky-low:#e8b5a7; }
-.sky-fill { background:linear-gradient(var(--sky-top) 0%,var(--sky-mid) 26%,var(--sky-horizon) 49%,var(--sky-low) 66%,#3b1e46 83%); }
+.sky-palette { position:absolute; inset:0; opacity:0; transition:opacity 4s ease-in-out; }
+.sky-night { background:linear-gradient(#0a1026 0%,#281e4a 26%,#633466 49%,#a34c86 66%,#3b1e46 83%); }
+.sky-dawn { background:linear-gradient(#32335e 0%,#88617e 26%,#d9869c 49%,#e8b5a7 66%,#3b1e46 83%); }
+:root[data-palette='night'] .sky-night,:root[data-palette='dawn'] .sky-dawn { opacity:1; }
+@media(prefers-reduced-motion:reduce) { .sky-palette { transition:none; } }
 .sun-cuts { background:repeating-linear-gradient(to bottom,transparent 0 12px,var(--sky-horizon) 12px 17px); }
 .sun-control { position:fixed; z-index:2; left:38.5%; top:35%; width:23vw; height:23vw; max-height:38vh; border:0; border-radius:50%; background:transparent; cursor:pointer; }
 .road-sign::before,.road-sign::after { animation-duration:var(--pulse-duration,.652s); }
