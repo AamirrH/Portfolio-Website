@@ -2,6 +2,36 @@ export type Section = 'home' | 'projects' | 'roomly' | 'swiftship' | 'signalrout
 export type ProjectId = 'roomly' | 'swiftship' | 'signalroute';
 export interface Metric { label: string; value: string; detail: string; progress?: number; }
 export interface Project { id: ProjectId; exit: string; title: string; category: string; pitch: string; stack: string[]; highlights: string[]; metrics: Metric[]; live?: string; repo?: string; repoTodo?: string; }
+export interface Technology { name: string; icon?: string; }
+export interface TechnologyGroup { id: string; label: string; technologies: Technology[]; }
+// Technology names come from the supplied resume; icons are local Devicon assets where available.
+export const technologyGroups: TechnologyGroup[] = [
+  { id: 'languages', label: 'Languages', technologies: [
+    { name: 'Java', icon: 'java' }, { name: 'Python', icon: 'python' }, { name: 'C', icon: 'c' },
+    { name: 'C++', icon: 'cplusplus' }, { name: 'JavaScript', icon: 'javascript' }, { name: 'HTML', icon: 'html5' }
+  ] },
+  { id: 'frameworks', label: 'Frameworks', technologies: [
+    { name: 'Spring Boot', icon: 'spring' }, { name: 'Spring MVC', icon: 'spring' },
+    { name: 'Spring Data JPA', icon: 'spring' }, { name: 'Spring Security', icon: 'spring' },
+    { name: 'React', icon: 'react' }, { name: 'WebSocket' },
+    { name: 'Resilience4j' }, { name: 'REST APIs' }
+  ] },
+  { id: 'data', label: 'Data & messaging', technologies: [
+    { name: 'PostgreSQL', icon: 'postgresql' }, { name: 'MySQL', icon: 'mysql' },
+    { name: 'Oracle', icon: 'oracle' }, { name: 'Neon' },
+    { name: 'Hibernate', icon: 'hibernate' }, { name: 'Kafka', icon: 'apachekafka' },
+    { name: 'Redis', icon: 'redis' }
+  ] },
+  { id: 'cloud', label: 'Cloud & DevOps', technologies: [
+    { name: 'Docker', icon: 'docker' }, { name: 'Kubernetes', icon: 'kubernetes' },
+    { name: 'Google Cloud', icon: 'googlecloud' }, { name: 'Railway' },
+    { name: 'Vercel', icon: 'vercel' }, { name: 'GitHub Actions', icon: 'githubactions' }
+  ] },
+  { id: 'tools', label: 'Tools', technologies: [
+    { name: 'Git', icon: 'git' }, { name: 'Maven', icon: 'maven' },
+    { name: 'Postman', icon: 'postman' }, { name: 'npm', icon: 'npm' }
+  ] }
+];
 // Project claims follow the supplied resume; READMEs supply supporting product details.
 export const projects: Project[] = [
   {
@@ -143,7 +173,7 @@ export const content = {
   sectionNames: { home: 'The open road', projects: 'Choose your exit', roomly: 'Exit 01 · Roomly', swiftship: 'Exit 02 · SwiftShip', signalroute: 'Exit 03 · SignalRoute AI', about: 'Behind the wheel', contact: 'The way back home' } satisfies Record<Section, string>,
   hero: { eyebrow: 'A LITTLE CURIOUS. ALWAYS MOVING.', line1: 'Good things', line2: 'are up ahead.', description: 'Software, systems, and a few late-night ideas.', cta: 'Explore my work', hint: 'SCROLL TO TAKE THE NEXT EXIT', journey: 'THE JOURNEY', journeyDetail: '3 PROJECTS · ONE OPEN ROAD' },
   projects: { eyebrow: 'NEXT 3 EXITS', title: 'Built along the way.', description: 'A few things I’ve put into the world. Pick an exit to take a closer look.', notes: 'Technical notes', board: 'PROJECT DIRECTORY', door: 'Open live project', back: 'All projects', live: 'Live project', repo: 'Source code', overview: 'Features', tech: 'Tech stack', exit: 'EXIT', next: 'Next project', previous: 'Previous project', indexLabel: 'Project exits', gaugeNote: 'Results are from project tests, not a live performance feed.' },
-  about: { eyebrow: 'BEHIND THE WHEEL', title: 'Curiosity is the engine.', skillsTitle: 'SYSTEMS ON BOARD', educationTitle: 'CURRENT DIRECTION', skills: ['Java / Spring Boot', 'React / TypeScript', 'PostgreSQL / Redis', 'Kafka / WebSocket', 'Docker / GitHub Actions'], speed: 'MOMENTUM', rpm: 'CURIOSITY', gaugeCaption: 'Decorative instrument readouts', educationTodo: 'TODO: Graduation year', resume: 'Download résumé', resumeUrl: '/assets/documents/Resume_Aamir.pdf' },
+  about: { eyebrow: 'BEHIND THE WHEEL', title: 'Curiosity is the engine.', skillsTitle: 'SYSTEMS ON BOARD', educationTitle: 'EDUCATION', degree: 'B.Tech in Computer Science', school: 'Ramdeobaba University · Nagpur', years: '2024–2028', stackHint: 'Choose a system to explore', resume: 'Download résumé', resumeUrl: '/assets/documents/Resume_Aamir.pdf' },
   contact: { eyebrow: 'THE NEXT CHAPTER', title: 'The Way Back Home', description: 'Have a product to build or a problem worth solving? Let’s see where the road goes.', github: 'GitHub', linkedin: 'LinkedIn', email: 'Send an email', home: 'Back to the open road' },
   controls: { quality: 'Quality', qualityAuto: 'Auto', qualityHigh: 'High', qualityMedium: 'Medium', qualityLow: 'Low', motionOn: 'Motion on', motionOff: 'Motion off', mute: 'Mute audio', unmute: 'Unmute audio', unavailable: 'Audio unavailable', plain: 'Plain mode', scene: 'Drive mode', next: 'Next section', previous: 'Previous section', palette: 'Change sky palette', skip: 'Skip to content', navigation: 'Main navigation', home: 'Go home', camera: 'CAM', sound: 'SOUND', on: 'ON', off: 'OFF', reduced: 'Reduced motion enabled', mode: 'Display mode' },
   gate: { eyebrow: 'YOUR NEXT DESTINATION IS AHEAD', title: 'Endless Road', subtitle: 'A portfolio by Aamir Hussain', ignite: 'PRESS TO IGNITE', starting: 'ENGINE STARTING', hint: 'A night drive through the things I build.', audio: 'SOUND OPTIONAL · HEADPHONES WELCOME', plain: 'Take the quiet route', keyLabel: 'Ignition key' },

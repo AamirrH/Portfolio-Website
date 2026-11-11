@@ -1,3 +1,12 @@
 import { content } from '../../data/content';
-export function AboutContent() { return <><p className="panel-description">{content.owner.biography}</p><h2 className="eyebrow subsection-heading">{content.about.skillsTitle}</h2><ul className="skill-list">{content.about.skills.map((skill,i) => <li key={skill}><span className="mono">{String(i+1).padStart(2,'0')}</span>{skill}<span className="skill-light" aria-hidden="true"/></li>)}</ul><h2 className="eyebrow subsection-heading">{content.about.educationTitle}</h2><p className="education">{content.owner.education}</p><p className="todo-label">{content.about.educationTodo}</p><a className="primary-link" href={content.about.resumeUrl} download>{content.about.resume} ↓</a></>; }
-export function About() { return <><section className="view-panel about-panel"><div className="panel-inner"><p className="eyebrow accent">{content.about.eyebrow}</p><h1>{content.about.title}</h1><AboutContent/></div></section></>; }
+
+export function About() {
+  return <section className="view-panel about-panel">
+    <div className="panel-inner">
+      <p className="eyebrow accent">{content.about.eyebrow}</p>
+      <h1>{content.about.title}</h1>
+      <p className="panel-description">{content.owner.biography}</p>
+      <a className="primary-link" href={content.about.resumeUrl} download>{content.about.resume} ↓</a>
+    </div>
+  </section>;
+}

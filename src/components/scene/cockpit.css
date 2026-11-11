@@ -1,0 +1,63 @@
+.dash-scene .dashboard-shell {
+  bottom:-9%; height:39%; width:104%; left:-2%;
+  border-radius:34% 34% 0 0 / 9% 9% 0 0;
+  background:linear-gradient(180deg,#4a4053 0,#222332 10%,#111522 50%,#090c17 100%);
+  box-shadow:0 -8px 28px #ff9bc221,inset 0 8px 24px #070916;
+}
+.dash-scene .cockpit { pointer-events:none; }
+.dash-scene .steering-wheel { width:270px;height:270px;left:5%;bottom:-31%;opacity:.75; }
+.dash-education {
+  position:absolute;left:5%;top:18%;width:23%;padding:14px 15px;
+  display:grid;gap:5px;color:#e5e5ec;background:#0a1422e8;
+  border:1px solid #7dbdc9a6;border-radius:7px;box-shadow:inset 0 0 22px #25f4ee18;
+  font:12px/1.35 'Space Grotesk',sans-serif;
+}
+.dash-education-label { color:#7de6e0;font:9px 'JetBrains Mono',monospace;letter-spacing:.12em; }
+.dash-education strong { color:#fff9f4;font-size:14px;font-weight:500; }
+.dash-console {
+  position:absolute;top:9%;left:31%;width:64%;height:76%;overflow:hidden;
+  padding:12px 15px;background:#0e1c2aed;border:1px solid #8db6c2d4;
+  border-radius:9px;box-shadow:0 0 0 5px #0a0e19,inset 0 0 28px #25f4ee0c;
+  pointer-events:auto;
+}
+.dash-console-heading { display:flex;align-items:baseline;justify-content:space-between;gap:10px;color:#d8fbf7; }
+.dash-console-heading strong { font:12px 'JetBrains Mono',monospace;letter-spacing:.15em; }
+.dash-console-heading span { font:11px 'Space Grotesk',sans-serif;color:#b7d0d8; }
+.dash-tabs { display:flex;gap:4px;margin:11px 0 10px;overflow-x:auto;scrollbar-width:none; }
+.dash-tabs::-webkit-scrollbar { display:none; }
+.dash-tabs button { flex:none;padding:7px 10px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:12px 'Space Grotesk',sans-serif;white-space:nowrap; }
+.dash-tabs button[aria-selected='true'] { color:#d7fffb;border-color:#25f4ee78;background:#25f4ee18; }
+.dash-tabs button:focus-visible { outline:2px solid #25f4ee;outline-offset:2px; }
+.dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;list-style:none;margin:0;padding:0; }
+.dash-tech-grid li { min-width:0;min-height:83px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:6px 3px;border:1px solid #a2b7c04d;border-radius:5px;background:#d6edf012;color:#fff;text-align:center;font:12px/1.2 'Space Grotesk',sans-serif; }
+.dash-tech-grid img { width:40px;height:40px;object-fit:contain; }
+.dash-tech-grid img[src$='/spring.svg'] { filter:brightness(1.6); }
+.dash-tech-glyph { width:40px;height:40px;display:grid;place-items:center;border:1px solid #25f4ee99;border-radius:6px;color:#82eae5;font:13px 'JetBrains Mono',monospace; }
+.about-panel { top:115px;bottom:auto;right:6%;width:min(430px,38vw);max-height:330px;transform:none;padding:25px 28px; }
+.about-panel h1 { font-size:30px; }
+.about-panel .panel-description { font-size:13px;line-height:1.65; }
+.about-panel .primary-link { margin-top:14px; }
+.camera-rig:has(.scene-frame[data-active='true'] .dash-scene)>.layer-overlay { opacity:.42; }
+.plain-tech-groups { display:grid;gap:16px;margin-top:15px; }
+.plain-tech-groups h4 { margin:0 0 7px;color:#d9c0e2;font:500 13px 'Space Grotesk',sans-serif; }
+@media(max-width:1100px) and (min-width:768px) {
+  .dash-console { left:30%;width:66%; }
+  .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .dash-tech-grid li { min-height:64px;flex-direction:row;gap:6px;font-size:11px; }
+  .dash-tech-grid img,.dash-tech-glyph { width:30px;height:30px;flex:none; }
+}
+@media(max-width:767px) {
+  .dash-scene .dashboard-shell { bottom:-7%;height:45%;width:110%;left:-5%; }
+  .dash-scene .steering-wheel { display:none; }
+  .dash-education { display:none; }
+  .dash-console { top:8%;left:5%;width:90%;height:72%;padding:9px 10px; }
+  .dash-console-heading span { display:none; }
+  .dash-tabs { margin:7px 0; }
+  .dash-tabs button { padding:6px 8px;font-size:11px; }
+  .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr));gap:4px; }
+  .dash-tech-grid li { min-height:70px;gap:5px;font-size:10px;padding:4px 2px; }
+  .dash-tech-grid img,.dash-tech-glyph { width:31px;height:31px; }
+  .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:290px;padding:18px; }
+  .about-panel h1 { font-size:25px; }
+  .about-panel .panel-description { font-size:11px;line-height:1.5; }
+}
