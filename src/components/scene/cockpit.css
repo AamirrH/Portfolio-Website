@@ -28,11 +28,11 @@
 .dash-tabs button { flex:none;padding:7px 10px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:12px 'Space Grotesk',sans-serif;white-space:nowrap; }
 .dash-tabs button[aria-selected='true'] { color:#d7fffb;border-color:#25f4ee78;background:#25f4ee18; }
 .dash-tabs button:focus-visible { outline:2px solid #25f4ee;outline-offset:2px; }
-.dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;list-style:none;margin:0;padding:0; }
-.dash-tech-grid li { min-width:0;min-height:83px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:6px 3px;border:1px solid #a2b7c04d;border-radius:5px;background:#d6edf012;color:#fff;text-align:center;font:12px/1.2 'Space Grotesk',sans-serif; }
+.dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px;list-style:none;margin:0;padding:0; }
+.dash-tech-grid li { min-width:0;min-height:83px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:6px 2px;color:#fff;text-align:center;font:12px/1.2 'Space Grotesk',sans-serif; }
 .dash-tech-grid img { width:40px;height:40px;object-fit:contain; }
 .dash-tech-grid img[src$='/spring.svg'] { filter:brightness(1.6); }
-.dash-tech-glyph { width:40px;height:40px;display:grid;place-items:center;border:1px solid #25f4ee99;border-radius:6px;color:#82eae5;font:13px 'JetBrains Mono',monospace; }
+.dash-tech-glyph { width:40px;height:40px;display:grid;place-items:center;color:#82eae5;font:16px 'JetBrains Mono',monospace; }
 .about-panel { top:115px;bottom:auto;right:6%;width:min(430px,38vw);max-height:330px;transform:none;padding:25px 28px; }
 .about-panel h1 { font-size:30px; }
 .about-panel .panel-description { font-size:13px;line-height:1.65; }
@@ -43,7 +43,7 @@
 @media(max-width:1100px) and (min-width:768px) {
   .dash-console { left:30%;width:66%; }
   .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .dash-tech-grid li { min-height:64px;flex-direction:row;gap:6px;font-size:11px; }
+  .dash-tech-grid li { min-height:72px;gap:5px;font-size:11px; }
   .dash-tech-grid img,.dash-tech-glyph { width:30px;height:30px;flex:none; }
 }
 @media(max-width:767px) {
