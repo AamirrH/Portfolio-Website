@@ -13,6 +13,12 @@ npm run preview
 
 Node 22 is recommended. `npm run build` runs strict TypeScript checking before generating `dist/`. Fonts are self-hosted as WOFF2. The dev server binds to 127.0.0.1.
 
+## Static deployment folder
+
+Run `npm run build:deployment` to refresh `deployment/`. It contains a self-contained Vercel site: `vercel.json` plus `public/` with the compiled pages, scripts, styles, and assets used at runtime. It excludes source code, dependencies, raw artwork, unused traffic/city assets, and image-processing reports. The two audio formats and downloadable résumé are included.
+
+To deploy this package from the repository, set the Vercel **Root Directory** to `deployment`. Its config selects the **Other** framework, skips building, and serves `public/`. The site uses hash links, so no route rewrites are needed. Re-run the command and commit the refreshed folder after each website change.
+
 ## Content and links
 
 Edit `src/data/content.ts` for owner details, copy, labels, project information, measurements, and links. Missing information is shown as a clearly marked TODO, never a fabricated link. Static SEO metadata is in `index.html`.

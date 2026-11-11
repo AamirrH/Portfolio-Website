@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
+    "build:deployment": "npm run build && node scripts/prepare-deployment.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "assets:key": "node scripts/key-assets.mjs",
     "test:stops": "playwright test",
