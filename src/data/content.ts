@@ -11,8 +11,8 @@ export const technologyGroups: TechnologyGroup[] = [
     { name: 'C++', icon: 'cplusplus' }, { name: 'JavaScript', icon: 'javascript' }, { name: 'HTML', icon: 'html5' }
   ] },
   { id: 'frameworks', label: 'Frameworks', technologies: [
-    { name: 'Spring Boot', icon: 'spring' }, { name: 'Spring MVC', icon: 'spring' },
-    { name: 'Spring Data JPA', icon: 'spring' }, { name: 'Spring Security', icon: 'spring' },
+    { name: 'Spring Boot', icon: 'springboot' }, { name: 'Spring MVC', icon: 'springmvc' },
+    { name: 'Spring Data JPA', icon: 'springdatajpa' }, { name: 'Spring Security', icon: 'springsecurity' },
     { name: 'React', icon: 'react' }, { name: 'WebSocket' },
     { name: 'Resilience4j' }, { name: 'REST APIs' }
   ] },

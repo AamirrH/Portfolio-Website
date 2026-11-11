@@ -10,13 +10,7 @@ export function Cockpit() {
     <div className="windshield-post left-post" aria-hidden="true"/>
     <div className="windshield-post right-post" aria-hidden="true"/>
     <div className="dashboard-shell">
-      <div className="steering-wheel" aria-hidden="true"/>
-      <div className="dash-education">
-        <span className="dash-education-label">{content.about.educationTitle}</span>
-        <strong>{content.about.degree}</strong>
-        <span>{content.about.school}</span>
-        <span>{content.about.years}</span>
-      </div>
+      <div className="steering-wheel" aria-hidden="true"><span className="wheel-hub"/></div>
       <div className="dash-console">
         <div className="dash-console-heading">
           <strong>{content.about.skillsTitle}</strong>

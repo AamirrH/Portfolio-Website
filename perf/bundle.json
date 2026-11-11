@@ -1,9 +1,9 @@
 [
   {
-    "file": "assets/index-CnlHoS6r.js",
+    "file": "assets/index-zrdM1sas.js",
     "entry": true,
-    "raw": 169012,
-    "gzip": 55925,
+    "raw": 169034,
+    "gzip": 55944,
     "imports": [],
     "modules": [
       {
@@ -12,7 +12,7 @@
       },
       {
         "name": "D:/Portfolio/src/data/content.ts",
-        "bytes": 9919
+        "bytes": 9941
       },
       {
         "name": "D:/Portfolio/node_modules/react/cjs/react.production.min.js",
@@ -201,14 +201,14 @@
     ]
   },
   {
-    "file": "assets/CameraRig-D8veHibd.js",
+    "file": "assets/CameraRig-ClOqITrQ.js",
     "entry": false,
     "raw": 2727,
-    "gzip": 1217,
+    "gzip": 1215,
     "imports": [
-      "assets/index-CnlHoS6r.js",
+      "assets/index-zrdM1sas.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-yanePV2S.js"
+      "assets/SceneLayer-BJXizU5s.js"
     ],
     "modules": [
       {
@@ -222,12 +222,12 @@
     ]
   },
   {
-    "file": "assets/TopBar-DNtdqtm0.js",
+    "file": "assets/TopBar-BygNthG8.js",
     "entry": false,
     "raw": 1609,
-    "gzip": 680,
+    "gzip": 676,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -245,12 +245,12 @@
     ]
   },
   {
-    "file": "assets/JourneyFooter-BkQxeja3.js",
+    "file": "assets/JourneyFooter-9WeTafxJ.js",
     "entry": false,
     "raw": 934,
-    "gzip": 473,
+    "gzip": 469,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -260,12 +260,12 @@
     ]
   },
   {
-    "file": "assets/MobileNav-CwCHko1g.js",
+    "file": "assets/MobileNav-CzZ3ZJqK.js",
     "entry": false,
     "raw": 705,
-    "gzip": 390,
+    "gzip": 385,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -275,13 +275,13 @@
     ]
   },
   {
-    "file": "assets/Home-mL6lGnZy.js",
+    "file": "assets/Home-DXNv6xc6.js",
     "entry": false,
     "raw": 1530,
-    "gzip": 561,
+    "gzip": 558,
     "imports": [
-      "assets/index-CnlHoS6r.js",
-      "assets/RoadSign-sxYO-I2z.js"
+      "assets/index-zrdM1sas.js",
+      "assets/RoadSign-Ci5RQ1f2.js"
     ],
     "modules": [
       {
@@ -295,13 +295,13 @@
     ]
   },
   {
-    "file": "assets/ProjectsIndex-CwNdHm-G.js",
+    "file": "assets/ProjectsIndex-ByC1I8Jr.js",
     "entry": false,
     "raw": 710,
-    "gzip": 394,
+    "gzip": 390,
     "imports": [
-      "assets/index-CnlHoS6r.js",
-      "assets/RoadSign-sxYO-I2z.js"
+      "assets/index-zrdM1sas.js",
+      "assets/RoadSign-Ci5RQ1f2.js"
     ],
     "modules": [
       {
@@ -311,12 +311,12 @@
     ]
   },
   {
-    "file": "assets/RoadSign-sxYO-I2z.js",
+    "file": "assets/RoadSign-Ci5RQ1f2.js",
     "entry": false,
     "raw": 257,
-    "gzip": 178,
+    "gzip": 175,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -326,13 +326,13 @@
     ]
   },
   {
-    "file": "assets/ProjectPanel-BvB52OVZ.js",
+    "file": "assets/ProjectPanel-Dz6DZem8.js",
     "entry": false,
     "raw": 986,
-    "gzip": 445,
+    "gzip": 443,
     "imports": [
-      "assets/index-CnlHoS6r.js",
-      "assets/ProjectBody-DaR6_eY3.js"
+      "assets/index-zrdM1sas.js",
+      "assets/ProjectBody-BZD6YMk2.js"
     ],
     "modules": [
       {
@@ -342,29 +342,29 @@
     ]
   },
   {
-    "file": "assets/About-Dcqu1j9d.js",
+    "file": "assets/About-DiuA4Ot_.js",
     "entry": false,
-    "raw": 480,
-    "gzip": 285,
+    "raw": 709,
+    "gzip": 343,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
         "name": "D:/Portfolio/src/components/views/About.tsx",
-        "bytes": 725
+        "bytes": 1190
       }
     ]
   },
   {
-    "file": "assets/PlainMode-BTl2i_4q.js",
+    "file": "assets/PlainMode-COMaeDjn.js",
     "entry": false,
     "raw": 2325,
-    "gzip": 739,
+    "gzip": 740,
     "imports": [
-      "assets/index-CnlHoS6r.js",
-      "assets/ProjectBody-DaR6_eY3.js",
-      "assets/Contact-Czjydpvc.js"
+      "assets/index-zrdM1sas.js",
+      "assets/ProjectBody-BZD6YMk2.js",
+      "assets/Contact-yE_lGyZU.js"
     ],
     "modules": [
       {
@@ -374,12 +374,12 @@
     ]
   },
   {
-    "file": "assets/ProjectBody-DaR6_eY3.js",
+    "file": "assets/ProjectBody-BZD6YMk2.js",
     "entry": false,
     "raw": 1042,
-    "gzip": 441,
+    "gzip": 439,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -389,12 +389,12 @@
     ]
   },
   {
-    "file": "assets/Contact-Czjydpvc.js",
+    "file": "assets/Contact-yE_lGyZU.js",
     "entry": false,
     "raw": 1355,
-    "gzip": 513,
+    "gzip": 510,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {
@@ -404,16 +404,16 @@
     ]
   },
   {
-    "file": "assets/ProjectStops-cDFfD7J5.js",
+    "file": "assets/ProjectStops-Brn6lfkJ.js",
     "entry": false,
     "raw": 15562,
-    "gzip": 5712,
+    "gzip": 5713,
     "imports": [
-      "assets/index-CnlHoS6r.js",
+      "assets/index-zrdM1sas.js",
       "assets/stops-C3EALcIS.js",
-      "assets/TravelScenes-CPFpw9DH.js",
+      "assets/TravelScenes-CqAoBu6u.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-yanePV2S.js"
+      "assets/SceneLayer-BJXizU5s.js"
     ],
     "modules": [
       {
@@ -455,14 +455,14 @@
     ]
   },
   {
-    "file": "assets/TravelScenes-CPFpw9DH.js",
+    "file": "assets/TravelScenes-CqAoBu6u.js",
     "entry": false,
-    "raw": 33317,
-    "gzip": 11339,
+    "raw": 33104,
+    "gzip": 11302,
     "imports": [
-      "assets/index-CnlHoS6r.js",
+      "assets/index-zrdM1sas.js",
       "assets/index-Bvu9zNsI.js",
-      "assets/SceneLayer-yanePV2S.js"
+      "assets/SceneLayer-BJXizU5s.js"
     ],
     "modules": [
       {
@@ -486,16 +486,16 @@
         "bytes": 4384
       },
       {
-        "name": "D:/Portfolio/src/components/scene/Cockpit.tsx",
-        "bytes": 3640
-      },
-      {
         "name": "D:/Portfolio/src/components/scene/Skyline.tsx",
         "bytes": 3376
       },
       {
         "name": "D:/Portfolio/src/scene/roadModel.ts",
         "bytes": 3351
+      },
+      {
+        "name": "D:/Portfolio/src/components/scene/Cockpit.tsx",
+        "bytes": 3211
       },
       {
         "name": "D:/Portfolio/src/data/imageManifest.json",
@@ -548,12 +548,12 @@
     ]
   },
   {
-    "file": "assets/SceneLayer-yanePV2S.js",
+    "file": "assets/SceneLayer-BJXizU5s.js",
     "entry": false,
     "raw": 806,
-    "gzip": 486,
+    "gzip": 485,
     "imports": [
-      "assets/index-CnlHoS6r.js"
+      "assets/index-zrdM1sas.js"
     ],
     "modules": [
       {

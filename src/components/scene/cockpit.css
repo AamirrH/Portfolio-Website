@@ -5,15 +5,15 @@
   box-shadow:0 -8px 28px #ff9bc221,inset 0 8px 24px #070916;
 }
 .dash-scene .cockpit { pointer-events:none; }
-.dash-scene .steering-wheel { width:270px;height:270px;left:5%;bottom:-31%;opacity:.75; }
-.dash-education {
-  position:absolute;left:5%;top:18%;width:23%;padding:14px 15px;
-  display:grid;gap:5px;color:#e5e5ec;background:#0a1422e8;
-  border:1px solid #7dbdc9a6;border-radius:7px;box-shadow:inset 0 0 22px #25f4ee18;
-  font:12px/1.35 'Space Grotesk',sans-serif;
+.dash-scene .steering-wheel {
+  width:260px;height:260px;left:6%;top:-7%;bottom:auto;opacity:1;
+  border:20px solid #0a0d17;background:radial-gradient(circle,#262a38 0 26%,#111723 27% 70%,#202332 100%);
+  box-shadow:0 0 0 3px #8c6e88,inset 0 0 0 3px #76677b,0 14px 34px #050813a6;
+  transform:rotate(-8deg);
 }
-.dash-education-label { color:#7de6e0;font:9px 'JetBrains Mono',monospace;letter-spacing:.12em; }
-.dash-education strong { color:#fff9f4;font-size:14px;font-weight:500; }
+.dash-scene .steering-wheel::after { top:47%;left:8%;width:84%;height:16px;background:#2b2e3c;border-top:2px solid #877990; }
+.dash-scene .steering-wheel::before { content:'';position:absolute;left:47%;top:53%;width:16px;height:38%;background:#2b2e3c;border-left:2px solid #877990; }
+.wheel-hub { position:absolute;z-index:1;left:50%;top:52%;width:70px;height:70px;transform:translate(-50%,-50%);border-radius:50%;border:3px solid #796b81;background:radial-gradient(circle,#5b566b,#222635 65%);box-shadow:0 3px 10px #070910; }
 .dash-console {
   position:absolute;top:3%;left:31%;width:64%;height:82%;overflow:hidden;
   padding:12px 15px;background:#0e1c2aed;border:1px solid #8db6c2d4;
@@ -31,12 +31,14 @@
 .dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;list-style:none;margin:0;padding:0; }
 .dash-tech-grid li { min-width:0;min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 1px;color:#fff;text-align:center;font:17px/1.1 'Space Grotesk',sans-serif; }
 .dash-tech-grid img { width:56px;height:56px;object-fit:contain; }
-.dash-tech-grid img[src$='/spring.svg'] { filter:brightness(1.6); }
 .dash-tech-glyph { width:56px;height:56px;display:grid;place-items:center;color:#82eae5;font:22px 'JetBrains Mono',monospace; }
-.about-panel { top:115px;bottom:auto;right:6%;width:min(430px,38vw);max-height:330px;transform:none;padding:25px 28px; }
+.about-panel { top:115px;bottom:auto;right:6%;width:min(430px,38vw);max-height:390px;transform:none;padding:25px 28px; }
 .about-panel h1 { font-size:30px; }
 .about-panel .panel-description { font-size:13px;line-height:1.65; }
 .about-panel .primary-link { margin-top:14px; }
+.about-education { display:grid;gap:4px;margin-top:16px;padding-top:14px;border-top:1px solid #d9c5dd36;color:#dacddd;font:12px/1.45 'Space Grotesk',sans-serif; }
+.about-education .eyebrow { color:#ffaad0;font-size:9px; }
+.about-education strong { color:#fff3f8;font-size:14px;font-weight:500; }
 .camera-rig:has(.scene-frame[data-active='true'] .dash-scene)>.layer-overlay { opacity:.42; }
 .plain-tech-groups { display:grid;gap:16px;margin-top:15px; }
 .plain-tech-groups h4 { margin:0 0 7px;color:#d9c0e2;font:500 13px 'Space Grotesk',sans-serif; }
@@ -48,8 +50,10 @@
 }
 @media(max-width:767px) {
   .dash-scene .dashboard-shell { bottom:-7%;height:50%;width:110%;left:-5%; }
-  .dash-scene .steering-wheel { display:none; }
-  .dash-education { display:none; }
+  .dash-scene .steering-wheel { width:116px;height:116px;left:8%;top:-16%;border-width:11px;opacity:.94; }
+  .dash-scene .steering-wheel::after { height:9px; }
+  .dash-scene .steering-wheel::before { width:9px; }
+  .wheel-hub { width:36px;height:36px;border-width:2px; }
   .dash-console { top:8%;left:5%;width:90%;height:72%;padding:9px 10px; }
   .dash-console-heading span { display:none; }
   .dash-tabs { margin:5px 0; }
@@ -57,7 +61,7 @@
   .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr));gap:2px; }
   .dash-tech-grid li { min-height:84px;gap:3px;font-size:14px;padding:2px 1px; }
   .dash-tech-grid img,.dash-tech-glyph { width:43px;height:43px; }
-  .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:290px;padding:18px; }
+  .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:355px;padding:18px; }
   .about-panel h1 { font-size:25px; }
   .about-panel .panel-description { font-size:11px;line-height:1.5; }
 }

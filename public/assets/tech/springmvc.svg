@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <ellipse cx="29" cy="29" rx="24" ry="17" transform="rotate(-32 29 29)" fill="#6fbe45"/>
+  <path d="M10 38c12 3 25-1 40-23M29 31c-5-1-9-4-12-8M34 27c4 1 8 1 13-2" fill="none" stroke="#0c1619" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="60" text-anchor="middle" fill="#8cda67" font-family="Arial,sans-serif" font-size="14" font-weight="700">MVC</text>
+</svg>
