@@ -1,0 +1,1 @@
+import{j as r}from"./index-Cjxb-eXh.js";function t({children:a,className:s="",href:i,label:o}){return i?r.jsx("a",{href:i,className:"road-sign "+s,"aria-label":o,children:a}):r.jsx("div",{className:"road-sign "+s,"aria-label":o,children:a})}export{t as R};
