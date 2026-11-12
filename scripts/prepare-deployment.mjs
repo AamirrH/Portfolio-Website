@@ -26,6 +26,7 @@ for (const name of ['left', 'right']) asset(`neighbors/${name}.webp`);
 for (const name of ['space-grotesk-400.woff2', 'space-grotesk-500.woff2']) asset(`fonts/${name}`);
 for (const name of ['resonance.webm', 'resonance.m4a']) asset(`audio/${name}`);
 asset('effects/grain.webp');
+asset('cockpit/steering-wheel.webp');
 asset('documents/Resume_Aamir.pdf');
 asset('tech/LICENSE');
 

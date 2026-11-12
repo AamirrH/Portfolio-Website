@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { content, technologyGroups } from '../../data/content';
+import { SteeringWheel } from './SteeringWheel';
 import './cockpit.css';
 
 export function Cockpit() {
@@ -10,7 +11,7 @@ export function Cockpit() {
     <div className="windshield-post left-post" aria-hidden="true"/>
     <div className="windshield-post right-post" aria-hidden="true"/>
     <div className="dashboard-shell">
-      <div className="steering-wheel" aria-hidden="true"><span className="wheel-hub"/></div>
+      <SteeringWheel/>
       <div className="dash-console">
         <div className="dash-console-heading">
           <strong>{content.about.skillsTitle}</strong>
