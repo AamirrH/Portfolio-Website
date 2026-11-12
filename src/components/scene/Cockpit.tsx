@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { content, technologyGroups } from '../../data/content';
 import { SteeringWheel } from './SteeringWheel';
 import './cockpit.css';
@@ -6,12 +6,18 @@ import './cockpit.css';
 export function Cockpit() {
   const [activeId, setActiveId] = useState(technologyGroups[0].id);
   const active = technologyGroups.find(group => group.id === activeId) ?? technologyGroups[0];
+  const shiftGroup = useCallback((direction: -1 | 1) => {
+    setActiveId(current => {
+      const index = technologyGroups.findIndex(group => group.id === current);
+      return technologyGroups[(index + direction + technologyGroups.length) % technologyGroups.length].id;
+    });
+  }, []);
 
   return <div className="cockpit">
     <div className="windshield-post left-post" aria-hidden="true"/>
     <div className="windshield-post right-post" aria-hidden="true"/>
     <div className="dashboard-shell">
-      <SteeringWheel/>
+      <SteeringWheel onStep={shiftGroup} activeGroup={active.label}/>
       <div className="dash-console">
         <div className="dash-console-heading">
           <strong>{content.about.skillsTitle}</strong>
