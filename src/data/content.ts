@@ -26,6 +26,29 @@ export const projectTechArtwork: Record<string, { src: string; overlay?: string;
   OpenRouteService: { src: '/assets/tech-art/openrouteservice.webp', overlay: 'ORS' },
   Docker: { src: '/assets/tech-art/docker.webp' },
 };
+// Each project can use its own supplied icon artwork for a shared technology.
+export const projectTechArtworkByProject: Partial<Record<ProjectId, Record<string, { src: string; overlay?: string; wide?: boolean }>>> = {
+  roomly: {
+    Java: { src: '/assets/tech-art/roomly-java.webp' },
+    'Spring Boot': { src: '/assets/tech-art/roomly-spring-boot.webp' },
+    'Spring Security': { src: '/assets/tech-art/roomly-spring-security.webp' },
+    'Spring Data JPA': { src: '/assets/tech-art/roomly-spring-data-jpa.webp' },
+    React: { src: '/assets/tech-art/roomly-react.webp' },
+    PostgreSQL: { src: '/assets/tech-art/roomly-postgresql.webp' },
+    Razorpay: { src: '/assets/tech-art/roomly-razorpay.webp' },
+    'Google Calendar API': { src: '/assets/tech-art/roomly-google-calendar.webp' },
+    JWT: { src: '/assets/tech-art/roomly-jwt.webp' },
+    Docker: { src: '/assets/tech-art/roomly-docker.webp' },
+  },
+  signalroute: {
+    Python: { src: '/assets/tech-art/signalroute-python.webp' },
+    Pandas: { src: '/assets/tech-art/signalroute-pandas.webp' },
+    Pydantic: { src: '/assets/tech-art/signalroute-pydantic.webp' },
+    'scikit-learn': { src: '/assets/tech-art/signalroute-scikit-learn.webp' },
+    'Gemini API': { src: '/assets/tech-art/signalroute-gemini.webp' },
+    Pillow: { src: '/assets/tech-art/signalroute-pillow.webp' },
+  },
+};
 // Technology names come from the supplied resume; icons are local Devicon assets where available.
 export const technologyGroups: TechnologyGroup[] = [
   { id: 'languages', label: 'Languages', technologies: [
