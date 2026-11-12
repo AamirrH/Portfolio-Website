@@ -1,4 +1,4 @@
-:root { --stop-panel-width:clamp(360px,40vw,600px); }
+:root { --stop-panel-width:clamp(360px,44vw,640px); }
 .stop-scene {
   --curb-y:72vh;
   --lane-y:calc(var(--curb-y) + 62px);
@@ -142,12 +142,35 @@
 /* Keep the collapsed overview within the board at typical desktop heights. */
 @media (min-width:768px) {
   .board-header { padding:8px 20px; }
-  .stop-project-panel .panel-inner { padding:8px 22px 12px; }
+  .stop-project-panel .panel-inner { padding:8px 22px 4px; }
   .stop-project-panel h1 { font-size:32px; margin-bottom:10px; }
   .stop-project-panel .project-links { margin:12px 0; }
   .stop-project-panel .primary-link { padding:7px 12px; }
   .stop-project-panel .subsection-heading { margin:14px 0 8px; }
   .project-details { margin-top:13px; padding-top:9px; }
+}
+
+/* Give the project directory the full space between the header and footer. */
+@media (min-width:768px) {
+  .stop-project-panel { top:70px; bottom:72px; }
+  .board-frame { height:100%; max-height:none; }
+  .stop-project-panel .panel-inner { flex:1; min-height:0; }
+}
+.project-door-hint { margin:2px 0 0; color:#f3dba6; font:500 12px/1.4 'Space Grotesk',sans-serif; }
+.project-door-hint::before { content:'↗'; margin-right:7px; color:#ffdc91; }
+.project-tech-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px 6px; list-style:none; padding:0; margin:0; }
+.project-tech-list li { min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#e4eee5; text-align:center; font:500 11px/1.25 'Space Grotesk',sans-serif; }
+.project-tech-list img { display:block; width:30px; height:30px; object-fit:contain; }
+.project-tech-list img[src*="apachekafka"] { filter:invert(1); }
+.project-tech-glyph { width:30px; height:30px; display:grid; place-items:center; border:1px solid #a5c1ac77; border-radius:50%; color:#c9f0dc; font:600 10px 'JetBrains Mono',monospace; }
+.project-tech-list span { overflow-wrap:anywhere; }
+@media(min-width:1200px) { .project-tech-list { grid-template-columns:repeat(6,minmax(0,1fr)); } }
+@media(max-width:767px) {
+  .stop-project-panel { top:38vh; bottom:74px; }
+  .project-tech-list { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px 5px; }
+  .project-tech-list img { width:26px; height:26px; }
+  .project-tech-glyph { width:26px; height:26px; font-size:9px; }
+  .project-tech-list li { font-size:10px; }
 }
 
 /* SignalRoute lenses are positioned against the trimmed raster's own box. */

@@ -21,15 +21,15 @@
   pointer-events:auto;
 }
 .dash-console-heading { display:flex;align-items:baseline;justify-content:space-between;gap:10px;color:#d8fbf7; }
-.dash-console-heading strong { font:12px 'JetBrains Mono',monospace;letter-spacing:.15em; }
+.dash-console-heading strong { font:14px 'JetBrains Mono',monospace;letter-spacing:.1em; }
 .dash-console-heading span { font:11px 'Space Grotesk',sans-serif;color:#b7d0d8; }
 .dash-tabs { display:flex;gap:4px;margin:11px 0 10px;overflow-x:auto;scrollbar-width:none; }
 .dash-tabs::-webkit-scrollbar { display:none; }
-.dash-tabs button { flex:none;padding:7px 10px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:12px 'Space Grotesk',sans-serif;white-space:nowrap; }
+.dash-tabs button { flex:none;padding:7px 10px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:14px 'Space Grotesk',sans-serif;white-space:nowrap; }
 .dash-tabs button[aria-selected='true'] { color:#d7fffb;border-color:#25f4ee78;background:#25f4ee18; }
 .dash-tabs button:focus-visible { outline:2px solid #25f4ee;outline-offset:2px; }
 .dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;list-style:none;margin:0;padding:0; }
-.dash-tech-grid li { min-width:0;min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 1px;color:#fff;text-align:center;font:17px/1.1 'Space Grotesk',sans-serif; }
+.dash-tech-grid li { min-width:0;min-height:102px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 1px;color:#fff;text-align:center;font:20px/1.1 'Space Grotesk',sans-serif; }
 .dash-tech-grid img { width:56px;height:56px;object-fit:contain; }
 .dash-tech-glyph { width:56px;height:56px;display:grid;place-items:center;color:#82eae5;font:22px 'JetBrains Mono',monospace; }
 .about-panel { top:115px;bottom:auto;right:6%;width:min(430px,38vw);max-height:390px;transform:none;padding:25px 28px; }
@@ -45,21 +45,21 @@
 @media(max-width:1100px) and (min-width:768px) {
   .dash-console { left:30%;width:66%; }
   .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .dash-tech-grid li { min-height:83px;gap:3px;font-size:15px; }
+  .dash-tech-grid li { min-height:90px;gap:3px;font-size:17px; }
   .dash-tech-grid img,.dash-tech-glyph { width:42px;height:42px;flex:none; }
 }
 @media(max-width:767px) {
-  .dash-scene .dashboard-shell { bottom:-7%;height:50%;width:110%;left:-5%; }
-  .dash-scene .steering-wheel { width:116px;height:116px;left:8%;top:-16%;border-width:11px;opacity:.94; }
+  .dash-scene .dashboard-shell { bottom:0;height:50%;width:110%;left:-5%; }
+  .dash-scene .steering-wheel { width:116px;height:116px;left:8%;top:-5%;border-width:11px;opacity:.94; }
   .dash-scene .steering-wheel::after { height:9px; }
   .dash-scene .steering-wheel::before { width:9px; }
   .wheel-hub { width:36px;height:36px;border-width:2px; }
   .dash-console { top:8%;left:5%;width:90%;height:72%;padding:9px 10px; }
   .dash-console-heading span { display:none; }
   .dash-tabs { margin:5px 0; }
-  .dash-tabs button { padding:6px 8px;font-size:11px; }
+  .dash-tabs button { padding:6px 8px;font-size:13px; }
   .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr));gap:2px; }
-  .dash-tech-grid li { min-height:84px;gap:3px;font-size:14px;padding:2px 1px; }
+  .dash-tech-grid li { min-height:94px;gap:3px;font-size:17px;padding:2px 1px; }
   .dash-tech-grid img,.dash-tech-glyph { width:43px;height:43px; }
   .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:355px;padding:18px; }
   .about-panel h1 { font-size:25px; }
