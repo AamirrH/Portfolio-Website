@@ -142,11 +142,11 @@
 /* Keep the collapsed overview within the board at typical desktop heights. */
 @media (min-width:768px) {
   .board-header { padding:8px 20px; }
-  .stop-project-panel .panel-inner { padding:8px 22px 4px; }
+  .stop-project-panel .panel-inner { padding:8px 22px 16px; }
   .stop-project-panel h1 { font-size:32px; margin-bottom:10px; }
-  .stop-project-panel .project-links { margin:12px 0; }
+  .stop-project-panel .project-links { margin:10px 0; }
   .stop-project-panel .primary-link { padding:7px 12px; }
-  .stop-project-panel .subsection-heading { margin:14px 0 8px; }
+  .stop-project-panel .subsection-heading { margin:12px 0 7px; }
   .project-details { margin-top:13px; padding-top:9px; }
 }
 
@@ -164,6 +164,11 @@
 .project-tech-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px 6px; list-style:none; padding:0; margin:0; }
 .project-tech-list li { min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#e4eee5; text-align:center; font:500 13px/1.2 'Space Grotesk',sans-serif; }
 .project-tech-list img { display:block; width:38px; height:38px; object-fit:contain; }
+.project-tech-art { position:relative; display:grid; place-items:center; width:38px; height:38px; }
+.project-tech-art.wide { width:54px; }
+.project-tech-art img { width:100%; height:100%; object-fit:contain; }
+.project-tech-art.wide img { object-fit:fill; }
+.project-tech-art-label { position:absolute; color:#fff; font:700 9px 'Space Grotesk',sans-serif; letter-spacing:-.02em; }
 .project-tech-list img[src*="apachekafka"] { filter:invert(1); }
 .project-tech-glyph { width:38px; height:38px; display:grid; place-items:center; border:1px solid #a5c1ac77; border-radius:50%; color:#c9f0dc; font:600 12px 'JetBrains Mono',monospace; }
 .project-tech-list span { overflow-wrap:anywhere; }
@@ -172,6 +177,10 @@
   .stop-project-panel { top:38vh; bottom:74px; }
   .project-tech-list { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px 5px; }
   .project-tech-list img { width:32px; height:32px; }
+  .project-tech-art { width:32px; height:32px; }
+  .project-tech-art.wide { width:46px; }
+  .project-tech-art img { width:100%; height:100%; }
+  .project-tech-art-label { font-size:8px; }
   .project-tech-glyph { width:32px; height:32px; font-size:10px; }
   .project-tech-list li { font-size:12px; }
 }

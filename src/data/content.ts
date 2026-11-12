@@ -11,6 +11,21 @@ export const projectTechIcons: Record<string, string> = {
   Docker: 'docker', Kafka: 'apachekafka', Redis: 'redis',
   'GitHub Actions': 'githubactions', Python: 'python',
 };
+// Cleaned icon art from the supplied SwiftShip sheet. Labels remain live text.
+export const projectTechArtwork: Record<string, { src: string; overlay?: string; wide?: boolean }> = {
+  Java: { src: '/assets/tech-art/java.webp' },
+  'Spring Boot': { src: '/assets/tech-art/spring-boot.webp' },
+  React: { src: '/assets/tech-art/react.webp' },
+  'Spring Cloud Gateway': { src: '/assets/tech-art/spring-cloud-gateway.webp' },
+  Kafka: { src: '/assets/tech-art/kafka.webp' },
+  'PostgreSQL / PostGIS': { src: '/assets/tech-art/postgres-postgis.webp', wide: true },
+  Redis: { src: '/assets/tech-art/redis.webp' },
+  WebSocket: { src: '/assets/tech-art/websocket.webp' },
+  Resilience4j: { src: '/assets/tech-art/resilience4j.webp' },
+  'Spring AI / Gemini': { src: '/assets/tech-art/spring-ai-gemini.webp', wide: true },
+  OpenRouteService: { src: '/assets/tech-art/openrouteservice.webp', overlay: 'ORS' },
+  Docker: { src: '/assets/tech-art/docker.webp' },
+};
 // Technology names come from the supplied resume; icons are local Devicon assets where available.
 export const technologyGroups: TechnologyGroup[] = [
   { id: 'languages', label: 'Languages', technologies: [

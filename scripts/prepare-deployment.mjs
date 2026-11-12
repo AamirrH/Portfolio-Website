@@ -29,6 +29,9 @@ asset('effects/grain.webp');
 asset('cockpit/steering-wheel.webp');
 asset('documents/Resume_Aamir.pdf');
 asset('tech/LICENSE');
+for (const name of await readdir(path.join(root, 'public/assets/tech-art'))) {
+  if (name.endsWith('.webp')) asset(`tech-art/${name}`);
+}
 
 const content = await readFile(path.join(root, 'src/data/content.ts'), 'utf8');
 for (const [, name] of content.matchAll(/\bicon: '([\w-]+)'/g)) asset(`tech/${name}.svg`);
