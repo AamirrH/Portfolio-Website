@@ -150,27 +150,30 @@
   .project-details { margin-top:13px; padding-top:9px; }
 }
 
-/* Give the project directory the full space between the header and footer. */
+/* Keep each directory as tall as its content, with a viewport cap for short screens. */
 @media (min-width:768px) {
-  .stop-project-panel { top:70px; bottom:72px; }
-  .board-frame { height:100%; max-height:none; }
-  .stop-project-panel .panel-inner { flex:1; min-height:0; }
+  .stop-project-panel { top:auto; bottom:72px; }
+  .board-frame { height:auto; max-height:calc(100dvh - 142px); }
+  .stop-project-panel .panel-inner { flex:0 1 auto; min-height:0; }
+  .stop-project-panel .project-pitch { line-height:1.5; }
+  .stop-project-panel .highlights { gap:6px; }
+  .stop-project-panel .highlights li { line-height:1.5; }
 }
 .project-door-hint { margin:2px 0 0; color:#f3dba6; font:500 12px/1.4 'Space Grotesk',sans-serif; }
 .project-door-hint::before { content:'↗'; margin-right:7px; color:#ffdc91; }
 .project-tech-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px 6px; list-style:none; padding:0; margin:0; }
-.project-tech-list li { min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#e4eee5; text-align:center; font:500 11px/1.25 'Space Grotesk',sans-serif; }
-.project-tech-list img { display:block; width:30px; height:30px; object-fit:contain; }
+.project-tech-list li { min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#e4eee5; text-align:center; font:500 13px/1.2 'Space Grotesk',sans-serif; }
+.project-tech-list img { display:block; width:38px; height:38px; object-fit:contain; }
 .project-tech-list img[src*="apachekafka"] { filter:invert(1); }
-.project-tech-glyph { width:30px; height:30px; display:grid; place-items:center; border:1px solid #a5c1ac77; border-radius:50%; color:#c9f0dc; font:600 10px 'JetBrains Mono',monospace; }
+.project-tech-glyph { width:38px; height:38px; display:grid; place-items:center; border:1px solid #a5c1ac77; border-radius:50%; color:#c9f0dc; font:600 12px 'JetBrains Mono',monospace; }
 .project-tech-list span { overflow-wrap:anywhere; }
 @media(min-width:1200px) { .project-tech-list { grid-template-columns:repeat(6,minmax(0,1fr)); } }
 @media(max-width:767px) {
   .stop-project-panel { top:38vh; bottom:74px; }
   .project-tech-list { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px 5px; }
-  .project-tech-list img { width:26px; height:26px; }
-  .project-tech-glyph { width:26px; height:26px; font-size:9px; }
-  .project-tech-list li { font-size:10px; }
+  .project-tech-list img { width:32px; height:32px; }
+  .project-tech-glyph { width:32px; height:32px; font-size:10px; }
+  .project-tech-list li { font-size:12px; }
 }
 
 /* SignalRoute lenses are positioned against the trimmed raster's own box. */
