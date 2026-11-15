@@ -1,4 +1,4 @@
-:root { --stop-panel-width:clamp(340px,32vw,460px); }
+:root { --stop-panel-width:clamp(360px,35vw,500px); }
 .stop-scene {
   --curb-y:72vh;
   --lane-y:calc(var(--curb-y) + 62px);

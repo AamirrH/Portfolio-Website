@@ -63,7 +63,7 @@ for (const viewport of [
         expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
         expect(layout.building.top).toBeGreaterThanOrEqual(87);
         expect(layout.building.left).toBeGreaterThanOrEqual(0);
-        expect(layout.card.width).toBeLessThanOrEqual(460);
+        expect(layout.card.width).toBeLessThanOrEqual(500);
         expect(layout.card.height).toBeLessThanOrEqual(560);
         expect(layout.card.top).toBeGreaterThanOrEqual(87);
         expect(layout.card.bottom).toBeLessThanOrEqual(viewport.height - 87);
