@@ -48,7 +48,7 @@ export const stops: Record<ProjectId, StopConfig> = {
       {asset:'bike-rack',x:18,height:14,scale:1,z:6,placement:'front',mobile:false},
       {asset:'trash-bin',x:96,height:13,scale:1,z:6,placement:'front',mobile:false},
       {asset:'scooter',x:82,height:22,scale:1,z:7,placement:'front',mobile:true,mobileX:86}
-    ], door: { x: 63, y: 55, width: 14, height: 45 }, building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 44, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
+    ], door: { x: 63, y: 55, width: 14, height: 45 }, building: { src: '/assets/stops/swiftship.webp', silhouette: '/assets/stops/swiftship-silhouette.png', heightVh: 55, mobileHeightVh: 30, anchorXPct: 42, alignBottomToCurb: true, aspect: 1445 / 900 },
     overlays: [
       { id: 'open-neon', kind: 'neon', x: 46.6, y: 50.1, width: 12.4, height: 14.2 },
       { id: 'door-status', kind: 'status', x: 76.15, y: 72.3, width: .9, height: 2.5 },
@@ -61,7 +61,7 @@ export const stops: Record<ProjectId, StopConfig> = {
       {asset:'bollards',x:88,height:13,scale:1,z:6,placement:'front',mobile:true,mobileX:87},
       {asset:'modern-lamp',x:90,height:70,scale:1,z:4,placement:'behind',mobile:false},
       {asset:'hydrant',x:17,height:15,scale:1,z:6,placement:'front',mobile:false}
-    ], building: { src: '/assets/stops/signalroute.webp', silhouette: '/assets/stops/signalroute-silhouette.png', heightVh: 43, mobileHeightVh: 29, anchorXPct: 42, alignBottomToCurb: true, aspect: 1439 / 720 }, overlays: [
+    ], building: { src: '/assets/stops/signalroute.webp', silhouette: '/assets/stops/signalroute-silhouette.png', heightVh: 55, mobileHeightVh: 29, anchorXPct: 42, alignBottomToCurb: true, aspect: 1439 / 720 }, overlays: [
       { id: 'red', kind: 'signal', x: 3.5, y: 37.4, width: 3.2, height: 6.2 },
       { id: 'amber', kind: 'signal', x: 3.5, y: 46.0, width: 3.2, height: 6.2 },
       { id: 'green', kind: 'signal', x: 3.5, y: 54.6, width: 3.2, height: 6.2 },
