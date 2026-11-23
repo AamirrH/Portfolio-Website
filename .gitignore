@@ -7,3 +7,6 @@ dist/
 
 perf/**/*-trace.json
 perf/baseline-initial-timing-invalid.json
+
+asset-src-generated/
+screenshots/frutiger-*.png

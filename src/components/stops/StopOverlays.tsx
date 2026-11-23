@@ -1,9 +1,10 @@
 import type { CSSProperties } from 'react';
 import { stopLabels, type StopConfig, type OverlayRect } from '../../data/stops';
+import { FrutigerDetail } from './FrutigerDay';
 function rectStyle(rect: OverlayRect): CSSProperties {
   return { left: `${rect.x}%`, top: `${rect.y}%`, width: `${rect.width}%`, height: `${rect.height}%` };
 }
-export function StopOverlays({ stop, debug }: { stop: StopConfig; debug: boolean }) {
+export function StopOverlays({ stop, debug, title }: { stop: StopConfig; debug: boolean; title: string }) {
   return <div className={`stop-overlays ${debug ? 'debug-rects' : ''}`} aria-hidden="true">
     {stop.overlays.map(rect => <div key={rect.id} className={`overlay-rect overlay-${rect.kind}`} style={rectStyle(rect)} data-overlay={rect.id}>
       {rect.kind === 'vacancy' && <div className="vacancy-plate"><span className="vacancy-open">{stopLabels.vacancy}</span><span className="vacancy-full">{stopLabels.full}</span></div>}
@@ -18,6 +19,7 @@ export function StopOverlays({ stop, debug }: { stop: StopConfig; debug: boolean
       {rect.kind === 'fascia' && <span className="fascia-glow"/>}
       {rect.kind === 'barrier' && <span className="barrier-glow"/>}
       {rect.kind === 'dish' && <svg className="dish-waves" viewBox="0 0 80 80"><path d="M10 70 A60 60 0 0 1 70 10"/><path d="M10 70 A60 60 0 0 1 70 10"/></svg>}
+      {rect.kind.startsWith('day-') && <FrutigerDetail rect={rect} title={title}/>}
       {debug && <span className="overlay-debug-label">{rect.id}</span>}
     </div>)}
   </div>;

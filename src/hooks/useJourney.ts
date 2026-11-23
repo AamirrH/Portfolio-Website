@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { content, type Section } from '../data/content';
+import { content, projects, type Section } from '../data/content';
 import { useSceneStore } from '../state/useSceneStore';
-export const routeOrder: Section[] = ['home', 'projects', 'roomly', 'swiftship', 'signalroute', 'about', 'contact'];
+export const routeOrder: Section[] = ['home', 'projects', ...projects.map(project => project.id), 'about', 'contact'];
 export function readHash(): Section { const value = location.hash.slice(1); return Object.hasOwn(content.sectionNames, value) ? value as Section : 'home'; }
 export function navigate(section: Section) { if (readHash() !== section || !location.hash) location.hash = section; }
 export function stepSection(direction: number) { const current = useSceneStore.getState().section; const index = Math.max(0, Math.min(routeOrder.length - 1, routeOrder.indexOf(current) + direction)); navigate(routeOrder[index]); }

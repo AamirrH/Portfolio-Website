@@ -1,6 +1,6 @@
 import type { propAssets } from './propAssets';
 import type { ProjectId } from './content';
-export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets' | 'signal' | 'chute' | 'led' | 'fascia' | 'dish' | 'barrier'; x: number; y: number; width: number; height: number; }
+export interface OverlayRect { id: string; kind: 'vacancy' | 'window' | 'blade' | 'neon' | 'status' | 'interior' | 'tickets' | 'signal' | 'chute' | 'led' | 'fascia' | 'dish' | 'barrier' | 'day-sign' | 'day-water' | 'day-glass' | 'day-roof' | 'day-sparkles'; x: number; y: number; width: number; height: number; }
 export interface StopProp {
   asset: keyof typeof propAssets;
   x: number; // Percent of the usable stop width, excluding the project card.
@@ -73,9 +73,23 @@ export const stops: Record<ProjectId, StopConfig> = {
       { id: 'dish', kind: 'dish', x: 63.5, y: 3.5, width: 4, height: 6 },
       ...Array.from({ length: 12 }, (_, i): OverlayRect => ({ id: `rack-${i}`, kind: 'led', x: [25.2,32.1,42.6,47.6,57.6,68.1][i % 6], y: i < 6 ? 50.3 : 54.7, width: .5, height: .4 }))
     ]
+  },
+  'frutiger-aero': {
+    id: 'frutiger-aero',
+    props: [],
+    building: { src: '/assets/stops/frutiger.webp', silhouette: '/assets/stops/frutiger-silhouette.png', heightVh: 51, mobileHeightVh: 29, anchorXPct: 37, alignBottomToCurb: true, aspect: 1440 / 707 },
+    door: { x: 56, y: 48, width: 23, height: 52 },
+    overlays: [
+      { id: 'pavilion-sign', kind: 'day-sign', x: 37, y: 21.7, width: 57.5, height: 8.5 },
+      { id: 'pavilion-window', kind: 'day-glass', x: 22, y: 36, width: 36, height: 54 },
+      { id: 'pavilion-stream', kind: 'day-water', x: 26, y: 89, width: 30, height: 11 },
+      { id: 'pavilion-roof', kind: 'day-roof', x: 61, y: 4, width: 8, height: 10 },
+      { id: 'roof-sparkles', kind: 'day-sparkles', x: 21, y: 6, width: 65, height: 15 },
+      { id: 'glass-sparkles', kind: 'day-sparkles', x: 21, y: 36, width: 68, height: 48 },
+    ],
   }
 };
-export const stopArtOrder: ProjectId[] = ['roomly', 'swiftship', 'signalroute'];
+export const stopArtOrder: ProjectId[] = ['roomly', 'swiftship', 'signalroute', 'frutiger-aero'];
 export const stopLabels = { vacancy: 'VACANCY', full: 'NO VACANCY', signal: 'SIGNALROUTE AI', dataCentre: 'DETERMINISTIC ROUTING', safety: 'SAFETY GATE', signalStates: ['green', 'amber', 'red'] as const };
 
 export const messageSprites = ['text-cyan', 'text-pink', 'image', 'voice', 'envelope'] as const;

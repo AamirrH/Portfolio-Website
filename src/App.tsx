@@ -13,7 +13,7 @@ const About=lazy(()=>import('./components/views/About').then(m=>({default:m.Abou
 const Contact=lazy(()=>import('./components/views/Contact').then(m=>({default:m.Contact})));
 const PlainMode=lazy(()=>import('./components/views/PlainMode').then(m=>({default:m.PlainMode})));
 
-import { useJourney } from './hooks/useJourney';
+import { routeOrder, useJourney } from './hooks/useJourney';
 import { useScrollJourney } from './hooks/useScrollJourney';
 import { usePreferences } from './hooks/usePreferences';
 import { useSceneStore } from './state/useSceneStore';
@@ -67,7 +67,7 @@ export default function App() {
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus({ preventScroll: true }); }}>{content.controls.skip}</a>
       <Suspense fallback={null}><TopBar/></Suspense>
       {plain ? <Suspense fallback={null}><PlainMode/></Suspense> : <>
-        <Suspense fallback={null}><CameraRig/></Suspense><div className="journey-track" aria-hidden="true"/>
+        <Suspense fallback={null}><CameraRig/></Suspense><div className="journey-track" style={{ height: `${routeOrder.length * 100}vh` }} aria-hidden="true"/>
         <main id="main-content" tabIndex={-1} className="drive-content" key={section}>
           <Suspense fallback={null}>{section === 'home' ? <Home/> : section === 'projects' ? <ProjectsIndex/> : project ? <ProjectPanel project={project}/> : section === 'about' ? <About/> : <Contact/>}</Suspense>
         </main>

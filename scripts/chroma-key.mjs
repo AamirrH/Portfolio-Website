@@ -21,3 +21,48 @@ export function chromaKey(data, width, height, { removeWatermark = true } = {}) 
   }
 
 }
+
+export function keyMagenta(data, width, height, exteriorGaps = []) {
+  const count = width * height;
+  const distance = new Uint8Array(count);
+  const queue = new Uint32Array(count);
+  let end = 0;
+  const magentaness = (pixel) => {
+    const offset = pixel * 4;
+    return Math.min(data[offset], data[offset + 2]) - data[offset + 1];
+  };
+  function add(pixel, depth) {
+    if (distance[pixel] || (depth === 1 && magentaness(pixel) <= 90)) return;
+    distance[pixel] = depth;
+    queue[end++] = pixel;
+  }
+  function visitNeighbors(pixel, depth) {
+    const x = pixel % width;
+    if (x > 0) add(pixel - 1, depth);
+    if (x < width - 1) add(pixel + 1, depth);
+    if (pixel >= width) add(pixel - width, depth);
+    if (pixel < count - width) add(pixel + width, depth);
+  }
+  for (let x = 0; x < width; x++) {
+    add(x, 1);
+    add(count - width + x, 1);
+  }
+  for (let y = 1; y < height - 1; y++) {
+    add(y * width, 1);
+    add((y + 1) * width - 1, 1);
+  }
+  for (const [x, y] of exteriorGaps) add(y * width + x, 1);
+  for (let index = 0; index < end; index++) visitNeighbors(queue[index], 1);
+  for (let index = 0; index < end; index++) {
+    const pixel = queue[index];
+    const depth = distance[pixel];
+    if (depth < 3) visitNeighbors(pixel, depth + 1);
+    const offset = pixel * 4;
+    if (depth === 1) {
+      data.fill(0, offset, offset + 4);
+    } else {
+      data[offset] = Math.min(data[offset], data[offset + 1] + 10);
+      data[offset + 3] = Math.round(data[offset + 3] * (depth - 1) / 3);
+    }
+  }
+}

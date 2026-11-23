@@ -26,7 +26,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
   useLayoutEffect(() => {
     const root = ref.current;
     if (!root || !active) return;
-    if (reduced||quality!=='high') { root.dataset.arrived = 'true'; return; }
+    if (stop.id === 'frutiger-aero' || reduced||quality!=='high') { root.dataset.arrived = 'true'; return; }
     root.dataset.arrived = 'false';
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({ onComplete: () => { root.dataset.arrived = 'true'; } });
@@ -37,11 +37,11 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
       timeline.fromTo('.parked-car .brake-lights', { opacity: .2 }, { opacity: 1, duration: .15 }, .05).to('.parked-car .brake-lights', { opacity: .65, duration: .6 }, .6);
     }, root);
     return () => { ctx.revert(); };
-  }, [ref, active, reduced,quality]);
+  }, [ref, active, reduced,quality,stop.id]);
 
   useEffect(() => {
     const root = ref.current;
-    if (!root || !active || reduced || hidden || quality==='low') return;
+    if (!root || !active || stop.id === 'frutiger-aero' || reduced || hidden || quality==='low') return;
     let disposed = false;
     const timers = new Set<ReturnType<typeof setTimeout>>();
     const tweens = new Set<gsap.core.Animation>();
