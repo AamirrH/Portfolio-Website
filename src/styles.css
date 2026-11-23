@@ -251,6 +251,15 @@ button,a { touch-action:manipulation; }
 .project-gantry-sign p { font-size:9px; letter-spacing:.04em; color:#c5d6bb; margin-top:14px; line-height:1.5; }
 .project-gantry-sign:hover,.project-gantry-sign:focus-visible { box-shadow:0 6px 0 #0e1920,0 0 28px #a4ffd94d,inset 0 0 0 2px #d7edc8; }
 .projects-copy::before { content:''; position:absolute; inset:-40px; z-index:-1; border-radius:0; background:radial-gradient(ellipse at 30% 60%,rgba(8,4,20,.55),transparent 70%); }
+.all-exits { position:fixed; right:7%; bottom:14%; width:260px; }
+.all-exits a { display:grid; grid-template-columns:26px 1fr auto; align-items:center; gap:6px; padding:6px 0; font-size:14px; }
+.all-exits a + a { border-top:1px solid #b9c4ac24; }
+.all-exits a:hover,.all-exits a:focus-visible { color:#fff6ad; }
+.all-exits a > span:first-child { font-size:10px; color:#bed2b8; }
+@media(max-width:767px) {
+  .all-exits { top:36%; bottom:auto; left:7%; right:7%; width:86%; padding:7px 13px; }
+  .all-exits a { padding:4px 0; font-size:13px; }
+}
 @media(max-width:767px) { .project-gantry { top:15%; left:7%; width:86%; display:grid; gap:12px; }.project-gantry-sign { padding:11px 16px; }.project-gantry-sign h2 { font-size:17px; }.project-gantry-sign p { margin-top:4px; font-size:8px; }.project-gantry-sign::before,.project-gantry-sign::after { height:3px; bottom:-7px; }.projects-copy { bottom:18%; }.projects-copy h1 { font-size:36px; } }
 @media(max-width:767px) { .project-journey-sign { padding:15px 20px; }.project-journey-sign h2 { font-size:22px; }.project-journey-sign p { margin:5px 0; } }
 

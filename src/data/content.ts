@@ -1,7 +1,25 @@
-export type Section = 'home' | 'projects' | 'roomly' | 'swiftship' | 'signalroute' | 'about' | 'contact';
-export type ProjectId = 'roomly' | 'swiftship' | 'signalroute';
+export type Section = 'home' | 'projects' | ProjectId | 'about' | 'contact';
+export type ProjectId = 'roomly' | 'swiftship' | 'signalroute' | 'frutiger-aero';
+export type StopSky = 'default' | 'frutiger-day';
 export interface Metric { label: string; value: string; detail: string; progress?: number; }
-export interface Project { id: ProjectId; exit: string; title: string; category: string; pitch: string; stack: string[]; highlights: string[]; metrics: Metric[]; live?: string; repo?: string; repoTodo?: string; }
+export interface Project {
+  id: ProjectId;
+  exit: string;
+  title: string;
+  category: string;
+  pitch: string;
+  stack: string[];
+  highlights: string[];
+  metrics: Metric[];
+  live?: string;
+  repo?: string;
+  repoTodo?: string;
+  order?: number;
+  featured?: boolean;
+  accent?: string;
+  chips?: string[];
+  stop?: { kind: 'custom'; artKey: string; sky: StopSky };
+}
 export interface Technology { name: string; icon?: string; }
 export interface TechnologyGroup { id: string; label: string; technologies: Technology[]; }
 // Use the local logos where available; unknown technologies remain text.
@@ -209,13 +227,34 @@ export const projects: Project[] = [
       }
     ],
     "repo": "https://github.com/AamirrH/SignalRoute-AI"
+  },
+  {
+    id: 'frutiger-aero',
+    exit: '04',
+    title: 'Frutiger Aero',
+    category: 'Windows 7 desktop in vanilla JS',
+    order: 4,
+    featured: false,
+    accent: '#1e90ff',
+    stop: { kind: 'custom', artKey: 'frutiger', sky: 'frutiger-day' },
+    pitch: 'A browser-based recreation of the Windows 7 desktop in pure HTML, CSS and vanilla JavaScript: draggable windows, glass UI, startup sound, a gallery, Notepad, games and a blue-screen throwback.',
+    chips: ['0 frameworks', 'Vanilla JS', 'Draggable windows', 'Windows 7 UI'],
+    highlights: [
+      'Window system with drag, minimize, restore and close behaviour.',
+      'Aero-glass styling, startup sound, gallery, Notepad, games and a BSOD page.',
+      'Pure HTML, CSS and JavaScript: no frameworks or libraries.',
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
+    metrics: [],
+    live: 'LIVE_URL',
+    repo: 'REPO_URL',
   }
 ];
 export const content = {
   owner: { name: 'Aamir Hussain', initials: 'AH', role: 'CS STUDENT & SOFTWARE BUILDER', tagline: 'Drive Forever', intro: 'Building thoughtful software. Taking the scenic route.', education: 'Computer Science · Ramdeobaba University, Nagpur', availability: 'OPEN TO SDE OPPORTUNITIES', github: 'https://github.com/AamirrH', linkedin: 'https://linkedin.com/in/aamir-hussain-359513328', email: 'aamirr.1704@gmail.com', biography: 'I’m Aamir, a computer science student at Ramdeobaba University in Nagpur. I build full-stack applications and backend systems, with an interest in reliable software and the decisions behind it. I’m working toward an SDE role at a product company.' },
   brand: { name: 'ENDLESS ROAD', subline: 'A PORTFOLIO IN MOTION', route: 'AH / 01', direction: 'EASTBOUND', edition: 'NIGHT DRIVE — VOL. 01', coordinates: 'NAGPUR, INDIA', copyright: 'AAMIR HUSSAIN', status: 'ALL ROADS LEAD FORWARD' },
   nav: [{ id: 'projects', label: 'Projects', subtitle: 'SELECTED WORK' }, { id: 'about', label: 'About', subtitle: 'BEHIND THE WHEEL' }, { id: 'contact', label: 'Contact', subtitle: 'NEXT DESTINATION' }] satisfies { id: Section; label: string; subtitle: string }[],
-  sectionNames: { home: 'The open road', projects: 'The work ahead', roomly: 'Exit 01 · Roomly', swiftship: 'Exit 02 · SwiftShip', signalroute: 'Exit 03 · SignalRoute AI', about: 'Behind the wheel', contact: 'Get in touch' } satisfies Record<Section, string>,
+  sectionNames: { home: 'The open road', projects: 'The work ahead', roomly: 'Exit 01 · Roomly', swiftship: 'Exit 02 · SwiftShip', signalroute: 'Exit 03 · SignalRoute AI', 'frutiger-aero': 'Exit 04 · Frutiger Aero', about: 'Behind the wheel', contact: 'Get in touch' } satisfies Record<Section, string>,
   hero: { eyebrow: 'A LITTLE CURIOUS. ALWAYS MOVING.', line1: 'Good things', line2: 'are up ahead.', description: 'Software, systems, and a few late-night ideas.', cta: 'Explore my work', hint: 'SCROLL TO TAKE THE NEXT EXIT', journey: 'THE JOURNEY', journeyDetail: '3 PROJECTS · ONE OPEN ROAD' },
   projects: { eyebrow: 'NEXT 3 EXITS', title: 'Built along the way.', description: 'Three stops ahead: reservations, distributed fulfillment, and safer notification routing. Scroll or use the arrows to explore each build.', signTitle: 'THE WORK AHEAD', signDetail: 'THREE PROJECTS / ONE OPEN ROAD', signHint: 'KEEP DRIVING', doorHint: 'The lit building door opens the live project', notes: 'Technical notes', board: 'PROJECT DIRECTORY', door: 'Open live project', back: 'All projects', live: 'Live project', repo: 'Source code', overview: 'Features', tech: 'Tech stack', exit: 'EXIT', next: 'Next project', previous: 'Previous project', indexLabel: 'Project exits', gaugeNote: 'Results are from project tests, not a live performance feed.' },
   about: { eyebrow: 'BEHIND THE WHEEL', title: 'Curiosity is the engine.', skillsTitle: 'SYSTEMS ON BOARD', educationTitle: 'EDUCATION', degree: 'B.Tech in Computer Science', school: 'Ramdeobaba University · Nagpur', years: '2024–2028', stackHint: 'Turn the wheel or choose a system', steeringLabel: 'Steering wheel. Turn right for the next technology group, left for the previous group, or use the arrow keys.', resume: 'Download résumé', resumeUrl: '/assets/documents/Resume_Aamir.pdf' },
