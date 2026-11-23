@@ -18,9 +18,12 @@ export function Cockpit() {
     <div className="windshield-post right-post" aria-hidden="true"/>
     <div className="dashboard-shell">
       <SteeringWheel onStep={shiftGroup} activeGroup={active.label}/>
-      <div className="dash-console">
+      <div className="dash-console" role="region" aria-labelledby="dash-console-label" tabIndex={0}
+        onKeyDown={event => {
+          if (event.key.startsWith('Arrow')) event.stopPropagation();
+        }}>
         <div className="dash-console-heading">
-          <strong>{content.about.skillsTitle}</strong>
+          <strong id="dash-console-label">{content.about.skillsTitle}</strong>
           <span>{content.about.stackHint}</span>
         </div>
         <div className="dash-tabs" role="tablist" aria-label={content.about.skillsTitle}>
@@ -45,7 +48,7 @@ export function Cockpit() {
           >{group.label}</button>)}
         </div>
         <div id="dash-technologies" className="dash-tech-panel" role="tabpanel" aria-labelledby={`dash-tab-${active.id}`}>
-          <ul className="dash-tech-grid">
+          <ul className="dash-tech-grid" tabIndex={0}>
             {active.technologies.map(tech => <li key={tech.name}>
               {tech.icon ? <img src={`/assets/tech/${tech.icon}.svg`} width="32" height="32" alt="" loading="lazy"/> : <span className="dash-tech-glyph" aria-hidden="true">{tech.name.slice(0, 2).toUpperCase()}</span>}
               <span>{tech.name}</span>
