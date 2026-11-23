@@ -5,6 +5,14 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const [flag, key = 'green', ...extra] = process.argv.slice(2);
+if ((flag !== undefined && flag !== '--key') || !['green', 'magenta'].includes(key) || extra.length) {
+  throw new Error('Usage: node scripts/key-assets.mjs [--key green|magenta]');
+}
+if (key === 'magenta') {
+  const { keyFrutigerAssets } = await import('./key-frutiger.mjs');
+  await keyFrutigerAssets(root);
+} else {
 const output = path.join(root, 'public/assets/stops');
 await mkdir(output, { recursive: true });
 
@@ -79,3 +87,4 @@ console.log(`Combined WebP + silhouette budget: ${totalBytes} / 400000 bytes`);
 await import('./key-signalroute.mjs');
 
 await import('./key-environment.mjs');
+}
