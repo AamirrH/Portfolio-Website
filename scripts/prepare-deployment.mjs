@@ -21,6 +21,10 @@ for (const name of ['skyline/far.webp', 'skyline/mid.webp', 'skyline/near.webp',
 
 for (const name of ['facades.svg', 'facades-mobile.svg']) asset(`skyline/${name}`);
 for (const name of ['roomly', 'swiftship', 'signalroute']) asset(`stops/${name}-silhouette.png`);
+for (const name of ['frutiger.webp', 'frutiger-backdrop.webp', 'frutiger-silhouette.png']) asset(`stops/${name}`);
+for (const name of await readdir(path.join(root, 'public/assets/stops/frutiger-sprites'))) {
+  if (name.endsWith('.webp')) asset(`stops/frutiger-sprites/${name}`);
+}
 for (const name of ['text-cyan', 'text-pink', 'image', 'voice', 'flagged', 'envelope']) asset(`stops/msg-${name}.webp`);
 for (const name of ['left', 'right']) asset(`neighbors/${name}.webp`);
 for (const name of ['space-grotesk-400.woff2', 'space-grotesk-500.woff2']) asset(`fonts/${name}`);
