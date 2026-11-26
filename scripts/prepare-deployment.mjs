@@ -37,6 +37,9 @@ asset('tech/css3.svg');
 for (const name of await readdir(path.join(root, 'public/assets/tech-art'))) {
   if (name.endsWith('.webp')) asset(`tech-art/${name}`);
 }
+for (const name of await readdir(path.join(root, 'public/assets/road-trip'))) {
+  if (name.endsWith('.webp')) asset(`road-trip/${name}`);
+}
 
 const content = await readFile(path.join(root, 'src/data/content.ts'), 'utf8');
 for (const [, name] of content.matchAll(/\bicon: '([\w-]+)'/g)) asset(`tech/${name}.svg`);
