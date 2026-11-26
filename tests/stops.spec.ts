@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdir } from 'node:fs/promises';
+
 
 async function enter(page: Page, id: string, debug = false) {
   await page.goto(`/${debug ? '?debug=rects' : ''}#${id}`);
@@ -11,10 +11,11 @@ async function enter(page: Page, id: string, debug = false) {
   await page.evaluate(() => document.fonts.ready);
 }
 
-for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
+// Phone stop layouts are covered by road-trip.spec.ts.
+for (const viewport of [{width:1440,height:900}]) {
   test.describe(`${viewport.width}×${viewport.height}`, () => {
     test.use({ viewport });
-    for (const id of ['roomly','swiftship','signalroute']) test(`${id} sits on the curb with visible car and no card overlap`, async ({page}) => {
+    for (const id of ['roomly','swiftship','signalroute']) test(`${id} sits on the curb with visible car and no card overlap`, async ({page}, testInfo) => {
       const errors: string[] = [];
       page.on('pageerror', error => errors.push(error.message));
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
@@ -26,22 +27,20 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
         return { building: bounds('.scene-frame[data-active="true"] .building-anchor'), curb: bounds('.scene-frame[data-active="true"] .stop-sidewalk'), card: bounds('.stop-project-panel'), car: bounds('.scene-frame[data-active="true"] .parked-car'), lane: bounds('.scene-frame[data-active="true"] .stop-near-lane'), overflow: document.documentElement.scrollWidth > innerWidth, imageReady: art.complete && art.naturalWidth > 0 };
       });
       const props = page.locator('.scene-frame[data-active="true"] .stop-prop:visible');
-      const expectedProps = viewport.width < 768 ? (id === 'signalroute' ? 1 : 2) : (id === 'signalroute' ? 3 : 4);
+      const expectedProps = id === 'signalroute' ? 3 : 4;
       await expect(props).toHaveCount(expectedProps);
       for (const prop of await props.all()) {
         await expect.poll(()=>prop.locator('.prop-art').evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBe(true);
         const box = await prop.boundingBox();
         expect(box).not.toBeNull();
         expect(box!.x).toBeGreaterThanOrEqual(0);
-        if(viewport.width >= 768) expect(box!.x+box!.width+14).toBeLessThan(layout.card.left);
-        else expect(box!.y+box!.height).toBeLessThan(layout.card.top);
+        expect(box!.x+box!.width+14).toBeLessThan(layout.card.left);
       }
       expect(layout.imageReady).toBe(true);
       expect(layout.overflow).toBe(false);
       expect(Math.abs(layout.building.bottom - layout.curb.top)).toBeLessThan(1);
       expect(Math.abs(layout.car.top + layout.car.height * 195 / 235 - layout.lane.top)).toBeLessThan(2);
-      if (viewport.width >= 768) expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
-      else { expect(layout.building.bottom).toBeLessThan(layout.card.top); expect(layout.car.top + layout.car.height * 195 / 235).toBeLessThan(layout.card.top); }
+      expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
       await expect(page.locator('.scene-frame[data-active="true"] .building-reflection')).toHaveCSS('opacity', '0.3');
       if (id !== 'signalroute') {
       const door = page.getByRole('link', {name: `Open live project: ${id === 'roomly' ? 'Roomly' : 'SwiftShip'}`});
@@ -60,8 +59,7 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       await page.mouse.move(0, 0);
       }
       await expect(page.locator('.project-metrics')).toHaveCount(0);
-      await mkdir('screenshots', {recursive:true});
-      await page.screenshot({path:`screenshots/${id}-${viewport.width}x${viewport.height}.png`});
+      await page.screenshot({path:testInfo.outputPath(`${id}-${viewport.width}x${viewport.height}.png`)});
       await expect(page.locator('.project-details')).toHaveCount(0);
       expect(errors).toEqual([]);
     });

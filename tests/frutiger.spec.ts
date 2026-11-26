@@ -14,7 +14,8 @@ async function ready(page: Page, id: string) {
   await page.evaluate(() => document.fonts.ready);
 }
 
-for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+// The static phone scene is covered by road-trip.spec.ts.
+for (const viewport of [{ width: 1440, height: 900 }]) {
   test(`daylight stop at ${viewport.width}×${viewport.height}`, async ({ page }) => {
     test.setTimeout(165000);
     await page.setViewportSize(viewport);
@@ -27,8 +28,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
     const stop = page.locator(`[data-stop="${route}"]`);
     const pool = async () => Promise.all(['.day-cloud', '.day-bubble', '.day-flyer,.day-perched', '.day-sparkle']
       .map(selector => stop.locator(selector).count()));
-    const mobile = viewport.width < 768;
-    const counts = [mobile ? 4 : 8, mobile ? 5 : 10, 2, 14];
+    const counts = [8, 10, 2, 14];
     expect(await pool()).toEqual(counts);
     expect(await stop.locator('.day-fascia').innerText()).toBe('Frutiger Aero');
     await expect(stop.locator('.day-backdrop')).toBeVisible();
@@ -37,8 +37,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
     const sidewalk = await bounds(page, '.stop-sidewalk');
     const board = await bounds(page, '.stop-project-panel');
     expect(Math.abs(building.y + building.height - sidewalk.y)).toBeLessThan(1);
-    if (mobile) expect(building.y + building.height).toBeLessThan(board.y);
-    else expect(building.x + building.width + 8).toBeLessThan(board.x);
+    expect(building.x + building.width + 8).toBeLessThan(board.x);
     const initialPosition = await bounds(page, '.day-flyer');
     const initialBubble = await stop.locator('.day-bubble').first().evaluate(el => getComputedStyle(el).transform);
     for (const second of [3, 10]) {
@@ -48,12 +47,10 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
     const movedPosition = await bounds(page, '.day-flyer');
     expect(Math.hypot(movedPosition.x - initialPosition.x, movedPosition.y - initialPosition.y)).toBeGreaterThan(10);
     expect(await stop.locator('.day-bubble').first().evaluate(el => getComputedStyle(el).transform)).not.toBe(initialBubble);
-    if (!mobile) {
-      const poolNodes = await stop.locator('.day-cloud,.day-bubble,.day-flyer,.day-perched,.day-sparkle').elementHandles();
-      await page.waitForTimeout(Math.max(0, start + 120_000 - Date.now()));
-      expect(await pool()).toEqual(counts);
-      for (const node of poolNodes) expect(await node.evaluate(el => el.isConnected)).toBe(true);
-    }
+    const poolNodes = await stop.locator('.day-cloud,.day-bubble,.day-flyer,.day-perched,.day-sparkle').elementHandles();
+    await page.waitForTimeout(Math.max(0, start + 120_000 - Date.now()));
+    expect(await pool()).toEqual(counts);
+    for (const node of poolNodes) expect(await node.evaluate(el => el.isConnected)).toBe(true);
     await expect(page.getByLabel('Scene quality')).toHaveCount(0);
     const icons = page.locator('.project-tech-list img');
     await expect(icons).toHaveCount(4);
