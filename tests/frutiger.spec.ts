@@ -54,13 +54,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       expect(await pool()).toEqual(counts);
       for (const node of poolNodes) expect(await node.evaluate(el => el.isConnected)).toBe(true);
     }
-    const quality = page.getByLabel('Scene quality');
-    await quality.selectOption('medium');
-    await expect(stop.locator('.day-bubble')).toHaveCount(5);
-    await expect(stop.locator('.day-perched')).toBeHidden();
-    await quality.selectOption('low');
-    await expect(stop).toHaveAttribute('data-day-motion', 'false');
-    await quality.selectOption('high');
+    await expect(page.getByLabel('Scene quality')).toHaveCount(0);
     const motion = page.getByRole('button', { name: 'Motion', exact: true });
     await motion.click();
     await expect(stop).toHaveAttribute('data-day-motion', 'false');

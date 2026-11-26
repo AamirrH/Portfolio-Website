@@ -58,7 +58,7 @@ function SceneFrame({ id, active, remove, hold, dayTransition, bloom }: {
       if(cancelled)return;
       const crossing = active && dayTransition?.to === id ? dayTransition : null;
       const day = useFrutigerEffects.getState();
-      const staticDay = crossing && (!day.motion || day.quality === 'low');
+      const staticDay = crossing && !day.motion;
       const duration = !motion || staticDay || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION;
       const frame = ref.current;
       if (!frame) return;
