@@ -115,14 +115,33 @@
 .project-details summary { cursor:pointer; font-size:12px; color:#f3dfac; padding:3px 0; }
 .project-details .technical-notes { margin-top:14px; }
 .stop-project-panel .project-pagination { flex-shrink:0; padding:12px 20px; margin:0; border:1px solid #9bb59f66; color:#d1e0d0; font-size:11px; }
+.project-info-open,.project-info-close { display:none; }
+@media (max-width:767px), (hover:none) and (pointer:coarse) and (max-height:600px) {
+  .stop-project-panel[data-mobile-open='false'],.project-info-open[aria-expanded='true'] { display:none; }
+  .project-info-open {
+    position:fixed; right:max(16px,env(safe-area-inset-right)); bottom:calc(var(--journey-footer-space) + 12px);
+    display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:8px 14px;
+    border:1px solid #9bb59f; border-radius:24px; background:#16352e; color:#fff5db;
+    font:500 14px 'Space Grotesk',sans-serif;
+  }
+  .project-info-open span { display:grid; place-items:center; width:19px; height:19px; border:1px solid; border-radius:50%; }
+  .project-info-close {
+    display:grid; place-items:center; width:44px; height:44px; flex:none; margin:-6px -6px -6px 0;
+    border:1px solid #9bb59f66; border-radius:5px; color:#fff5db; font-size:21px; line-height:1;
+  }
+  .project-info-open:focus-visible,.project-info-close:focus-visible { outline:2px solid #fff5db; outline-offset:2px; }
+}
 @media (max-width:767px) {
-  .stop-project-panel { top:38vh; bottom:calc(var(--journey-footer-space) + 4px); left:0; right:0; width:100%; padding:0; }
+  .stop-project-panel { top:max(49vh,calc(41vh + 46px)); bottom:calc(var(--journey-footer-space) + 4px); left:0; right:0; width:100%; padding:0; }
   .stop-project-panel::before,.stop-project-panel::after { display:none; }
   .board-frame { height:100%; max-height:none; border-radius:0; padding:5px; box-shadow:none; }
   .board-header { padding:8px 14px; font-size:9px; }
   .stop-project-panel .panel-inner { padding:12px 15px 20px; }
   .stop-project-panel h1 { font-size:29px; }
   .stop-project-panel .project-pagination { padding:10px 14px; }
+}
+@media (max-width:767px) and (orientation:landscape) {
+  .stop-project-panel { top:86px; left:auto; right:8px; width:min(52vw,400px); }
 }
 /* Compact desktop spacing without reducing body text size. */
 @media (min-width:768px) {
