@@ -58,7 +58,7 @@ function SceneFrame({ id, active, remove, hold, dayTransition, bloom }: {
       if(cancelled)return;
       const crossing = active && dayTransition?.to === id ? dayTransition : null;
       const day = useFrutigerEffects.getState();
-      const staticDay = crossing && (!day.motion || day.quality === 'low');
+      const staticDay = crossing && !day.motion;
       const duration = !motion || staticDay || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION;
       const frame = ref.current;
       if (!frame) return;
@@ -73,11 +73,13 @@ function SceneFrame({ id, active, remove, hold, dayTransition, bloom }: {
       }
       if (snapshot && outgoing) {
         gsap.set(frame, { opacity: 1 });
+        if (id === daylightId) frame.dataset.revealed = 'true';
         outgoing.style.visibility = 'hidden';
       }
       tween = gsap.to(snapshot ?? frame, { opacity: active && !snapshot ? 1 : 0, duration,
         ease: crossing ? 'sine.inOut' : 'power3.inOut',
         onComplete: () => {
+          if (active && id === daylightId) frame.dataset.revealed = 'true';
           if (!active) remove(id);
           if (crossing) remove(crossing.from);
         }

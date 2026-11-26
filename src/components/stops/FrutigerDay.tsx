@@ -19,12 +19,12 @@ function Wings() {
 
 export function FrutigerSky({ active }: { active: boolean }) {
   const sky = useRef<HTMLDivElement>(null);
-  const { quality, motion } = useFrutigerEffects();
+  const motion = useFrutigerEffects(state => state.motion);
   const { reduced, hidden, mobile } = useStopPreferences();
 
   useEffect(() => {
     const layer = sky.current;
-    if (!layer || !active || reduced || mobile || hidden || !motion || quality !== 'high') return;
+    if (!layer || !active || reduced || mobile || hidden || !motion) return;
     function track(event: PointerEvent) {
       if (event.pointerType === 'touch' || !layer) return;
       layer.style.setProperty('--lens-x', `${(event.clientX / innerWidth * 2 - 1) * 8}px`);
@@ -36,7 +36,7 @@ export function FrutigerSky({ active }: { active: boolean }) {
       layer.style.removeProperty('--lens-x');
       layer.style.removeProperty('--lens-y');
     };
-  }, [active, reduced, mobile, hidden, quality, motion]);
+  }, [active, reduced, mobile, hidden, motion]);
 
   return <div className="day-sky" ref={sky} aria-hidden="true">
     <div className="day-sun" />
@@ -55,9 +55,8 @@ export function FrutigerSky({ active }: { active: boolean }) {
 }
 
 export function FrutigerBubbles() {
-  const quality = useFrutigerEffects(state => state.quality);
   const { mobile } = useStopPreferences();
-  const count = mobile || quality === 'medium' ? 5 : bubbleCount;
+  const count = mobile ? 5 : bubbleCount;
   return <div className="day-bubbles" aria-hidden="true">
     {Array.from({ length: count }, (_, i) => {
       const style: EffectStyle = {
