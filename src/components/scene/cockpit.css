@@ -52,6 +52,7 @@
 .about-panel h1 { font-size:32px; }
 .about-panel .panel-description { font-size:14px;line-height:1.65; }
 .about-panel .primary-link { margin-top:14px; }
+.about-mobile-toggle { display:none; }
 .about-education { display:grid;gap:4px;margin-top:16px;padding-top:14px;border-top:1px solid #d9c5dd36;color:#dacddd;font:13px/1.45 'Space Grotesk',sans-serif; }
 .about-education .eyebrow { color:#ffaad0;font-size:9px; }
 .about-education strong { color:#fff3f8;font-size:15px;font-weight:500; }
@@ -103,8 +104,29 @@
 @media (orientation:landscape) and (hover:none) and (pointer:coarse) and (max-height:600px) {
   .dash-console { width:min(46vw,360px); max-height:min(238px,calc(100dvh - var(--journey-footer-space) - 100px)); }
 }
-@media(max-width:767px) {
-  .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:calc(55dvh - 113px);padding:18px; }
-  .about-panel h1 { font-size:27px; }
-  .about-panel .panel-description { font-size:12px;line-height:1.5; }
+@media (max-width:767px), (hover:none) and (pointer:coarse) and (max-height:600px) {
+  .about-panel {
+    --phone-about-top:clamp(112px,18dvh,158px);
+    top:var(--phone-about-top); bottom:auto; left:5%; right:5%; width:min(90%,320px);
+    max-height:none; margin-inline:auto; padding:8px 13px; overflow:visible;
+  }
+  .about-panel .panel-inner>.eyebrow { display:none; }
+  .about-panel h1 { margin:4px 0 0; font-size:clamp(19px,5.4vw,22px); }
+  .about-mobile-toggle {
+    display:inline-flex; align-items:center; gap:8px; min-height:44px;
+    font-size:13px; color:#ffc1dc;
+  }
+  .about-mobile-toggle[aria-expanded='true'] span { transform:rotate(180deg); }
+  .about-details[data-mobile-open='false'] { display:none; }
+  .about-details {
+    max-height:calc(56dvh - var(--phone-about-top) - 86px);
+    overflow:auto; overscroll-behavior:contain; scrollbar-width:thin;
+    padding:2px 5px 6px 0;
+  }
+  .about-panel .panel-description { font-size:13px;line-height:1.55; }
+  .about-education { margin-top:10px; padding-top:8px; }
+}
+@media (orientation:landscape) and (hover:none) and (pointer:coarse) and (max-height:600px) {
+  .about-panel { --phone-about-top:92px; left:auto; right:4%; width:min(42vw,320px); margin:0; }
+  .about-details { max-height:calc(100dvh - var(--journey-footer-space) - var(--phone-about-top) - 98px); }
 }
