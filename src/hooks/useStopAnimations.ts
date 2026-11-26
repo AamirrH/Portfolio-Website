@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useState, type RefObject } from 'react';
 import gsap from 'gsap';
 import { type StopConfig } from '../data/stops';
 import { useSceneStore } from '../state/useSceneStore';
+import { useFrutigerEffects } from '../components/stops/FrutigerControls';
 
 export function useStopPreferences() {
   const motion=useSceneStore(s=>s.motion);
@@ -26,8 +27,30 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
   useLayoutEffect(() => {
     const root = ref.current;
     if (!root || !active) return;
-    if (stop.id === 'frutiger-aero' || reduced||quality!=='high') { root.dataset.arrived = 'true'; return; }
+    const daylight = stop.id === 'frutiger-aero';
+    if (reduced || quality !== 'high' || (daylight && !useFrutigerEffects.getState().motion)) {
+      root.dataset.arrived = 'true';
+      return;
+    }
     root.dataset.arrived = 'false';
+    if (daylight) {
+      const car = root.querySelector('.parked-car');
+      const frame = root.closest<HTMLElement>('.scene-frame');
+      if (!car || !frame) { root.dataset.arrived = 'true'; return; }
+      const scope = gsap.context(() => gsap.set(car, { x: -innerWidth * .65 }), root);
+      const arrive = () => {
+        if (frame.dataset.revealed !== 'true') return;
+        observer.disconnect();
+        scope.add(() => gsap.to(car, {
+          x: 0, duration: 1.35, ease: 'power3.out',
+          onComplete: () => { root.dataset.arrived = 'true'; },
+        }));
+      };
+      const observer = new MutationObserver(arrive);
+      observer.observe(frame, { attributes: true, attributeFilter: ['data-revealed'] });
+      arrive();
+      return () => { observer.disconnect(); scope.revert(); };
+    }
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({ onComplete: () => { root.dataset.arrived = 'true'; } });
       timeline.fromTo('.parked-car', { x: -innerWidth * .6, y: 2, scaleY: .985 }, { x: 0, y: 0, scaleY: 1, duration: 1.2, ease: 'power3.out', transformOrigin: '50% 83%' }, 0);

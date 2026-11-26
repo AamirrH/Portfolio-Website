@@ -83,6 +83,11 @@ test('daylight crossfade cleans up and respects reduced motion', async ({ page }
     await page.evaluate(target => { location.hash = target; }, id);
     await expect(page.locator('.day-sky-snapshot')).toHaveCount(1);
     await expect.poll(() => page.locator('.day-transition-bloom').evaluate(el => Number(getComputedStyle(el).opacity))).toBeGreaterThan(0);
+    if (id === route) {
+      const stop = page.locator(`[data-stop="${route}"]`);
+      await expect(stop).toHaveAttribute('data-arrived', 'false');
+      expect(await stop.locator('.parked-car').evaluate(el => new DOMMatrix(getComputedStyle(el).transform).m41)).toBeLessThan(0);
+    }
     await ready(page, id);
     await expect(page.locator('.day-sky-snapshot')).toHaveCount(0);
     await expect(page.locator('.scene-frame')).toHaveCount(1);
