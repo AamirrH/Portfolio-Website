@@ -3,7 +3,7 @@ export function ContactLinks() { return <div className="contact-links"><a href={
 export function Contact() { return <>
   <section className="gantry-nav contact-gantry" aria-label={content.contact.title}>
     <div className="road-sign identity-sign"><p className="sign-meta">{content.brand.name} ↑</p><h1>{content.contact.title}</h1><p className="sign-bottom">{content.contact.eyebrow}</p></div>
-    <div className="road-sign contact-exits"><ContactLinks/><a className="resume-link" href={content.about.resumeUrl} download>{content.about.resume} ↓</a></div>
+    <div className="road-sign contact-exits"><ContactLinks/><a className="resume-link" href={content.about.resumeUrl} target="_blank" rel="noopener noreferrer">{content.about.resume} <span aria-hidden="true">↗</span></a></div>
   </section>
   <div className="home-copy contact-copy"><p className="home-description">{content.contact.description}</p><a className="primary-link" href="#home">← {content.contact.home}</a></div>
 </>; }
