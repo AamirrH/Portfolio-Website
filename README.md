@@ -1,4 +1,4 @@
-# Endless Road
+# dev portfolio
 
 Aamir Hussain’s synthwave portfolio: a layered SVG/CSS night drive built with Vite, React 18, strict TypeScript, Tailwind, GSAP + ScrollTrigger, Zustand, and the Web Audio API. No WebGL, Three.js, router library, audio library, or remotely hosted visual assets.
 
