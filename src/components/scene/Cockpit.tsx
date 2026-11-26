@@ -1,10 +1,14 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { content, technologyGroups } from '../../data/content';
 import { SteeringWheel } from './SteeringWheel';
 import './cockpit.css';
 
 export function Cockpit() {
   const [activeId, setActiveId] = useState(technologyGroups[0].id);
+  const [mobileTechOpen, setMobileTechOpen] = useState(false);
+  const openButton = useRef<HTMLButtonElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const moveFocus = useRef(false);
   const active = technologyGroups.find(group => group.id === activeId) ?? technologyGroups[0];
   const shiftGroup = useCallback((direction: -1 | 1) => {
     setActiveId(current => {
@@ -12,19 +16,40 @@ export function Cockpit() {
       return technologyGroups[(index + direction + technologyGroups.length) % technologyGroups.length].id;
     });
   }, []);
+  useLayoutEffect(() => {
+    if (!moveFocus.current) return;
+    moveFocus.current = false;
+    (mobileTechOpen ? closeButton : openButton).current?.focus({ preventScroll: true });
+  }, [mobileTechOpen]);
+
+  const toggleMobileTech = (open: boolean) => {
+    moveFocus.current = true;
+    setMobileTechOpen(open);
+  };
 
   return <div className="cockpit">
     <div className="windshield-post left-post" aria-hidden="true"/>
     <div className="windshield-post right-post" aria-hidden="true"/>
     <div className="dashboard-shell">
       <SteeringWheel onStep={shiftGroup} activeGroup={active.label}/>
-      <div className="dash-console" role="region" aria-labelledby="dash-console-label" tabIndex={0}
+      <button ref={openButton} type="button" className="dash-tech-open" aria-controls="dash-console"
+        aria-expanded={mobileTechOpen} onClick={() => toggleMobileTech(true)}>
+        <span aria-hidden="true">i</span> {content.projects.tech}
+      </button>
+      <div id="dash-console" className="dash-console" role="region" aria-labelledby="dash-console-label"
+        data-mobile-open={mobileTechOpen} tabIndex={0}
         onKeyDown={event => {
           if (event.key.startsWith('Arrow')) event.stopPropagation();
+          if (event.key === 'Escape' && mobileTechOpen && closeButton.current?.getClientRects().length) {
+            event.preventDefault();
+            toggleMobileTech(false);
+          }
         }}>
         <div className="dash-console-heading">
           <strong id="dash-console-label">{content.about.skillsTitle}</strong>
           <span>{content.about.stackHint}</span>
+          <button ref={closeButton} type="button" className="dash-tech-close" aria-label="Close tech stack"
+            onClick={() => toggleMobileTech(false)}>×</button>
         </div>
         <div className="dash-tabs" role="tablist" aria-label={content.about.skillsTitle}>
           {technologyGroups.map(group => <button

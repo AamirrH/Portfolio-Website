@@ -38,6 +38,7 @@
 .dash-console-heading { display:flex;align-items:baseline;justify-content:space-between;gap:10px;color:#d8fbf7; }
 .dash-console-heading strong { font:14px 'JetBrains Mono',monospace;letter-spacing:.1em; }
 .dash-console-heading span { font:11px 'Space Grotesk',sans-serif;color:#b7d0d8; }
+.dash-tech-open,.dash-tech-close { display:none; }
 .dash-tabs { display:flex;gap:4px;margin:6px 0;overflow-x:auto;scrollbar-width:none; }
 .dash-tabs::-webkit-scrollbar { display:none; }
 .dash-tabs button { flex:none;padding:4px 8px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:14px 'Space Grotesk',sans-serif;white-space:nowrap; }
@@ -61,20 +62,48 @@
   .dash-console { left:33%;width:63%; }
   .dash-tech-grid { grid-template-columns:repeat(8,minmax(72px,1fr)); overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
 }
-@media(max-width:767px) {
-  :root { --dashboard-height:clamp(124px,18dvh,152px); }
-  .dash-scene .dashboard-shell { --wheel-size:clamp(80px,26vw,116px); width:100%;left:0; }
+@media (max-width:767px), (hover:none) and (pointer:coarse) and (max-height:600px) {
+  .dash-scene .rear-road { top:0; height:100%; }
+  .dash-scene .dashboard-shell {
+    --wheel-size:clamp(86px,27vw,116px);
+    width:100%; height:calc(var(--wheel-size) + 16px); left:0;
+    border:0; background:none; box-shadow:none;
+  }
   .dash-scene .left-post { transform:rotate(-3deg); }
   .dash-scene .right-post { transform:rotate(3deg); }
   .dash-scene .steering-wheel { left:auto;right:4%;bottom:8px; }
-  .dash-console { top:6px;bottom:8px;left:4%;width:calc(92% - var(--wheel-size) - 10px);padding:6px 8px; }
-  .dash-console-heading span { display:none; }
+  .dash-tech-open {
+    position:absolute; left:4%; bottom:20px; display:inline-flex; align-items:center; gap:7px;
+    min-height:44px; padding:7px 12px; pointer-events:auto;
+    border:1px solid #8db6c2d4; border-radius:24px; background:#102936; color:#e1faf7;
+    font:500 14px 'Space Grotesk',sans-serif;
+  }
+  .dash-tech-open span { display:grid; place-items:center; width:19px; height:19px; border:1px solid; border-radius:50%; }
+  .dash-console[data-mobile-open='false'],.dash-tech-open[aria-expanded='true'] { display:none; }
+  .dash-console {
+    z-index:3; top:auto; bottom:8px; left:4%; width:92%;
+    max-height:min(238px,calc(44dvh - var(--journey-footer-space) - 12px));
+    padding:0 9px 9px; background:#0e1c2a;
+  }
+  .dash-console-heading { position:sticky; top:0; align-items:center; z-index:1; min-height:44px; background:#0e1c2a; }
+  .dash-console-heading>span { display:none; }
   .dash-console-heading strong { font-size:12px; }
-  .dash-tabs { margin:4px 0; }
-  .dash-tabs button { padding:3px 6px;font-size:12px; }
-  .dash-tech-grid { grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:68px;gap:2px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#25f4ee78 transparent; }
-  .dash-tech-grid li { min-height:49px;font-size:13px;padding:2px 1px; }
+  .dash-tech-close {
+    display:grid; place-items:center; width:44px; height:44px; flex:none;
+    border:1px solid transparent; border-radius:5px; color:#e1faf7; font-size:22px; line-height:1;
+  }
+  .dash-tech-open:focus-visible,.dash-tech-close:focus-visible { outline:2px solid #25f4ee;outline-offset:-2px; }
+  .dash-tabs { flex-wrap:wrap; margin:4px 0 7px; overflow:visible; }
+  .dash-tabs button { padding:4px 6px; font-size:12px; }
+  .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px 4px; overflow:visible; }
+  .dash-tech-grid li { justify-content:flex-start; font-size:12px; line-height:1.15; padding:2px 1px; min-height:52px; }
+  .dash-tech-grid li>span:last-child { max-width:100%; overflow-wrap:anywhere; }
   .dash-tech-grid img,.dash-tech-glyph { width:26px;height:26px; }
+}
+@media (orientation:landscape) and (hover:none) and (pointer:coarse) and (max-height:600px) {
+  .dash-console { width:min(46vw,360px); max-height:min(238px,calc(100dvh - var(--journey-footer-space) - 100px)); }
+}
+@media(max-width:767px) {
   .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:calc(55dvh - 113px);padding:18px; }
   .about-panel h1 { font-size:27px; }
   .about-panel .panel-description { font-size:12px;line-height:1.5; }
