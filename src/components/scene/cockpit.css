@@ -1,14 +1,24 @@
-:root { --dashboard-height:clamp(212px,26dvh,250px); }
+:root { --dashboard-height:clamp(146px,21dvh,186px); }
+
+.dash-scene .rear-road { top:-30%; height:130%; }
 
 .dash-scene .dashboard-shell {
+  --wheel-size:clamp(145px,min(21vw,34dvh),280px);
   bottom:var(--journey-footer-space); height:var(--dashboard-height); width:104%; left:-2%;
   border-radius:34% 34% 0 0 / 9% 9% 0 0;
   background:linear-gradient(180deg,#4a4053 0,#222332 10%,#111522 50%,#090c17 100%);
   box-shadow:0 -8px 28px #ff9bc221,inset 0 8px 24px #070916;
 }
 .dash-scene .cockpit { pointer-events:none; }
+.dash-scene .windshield-post {
+  width:clamp(12px,2.5vw,42px);
+  height:calc(100% - var(--journey-footer-space));
+  transform-origin:top center;
+}
+.dash-scene .left-post { transform:rotate(-8deg); }
+.dash-scene .right-post { transform:rotate(8deg); }
 .dash-scene .steering-wheel {
-  width:clamp(320px,26vw,370px);height:clamp(320px,26vw,370px);left:7%;top:-31%;bottom:auto;opacity:1;z-index:2;
+  width:var(--wheel-size);height:var(--wheel-size);left:7%;bottom:8px;opacity:1;z-index:2;
   border:0;border-radius:50%;padding:0;background:none;box-shadow:0 14px 34px #050813a6;
   pointer-events:auto;touch-action:none;cursor:grab;user-select:none;
   transform:rotate(0deg);transition:transform .55s cubic-bezier(.18,.7,.2,1);
@@ -21,22 +31,22 @@
 .dash-console {
   position:absolute;top:8px;bottom:10px;left:34%;width:61%;
   overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;
-  padding:12px 15px;background:#0e1c2aed;border:1px solid #8db6c2d4;
+  padding:8px 12px;background:#0e1c2aed;border:1px solid #8db6c2d4;
   border-radius:9px;box-shadow:0 0 0 5px #0a0e19,inset 0 0 28px #25f4ee0c;
   pointer-events:auto;
 }
 .dash-console-heading { display:flex;align-items:baseline;justify-content:space-between;gap:10px;color:#d8fbf7; }
 .dash-console-heading strong { font:14px 'JetBrains Mono',monospace;letter-spacing:.1em; }
 .dash-console-heading span { font:11px 'Space Grotesk',sans-serif;color:#b7d0d8; }
-.dash-tabs { display:flex;gap:4px;margin:11px 0 10px;overflow-x:auto;scrollbar-width:none; }
+.dash-tabs { display:flex;gap:4px;margin:6px 0;overflow-x:auto;scrollbar-width:none; }
 .dash-tabs::-webkit-scrollbar { display:none; }
-.dash-tabs button { flex:none;padding:7px 10px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:14px 'Space Grotesk',sans-serif;white-space:nowrap; }
+.dash-tabs button { flex:none;padding:4px 8px;border:1px solid transparent;border-radius:4px;background:none;color:#d4e0e7;font:14px 'Space Grotesk',sans-serif;white-space:nowrap; }
 .dash-tabs button[aria-selected='true'] { color:#d7fffb;border-color:#25f4ee78;background:#25f4ee18; }
 .dash-tabs button:focus-visible { outline:2px solid #25f4ee;outline-offset:2px; }
 .dash-tech-grid { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;list-style:none;margin:0;padding:0; }
-.dash-tech-grid li { min-width:0;min-height:102px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 1px;color:#fff;text-align:center;font:20px/1.1 'Space Grotesk',sans-serif; }
-.dash-tech-grid img { width:56px;height:56px;object-fit:contain; }
-.dash-tech-glyph { width:56px;height:56px;display:grid;place-items:center;color:#82eae5;font:22px 'JetBrains Mono',monospace; }
+.dash-tech-grid li { min-width:0;min-height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 1px;color:#fff;text-align:center;font:15px/1.1 'Space Grotesk',sans-serif; }
+.dash-tech-grid img { width:38px;height:38px;object-fit:contain;flex:none; }
+.dash-tech-glyph { width:38px;height:38px;display:grid;place-items:center;flex:none;color:#82eae5;font:16px 'JetBrains Mono',monospace; }
 .about-panel { top:115px;bottom:auto;right:6%;width:min(510px,46vw);max-height:calc(100dvh - var(--journey-footer-space) - var(--dashboard-height) - 125px);transform:none;padding:25px 28px; }
 .about-panel h1 { font-size:30px; }
 .about-panel .panel-description { font-size:13px;line-height:1.65; }
@@ -48,22 +58,23 @@
 .plain-tech-groups { display:grid;gap:16px;margin-top:15px; }
 .plain-tech-groups h4 { margin:0 0 7px;color:#d9c0e2;font:500 13px 'Space Grotesk',sans-serif; }
 @media(max-width:1100px) and (min-width:768px) {
-  .dash-scene .steering-wheel { width:clamp(210px,27vw,280px);height:clamp(210px,27vw,280px);left:6%;top:-13%; }
   .dash-console { left:33%;width:63%; }
-  .dash-tech-grid { grid-template-columns:repeat(8,minmax(78px,1fr)); overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
-  .dash-tech-grid li { min-height:90px;gap:3px;font-size:17px; }
-  .dash-tech-grid img,.dash-tech-glyph { width:42px;height:42px;flex:none; }
+  .dash-tech-grid { grid-template-columns:repeat(8,minmax(72px,1fr)); overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
 }
 @media(max-width:767px) {
-  .dash-scene .dashboard-shell { bottom:0;height:50%;width:110%;left:-5%; }
-  .dash-scene .steering-wheel { width:164px;height:164px;left:60%;right:auto;top:39%; }
-  .dash-console { top:10%;bottom:calc(var(--journey-footer-space) + 8px);left:5%;width:90%;padding:9px 10px; }
+  :root { --dashboard-height:clamp(124px,18dvh,152px); }
+  .dash-scene .dashboard-shell { --wheel-size:clamp(80px,26vw,116px); width:100%;left:0; }
+  .dash-scene .left-post { transform:rotate(-3deg); }
+  .dash-scene .right-post { transform:rotate(3deg); }
+  .dash-scene .steering-wheel { left:auto;right:4%;bottom:8px; }
+  .dash-console { top:6px;bottom:8px;left:4%;width:calc(92% - var(--wheel-size) - 10px);padding:6px 8px; }
   .dash-console-heading span { display:none; }
-  .dash-tabs { margin:5px 0; }
-  .dash-tabs button { padding:6px 8px;font-size:13px; }
-  .dash-tech-grid { width:calc(100% - 145px);grid-template-columns:none;grid-template-rows:repeat(2,94px);grid-auto-flow:column;grid-auto-columns:100px;gap:2px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#25f4ee78 transparent; }
-  .dash-tech-grid li { min-height:94px;gap:3px;font-size:17px;padding:2px 1px; }
-  .dash-tech-grid img,.dash-tech-glyph { width:43px;height:43px; }
+  .dash-console-heading strong { font-size:12px; }
+  .dash-tabs { margin:4px 0; }
+  .dash-tabs button { padding:3px 6px;font-size:12px; }
+  .dash-tech-grid { grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:68px;gap:2px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#25f4ee78 transparent; }
+  .dash-tech-grid li { min-height:49px;font-size:13px;padding:2px 1px; }
+  .dash-tech-grid img,.dash-tech-glyph { width:26px;height:26px; }
   .about-panel { top:105px;bottom:auto;left:5%;right:5%;width:90%;max-height:calc(55dvh - 113px);padding:18px; }
   .about-panel h1 { font-size:25px; }
   .about-panel .panel-description { font-size:11px;line-height:1.5; }
