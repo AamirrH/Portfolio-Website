@@ -203,18 +203,6 @@
 .day-transition-bloom { position: absolute; inset: 0 0 28%; z-index: 6; pointer-events: none; opacity: 0; background: linear-gradient(#fff 75%, transparent); }
 
 .stop-board-accent .board-header > span { color: color-mix(in srgb, var(--project-accent) 70%, white); }
-.project-facts { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; padding: 0; list-style: none; }
-.project-facts li {
-  padding: 3px 7px;
-  border: 1px solid var(--project-accent);
-  border-radius: 3px;
-  font: 500 11px/1.4 'Space Grotesk', sans-serif;
-  color: #deefff;
-  background: color-mix(in srgb, var(--project-accent) 16%, transparent);
-}
-.day-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; font-size: 12px; color: #e1e9dc; }
-.day-controls button { padding: 4px 7px; border: 1px solid #729084; border-radius: 4px; background: #152d27; color: inherit; }
-.day-controls button[aria-pressed='true'] { border-color: var(--project-accent); }
 
 @media (max-width: 767px) {
   .stop-frutiger-aero .day-backdrop { height: 57%; object-fit: cover; object-position: 61% bottom; }

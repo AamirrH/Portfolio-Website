@@ -18,7 +18,6 @@ import { SCENE_QUALITY } from '../../config';
 import { NearBuildings } from '../scene/Skyline';
 
 import { FrutigerBubbles, FrutigerSky } from './FrutigerDay';
-import { useFrutigerEffects } from './FrutigerControls';
 
 type StopStyle = CSSProperties & Record<`--${string}`, string | number>;
 export function StopScene({ stop, sky = 'default' }: { stop: StopConfig; sky?: StopSky }) {
@@ -32,7 +31,6 @@ export function StopScene({ stop, sky = 'default' }: { stop: StopConfig; sky?: S
   const { building, door } = stop;
   const daylight = sky === 'frutiger-day';
   const { reduced, hidden } = useStopPreferences();
-  const dayMotion = useFrutigerEffects(state => state.motion);
   const project = projects.find(item => item.id === stop.id);
   const live = project?.live !== 'LIVE_URL' ? project?.live : undefined;
   const ignited=useSceneStore(s=>s.ignited);
@@ -49,7 +47,7 @@ export function StopScene({ stop, sky = 'default' }: { stop: StopConfig; sky?: S
   const style: StopStyle = { '--height-vh': building.heightVh, '--mobile-height-vh': building.mobileHeightVh, '--anchor-x': building.anchorXPct, '--building-aspect': building.aspect, '--building-mask': building.silhouette ? `url("${building.silhouette}")` : 'none' };
   const art = building.src ? <img {...responsiveArt(building.src,'(max-width:767px) 85vw, 55vw',quality==='low')} className="stop-art" src={building.src} alt="" loading="eager" decoding="async"/> : <SignalBuilding/>;
   return <div ref={ref} className={`stop-scene stop-${stop.id}`} data-stop={stop.id}
-    data-day-motion={daylight ? active && !reduced && !hidden && dayMotion : undefined} style={style}>
+    data-day-motion={daylight ? active && !reduced && !hidden : undefined} style={style}>
     {daylight ? <FrutigerSky active={active}/> : <><SceneSky/>
     <div className="stop-city-near" data-stop-depth="6"><NearBuildings/></div></>}
     {(!daylight&&SCENE_QUALITY.reflectionRipple&&QUALITY[quality].ripple) && <svg className="reflection-filter" aria-hidden="true"><defs><filter id={rippleId} x="-10%" width="120%"><feTurbulence type="fractalNoise" baseFrequency=".008 .1" numOctaves="1" seed="7" result="noise"/><feColorMatrix in="noise" type="matrix" values="1 0 0 0 0  0 0 0 0 .5  0 0 1 0 0  0 0 0 1 0" result="horizontalNoise"/><feDisplacementMap in="SourceGraphic" in2="horizontalNoise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>}

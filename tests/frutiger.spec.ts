@@ -58,11 +58,8 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
     const icons = page.locator('.project-tech-list img');
     await expect(icons).toHaveCount(4);
     await expect.poll(() => icons.evaluateAll(nodes => nodes.every(img => (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
-    const motion = page.getByRole('button', { name: 'Motion', exact: true });
-    await motion.click();
-    await expect(stop).toHaveAttribute('data-day-motion', 'false');
-    await motion.click();
-    await expect(stop).toHaveAttribute('data-day-motion', 'true');
+    await expect(page.getByRole('button', { name: 'Motion', exact: true })).toHaveCount(0);
+    await expect(page.getByRole('list', { name: 'Project facts' })).toHaveCount(0);
     await expect(page.getByRole('link', { name: 'Previous project' })).toHaveAttribute('href', '#signalroute');
     await page.getByRole('link', { name: 'All projects' }).click();
     await expect(page.getByRole('navigation', { name: 'All exits' }).getByRole('link', { name: /Frutiger Aero/ })).toHaveAttribute('href', `#${route}`);

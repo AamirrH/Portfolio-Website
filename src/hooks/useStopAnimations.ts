@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useState, type RefObject } from 'react';
 import gsap from 'gsap';
 import { type StopConfig } from '../data/stops';
 import { useSceneStore } from '../state/useSceneStore';
-import { useFrutigerEffects } from '../components/stops/FrutigerControls';
 
 export function useStopPreferences() {
   const motion=useSceneStore(s=>s.motion);
@@ -28,7 +27,7 @@ export function useStopAnimations(ref: RefObject<HTMLDivElement>, stop: StopConf
     const root = ref.current;
     if (!root || !active) return;
     const daylight = stop.id === 'frutiger-aero';
-    if (reduced || quality !== 'high' || (daylight && !useFrutigerEffects.getState().motion)) {
+    if (reduced || quality !== 'high') {
       root.dataset.arrived = 'true';
       return;
     }

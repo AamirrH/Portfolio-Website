@@ -5,7 +5,6 @@ import { useSceneStore, type CameraPreset } from '../../state/useSceneStore';
 import { cameraPresets } from '../../scene/cameraPresets';
 import { TRANSITION_DURATION } from '../../config';
 import type { ProjectId } from '../../data/content';
-import { useFrutigerEffects } from '../stops/FrutigerControls';
 const RearScene=lazy(()=>import('./TravelScenes').then(m=>({default:m.RearScene})));
 const DashScene=lazy(()=>import('./TravelScenes').then(m=>({default:m.DashScene})));
 const AerialScene=lazy(()=>import('./TravelScenes').then(m=>({default:m.AerialScene})));
@@ -57,9 +56,7 @@ function SceneFrame({ id, active, remove, hold, dayTransition, bloom }: {
     const start=()=>{
       if(cancelled)return;
       const crossing = active && dayTransition?.to === id ? dayTransition : null;
-      const day = useFrutigerEffects.getState();
-      const staticDay = crossing && !day.motion;
-      const duration = !motion || staticDay || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION;
+      const duration = !motion || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : TRANSITION_DURATION;
       const frame = ref.current;
       if (!frame) return;
       if (crossing && duration) {

@@ -17,7 +17,6 @@ export interface Project {
   order?: number;
   featured?: boolean;
   accent?: string;
-  chips?: string[];
   stop?: { kind: 'custom'; artKey: string; sky: StopSky };
 }
 export interface Technology { name: string; icon?: string; }
@@ -239,7 +238,6 @@ export const projects: Project[] = [
     accent: '#1e90ff',
     stop: { kind: 'custom', artKey: 'frutiger', sky: 'frutiger-day' },
     pitch: 'A browser-based recreation of the Windows 7 desktop in pure HTML, CSS and vanilla JavaScript: draggable windows, glass UI, startup sound, a gallery, Notepad, games and a blue-screen throwback.',
-    chips: ['0 frameworks', 'Vanilla JS', 'Draggable windows', 'Windows 7 UI'],
     highlights: [
       'Window system with drag, minimize, restore and close behaviour.',
       'Aero-glass styling, startup sound, gallery, Notepad, games and a BSOD page.',

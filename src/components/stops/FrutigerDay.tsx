@@ -1,7 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import type { OverlayRect } from '../../data/stops';
 import { useStopPreferences } from '../../hooks/useStopAnimations';
-import { useFrutigerEffects } from './FrutigerControls';
 import './frutiger-day.css';
 
 const sprite = (name: string) => `/assets/stops/frutiger-sprites/${name}.webp`;
@@ -19,12 +18,11 @@ function Wings() {
 
 export function FrutigerSky({ active }: { active: boolean }) {
   const sky = useRef<HTMLDivElement>(null);
-  const motion = useFrutigerEffects(state => state.motion);
   const { reduced, hidden, mobile } = useStopPreferences();
 
   useEffect(() => {
     const layer = sky.current;
-    if (!layer || !active || reduced || mobile || hidden || !motion) return;
+    if (!layer || !active || reduced || mobile || hidden) return;
     function track(event: PointerEvent) {
       if (event.pointerType === 'touch' || !layer) return;
       layer.style.setProperty('--lens-x', `${(event.clientX / innerWidth * 2 - 1) * 8}px`);
@@ -36,7 +34,7 @@ export function FrutigerSky({ active }: { active: boolean }) {
       layer.style.removeProperty('--lens-x');
       layer.style.removeProperty('--lens-y');
     };
-  }, [active, reduced, mobile, hidden, motion]);
+  }, [active, reduced, mobile, hidden]);
 
   return <div className="day-sky" ref={sky} aria-hidden="true">
     <div className="day-sun" />
