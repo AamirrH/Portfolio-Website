@@ -76,7 +76,7 @@ export function Cockpit() {
           <ul className="dash-tech-grid" tabIndex={0}>
             {active.technologies.map(tech => <li key={tech.name}>
               {tech.icon ? <img src={`/assets/tech/${tech.icon}.svg`} width="32" height="32" alt="" loading="lazy"/> : <span className="dash-tech-glyph" aria-hidden="true">{tech.name.slice(0, 2).toUpperCase()}</span>}
-              <span>{tech.name}</span>
+              <span className="dash-tech-name">{tech.name}</span>
             </li>)}
           </ul>
         </div>

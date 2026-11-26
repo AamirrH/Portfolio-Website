@@ -84,7 +84,7 @@
   .dash-console {
     z-index:3; top:auto; bottom:8px; left:4%; width:92%;
     max-height:min(238px,calc(44dvh - var(--journey-footer-space) - 12px));
-    padding:0 9px 9px; background:#0e1c2a;
+    padding:0 9px 9px; scroll-padding-top:44px; background:#0e1c2a;
   }
   .dash-console-heading { position:sticky; top:0; align-items:center; z-index:1; min-height:44px; background:#0e1c2a; }
   .dash-console-heading>span { display:none; }
@@ -96,9 +96,9 @@
   .dash-tech-open:focus-visible,.dash-tech-close:focus-visible { outline:2px solid #25f4ee;outline-offset:-2px; }
   .dash-tabs { flex-wrap:wrap; margin:4px 0 7px; overflow:visible; }
   .dash-tabs button { padding:4px 6px; font-size:12px; }
-  .dash-tech-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px 4px; overflow:visible; }
-  .dash-tech-grid li { justify-content:flex-start; font-size:12px; line-height:1.15; padding:2px 1px; min-height:52px; }
-  .dash-tech-grid li>span:last-child { max-width:100%; overflow-wrap:anywhere; }
+  .dash-tech-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,78px),1fr)); gap:8px 6px; overflow:visible; }
+  .dash-tech-grid li { justify-content:flex-start; font-size:12px; line-height:1.25; padding:3px; min-height:52px; }
+  .dash-tech-name { width:100%; white-space:normal; overflow-wrap:anywhere; }
   .dash-tech-grid img,.dash-tech-glyph { width:26px;height:26px; }
 }
 @media (orientation:landscape) and (hover:none) and (pointer:coarse) and (max-height:600px) {

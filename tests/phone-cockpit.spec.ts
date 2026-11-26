@@ -24,13 +24,30 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }
       await expect(page.getByRole('tab', { name: 'Frameworks' })).toHaveAttribute('aria-selected', 'true');
       const tech = page.getByRole('tabpanel');
       await expect(tech.locator('li')).toHaveCount(8);
-      await expect.poll(() => tech.locator('li').evaluateAll(
-        items => items.every(item => item.scrollWidth <= item.clientWidth),
-      )).toBe(true);
-      expect(await console.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+      if (viewport.width === 320) {
+        const columns = await tech.locator('ul').evaluate(grid => getComputedStyle(grid).gridTemplateColumns.split(' ').length);
+        expect(columns).toBe(3);
+      }
       const last = tech.getByText('REST APIs');
       await last.scrollIntoViewIfNeeded();
       await expect(last).toBeInViewport();
+      for (const tab of await page.getByRole('tab').all()) {
+        await tab.click();
+        await expect(tab).toHaveAttribute('aria-selected', 'true');
+        const overflowing = await tech.locator('li').evaluateAll(items => items.flatMap(item => {
+          const label = item.querySelector('.dash-tech-name')!;
+          const cell = item.getBoundingClientRect();
+          const range = document.createRange();
+          range.selectNodeContents(label);
+          const fits = Array.from(range.getClientRects()).every(line =>
+            line.left >= cell.left - 1 && line.right <= cell.right + 1 &&
+            line.top >= cell.top - 1 && line.bottom <= cell.bottom + 1,
+          );
+          return fits ? [] : [label.textContent];
+        }));
+        expect(overflowing).toEqual([]);
+        expect(await console.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+      }
       await close.press('Escape');
       await expect(console).toBeHidden();
       await expect(info).toBeFocused();
