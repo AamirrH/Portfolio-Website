@@ -11,7 +11,7 @@ export function About() {
         <strong>{content.about.degree}</strong>
         <span>{content.about.school} · {content.about.years}</span>
       </div>
-      <a className="primary-link" href={content.about.resumeUrl} download>{content.about.resume} ↓</a>
+      <a className="primary-link" href={content.about.resumeUrl} target="_blank" rel="noopener noreferrer">{content.about.resume} <span aria-hidden="true">↗</span></a>
     </div>
   </section>;
 }
