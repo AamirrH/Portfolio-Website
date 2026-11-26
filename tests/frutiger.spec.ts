@@ -55,6 +55,9 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       for (const node of poolNodes) expect(await node.evaluate(el => el.isConnected)).toBe(true);
     }
     await expect(page.getByLabel('Scene quality')).toHaveCount(0);
+    const icons = page.locator('.project-tech-list img');
+    await expect(icons).toHaveCount(4);
+    await expect.poll(() => icons.evaluateAll(nodes => nodes.every(img => (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
     const motion = page.getByRole('button', { name: 'Motion', exact: true });
     await motion.click();
     await expect(stop).toHaveAttribute('data-day-motion', 'false');

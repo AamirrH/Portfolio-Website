@@ -33,6 +33,7 @@ asset('effects/grain.webp');
 asset('cockpit/steering-wheel.webp');
 asset('documents/Resume_Aamir.pdf');
 asset('tech/LICENSE');
+asset('tech/css3.svg');
 for (const name of await readdir(path.join(root, 'public/assets/tech-art'))) {
   if (name.endsWith('.webp')) asset(`tech-art/${name}`);
 }

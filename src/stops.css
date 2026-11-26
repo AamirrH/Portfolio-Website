@@ -147,7 +147,7 @@
 .project-tech-art img { width:100%; height:100%; object-fit:contain; }
 .project-tech-art.wide img { object-fit:fill; }
 .project-tech-art-label { position:absolute; color:#fff; font:700 9px 'Space Grotesk',sans-serif; letter-spacing:-.02em; }
-.project-tech-list img[src*="apachekafka"] { filter:invert(1); }
+.project-tech-list img[src*="apachekafka"],.project-tech-list img[src$="/vercel.svg"] { filter:invert(1); }
 .project-tech-glyph { width:38px; height:38px; display:grid; place-items:center; border:1px solid #a5c1ac77; border-radius:50%; color:#c9f0dc; font:600 12px 'JetBrains Mono',monospace; }
 .project-tech-list span { overflow-wrap:anywhere; }
 @media(min-width:1200px) { .project-tech-list { grid-template-columns:repeat(6,minmax(0,1fr)); } }

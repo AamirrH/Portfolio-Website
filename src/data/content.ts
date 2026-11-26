@@ -28,6 +28,7 @@ export const projectTechIcons: Record<string, string> = {
   'Spring Data JPA': 'springdatajpa', React: 'react', PostgreSQL: 'postgresql',
   Docker: 'docker', Kafka: 'apachekafka', Redis: 'redis',
   'GitHub Actions': 'githubactions', Python: 'python',
+  HTML5: 'html5', CSS3: 'css3', JavaScript: 'javascript', Vercel: 'vercel',
 };
 // Cleaned icon art from the supplied SwiftShip sheet. Labels remain live text.
 export const projectTechArtwork: Record<string, { src: string; overlay?: string; wide?: boolean }> = {
