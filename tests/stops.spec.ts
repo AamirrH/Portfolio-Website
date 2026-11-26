@@ -1,5 +1,4 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdir } from 'node:fs/promises';
 
 async function enter(page: Page, id: string, debug = false) {
   await page.goto(`/${debug ? '?debug=rects' : ''}#${id}`);
@@ -14,11 +13,20 @@ async function enter(page: Page, id: string, debug = false) {
 for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
   test.describe(`${viewport.width}×${viewport.height}`, () => {
     test.use({ viewport });
-    for (const id of ['roomly','swiftship','signalroute']) test(`${id} sits on the curb with visible car and no card overlap`, async ({page}) => {
+    for (const id of ['roomly','swiftship','signalroute']) test(`${id} sits on the curb with visible car and no card overlap`, async ({page}, testInfo) => {
       const errors: string[] = [];
       page.on('pageerror', error => errors.push(error.message));
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
       await enter(page, id);
+      const info = page.getByRole('button', { name: 'Project info', exact: true });
+      if (viewport.width < 768) {
+        await expect(page.locator('.stop-project-panel')).toBeHidden();
+        await expect(page.locator('.parked-car')).toBeInViewport();
+        await info.click();
+        await expect(page.getByRole('button', { name: 'Close project info' })).toBeFocused();
+      } else {
+        await expect(info).toHaveCount(0);
+      }
       await expect.poll(() => page.locator('.scene-frame[data-active="true"] .stop-art').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
       const layout = await page.evaluate(() => {
         const bounds = (selector: string) => document.querySelector(selector)!.getBoundingClientRect().toJSON();
@@ -41,7 +49,13 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       expect(Math.abs(layout.building.bottom - layout.curb.top)).toBeLessThan(1);
       expect(Math.abs(layout.car.top + layout.car.height * 195 / 235 - layout.lane.top)).toBeLessThan(2);
       if (viewport.width >= 768) expect(layout.building.right + 8).toBeLessThanOrEqual(layout.card.left);
-      else { expect(layout.building.bottom).toBeLessThan(layout.card.top); expect(layout.car.top + layout.car.height * 195 / 235).toBeLessThan(layout.card.top); }
+      else {
+        expect(layout.building.bottom).toBeLessThan(layout.card.top);
+        expect(layout.car.bottom).toBeLessThan(layout.card.top);
+        await page.getByRole('button', { name: 'Close project info' }).click();
+        await expect(info).toBeFocused();
+        await expect(page.locator('.stop-project-panel')).toBeHidden();
+      }
       await expect(page.locator('.scene-frame[data-active="true"] .building-reflection')).toHaveCSS('opacity', '0.3');
       if (id !== 'signalroute') {
       const door = page.getByRole('link', {name: `Open live project: ${id === 'roomly' ? 'Roomly' : 'SwiftShip'}`});
@@ -60,8 +74,7 @@ for (const viewport of [{width:1440,height:900}, {width:390,height:844}]) {
       await page.mouse.move(0, 0);
       }
       await expect(page.locator('.project-metrics')).toHaveCount(0);
-      await mkdir('screenshots', {recursive:true});
-      await page.screenshot({path:`screenshots/${id}-${viewport.width}x${viewport.height}.png`});
+      await page.screenshot({path:testInfo.outputPath(`${id}-${viewport.width}x${viewport.height}.png`)});
       await expect(page.locator('.project-details')).toHaveCount(0);
       expect(errors).toEqual([]);
     });

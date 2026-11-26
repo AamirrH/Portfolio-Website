@@ -206,7 +206,6 @@
 
 @media (max-width: 767px) {
   .stop-frutiger-aero .day-backdrop { height: 57%; object-fit: cover; object-position: 61% bottom; }
-  .stop-project-panel.stop-board-accent { top: 46vh; }
   .day-transition-bloom { bottom: 59%; }
   .day-cloud-depth:nth-child(2n) { margin-top: 9%; }
 }

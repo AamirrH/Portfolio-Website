@@ -35,10 +35,9 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
     await expect(stop.locator('.building-reflection,.car-reflection,.building-tint')).toHaveCount(0);
     const building = await bounds(page, '.building-anchor');
     const sidewalk = await bounds(page, '.stop-sidewalk');
-    const board = await bounds(page, '.stop-project-panel');
     expect(Math.abs(building.y + building.height - sidewalk.y)).toBeLessThan(1);
-    if (mobile) expect(building.y + building.height).toBeLessThan(board.y);
-    else expect(building.x + building.width + 8).toBeLessThan(board.x);
+    if (mobile) await expect(page.locator('.stop-project-panel')).toBeHidden();
+    else expect(building.x + building.width + 8).toBeLessThan((await bounds(page, '.stop-project-panel')).x);
     const initialPosition = await bounds(page, '.day-flyer');
     const initialBubble = await stop.locator('.day-bubble').first().evaluate(el => getComputedStyle(el).transform);
     for (const second of [3, 10]) {
@@ -53,6 +52,11 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       await page.waitForTimeout(Math.max(0, start + 120_000 - Date.now()));
       expect(await pool()).toEqual(counts);
       for (const node of poolNodes) expect(await node.evaluate(el => el.isConnected)).toBe(true);
+    }
+    if (mobile) {
+      await page.getByRole('button', { name: 'Project info', exact: true }).click();
+      const car = await bounds(page, '.parked-car');
+      expect(car.y + car.height).toBeLessThan((await bounds(page, '.stop-project-panel')).y);
     }
     await expect(page.getByLabel('Scene quality')).toHaveCount(0);
     const icons = page.locator('.project-tech-list img');
