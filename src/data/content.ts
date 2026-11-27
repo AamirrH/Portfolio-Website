@@ -116,10 +116,10 @@ export const projects: Project[] = [
       "Docker"
     ],
     "highlights": [
-      "Built booking, inventory, and management dashboards with access tailored to four user roles.",
-      "Protected accounts with JWT, BCrypt password hashing, and role-based access. Razorpay test payments use server-created orders and cryptographic signature verification.",
-      "Calculated room prices using demand, occupancy, and booking urgency, with Google Calendar holiday data feeding a Strategy Pattern pricing engine.",
-      "Prevented double-booking with pessimistic locking and transactional availability checks. In each of three tests, 100 concurrent requests competed for 10 rooms: 10 bookings succeeded, 90 were rejected, and no rooms were oversold."
+      "Booking and inventory management dashboards for four user roles.",
+      "JWT, BCrypt, and role-based access protect accounts. The server creates Razorpay test orders and verifies payment signatures.",
+      "A Strategy Pattern pricing engine uses demand, occupancy, booking urgency, and Google Calendar holidays.",
+      "Transactional checks and pessimistic locking prevented double-booking in three tests of 100 concurrent requests for 10 rooms."
     ],
     "metrics": [
       {
@@ -162,11 +162,11 @@ export const projects: Project[] = [
       "Docker"
     ],
     "highlights": [
-      "Connected 8+ Spring Boot microservices through Kafka to coordinate orders, inventory, warehouse assignment, routing, tracking, and notifications.",
-      "Used JWT/OAuth2 and Spring Cloud Gateway for access control, with Resilience4j circuit breakers, retries, and rate limits to contain failures between services.",
-      "Replaced application-side coordinate scans with indexed PostGIS distance queries, bringing nearest-warehouse selection latency to 100 ms.",
-      "Combined OpenRouteService with Spring AI/Gemini to select road-aware delivery routes using ETA, distance, and delivery context, with a fallback when the routing API fails.",
-      "Streamed tracking updates to 100 concurrent authenticated WebSocket clients at 4 ms p95 latency with 0% message loss. Redis stores the latest tracking state; Kafka and Resend support customer notifications."
+      "Kafka coordinates orders, inventory, dispatch, and tracking across 8+ Spring Boot microservices.",
+      "JWT/OAuth2 secures Spring Cloud Gateway, with Resilience4j circuit breakers, retries, and rate limits.",
+      "Indexed PostGIS queries find the nearest warehouse in 100 ms.",
+      "OpenRouteService and Spring AI/Gemini select routes by ETA, distance, and delivery context, with a fallback for API failures.",
+      "WebSocket tracking hit 4 ms p95 with zero message loss across 100 concurrent authenticated clients. Redis stores state, and Kafka and Resend power alerts."
     ],
     "metrics": [
       {
@@ -203,11 +203,11 @@ export const projects: Project[] = [
       "Pillow"
     ],
     "highlights": [
-      "Used Gemini for image and voice extraction, with a local deterministic policy engine making the final routing decisions.",
-      "Built a safety gate for credential and OTP harvesting, payment-pressure scams, impersonation, and prompt injection. Personalization cannot override a safety veto.",
-      "Retrieved relevant evidence from 400+ historical messages using recipient-scoped TF-IDF search. Evidence stays within the receiving user?s history and is checked against known message IDs.",
-      "Scored 1.00 on action, message-type, and joint accuracy on the organizer?s labeled evaluation set, compared with 0.90, 0.90, and 0.80 for a schema-constrained Gemini reasoner.",
-      "Validated the pipeline with 34 unit tests and placed 365th of 1,983 participants ? top 18% ? in HackerRank Orchestrate."
+      "Gemini extracts image and voice content. Local deterministic rules make the final routing decision.",
+      "Safety rules override personalization to block credential and OTP harvesting, payment-pressure scams, impersonation, and prompt injection.",
+      "Recipient-scoped TF-IDF searches 400+ historical messages and verifies evidence against known message IDs.",
+      "Scored 1.00 on labeled action, message-type, and joint accuracy versus schema-constrained Gemini's 0.90, 0.90, and 0.80.",
+      "Validated with 34 unit tests. Ranked 365th of 1,983 in HackerRank Orchestrate (top 18%)."
     ],
     "metrics": [
       {
@@ -239,9 +239,9 @@ export const projects: Project[] = [
     stop: { kind: 'custom', artKey: 'frutiger', sky: 'frutiger-day' },
     pitch: 'A browser-based recreation of the Windows 7 desktop in pure HTML, CSS and vanilla JavaScript: draggable windows, glass UI, startup sound, a gallery, Notepad, games and a blue-screen throwback.',
     highlights: [
-      'Window system with drag, minimize, restore and close behaviour.',
-      'Aero-glass styling, startup sound, gallery, Notepad, games and a BSOD page.',
-      'Pure HTML, CSS and JavaScript: no frameworks or libraries.',
+      'Drag, minimize, restore, and close windows.',
+      'Aero glass, startup sound, gallery, Notepad, games, and a blue screen.',
+      'Built with HTML, CSS, and vanilla JavaScript.',
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
     metrics: [],
