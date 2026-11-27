@@ -245,7 +245,7 @@ export const projects: Project[] = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
     metrics: [],
-    live: 'LIVE_URL',
+    live: 'https://frutiger-aero-nu.vercel.app/',
     repo: 'REPO_URL',
   }
 ];
